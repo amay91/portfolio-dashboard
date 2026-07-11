@@ -52,8 +52,8 @@ Legend: ⬜ not started · 🔄 in progress · ✅ done · ⏸️ deferred (do n
 - **U — Lean core:** ✅ U1 · ✅ U2 (redesigned, Rev. 2) · ✅ U2a · ✅ U3 (redesigned, Rev. 2) · ✅ U4 (upload bar redesign, 2026-07-05) · ✅ U5 (PDF password support, 2026-07-05 — Python bridge changes unexecuted, no interpreter available) · ✅ U6 (Dark/Light theme toggle — "Terminal Deck" / "The Ledger", 2026-07-08)
 - **A — Accessibility:** ✅ A1 (manual verification; automated axe check waits on T1) · ✅ A2 (all pairs already pass AA) · ✅ A3 (already satisfied pre-existing)
 - **S — Security/privacy:** ✅ S1 · ✅ S2 · ✅ S3 · ✅ S4 (0 vulnerabilities, all deps justified) — **workstream complete**
-- **T — Testing:** ✅ T1 (Playwright e2e, 2 tests, CI-wired) · ✅ T2 (322 Vitest tests + 6 feedback-server `node --test` tests, up from 225) — **workstream complete**
-- **D — Deploy:** ⬜ D1 · ⬜ D2
+- **T — Testing:** ✅ T1 (Playwright e2e, 2 tests, CI-wired) · ✅ T2 (338 Vitest tests + 6 feedback-server `node --test` tests, up from 225)
+- **D — Deploy:** ✅ D1 (Cloudflare Pages Function config done + verified locally, 2026-07-11 — account/push steps are the user's) · ⬜ D2
 - **X — Deferred:** ⏸️ X1 · ⏸️ X2 · ⏸️ X3 · ⏸️ X4 · ✅ X5 (charts done; Commentary sink stays, by design)
 
 > On resume: this line-item state + the per-task acceptance criteria below are all a fresh
