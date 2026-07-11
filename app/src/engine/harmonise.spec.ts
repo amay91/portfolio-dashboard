@@ -81,6 +81,40 @@ describe('canonCore / liveKey — rename-proof matching', () => {
     expect(liveKey(withAdvisor)).toBe(liveKey(withoutAdvisor))
   })
 
+  it('collapses every L&T -> HSBC rename (2022 acquisition) to the same key', () => {
+    // Found via a real statement with no ISINs at all for any of its 5
+    // funds, forcing 100% name-based matching — 3 were pre-acquisition L&T
+    // names, and with every fallback tier failing for every fund,
+    // resolveLiveNavs reported the whole portfolio as "unreachable" (see
+    // docs/DECISIONS.md), which initially looked like a network outage
+    // rather than a data gap.
+    expect(canonCore('L&T Floating Rate Fund Direct Plan - Growth')).toBe('hsbc floating rate long term')
+    expect(canonCore('L&T India Prudence Fund Direct Plan - Growth')).toBe('hsbc aggressive hybrid')
+    expect(canonCore('L&T Midcap Fund Direct Plan - Growth')).toBe('hsbc midcap')
+  })
+
+  it('collapses the SEBI-driven "Blue Chip"/"Bluechip" -> "Large Cap" renames (ICICI, SBI) to the same key', () => {
+    // Same real statement as the L&T renames above. ICICI's went through an
+    // intermediate name too ("Focused Bluechip Equity Fund" -> "Bluechip
+    // Fund" -> "Large Cap Fund").
+    expect(canonCore('ICICI Prudential Focused Bluechip Equity Fund - Direct Plan - Growth')).toBe('icici prudential large cap')
+    expect(canonCore('SBI Blue Chip Fund - Direct Plan - Growth')).toBe('sbi large cap')
+  })
+
+  it('strips AMFI\'s "(erstwhile ...)" rename marker so it doesn\'t pollute matching, same as "(formerly ...)"', () => {
+    // Regression: mfapi.in lists the post-rename ICICI Large Cap Fund as
+    // "ICICI Prudential Large Cap Fund (erstwhile Bluechip Fund) - Direct
+    // Plan - Growth" — left unstripped, "erstwhile"/"bluechip" became two
+    // unwanted extra tokens on the *current* listing, which was enough to
+    // let an unrelated same-AMC decoy ("ICICI Prudential Large & Mid Cap
+    // Fund") outscore the real target in mfapi.ts's searchAndScore (found
+    // live, 2026-07-11 — see docs/DECISIONS.md).
+    const withMarker = 'ICICI Prudential Large Cap Fund (erstwhile Bluechip Fund) - Direct Plan - Growth'
+    const withoutMarker = 'ICICI Prudential Large Cap Fund - Direct Plan - Growth'
+    expect(canonCore(withMarker)).toBe(canonCore(withoutMarker))
+    expect(canonCore(withMarker)).toBe('icici prudential large cap')
+  })
+
   it('never matches Direct/Growth to Regular/IDCW', () => {
     const direct = 'Axis Arbitrage Fund - Direct Plan - Growth'
     const regular = 'Axis Arbitrage Fund - Regular Plan - IDCW'

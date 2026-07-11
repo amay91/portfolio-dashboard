@@ -30,4 +30,30 @@ export const NAME_ALIAS_GROUPS: string[][] = [
   // words ("Diversified", "All Cap", "Active") that fuzzyLive's token-overlap
   // score fell well short of its 0.7 threshold.
   ['quantum diversified equity all cap active fof', 'quantum equity of funds'],
+  // L&T Mutual Fund was acquired by HSBC Mutual Fund (completed Nov 2022);
+  // every L&T-branded scheme was renamed to the equivalent HSBC-branded one.
+  // Found via a real statement with no ISINs at all for any of its 5 funds,
+  // which meant every one of them depended entirely on name matching — 3 of
+  // the 5 were pre-acquisition L&T names, and with no fallback tier
+  // succeeding for ANY fund, resolveLiveNavs reported the whole portfolio as
+  // "unreachable" (diag.reachable stays false when literally nothing
+  // resolves) rather than the more accurate "no match found" — a real bug
+  // report that initially looked like a network outage. Confirmed current
+  // names live via mfapi.in; ISIN unchanged across the rename in all 3 cases.
+  ['hsbc floating rate long term', 'l t floating rate'],
+  ['hsbc aggressive hybrid', 'l t india prudence'],
+  ['hsbc midcap', 'l t midcap'],
+  // SEBI-driven "Blue Chip"/"Bluechip" -> "Large Cap" scheme-category rename
+  // (SEBI's mandated category name is "Large Cap Fund"), found in the same
+  // real statement above. ICICI's rename went through an intermediate name
+  // too ("Focused Bluechip Equity Fund" -> "Bluechip Fund" -> "Large Cap
+  // Fund", the last hop still visible in mfapi.in's own listing as "ICICI
+  // Prudential Large Cap Fund (erstwhile Bluechip Fund)"). The bare query
+  // "bluechip" is also badly crowded on mfapi.in (ICICI's own unrelated "US
+  // Bluechip Equity Fund", UTI's "Bluechip Flexicap Fund", Principal's
+  // "Emerging Bluechip Fund" fill most of the 15-result cap) — resolving
+  // straight to "large cap" up front avoids that query entirely rather than
+  // relying on the crowding-narrowing tiers to fight through it.
+  ['icici prudential large cap', 'icici prudential focused bluechip equity'],
+  ['sbi large cap', 'sbi blue chip'],
 ]

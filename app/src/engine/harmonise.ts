@@ -38,6 +38,15 @@ export function normName(name: string): string {
   let n = String(name || '').toLowerCase()
   n = n
     .replace(/\(formerly[^)]*\)/g, ' ')
+    // AMFI's own rename marker (e.g. "ICICI Prudential Large Cap Fund
+    // (erstwhile Bluechip Fund)") — same idea as "(formerly ...)" above, but
+    // a different word AMFI happens to use for it. Left unstripped, the old
+    // name's tokens ("erstwhile bluechip") became unwanted extra tokens on
+    // the *current* listing, penalizing it in searchAndScore (mfapi.ts)
+    // enough that an unrelated same-AMC decoy ("Large & Mid Cap Fund") could
+    // outscore the real target. Found via a real statement (2026-07-11) — see
+    // docs/DECISIONS.md.
+    .replace(/\(erstwhile[^)]*\)/g, ' ')
     .replace(/\(non-?demat\)/g, ' ')
     .replace(/\(advisor:?[^)]*\)/g, ' ')
     .replace(/[^a-z0-9 ]/g, ' ')

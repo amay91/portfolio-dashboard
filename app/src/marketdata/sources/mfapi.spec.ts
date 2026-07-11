@@ -215,6 +215,32 @@ describe('mfapiByName', () => {
     expect(r?.name).toBe(real.schemeName)
   })
 
+  it('picks the true match over a same-AMC decoy even when AMFI\'s own "(erstwhile ...)" rename marker adds extra tokens to the real target (2026-07-11)', async () => {
+    // Found live via a real statement with no ISINs: "ICICI Prudential
+    // Focused Bluechip Equity Fund" was renamed (via aliases.ts) to canonCore
+    // "icici prudential large cap", but mfapi.in lists the real fund as
+    // "...Large Cap Fund (erstwhile Bluechip Fund)..." — before harmonise.ts's
+    // normName stripped "(erstwhile ...)" (same treatment as "(formerly
+    // ...)"), those two extra tokens dragged the real fund's score below an
+    // unrelated same-AMC decoy, "ICICI Prudential Large & Mid Cap Fund",
+    // which shares every query token as a strict subset plus one extra
+    // ("mid"). See docs/DECISIONS.md and harmonise.spec.ts's own regression
+    // test for the normName half of this fix.
+    const midCapDecoy = { schemeCode: 100777, schemeName: 'ICICI Prudential Large & Mid Cap Fund - Direct Plan - Growth' }
+    const real = { schemeCode: 100888, schemeName: 'ICICI Prudential Large Cap Fund (erstwhile Bluechip Fund) - Direct Plan - Growth' }
+    const fetchMock = vi.fn().mockImplementation((url: string) => {
+      if (url.includes('/search')) return Promise.resolve(jsonResponse([midCapDecoy, real]))
+      if (url.includes('/100888/latest')) {
+        return Promise.resolve(jsonResponse({ meta: { scheme_name: real.schemeName }, data: [{ nav: '120.45', date: '10-07-2026' }] }))
+      }
+      return Promise.resolve(new Response(null, { status: 404 }))
+    })
+    vi.stubGlobal('fetch', fetchMock)
+    const r = await mfapiByName('ICICI Prudential Focused Bluechip Equity Fund - Direct Plan - Growth')
+    expect(r?.nav).toBe(120.45)
+    expect(r?.name).toBe(real.schemeName)
+  })
+
   it('returns null when the /latest lookup has no data', async () => {
     const search = [{ schemeCode: 200, schemeName: 'Kotak Small Cap Fund - Direct Plan - Growth' }]
     vi.stubGlobal(
