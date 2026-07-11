@@ -1482,10 +1482,46 @@ the existing geometry/keyboard unit tests and the render-smoke specs above.
 
 ## D — Deploy  *(priority 7)*
 
-### D1 — Static SPA + edge-function deploy config
+### D1 — Static SPA + edge-function deploy config  ✅ *(config done; account/push steps are yours)*
 - **Do:** deploy config for the SPA **and** the N2 edge function (Cloudflare Pages + Workers
   recommended; Vercel/Netlify equivalent). Preview deploys on PR.
 - **Accept:** a preview URL serves the app and reaches the live edge NAV function.
+- **Resolution note (2026-07-11):** built as **Cloudflare Pages with a Pages Function**, not a
+  separate Workers deployment — N2's handler (`app/src/server/amfiNav.ts`) is a plain
+  Web-standard `(Request) => Promise<Response>` with no platform imports, and Pages Functions
+  (file-based routing under `functions/`) co-deploy on the *same origin* as the static site.
+  That matters concretely here: `index.html`'s CSP is `connect-src 'self' ...` — a same-origin
+  `/api/amfi-nav` needed **zero CSP/CORS changes**, where a standalone Worker on its own
+  subdomain would have needed both.
+  - **`app/functions/api/amfi-nav.ts`** — thin wrapper (`onRequest = ({request}) =>
+    handleAmfiNav(request)`); all real logic stays in the already-tested N2 handler.
+  - **`app/wrangler.toml`** — minimal (`name`, `compatibility_date`, `pages_build_output_dir`)
+    so both `wrangler pages dev` and Cloudflare's own build know where `dist/` is.
+  - **`wrangler` added as a devDependency**, `npm run preview:pages` builds + serves the SPA and
+    the Function together locally — this is how the config below was actually verified, not just
+    reasoned about.
+  - **Verified live, locally, against the real AMFI feed** (not mocked): `wrangler pages dev`
+    served both the static site (200, correct `<title>`) and the function
+    (`GET /api/amfi-nav` → 200, 18,523 real ISINs, golden ISIN `INF109K016O4` resolved correctly,
+    `Access-Control-Allow-Origin: *`, `OPTIONS` preflight → 204); then rebuilt with
+    `VITE_AMFI_EDGE_URL=/api/amfi-nav` baked in (confirmed present in the built bundle) and
+    loaded the Sample Portfolio against it in a real browser — `fetch('/api/amfi-nav')` from the
+    running page returned real data, satisfying this task's literal "reaches the live edge NAV
+    function" acceptance line end-to-end, not just at the network layer in isolation.
+  - **Existing behaviour, not a regression:** with the edge function healthy, mf.captnemo.in
+    (ISIN-based, CORS-native) often still ends up as the *displayed* per-fund source in Data
+    Sources — `resolve.ts` races both tiers in parallel and lets a successful captnemo match
+    overwrite the AMFI one (predates D1, task N3's own design). Documented in `docs/DEPLOY.md`'s
+    verification section so this isn't mistaken for the edge function not working.
+  - **The one env var** (`VITE_AMFI_EDGE_URL` = `/api/amfi-nav`, relative — same-origin on every
+    environment including PR previews) is set in the Cloudflare dashboard, not baked into a
+    committed `.env` — left unset locally, the app is byte-identical to pre-D1 behaviour (N3's
+    "inert until D1" contract, honoured).
+  - **What's actually left, and isn't mine to do:** creating the GitHub repo, pushing, connecting
+    it to Cloudflare Pages, and setting that one dashboard env var — all need the user's own
+    GitHub/Cloudflare accounts. The repo was git-initialized locally with a clean initial commit
+    (`0714c74`) ready for that; **no remote configured, nothing pushed**. Full checklist in
+    `docs/DEPLOY.md`.
 
 ### D2 — In-app privacy note + methods docs
 - **Do:** a concise, visible privacy statement (what leaves the device: only NAV lookups by
