@@ -1,0 +1,91 @@
+
+Aditya Birla Sun Life Mutual Fund
+RP500-Aditya Birla Sun Life Low duration Fund - Growth - Direct Plan - ISIN: INF209K01XU7(Advisor: RANDTEST)
+Folio No: RND5-5500
+Opening Unit Balance: 0.000
+11-Feb-2021 Purchase 262,148.89 493.902 530.7713 493.902
+11-Feb-2021 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 776.2369
+Closing Unit Balance: 493.902
+PPFAS Mutual Fund
+RP501-Parag Parikh Conservative Hybrid Fund - Direct Plan - Growth - ISIN: INF879O01175(Advisor: RANDTEST)
+Folio No: RND5-5501
+Opening Unit Balance: 0.000
+20-May-2024 Purchase 214,891.72 17,695.445 12.1439 17,695.445
+20-May-2024 *** Stamp Duty *** 5.00
+18-May-2025 Purchase 38,404.50 2,712.968 14.1559 20,408.413
+18-May-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 16.1201
+Closing Unit Balance: 20,408.413
+Nippon India Mutual Fund
+RP502-Nippon India Multi Asset Allocation Fund - Direct Plan - Growth Option - ISIN: INF204KB19V4(Advisor: RANDTEST)
+Folio No: RND5-5502
+Opening Unit Balance: 0.000
+06-Feb-2025 Purchase 387,613.85 20,687.965 18.7362 20,687.965
+06-Feb-2025 *** Stamp Duty *** 5.00
+23-Jan-2026 Purchase 97,700.90 4,310.480 22.6659 24,998.445
+23-Jan-2026 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 26.5851
+Closing Unit Balance: 24,998.445
+quant Mutual Fund
+RP503-quant Multi Asset Allocation Fund-Growth Option-Direct Plan - ISIN: INF966L01580(Advisor: RANDTEST)
+Folio No: RND5-5503
+Opening Unit Balance: 0.000
+07-Nov-2020 Purchase 375,203.58 2,246.645 167.0062 2,246.645
+07-Nov-2020 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 182.7873
+Closing Unit Balance: 2,246.645
+HDFC Mutual Fund
+RP504-HDFC Hybrid Equity Fund - Growth Option - Direct Plan - ISIN: INF179K01XZ1(Advisor: RANDTEST)
+Folio No: RND5-5504
+Opening Unit Balance: 0.000
+04-Jan-2025 Purchase 642,125.77 5,458.206 117.6441 5,458.206
+04-Jan-2025 *** Stamp Duty *** 5.00
+04-Apr-2026 Purchase 140,383.29 1,549.127 90.6209 7,007.333
+04-Apr-2026 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 124.7600
+Closing Unit Balance: 7,007.333
+Nippon India Mutual Fund
+RP505-Nippon India Ultra Short Duration Fund- Direct Plan- Growth Option - ISIN: INF204K01YH3(Advisor: RANDTEST)
+Folio No: RND5-5505
+Opening Unit Balance: 0.000
+20-Jul-2022 Purchase 951,259.28 320.336 2,969.5672 320.336
+20-Jul-2022 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 4,762.2286
+Closing Unit Balance: 320.336
+Motilal Oswal Mutual Fund
+RP506-Motilal Oswal Large and Midcap Fund - Direct Plan Growth - ISIN: INF247L01999(Advisor: RANDTEST)
+Folio No: RND5-5506
+Opening Unit Balance: 0.000
+09-Nov-2024 Purchase 658,801.28 23,281.501 28.2972 23,281.501
+09-Nov-2024 *** Stamp Duty *** 5.00
+22-Jun-2025 Purchase 158,738.17 4,842.398 32.7809 28,123.899
+22-Jun-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 39.7533
+Closing Unit Balance: 28,123.899
+HDFC Mutual Fund
+RP507-HDFC Small Cap Fund - Growth Option - Direct Plan - ISIN: INF179KA1RW5(Advisor: RANDTEST)
+Folio No: RND5-5507
+Opening Unit Balance: 0.000
+28-Jul-2021 Purchase 1,401,046.97 13,087.390 107.0532 13,087.390
+28-Jul-2021 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 160.2650
+Closing Unit Balance: 13,087.390
+Edelweiss Mutual Fund
+RP508-Bharat Bond FOF - April 2030 - Direct Plan - Growth Option - ISIN: INF754K01KY1(Advisor: RANDTEST)
+Folio No: RND5-5508
+Opening Unit Balance: 0.000
+01-Dec-2024 Purchase 17,384,002.43 1,517,365.597 11.4567 1,517,365.597
+01-Dec-2024 *** Stamp Duty *** 5.00
+03-Jun-2026 Purchase 2,212,041.51 177,046.887 12.4941 1,694,412.484
+03-Jun-2026 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 15.9837
+Closing Unit Balance: 1,694,412.484
+SBI Mutual Fund
+RP509-SBI Liquid Fund - Direct Plan - Growth - ISIN: INF200K01UT4(Advisor: RANDTEST)
+Folio No: RND5-5509
+Opening Unit Balance: 0.000
+17-Feb-2023 Purchase 547,380.13 152.569 3,587.7532 152.569
+17-Feb-2023 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 4,392.5368
+Closing Unit Balance: 152.569

@@ -1,0 +1,87 @@
+
+HDFC Mutual Fund
+RP700-HDFC NIFTY Next 50 Index Fund - Direct Plan - Growth Option - ISIN: INF179KC1BQ9(Advisor: RANDTEST)
+Folio No: RND7-5700
+Opening Unit Balance: 0.000
+22-Jan-2021 Purchase 13,302,987.26 890,475.210 14.9392 890,475.210
+22-Jan-2021 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 17.0983
+Closing Unit Balance: 890,475.210
+Kotak Mahindra Mutual Fund
+RP701-Kotak Large & Midcap Fund - Direct - Growth - ISIN: INF174K01LF9(Advisor: RANDTEST)
+Folio No: RND7-5701
+Opening Unit Balance: 0.000
+21-Mar-2021 Purchase 1,308,519.19 4,145.790 315.6260 4,145.790
+21-Mar-2021 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 411.1720
+Closing Unit Balance: 4,145.790
+Mirae Asset Mutual Fund
+RP702-Mirae Asset Large & Midcap Fund - Direct Plan - Growth - ISIN: INF769K01BI1(Advisor: RANDTEST)
+Folio No: RND7-5702
+Opening Unit Balance: 0.000
+16-Oct-2024 Purchase 1,363,660.87 10,048.508 135.7078 10,048.508
+16-Oct-2024 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 179.1080
+Closing Unit Balance: 10,048.508
+HDFC Mutual Fund
+RP703-HDFC Ultra Short Term Fund - Direct Plan-Growth Option - ISIN: INF179KB15Q6(Advisor: RANDTEST)
+Folio No: RND7-5703
+Opening Unit Balance: 0.000
+05-May-2021 Purchase 1,013,073.11 108,072.659 9.3740 108,072.659
+05-May-2021 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 16.5036
+Closing Unit Balance: 108,072.659
+Axis Mutual Fund
+RP704-Axis ELSS Tax Saver Fund - Direct Plan - Growth Option - ISIN: INF846K01EW2(Advisor: RANDTEST)
+Folio No: RND7-5704
+Opening Unit Balance: 0.000
+07-Feb-2025 Purchase 1,121,055.08 12,321.737 90.9819 12,321.737
+07-Feb-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 109.7969
+Closing Unit Balance: 12,321.737
+ICICI Prudential Mutual Fund
+RP705-ICICI Prudential Value Fund (erstwhile Value Discovery Fund) - Direct Plan - Growth - ISIN: INF109K012K1(Advisor: RANDTEST)
+Folio No: RND7-5705
+Opening Unit Balance: 0.000
+04-Apr-2022 Purchase 264,059.69 542.029 487.1690 542.029
+04-Apr-2022 *** Stamp Duty *** 5.00
+01-May-2026 Purchase 95,064.81 229.693 413.8770 771.722
+01-May-2026 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 513.4600
+Closing Unit Balance: 771.722
+HDFC Mutual Fund
+RP706-HDFC Mid Cap Fund - Growth Option - Direct Plan - ISIN: INF179K01XQ0(Advisor: RANDTEST)
+Folio No: RND7-5706
+Opening Unit Balance: 0.000
+21-Nov-2024 Purchase 1,102,947.45 5,469.146 201.6672 5,469.146
+21-Nov-2024 *** Stamp Duty *** 5.00
+30-Sep-2025 Purchase 221,189.92 1,146.803 192.8753 6,615.949
+30-Sep-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 231.9700
+Closing Unit Balance: 6,615.949
+SBI Mutual Fund
+RP707-SBI Equity Hybrid Fund - Direct Plan - Growth - ISIN: INF200K01RY0(Advisor: RANDTEST)
+Folio No: RND7-5707
+Opening Unit Balance: 0.000
+17-Jan-2023 Purchase 1,011,983.81 3,954.225 255.9247 3,954.225
+17-Jan-2023 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 350.3571
+Closing Unit Balance: 3,954.225
+HDFC Mutual Fund
+RP708-HDFC Flexi Cap Fund - Growth Option - Direct Plan - ISIN: INF179K01UT0(Advisor: RANDTEST)
+Folio No: RND7-5708
+Opening Unit Balance: 0.000
+05-Apr-2024 Purchase 534,168.55 313.319 1,704.8720 313.319
+05-Apr-2024 *** Stamp Duty *** 5.00
+15-Aug-2024 Purchase 133,799.14 64.046 2,089.1017 377.365
+15-Aug-2024 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 2,240.6610
+Closing Unit Balance: 377.365
+ICICI Prudential Mutual Fund
+RP709-ICICI Prudential Nifty Next 50 Index Fund - Direct Plan - Growth - ISIN: INF109K01Y80(Advisor: RANDTEST)
+Folio No: RND7-5709
+Opening Unit Balance: 0.000
+30-Jan-2025 Purchase 718,169.87 13,801.245 52.0366 13,801.245
+30-Jan-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 67.2095
+Closing Unit Balance: 13,801.245

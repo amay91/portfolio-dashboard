@@ -1,0 +1,95 @@
+
+ICICI Prudential Mutual Fund
+RP300-ICICI Prudential Money Market Fund Option - Direct Plan - Growth - ISIN: INF109K01R14(Advisor: RANDTEST)
+Folio No: RND3-5300
+Opening Unit Balance: 0.000
+27-Aug-2023 Purchase 1,422,575.27 5,658.752 251.3938 5,658.752
+27-Aug-2023 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 410.2493
+Closing Unit Balance: 5,658.752
+quant Mutual Fund
+RP301-quant Small Cap Fund - Growth Option - Direct Plan - ISIN: INF966L01689(Advisor: RANDTEST)
+Folio No: RND3-5301
+Opening Unit Balance: 0.000
+28-Aug-2024 Purchase 1,491,463.85 6,709.831 222.2804 6,709.831
+28-Aug-2024 *** Stamp Duty *** 5.00
+20-Nov-2025 Purchase 545,313.72 2,202.453 247.5938 8,912.284
+20-Nov-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 313.9712
+Closing Unit Balance: 8,912.284
+Edelweiss Mutual Fund
+RP302-BHARAT Bond ETF FOF - April 2032 Direct Growth - ISIN: INF754K01NY5(Advisor: RANDTEST)
+Folio No: RND3-5302
+Opening Unit Balance: 0.000
+03-Nov-2021 Purchase 862,714.75 67,684.605 12.7461 67,684.605
+03-Nov-2021 *** Stamp Duty *** 5.00
+12-Jan-2024 Purchase 311,296.15 25,854.518 12.0403 93,539.123
+12-Jan-2024 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 13.5159
+Closing Unit Balance: 93,539.123
+Quantum Mutual Fund
+RP303-Quantum Nifty 50 ETF FOF - Direct Plan - Growth - ISIN: INF082J01416(Advisor: RANDTEST)
+Folio No: RND3-5303
+Opening Unit Balance: 0.000
+11-May-2025 Purchase 19,252,050.59 1,431,091.943 13.4527 1,431,091.943
+11-May-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 14.2518
+Closing Unit Balance: 1,431,091.943
+ICICI Prudential Mutual Fund
+RP304-ICICI Prudential Multi-Asset Fund - Direct Plan - Growth - ISIN: INF109K015K4(Advisor: RANDTEST)
+Folio No: RND3-5304
+Opening Unit Balance: 0.000
+01-May-2021 Purchase 470,672.24 722.392 651.5469 722.392
+01-May-2021 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 894.4901
+Closing Unit Balance: 722.392
+UTI Mutual Fund
+RP305-UTI Nifty Private Bank Index Fund - Direct Plan - Growth Option - ISIN: INF789F1AZJ5(Advisor: RANDTEST)
+Folio No: RND3-5305
+Opening Unit Balance: 0.000
+21-Feb-2025 Purchase 574,262.47 73,750.092 7.7866 73,750.092
+21-Feb-2025 *** Stamp Duty *** 5.00
+19-May-2025 Purchase 105,638.93 11,980.735 8.8174 85,730.827
+19-May-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 10.4162
+Closing Unit Balance: 85,730.827
+Aditya Birla Sun Life Mutual Fund
+RP306-Aditya Birla Sun Life Low duration Fund - Growth - Direct Plan - ISIN: INF209K01XU7(Advisor: RANDTEST)
+Folio No: RND3-5306
+Opening Unit Balance: 0.000
+18-Aug-2021 Purchase 1,161,906.81 2,660.167 436.7796 2,660.167
+18-Aug-2021 *** Stamp Duty *** 5.00
+12-Jun-2023 Purchase 241,613.71 402.153 600.8007 3,062.320
+12-Jun-2023 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 776.2369
+Closing Unit Balance: 3,062.320
+HDFC Mutual Fund
+RP307-HDFC Silver ETF Fund of Fund - Growth Option - Direct Plan - ISIN: INF179KC1DU7(Advisor: RANDTEST)
+Folio No: RND3-5307
+Opening Unit Balance: 0.000
+15-Oct-2024 Purchase 1,208,023.40 45,298.103 26.6683 45,298.103
+15-Oct-2024 *** Stamp Duty *** 5.00
+06-Feb-2025 Purchase 469,895.48 14,377.015 32.6838 59,675.118
+06-Feb-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 36.0863
+Closing Unit Balance: 59,675.118
+Nippon India Mutual Fund
+RP308-Nippon India Silver ETF FOF- Direct Plan-Growth Option - ISIN: INF204KC1378(Advisor: RANDTEST)
+Folio No: RND3-5308
+Opening Unit Balance: 0.000
+24-Jun-2021 Purchase 383,231.80 16,403.996 23.3621 16,403.996
+24-Jun-2021 *** Stamp Duty *** 5.00
+17-Dec-2021 Purchase 85,738.49 2,738.418 31.3095 19,142.414
+17-Dec-2021 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 33.2842
+Closing Unit Balance: 19,142.414
+Mirae Asset Mutual Fund
+RP309-Mirae Asset Large Cap Fund - Direct Plan - Growth - ISIN: INF769K01AX2(Advisor: RANDTEST)
+Folio No: RND3-5309
+Opening Unit Balance: 0.000
+10-Jun-2024 Purchase 630,024.42 8,196.186 76.8680 8,196.186
+10-Jun-2024 *** Stamp Duty *** 5.00
+15-Dec-2025 Purchase 239,524.84 2,613.080 91.6638 10,809.266
+15-Dec-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 127.9770
+Closing Unit Balance: 10,809.266

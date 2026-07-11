@@ -1,0 +1,801 @@
+
+PPFAS Mutual Fund
+CV3000-Parag Parikh Flexi Cap Fund - Direct Plan - Growth - ISIN: INF879O01027(Advisor: COVERAGE)
+Folio No: COV-3000
+Opening Unit Balance: 0.000
+29-Mar-2024 Purchase 100,000.00 1,861.934 53.7076 1,861.934
+29-Mar-2024 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 90.3358
+Closing Unit Balance: 1,861.934
+HDFC Mutual Fund
+CV3001-HDFC Flexi Cap Fund - Growth Option - Direct Plan - ISIN: INF179K01UT0(Advisor: COVERAGE)
+Folio No: COV-3001
+Opening Unit Balance: 0.000
+06-Apr-2025 Purchase 100,000.00 68.878 1,451.8514 68.878
+06-Apr-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 2,240.6610
+Closing Unit Balance: 68.878
+HDFC Mutual Fund
+CV3002-HDFC Mid Cap Fund - Growth Option - Direct Plan - ISIN: INF179K01XQ0(Advisor: COVERAGE)
+Folio No: COV-3002
+Opening Unit Balance: 0.000
+23-Aug-2025 Purchase 100,000.00 510.414 195.9192 510.414
+23-Aug-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 231.9700
+Closing Unit Balance: 510.414
+Nippon India Mutual Fund
+CV3003-Nippon India Small Cap Fund - Direct Plan Growth Plan - Growth Option - ISIN: INF204K01K15(Advisor: COVERAGE)
+Folio No: COV-3003
+Opening Unit Balance: 0.000
+20-Feb-2024 Purchase 100,000.00 576.251 173.5355 576.251
+20-Feb-2024 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 205.0600
+Closing Unit Balance: 576.251
+ICICI Prudential Mutual Fund
+CV3004-ICICI Prudential Value Fund (erstwhile Value Discovery Fund) - Direct Plan - Growth - ISIN: INF109K012K1(Advisor: COVERAGE)
+Folio No: COV-3004
+Opening Unit Balance: 0.000
+03-Jul-2024 Purchase 100,000.00 333.046 300.2588 333.046
+03-Jul-2024 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 513.4600
+Closing Unit Balance: 333.046
+Kotak Mahindra Mutual Fund
+CV3005-Kotak Flexicap Fund - Growth - Direct - ISIN: INF174K01LS2(Advisor: COVERAGE)
+Folio No: COV-3005
+Opening Unit Balance: 0.000
+06-Nov-2024 Purchase 100,000.00 1,818.605 54.9872 1,818.605
+06-Nov-2024 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 97.7180
+Closing Unit Balance: 1,818.605
+Nippon India Mutual Fund
+CV3006-Nippon India Multi Cap Fund - Direct Plan Growth Plan - Growth Option - ISIN: INF204K01XF9(Advisor: COVERAGE)
+Folio No: COV-3006
+Opening Unit Balance: 0.000
+09-Oct-2025 Purchase 100,000.00 466.948 214.1566 466.948
+09-Oct-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 335.9556
+Closing Unit Balance: 466.948
+Nippon India Mutual Fund
+CV3007-Nippon India Large Cap Fund - Direct Plan Growth Plan - Growth Option - ISIN: INF204K01XI3(Advisor: COVERAGE)
+Folio No: COV-3007
+Opening Unit Balance: 0.000
+13-Aug-2024 Purchase 100,000.00 1,248.051 80.1249 1,248.051
+13-Aug-2024 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 101.3203
+Closing Unit Balance: 1,248.051
+SBI Mutual Fund
+CV3008-SBI Contra Fund - Direct Plan - Growth - ISIN: INF200K01RA0(Advisor: COVERAGE)
+Folio No: COV-3008
+Opening Unit Balance: 0.000
+17-Jun-2024 Purchase 100,000.00 387.482 258.0768 387.482
+17-Jun-2024 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 409.9482
+Closing Unit Balance: 387.482
+Mirae Asset Mutual Fund
+CV3009-Mirae Asset Large & Midcap Fund - Direct Plan - Growth - ISIN: INF769K01BI1(Advisor: COVERAGE)
+Folio No: COV-3009
+Opening Unit Balance: 0.000
+18-Mar-2024 Purchase 100,000.00 672.248 148.7546 672.248
+18-Mar-2024 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 179.1080
+Closing Unit Balance: 672.248
+HDFC Mutual Fund
+CV3010-HDFC Small Cap Fund - Growth Option - Direct Plan - ISIN: INF179KA1RW5(Advisor: COVERAGE)
+Folio No: COV-3010
+Opening Unit Balance: 0.000
+09-Nov-2024 Purchase 100,000.00 977.734 102.2773 977.734
+09-Nov-2024 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 160.2650
+Closing Unit Balance: 977.734
+SBI Mutual Fund
+CV3011-SBI Large & Midcap Fund - Direct Plan - Growth - ISIN: INF200K01UJ5(Advisor: COVERAGE)
+Folio No: COV-3011
+Opening Unit Balance: 0.000
+19-May-2024 Purchase 100,000.00 213.513 468.3545 213.513
+19-May-2024 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 708.2585
+Closing Unit Balance: 213.513
+Mirae Asset Mutual Fund
+CV3012-Mirae Asset Large Cap Fund - Direct Plan - Growth - ISIN: INF769K01AX2(Advisor: COVERAGE)
+Folio No: COV-3012
+Opening Unit Balance: 0.000
+06-Jan-2026 Purchase 100,000.00 915.489 109.2313 915.489
+06-Jan-2026 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 127.9770
+Closing Unit Balance: 915.489
+SBI Mutual Fund
+CV3013-SBI Small Cap Fund - Direct Plan - Growth - ISIN: INF200K01T51(Advisor: COVERAGE)
+Folio No: COV-3013
+Opening Unit Balance: 0.000
+02-Aug-2025 Purchase 100,000.00 578.781 172.7769 578.781
+02-Aug-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 208.3518
+Closing Unit Balance: 578.781
+ICICI Prudential Mutual Fund
+CV3014-ICICI Prudential Technology Fund - Direct Plan - Growth - ISIN: INF109K01Z48(Advisor: COVERAGE)
+Folio No: COV-3014
+Opening Unit Balance: 0.000
+29-Jan-2025 Purchase 100,000.00 795.937 125.6381 795.937
+29-Jan-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 190.0300
+Closing Unit Balance: 795.937
+Axis Mutual Fund
+CV3015-Axis Midcap Fund - Direct Plan - Growth - ISIN: INF846K01EH3(Advisor: COVERAGE)
+Folio No: COV-3015
+Opening Unit Balance: 0.000
+06-Jun-2025 Purchase 100,000.00 757.986 131.9286 757.986
+06-Jun-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 141.4200
+Closing Unit Balance: 757.986
+Axis Mutual Fund
+CV3016-Axis ELSS Tax Saver Fund - Direct Plan - Growth Option - ISIN: INF846K01EW2(Advisor: COVERAGE)
+Folio No: COV-3016
+Opening Unit Balance: 0.000
+02-Feb-2025 Purchase 100,000.00 1,541.374 64.8772 1,541.374
+02-Feb-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 109.7969
+Closing Unit Balance: 1,541.374
+SBI Mutual Fund
+CV3017-SBI ELSS Tax Saver Fund - Direct Plan - Growth - ISIN: INF200K01UM9(Advisor: COVERAGE)
+Folio No: COV-3017
+Opening Unit Balance: 0.000
+19-Dec-2024 Purchase 100,000.00 355.062 281.6411 355.062
+19-Dec-2024 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 478.4228
+Closing Unit Balance: 355.062
+Kotak Mahindra Mutual Fund
+CV3018-Kotak Midcap Fund - Direct Plan - Growth - ISIN: INF174K01LT0(Advisor: COVERAGE)
+Folio No: COV-3018
+Opening Unit Balance: 0.000
+25-Jan-2025 Purchase 100,000.00 734.412 136.1633 734.412
+25-Jan-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 172.0340
+Closing Unit Balance: 734.412
+HDFC Mutual Fund
+CV3019-HDFC Large Cap Fund - Growth Option - Direct Plan - ISIN: INF179K01YV8(Advisor: COVERAGE)
+Folio No: COV-3019
+Opening Unit Balance: 0.000
+29-Nov-2025 Purchase 100,000.00 96.040 1,041.2327 96.040
+29-Nov-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 1,236.7760
+Closing Unit Balance: 96.040
+SBI Mutual Fund
+CV3020-SBI Large Cap Fund - Direct Plan - Growth - ISIN: INF200K01QX4(Advisor: COVERAGE)
+Folio No: COV-3020
+Opening Unit Balance: 0.000
+12-Jul-2024 Purchase 100,000.00 1,588.176 62.9653 1,588.176
+12-Jul-2024 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 104.9543
+Closing Unit Balance: 1,588.176
+SBI Mutual Fund
+CV3021-SBI Focused Fund - Direct Plan - Growth - ISIN: INF200K01RJ1(Advisor: COVERAGE)
+Folio No: COV-3021
+Opening Unit Balance: 0.000
+21-Dec-2024 Purchase 100,000.00 390.965 255.7774 390.965
+21-Dec-2024 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 439.8428
+Closing Unit Balance: 390.965
+quant Mutual Fund
+CV3022-quant Small Cap Fund - Growth Option - Direct Plan - ISIN: INF966L01689(Advisor: COVERAGE)
+Folio No: COV-3022
+Opening Unit Balance: 0.000
+18-Mar-2025 Purchase 100,000.00 361.209 276.8478 361.209
+18-Mar-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 313.9712
+Closing Unit Balance: 361.209
+Motilal Oswal Mutual Fund
+CV3023-Motilal Oswal Large and Midcap Fund - Direct Plan Growth - ISIN: INF247L01999(Advisor: COVERAGE)
+Folio No: COV-3023
+Opening Unit Balance: 0.000
+19-Apr-2024 Purchase 100,000.00 2,782.090 35.9442 2,782.090
+19-Apr-2024 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 39.7533
+Closing Unit Balance: 2,782.090
+Kotak Mahindra Mutual Fund
+CV3024-Kotak Large & Midcap Fund - Direct - Growth - ISIN: INF174K01LF9(Advisor: COVERAGE)
+Folio No: COV-3024
+Opening Unit Balance: 0.000
+07-Jan-2025 Purchase 100,000.00 311.428 321.1010 311.428
+07-Jan-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 411.1720
+Closing Unit Balance: 311.428
+SBI Mutual Fund
+CV3025-SBI Liquid Fund - Direct Plan - Growth - ISIN: INF200K01UT4(Advisor: COVERAGE)
+Folio No: COV-3025
+Opening Unit Balance: 0.000
+02-Nov-2025 Purchase 100,000.00 40.058 2,496.4094 40.058
+02-Nov-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 4,392.5368
+Closing Unit Balance: 40.058
+HDFC Mutual Fund
+CV3026-HDFC Liquid Fund - Growth Option - Direct Plan - ISIN: INF179KB1HP9(Advisor: COVERAGE)
+Folio No: COV-3026
+Opening Unit Balance: 0.000
+24-May-2025 Purchase 100,000.00 21.093 4,740.8319 21.093
+24-May-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 5,517.5525
+Closing Unit Balance: 21.093
+ICICI Prudential Mutual Fund
+CV3027-ICICI Prudential Liquid Fund - Direct Plan - Growth - ISIN: INF109K01Q49(Advisor: COVERAGE)
+Folio No: COV-3027
+Opening Unit Balance: 0.000
+23-Oct-2025 Purchase 100,000.00 269.571 370.9596 269.571
+23-Oct-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 415.8147
+Closing Unit Balance: 269.571
+Axis Mutual Fund
+CV3028-Axis Liquid Fund - Direct Plan - Growth Option - ISIN: INF846K01CX4(Advisor: COVERAGE)
+Folio No: COV-3028
+Opening Unit Balance: 0.000
+01-Oct-2025 Purchase 100,000.00 45.555 2,195.1398 45.555
+01-Oct-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 3,126.7549
+Closing Unit Balance: 45.555
+Aditya Birla Sun Life Mutual Fund
+CV3029-Aditya Birla Sun Life Liquid Fund - Growth - Direct Plan - ISIN: INF209K01VA3(Advisor: COVERAGE)
+Folio No: COV-3029
+Opening Unit Balance: 0.000
+05-Oct-2024 Purchase 100,000.00 273.836 365.1824 273.836
+05-Oct-2024 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 454.0524
+Closing Unit Balance: 273.836
+Nippon India Mutual Fund
+CV3030-Nippon India Liquid Fund - Direct Plan Growth Plan - Growth Option - ISIN: INF204K01ZH0(Advisor: COVERAGE)
+Folio No: COV-3030
+Opening Unit Balance: 0.000
+04-Jan-2025 Purchase 100,000.00 23.632 4,231.6282 23.632
+04-Jan-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 6,880.0067
+Closing Unit Balance: 23.632
+Nippon India Mutual Fund
+CV3031-Nippon India Ultra Short Duration Fund- Direct Plan- Growth Option - ISIN: INF204K01YH3(Advisor: COVERAGE)
+Folio No: COV-3031
+Opening Unit Balance: 0.000
+14-Jan-2025 Purchase 100,000.00 33.131 3,018.3139 33.131
+14-Jan-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 4,762.2286
+Closing Unit Balance: 33.131
+Tata Mutual Fund
+CV3032-Tata Money Market Fund- Direct Plan- Growth Option - ISIN: INF277K01PR6(Advisor: COVERAGE)
+Folio No: COV-3032
+Opening Unit Balance: 0.000
+14-Apr-2025 Purchase 100,000.00 23.396 4,274.1849 23.396
+14-Apr-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 5,145.1068
+Closing Unit Balance: 23.396
+ICICI Prudential Mutual Fund
+CV3033-ICICI Prudential Money Market Fund Option - Direct Plan - Growth - ISIN: INF109K01R14(Advisor: COVERAGE)
+Folio No: COV-3033
+Opening Unit Balance: 0.000
+13-Feb-2024 Purchase 100,000.00 301.223 331.9795 301.223
+13-Feb-2024 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 410.2493
+Closing Unit Balance: 301.223
+HDFC Mutual Fund
+CV3034-HDFC Short Term Debt Fund - Growth Option - Direct Plan - ISIN: INF179K01YM7(Advisor: COVERAGE)
+Folio No: COV-3034
+Opening Unit Balance: 0.000
+29-Apr-2024 Purchase 100,000.00 3,529.790 28.3303 3,529.790
+29-Apr-2024 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 35.2371
+Closing Unit Balance: 3,529.790
+SBI Mutual Fund
+CV3035-SBI Short Term Debt Fund - Direct Plan - Growth - ISIN: INF200K01VE4(Advisor: COVERAGE)
+Folio No: COV-3035
+Opening Unit Balance: 0.000
+15-Jul-2024 Purchase 100,000.00 3,274.716 30.5370 3,274.716
+15-Jul-2024 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 36.2823
+Closing Unit Balance: 3,274.716
+HDFC Mutual Fund
+CV3036-HDFC Corporate Bond Fund - Growth Option - Direct Plan - ISIN: INF179K01XD8(Advisor: COVERAGE)
+Folio No: COV-3036
+Opening Unit Balance: 0.000
+29-Jul-2025 Purchase 100,000.00 3,863.405 25.8839 3,863.405
+29-Jul-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 35.2208
+Closing Unit Balance: 3,863.405
+ICICI Prudential Mutual Fund
+CV3037-ICICI Prudential Corporate Bond Fund - Direct Plan - Growth - ISIN: INF109K016B1(Advisor: COVERAGE)
+Folio No: COV-3037
+Opening Unit Balance: 0.000
+11-Apr-2025 Purchase 100,000.00 3,163.586 31.6097 3,163.586
+11-Apr-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 33.4208
+Closing Unit Balance: 3,163.586
+Axis Mutual Fund
+CV3038-Axis Banking & PSU Debt Fund - Direct Plan - Growth Option - ISIN: INF846K01CR6(Advisor: COVERAGE)
+Folio No: COV-3038
+Opening Unit Balance: 0.000
+28-Mar-2024 Purchase 100,000.00 42.009 2,380.4310 42.009
+28-Mar-2024 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 2,884.4451
+Closing Unit Balance: 42.009
+HDFC Mutual Fund
+CV3039-HDFC Banking and PSU Debt Fund - Growth Option - Direct Plan - ISIN: INF179KA1IZ7(Advisor: COVERAGE)
+Folio No: COV-3039
+Opening Unit Balance: 0.000
+02-Jun-2025 Purchase 100,000.00 4,774.364 20.9452 4,774.364
+02-Jun-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 25.4237
+Closing Unit Balance: 4,774.364
+Kotak Mahindra Mutual Fund
+CV3040-Kotak Banking and PSU Debt - Direct - Growth - ISIN: INF174K01KH7(Advisor: COVERAGE)
+Folio No: COV-3040
+Opening Unit Balance: 0.000
+16-Nov-2025 Purchase 100,000.00 2,148.454 46.5451 2,148.454
+16-Nov-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 72.5432
+Closing Unit Balance: 2,148.454
+Aditya Birla Sun Life Mutual Fund
+CV3041-Aditya Birla Sun Life Low duration Fund - Growth - Direct Plan - ISIN: INF209K01XU7(Advisor: COVERAGE)
+Folio No: COV-3041
+Opening Unit Balance: 0.000
+11-Dec-2025 Purchase 100,000.00 147.734 676.8928 147.734
+11-Dec-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 776.2369
+Closing Unit Balance: 147.734
+ICICI Prudential Mutual Fund
+CV3042-ICICI Prudential Ultra Short Term Fund - Direct Plan - Growth - ISIN: INF109K01T04(Advisor: COVERAGE)
+Folio No: COV-3042
+Opening Unit Balance: 0.000
+28-Nov-2024 Purchase 100,000.00 4,750.436 21.0507 4,750.436
+28-Nov-2024 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 32.0360
+Closing Unit Balance: 4,750.436
+HDFC Mutual Fund
+CV3043-HDFC Ultra Short Term Fund - Direct Plan-Growth Option - ISIN: INF179KB15Q6(Advisor: COVERAGE)
+Folio No: COV-3043
+Opening Unit Balance: 0.000
+10-Jun-2025 Purchase 100,000.00 6,620.324 15.1050 6,620.324
+10-Jun-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 16.5036
+Closing Unit Balance: 6,620.324
+Axis Mutual Fund
+CV3044-Axis Dynamic Bond Fund - Direct Plan - Growth Option - ISIN: INF846K01DI3(Advisor: COVERAGE)
+Folio No: COV-3044
+Opening Unit Balance: 0.000
+11-Jun-2024 Purchase 100,000.00 3,195.623 31.2928 3,195.623
+11-Jun-2024 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 34.7487
+Closing Unit Balance: 3,195.623
+Nippon India Mutual Fund
+CV3045-Nippon India Overnight Fund - Direct Plan - Growth Option - ISIN: INF204KB1R31(Advisor: COVERAGE)
+Folio No: COV-3045
+Opening Unit Balance: 0.000
+24-Feb-2025 Purchase 100,000.00 1,073.027 93.1943 1,073.027
+24-Feb-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 146.7510
+Closing Unit Balance: 1,073.027
+Kotak Mahindra Mutual Fund
+CV3046-Kotak Overnight Fund -Direct Plan-Growth Option - ISIN: INF174KA1BF9(Advisor: COVERAGE)
+Folio No: COV-3046
+Opening Unit Balance: 0.000
+19-Aug-2024 Purchase 100,000.00 96.871 1,032.2996 96.871
+19-Aug-2024 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 1,457.5300
+Closing Unit Balance: 96.871
+HDFC Mutual Fund
+CV3047-HDFC Overnight Fund - Growth Option - Direct Plan - ISIN: INF179KB1HT1(Advisor: COVERAGE)
+Folio No: COV-3047
+Opening Unit Balance: 0.000
+25-Mar-2024 Purchase 100,000.00 33.667 2,970.2739 33.667
+25-Mar-2024 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 4,049.2282
+Closing Unit Balance: 33.667
+Aditya Birla Sun Life Mutual Fund
+CV3048-Aditya Birla Sun Life Credit Risk Fund - Direct Plan - Growth - ISIN: INF209KA1K88(Advisor: COVERAGE)
+Folio No: COV-3048
+Opening Unit Balance: 0.000
+16-Apr-2025 Purchase 100,000.00 5,927.717 16.8699 5,927.717
+16-Apr-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 27.8449
+Closing Unit Balance: 5,927.717
+Nippon India Mutual Fund
+CV3049-Nippon India Gilt  Fund - Direct Plan Growth Plan - Growth Option - ISIN: INF204K01XP8(Advisor: COVERAGE)
+Folio No: COV-3049
+Opening Unit Balance: 0.000
+17-Jun-2024 Purchase 100,000.00 2,920.868 34.2364 2,920.868
+17-Jun-2024 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 44.7189
+Closing Unit Balance: 2,920.868
+HDFC Mutual Fund
+CV3050-HDFC Balanced Advantage Fund - Growth Plan - Direct Plan - ISIN: INF179K01WA6(Advisor: COVERAGE)
+Folio No: COV-3050
+Opening Unit Balance: 0.000
+24-May-2024 Purchase 100,000.00 243.144 411.2789 243.144
+24-May-2024 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 570.1330
+Closing Unit Balance: 243.144
+ICICI Prudential Mutual Fund
+CV3051-ICICI Prudential Balanced Advantage Fund - Direct Plan - Growth - ISIN: INF109K012B0(Advisor: COVERAGE)
+Folio No: COV-3051
+Opening Unit Balance: 0.000
+25-May-2024 Purchase 100,000.00 1,609.282 62.1395 1,609.282
+25-May-2024 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 87.5500
+Closing Unit Balance: 1,609.282
+SBI Mutual Fund
+CV3052-SBI Balanced Advantage Fund - Direct Plan - Growth - ISIN: INF200KA1Y73(Advisor: COVERAGE)
+Folio No: COV-3052
+Opening Unit Balance: 0.000
+02-Jun-2025 Purchase 100,000.00 6,300.681 15.8713 6,300.681
+02-Jun-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 16.7255
+Closing Unit Balance: 6,300.681
+ICICI Prudential Mutual Fund
+CV3053-ICICI Prudential Multi-Asset Fund - Direct Plan - Growth - ISIN: INF109K015K4(Advisor: COVERAGE)
+Folio No: COV-3053
+Opening Unit Balance: 0.000
+24-Aug-2025 Purchase 100,000.00 148.307 674.2760 148.307
+24-Aug-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 894.4901
+Closing Unit Balance: 148.307
+Nippon India Mutual Fund
+CV3054-Nippon India Multi Asset Allocation Fund - Direct Plan - Growth Option - ISIN: INF204KB19V4(Advisor: COVERAGE)
+Folio No: COV-3054
+Opening Unit Balance: 0.000
+11-Oct-2025 Purchase 100,000.00 4,413.296 22.6588 4,413.296
+11-Oct-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 26.5851
+Closing Unit Balance: 4,413.296
+SBI Mutual Fund
+CV3055-SBI Multi Asset Allocation Fund - Direct Plan - Growth - ISIN: INF200K01TZ3(Advisor: COVERAGE)
+Folio No: COV-3055
+Opening Unit Balance: 0.000
+22-Sep-2025 Purchase 100,000.00 2,190.024 45.6616 2,190.024
+22-Sep-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 74.7159
+Closing Unit Balance: 2,190.024
+quant Mutual Fund
+CV3056-quant Multi Asset Allocation Fund-Growth Option-Direct Plan - ISIN: INF966L01580(Advisor: COVERAGE)
+Folio No: COV-3056
+Opening Unit Balance: 0.000
+02-Aug-2025 Purchase 100,000.00 631.131 158.4458 631.131
+02-Aug-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 182.7873
+Closing Unit Balance: 631.131
+DSP Mutual Fund
+CV3057-DSP Multi Asset Allocation Fund - Direct - Growth - ISIN: INF740KA1TE9(Advisor: COVERAGE)
+Folio No: COV-3057
+Opening Unit Balance: 0.000
+06-Nov-2024 Purchase 100,000.00 7,612.436 13.1364 7,612.436
+06-Nov-2024 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 16.6587
+Closing Unit Balance: 7,612.436
+Kotak Mahindra Mutual Fund
+CV3058-Kotak Multi Asset Allocation Fund - Direct Plan - Growth Option - ISIN: INF174KA1PD4(Advisor: COVERAGE)
+Folio No: COV-3058
+Opening Unit Balance: 0.000
+14-Dec-2024 Purchase 100,000.00 8,715.736 11.4735 8,715.736
+14-Dec-2024 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 16.3290
+Closing Unit Balance: 8,715.736
+WhiteOak Capital Mutual Fund
+CV3059-WhiteOak Capital Multi Asset Allocation Fund Direct Plan Growth - ISIN: INF03VN01761(Advisor: COVERAGE)
+Folio No: COV-3059
+Opening Unit Balance: 0.000
+20-Sep-2024 Purchase 100,000.00 8,016.996 12.4735 8,016.996
+20-Sep-2024 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 16.3770
+Closing Unit Balance: 8,016.996
+SBI Mutual Fund
+CV3060-SBI Equity Hybrid Fund - Direct Plan - Growth - ISIN: INF200K01RY0(Advisor: COVERAGE)
+Folio No: COV-3060
+Opening Unit Balance: 0.000
+25-Jun-2024 Purchase 100,000.00 319.154 313.3285 319.154
+25-Jun-2024 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 350.3571
+Closing Unit Balance: 319.154
+ICICI Prudential Mutual Fund
+CV3061-ICICI Prudential Equity & Debt Fund - Direct Plan - Growth - ISIN: INF109K01Y07(Advisor: COVERAGE)
+Folio No: COV-3061
+Opening Unit Balance: 0.000
+01-Jan-2026 Purchase 100,000.00 267.365 374.0205 267.365
+01-Jan-2026 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 454.9500
+Closing Unit Balance: 267.365
+Kotak Mahindra Mutual Fund
+CV3062-Kotak Arbitrage Fund - Direct Plan - Growth - ISIN: INF174K01LC6(Advisor: COVERAGE)
+Folio No: COV-3062
+Opening Unit Balance: 0.000
+17-Sep-2025 Purchase 100,000.00 2,841.482 35.1929 2,841.482
+17-Sep-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 42.7781
+Closing Unit Balance: 2,841.482
+ICICI Prudential Mutual Fund
+CV3063-ICICI Prudential Arbitrage Fund - Direct Plan - Growth - ISIN: INF109K016O4(Advisor: COVERAGE)
+Folio No: COV-3063
+Opening Unit Balance: 0.000
+12-Jul-2024 Purchase 100,000.00 2,995.456 33.3839 2,995.456
+12-Jul-2024 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 39.2590
+Closing Unit Balance: 2,995.456
+Tata Mutual Fund
+CV3064-Tata Arbitrage Fund-Direct Plan-Growth - ISIN: INF277K017Q3(Advisor: COVERAGE)
+Folio No: COV-3064
+Opening Unit Balance: 0.000
+27-Mar-2024 Purchase 100,000.00 9,020.305 11.0861 9,020.305
+27-Mar-2024 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 16.1589
+Closing Unit Balance: 9,020.305
+Nippon India Mutual Fund
+CV3065-Nippon India Arbitrage Fund - Direct Plan Growth Plan - Growth Option - ISIN: INF204K01XZ7(Advisor: COVERAGE)
+Folio No: COV-3065
+Opening Unit Balance: 0.000
+18-Mar-2025 Purchase 100,000.00 4,509.563 22.1751 4,509.563
+18-Mar-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 30.6325
+Closing Unit Balance: 4,509.563
+Axis Mutual Fund
+CV3066-Axis Arbitrage Fund - Direct Plan - Growth - ISIN: INF846K01PZ1(Advisor: COVERAGE)
+Folio No: COV-3066
+Opening Unit Balance: 0.000
+05-Oct-2024 Purchase 100,000.00 8,364.491 11.9553 8,364.491
+05-Oct-2024 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 21.6858
+Closing Unit Balance: 8,364.491
+Kotak Mahindra Mutual Fund
+CV3067-Kotak Equity Savings Fund - Direct - Growth - ISIN: INF174K01D28(Advisor: COVERAGE)
+Folio No: COV-3067
+Opening Unit Balance: 0.000
+18-Apr-2025 Purchase 100,000.00 3,501.830 28.5565 3,501.830
+18-Apr-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 30.4195
+Closing Unit Balance: 3,501.830
+HDFC Mutual Fund
+CV3068-HDFC Equity Savings Fund - Growth Option - Direct Plan - ISIN: INF179K01XT4(Advisor: COVERAGE)
+Folio No: COV-3068
+Opening Unit Balance: 0.000
+14-Jul-2025 Purchase 100,000.00 1,737.692 57.5476 1,737.692
+14-Jul-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 76.4170
+Closing Unit Balance: 1,737.692
+PPFAS Mutual Fund
+CV3069-Parag Parikh Conservative Hybrid Fund - Direct Plan - Growth - ISIN: INF879O01175(Advisor: COVERAGE)
+Folio No: COV-3069
+Opening Unit Balance: 0.000
+26-Sep-2025 Purchase 100,000.00 6,906.459 14.4792 6,906.459
+26-Sep-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 16.1201
+Closing Unit Balance: 6,906.459
+HDFC Mutual Fund
+CV3070-HDFC Hybrid Equity Fund - Growth Option - Direct Plan - ISIN: INF179K01XZ1(Advisor: COVERAGE)
+Folio No: COV-3070
+Opening Unit Balance: 0.000
+13-Mar-2025 Purchase 100,000.00 903.990 110.6207 903.990
+13-Mar-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 124.7600
+Closing Unit Balance: 903.990
+Mirae Asset Mutual Fund
+CV3071-Mirae Asset Equity Savings Fund- Direct Plan- Growth - ISIN: INF769K01EK1(Advisor: COVERAGE)
+Folio No: COV-3071
+Opening Unit Balance: 0.000
+11-Aug-2024 Purchase 100,000.00 5,495.653 18.1962 5,495.653
+11-Aug-2024 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 22.9290
+Closing Unit Balance: 5,495.653
+Edelweiss Mutual Fund
+CV3072-Edelweiss Equity Savings Fund - Direct Plan - Growth Option - ISIN: INF843K01KC8(Advisor: COVERAGE)
+Folio No: COV-3072
+Opening Unit Balance: 0.000
+09-Aug-2025 Purchase 100,000.00 4,754.863 21.0311 4,754.863
+09-Aug-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 30.0631
+Closing Unit Balance: 4,754.863
+Kotak Mahindra Mutual Fund
+CV3073-Kotak Debt Hybrid - Growth - Direct - ISIN: INF174K01JZ1(Advisor: COVERAGE)
+Folio No: COV-3073
+Opening Unit Balance: 0.000
+31-Jul-2025 Purchase 100,000.00 1,864.819 53.6245 1,864.819
+31-Jul-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 70.0286
+Closing Unit Balance: 1,864.819
+ICICI Prudential Mutual Fund
+CV3074-ICICI Prudential Regular Savings Fund - Direct Plan - Growth - ISIN: INF109K01S39(Advisor: COVERAGE)
+Folio No: COV-3074
+Opening Unit Balance: 0.000
+18-Jul-2024 Purchase 100,000.00 1,239.383 80.6853 1,239.383
+18-Jul-2024 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 87.9502
+Closing Unit Balance: 1,239.383
+UTI Mutual Fund
+CV3075-UTI Nifty 50 Index Fund - Growth Option- Direct - ISIN: INF789F01XA0(Advisor: COVERAGE)
+Folio No: COV-3075
+Opening Unit Balance: 0.000
+09-May-2024 Purchase 100,000.00 864.905 115.6197 864.905
+09-May-2024 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 170.1134
+Closing Unit Balance: 864.905
+SBI Mutual Fund
+CV3076-SBI Nifty Index Fund - Direct Plan - Growth - ISIN: INF200K01TE8(Advisor: COVERAGE)
+Folio No: COV-3076
+Opening Unit Balance: 0.000
+24-Dec-2025 Purchase 100,000.00 743.828 134.4397 743.828
+24-Dec-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 226.0452
+Closing Unit Balance: 743.828
+Nippon India Mutual Fund
+CV3077-Nippon India Index Fund - Nifty 50 Plan - Direct Plan Growth Plan - Growth Option - ISIN: INF204K01H36(Advisor: COVERAGE)
+Folio No: COV-3077
+Opening Unit Balance: 0.000
+06-Jan-2025 Purchase 100,000.00 2,485.979 40.2256 2,485.979
+06-Jan-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 44.6213
+Closing Unit Balance: 2,485.979
+UTI Mutual Fund
+CV3078-UTI Nifty Next 50 Index Fund - Direct Plan - Growth Option - ISIN: INF789FC12T1(Advisor: COVERAGE)
+Folio No: COV-3078
+Opening Unit Balance: 0.000
+04-Mar-2025 Purchase 100,000.00 5,769.242 17.3333 5,769.242
+04-Mar-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 26.8408
+Closing Unit Balance: 5,769.242
+ICICI Prudential Mutual Fund
+CV3079-ICICI Prudential Nifty Next 50 Index Fund - Direct Plan - Growth - ISIN: INF109K01Y80(Advisor: COVERAGE)
+Folio No: COV-3079
+Opening Unit Balance: 0.000
+11-May-2025 Purchase 100,000.00 1,650.996 60.5695 1,650.996
+11-May-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 67.2095
+Closing Unit Balance: 1,650.996
+Motilal Oswal Mutual Fund
+CV3080-Motilal Oswal Nifty 50 Index Fund - Direct plan - Growth - ISIN: INF247L01AE7(Advisor: COVERAGE)
+Folio No: COV-3080
+Opening Unit Balance: 0.000
+24-Oct-2025 Purchase 100,000.00 8,114.578 12.3235 8,114.578
+24-Oct-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 21.0925
+Closing Unit Balance: 8,114.578
+DSP Mutual Fund
+CV3081-DSP Nifty 50 Index Fund - Direct Plan - Growth - ISIN: INF740KA1MM7(Advisor: COVERAGE)
+Folio No: COV-3081
+Opening Unit Balance: 0.000
+02-Sep-2024 Purchase 100,000.00 4,781.257 20.9150 4,781.257
+02-Sep-2024 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 23.8644
+Closing Unit Balance: 4,781.257
+Kotak Mahindra Mutual Fund
+CV3082-Kotak Nifty 50 Index Fund - Direct Plan-Growth - ISIN: INF174KA1HA7(Advisor: COVERAGE)
+Folio No: COV-3082
+Opening Unit Balance: 0.000
+16-Jul-2024 Purchase 100,000.00 7,270.401 13.7544 7,270.401
+16-Jul-2024 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 16.0620
+Closing Unit Balance: 7,270.401
+Axis Mutual Fund
+CV3083-Axis Nifty 50 Index Fund - Direct Plan - Growth - ISIN: INF846K013D2(Advisor: COVERAGE)
+Folio No: COV-3083
+Opening Unit Balance: 0.000
+03-Sep-2025 Purchase 100,000.00 8,358.478 11.9639 8,358.478
+03-Sep-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 14.6995
+Closing Unit Balance: 8,358.478
+Aditya Birla Sun Life Mutual Fund
+CV3084-Aditya Birla Sun Life Nifty 50 Index Fund - Growth - Direct Plan - ISIN: INF209K01VY3(Advisor: COVERAGE)
+Folio No: COV-3084
+Opening Unit Balance: 0.000
+29-Jun-2024 Purchase 100,000.00 643.051 155.5086 643.051
+29-Jun-2024 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 252.4282
+Closing Unit Balance: 643.051
+UTI Mutual Fund
+CV3085-UTI Nifty Private Bank Index Fund - Direct Plan - Growth Option - ISIN: INF789F1AZJ5(Advisor: COVERAGE)
+Folio No: COV-3085
+Opening Unit Balance: 0.000
+21-Jul-2024 Purchase 100,000.00 10,679.311 9.3639 10,679.311
+21-Jul-2024 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 10.4162
+Closing Unit Balance: 10,679.311
+ICICI Prudential Mutual Fund
+CV3086-ICICI Prudential Nifty Midcap 150 Index Fund - Direct Plan - Growth - ISIN: INF109KC1W58(Advisor: COVERAGE)
+Folio No: COV-3086
+Opening Unit Balance: 0.000
+05-Nov-2024 Purchase 100,000.00 5,160.411 19.3783 5,160.411
+05-Nov-2024 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 20.7089
+Closing Unit Balance: 5,160.411
+HDFC Mutual Fund
+CV3087-HDFC NIFTY Next 50 Index Fund - Direct Plan - Growth Option - ISIN: INF179KC1BQ9(Advisor: COVERAGE)
+Folio No: COV-3087
+Opening Unit Balance: 0.000
+09-Jul-2024 Purchase 100,000.00 6,863.606 14.5696 6,863.606
+09-Jul-2024 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 17.0983
+Closing Unit Balance: 6,863.606
+Motilal Oswal Mutual Fund
+CV3088-Motilal Oswal Nasdaq 100 Fund of Fund- Direct Plan Growth - ISIN: INF247L01718(Advisor: COVERAGE)
+Folio No: COV-3088
+Opening Unit Balance: 0.000
+06-Feb-2024 Purchase 100,000.00 2,293.215 43.6069 2,293.215
+06-Feb-2024 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 69.1668
+Closing Unit Balance: 2,293.215
+Edelweiss Mutual Fund
+CV3089-Edelweiss US Technology Equity Fund of Fund- Direct Plan- Growth - ISIN: INF754K01LB7(Advisor: COVERAGE)
+Folio No: COV-3089
+Opening Unit Balance: 0.000
+27-Feb-2025 Purchase 100,000.00 3,337.973 29.9583 3,337.973
+27-Feb-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 42.2188
+Closing Unit Balance: 3,337.973
+ICICI Prudential Mutual Fund
+CV3090-ICICI Prudential US Bluechip Equity Fund - Direct Plan - Growth - ISIN: INF109K01Z71(Advisor: COVERAGE)
+Folio No: COV-3090
+Opening Unit Balance: 0.000
+25-Feb-2024 Purchase 100,000.00 1,449.452 68.9916 1,449.452
+25-Feb-2024 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 85.1800
+Closing Unit Balance: 1,449.452
+Edelweiss Mutual Fund
+CV3091-Bharat Bond FOF - April 2030 - Direct Plan - Growth Option - ISIN: INF754K01KY1(Advisor: COVERAGE)
+Folio No: COV-3091
+Opening Unit Balance: 0.000
+21-Oct-2024 Purchase 100,000.00 6,876.302 14.5427 6,876.302
+21-Oct-2024 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 15.9837
+Closing Unit Balance: 6,876.302
+Edelweiss Mutual Fund
+CV3092-BHARAT Bond ETF FOF - April 2032 Direct Growth - ISIN: INF754K01NY5(Advisor: COVERAGE)
+Folio No: COV-3092
+Opening Unit Balance: 0.000
+07-Oct-2024 Purchase 100,000.00 12,364.149 8.0879 12,364.149
+07-Oct-2024 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 13.5159
+Closing Unit Balance: 12,364.149
+Nippon India Mutual Fund
+CV3093-Nippon India Gold Savings Fund - Direct Plan Growth Plan - Growth Option - ISIN: INF204K01YC4(Advisor: COVERAGE)
+Folio No: COV-3093
+Opening Unit Balance: 0.000
+27-May-2025 Purchase 100,000.00 3,051.218 32.7738 3,051.218
+27-May-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 56.9375
+Closing Unit Balance: 3,051.218
+Quantum Mutual Fund
+CV3094-Quantum Nifty 50 ETF FOF - Direct Plan - Growth - ISIN: INF082J01416(Advisor: COVERAGE)
+Folio No: COV-3094
+Opening Unit Balance: 0.000
+22-Dec-2025 Purchase 100,000.00 8,934.714 11.1923 8,934.714
+22-Dec-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 14.2518
+Closing Unit Balance: 8,934.714
+SBI Mutual Fund
+CV3095-SBI Gold Fund- Direct Plan - Growth - ISIN: INF200K01RP8(Advisor: COVERAGE)
+Folio No: COV-3095
+Opening Unit Balance: 0.000
+22-May-2025 Purchase 100,000.00 2,917.664 34.2740 2,917.664
+22-May-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 43.6402
+Closing Unit Balance: 2,917.664
+Axis Mutual Fund
+CV3096-Axis Gold Fund - Direct Plan - Growth option - ISIN: INF846K01DS2(Advisor: COVERAGE)
+Folio No: COV-3096
+Opening Unit Balance: 0.000
+05-Jan-2026 Purchase 100,000.00 3,835.900 26.0695 3,835.900
+05-Jan-2026 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 45.0719
+Closing Unit Balance: 3,835.900
+Nippon India Mutual Fund
+CV3097-Nippon India Silver ETF FOF- Direct Plan-Growth Option - ISIN: INF204KC1378(Advisor: COVERAGE)
+Folio No: COV-3097
+Opening Unit Balance: 0.000
+06-Apr-2024 Purchase 100,000.00 5,238.317 19.0901 5,238.317
+06-Apr-2024 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 33.2842
+Closing Unit Balance: 5,238.317
+HDFC Mutual Fund
+CV3098-HDFC Silver ETF Fund of Fund - Growth Option - Direct Plan - ISIN: INF179KC1DU7(Advisor: COVERAGE)
+Folio No: COV-3098
+Opening Unit Balance: 0.000
+04-Nov-2025 Purchase 100,000.00 3,037.962 32.9168 3,037.962
+04-Nov-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 36.0863
+Closing Unit Balance: 3,037.962
+SBI Mutual Fund
+CV3099-SBI Silver ETF Fund of Fund- Direct Plan - Growth - ISIN: INF200KB1233(Advisor: COVERAGE)
+Folio No: COV-3099
+Opening Unit Balance: 0.000
+08-Feb-2025 Purchase 100,000.00 7,411.909 13.4918 7,411.909
+08-Feb-2025 *** Stamp Duty *** 5.00
+NAV on 10-Jul-2026: INR 23.3283
+Closing Unit Balance: 7,411.909

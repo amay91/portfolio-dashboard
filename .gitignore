@@ -1,0 +1,17 @@
+node_modules/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+.idea
+
+# Secrets — never committed; deploy env vars live in the Cloudflare Pages
+# dashboard instead (see docs/DEPLOY.md)
+.env
+.env.local
+.env.*.local
+
+# Cloudflare Wrangler local state
+.wrangler/

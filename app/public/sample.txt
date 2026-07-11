@@ -1,0 +1,164 @@
+
+Franklin Templeton Mutual Fund
+DM001-Franklin India Equity Savings Fund - Direct Plan - Growth - ISIN: INF090I01PD7(Advisor: DEMO)
+Folio No: DEMO-2000
+Opening Unit Balance: 0.000
+06-Jan-2020 Purchase 250,000.00 23,591.360 10.5971 23,591.360
+10-Jan-2020 Switch Out To - FTI Savings Fund Option - DP - Growth , less STT -249,943.01 -23,591.360 10.5841 0.000
+NAV on 29-Jun-2026: INR 18.5719
+Closing Unit Balance: 0.000
+DM002-Franklin India Money Market Fund - Direct Plan - Growth - ISIN: INF090I01GV8(Advisor: DEMO)
+Folio No: DEMO-2001
+Opening Unit Balance: 0.000
+15-Jan-2020 Switch In From - FTI Equity Savings Fund - DP - Growth 249,943.01 6,683.861 37.3950 6,683.861
+16-Mar-2020 Redemption Of Units -252,212.17 -6,683.861 37.7345 0.000
+NAV on 29-Jun-2026: INR 55.2593
+Closing Unit Balance: 0.000
+DM003-Franklin India Ultra Short Bond Fund Super Institutional Plan - Direct Plan - Growth - ISIN: INF090I01JA6(Advisor: DEMO)
+Folio No: DEMO-2002
+Opening Unit Balance: 0.000
+13-May-2019 Purchase 7,500.00 281.550 26.6382 281.550
+06-Jan-2020 Purchase 167,500.00 5,922.620 28.2814 6,204.170
+12-Feb-2021 Payment - Units Extinguished -90,930.44 -3,072.753 29.5925 3,131.417
+30-Mar-2021 Payment - Units Extinguished -21,994.71 -735.538 29.9029 2,395.879
+30-Mar-2021 Payment - Units Extinguished-Reversed 21,994.71 735.538 29.9029 3,131.417
+09-Apr-2021 Payment - Units Extinguished -26,677.62 -889.975 29.9757 2,241.442
+30-Apr-2021 Payment - Units Extinguished -13,822.53 -456.865 30.2552 1,784.577
+04-Jun-2021 Payment - Units Extinguished -16,626.46 -550.851 30.1832 1,233.726
+09-Jul-2021  -16,330.84 -533.738 30.5971 699.988
+27-Aug-2021 Payment - Units Extinguished - SBIN121245303758 -7,426.35 -238.618 31.1224 461.370
+18-Nov-2021 Payment - Units Extinguished - SBIN521326648477 -1,486.17 -46.335 32.0745 415.035
+10-Dec-2021 Payment - Units Extinguished -8,566.74 -261.915 32.7081 153.120
+07-Aug-2022  -5,242.18 -153.121 34.2355 -0.001
+NAV on 07-Aug-2022: INR 34.2355
+Closing Unit Balance: -0.001
+DM004-Franklin India Ultra Short Bond Fund-Direct Super InstPlan-Segregated Portfolio1 (8.25% Vodafone Idea Ltd-10JUL20) - ISIN: INF090I01VK0(Advisor: DEMO)
+Folio No: DEMO-2003
+Opening Unit Balance: 0.000
+15-Jun-2020  -673.40 -470.087 1.4325 -470.087
+10-Jul-2020 Payment - Units Extinguished -8,211.21 -5,734.084 1.4320 -6,204.171
+NAV on 17-Jul-2020: INR 1.4320
+Closing Unit Balance: -6,204.171
+ICICI Prudential Mutual Fund
+DM005-ICICI Prudential Arbitrage Fund - Direct Plan - Growth - ISIN: INF109K016O4(Advisor: DEMO)
+Folio No: DEMO-2004
+Opening Unit Balance: 0.000
+07-Sep-2018 Purchase - DIRECT 25,000.00 1,027.568 24.3293 1,027.568
+23-Sep-2019 Purchase - DIRECT 135,000.00 5,163.234 26.1464 6,190.802
+23-Sep-2019 Purchase - DIRECT 15,000.00 573.692 26.1464 6,764.494
+06-Jan-2020 Purchase - DIRECT 325,000.00 12,235.340 26.5624 18,999.834
+06-Mar-2020 *Redemption - HDFCR52020031273695859 , less STT -250,000.00 -9,312.918 26.8447 9,686.916
+16-Mar-2020 Redemption - HDFCR52020031974959271 , less STT -260,954.19 -9,686.916 26.9391 0.000
+01-Feb-2021 Purchase - via Internet - DIRECT 349,982.50 12,578.032 27.8249 12,578.032
+01-Feb-2021 *** Stamp Duty *** 17.50
+15-Jun-2021 Purchase - via Internet - DIRECT 299,985.00 10,577.489 28.3607 23,155.521
+15-Jun-2021 *** Stamp Duty *** 15.00
+10-Feb-2022  349,982.50 12,004.819 29.1535 35,160.340
+10-Feb-2022 *** Stamp Duty *** 17.50
+07-Mar-2022 *Switch Out - To Nifty Index Fund-DP Growth , less STT -250,000.00 -8,544.903 29.2575 26,615.437
+11-Mar-2026 *Switch Out - To Nifty 50 Index Fund-DP Growth - via Internet , less STT -500,000.00 -13,002.307 38.4551 13,613.130
+NAV on 29-Jun-2026: INR 39.1597
+Closing Unit Balance: 13,613.130
+DM006-ICICI Prudential Balanced Advantage Fund - Direct Plan - Growth - ISIN: INF109K012B0(Advisor: DEMO)
+Folio No: DEMO-2005
+Opening Unit Balance: 0.000
+14-Dec-2022 Purchase - DIRECT 399,980.00 6,841.943 58.4600 6,841.943
+14-Dec-2022 *** Stamp Duty *** 20.00
+06-Apr-2023 Purchase Appln : CAMSWEB - DIRECT 249,987.50 4,297.533 58.1700 11,139.476
+06-Apr-2023 *** Stamp Duty *** 12.50
+08-Jan-2024 Purchase - DIRECT 249,987.50 3,675.746 68.0100 14,815.222
+08-Jan-2024 *** Stamp Duty *** 12.50
+NAV on 29-Jun-2026: INR 86.5100
+Closing Unit Balance: 14,815.222
+DM007-ICICI Prudential Multi-Asset Fund - Direct Plan - Growth (formerly ICICI Prudential Mutual Fund - Dynamic Plan) - ISIN: INF109K015K4(Advisor: DEMO)
+Folio No: DEMO-2006
+Opening Unit Balance: 0.000
+08-Nov-2024  499,975.00 648.530 770.9358 648.530
+08-Nov-2024 *** Stamp Duty *** 25.00
+07-Nov-2025 Purchase - via Internet - DIRECT 249,987.50 285.202 876.5260 933.732
+07-Nov-2025 *** Stamp Duty *** 12.50
+12-Jan-2026 Purchase - via Internet - DIRECT 499,975.00 554.193 902.1668 1,487.925
+12-Jan-2026 *** Stamp Duty *** 25.00
+NAV on 29-Jun-2026: INR 886.8788
+Closing Unit Balance: 1,487.925
+DM008-ICICI Prudential Nifty 50 Index Fund - Direct Plan Growth - ISIN: INF109K012M7(Advisor: DEMO)
+Folio No: DEMO-2007
+Opening Unit Balance: 0.000
+10-Mar-2022 Equity Switch In - From Equity Arbitrage Fund - Drt Growth - DIRECT 249,987.50 1,485.950 168.2341 1,485.950
+10-Mar-2022 *** Stamp Duty *** 12.50
+17-Jun-2022 Purchase Appln : CAMSWEB - DIRECT 124,993.75 802.212 155.8113 2,288.162
+17-Jun-2022 *** Stamp Duty *** 6.25
+12-Sep-2023 Purchase Appln : CAMSWEB - DIRECT 166,658.67 809.115 205.9764 3,097.277
+12-Sep-2023 *** Stamp Duty *** 8.34
+09-Jan-2024 Switch In - From Savings Fund - DP - Growth - via Internet - DIRECT 175,797.54 791.365 222.1446 3,888.642
+09-Jan-2024 *** Stamp Duty *** 8.79
+13-Mar-2026 Equity Switch In - From Equity Arbitrage Fund - Drt Growth - via Internet 499,975.00 2,054.433 243.3640 5,943.075
+13-Mar-2026 *** Stamp Duty *** 25.00
+NAV on 29-Jun-2026: INR 252.7606
+Closing Unit Balance: 5,943.075
+DM009-ICICI Prudential Savings Fund - Direct Plan - Growth (formerly ICICI Prudential Mutual Fund - Flexible Income Plan) - ISIN: INF109K01O82(Advisor: DEMO)
+Folio No: DEMO-2008
+Opening Unit Balance: 0.000
+04-Jan-2021 Purchase - via Internet - DIRECT 149,992.50 358.564 418.3147 358.564
+04-Jan-2021 *** Stamp Duty *** 7.50
+08-Jan-2024 Switch Out - To Nifty 50 Index Fund-DP Growth - via Internet -175,806.33 -358.564 490.3067 0.000
+NAV on 29-Jun-2026: INR 588.1761
+Closing Unit Balance: 0.000
+PPFAS Mutual Fund
+DM010-Parag Parikh Arbitrage Fund - Direct Plan Growth - ISIN: INF879O01225(Advisor: DEMO)
+Folio No: DEMO-2009
+Opening Unit Balance: 0.000
+16-Sep-2025 Purchase - via Internet 499,975.00 43,825.164 11.4084 43,825.164
+16-Sep-2025 *** Stamp Duty *** 25.00
+NAV on 29-Jun-2026: INR 11.9813
+Closing Unit Balance: 43,825.164
+DM011-Parag Parikh Dynamic Asset Allocation Fund - Direct Plan Growth - ISIN: INF879O01266(Advisor: DEMO)
+Folio No: DEMO-2010
+Opening Unit Balance: 0.000
+28-May-2024 Purchase - via Internet 499,975.00 48,614.420 10.2845 48,614.420
+28-May-2024 *** Stamp Duty *** 25.00
+05-Nov-2024 Purchase - via Internet 499,975.00 46,176.829 10.8274 94,791.249
+05-Nov-2024 *** Stamp Duty *** 25.00
+NAV on 29-Jun-2026: INR 11.8188
+Closing Unit Balance: 94,791.249
+DM012-Parag Parikh Flexi Cap Fund - Direct Plan Growth (formerly Parag Parikh Long Term Value Fund) - ISIN: INF879O01027(Advisor: DEMO)
+Folio No: DEMO-2011
+Opening Unit Balance: 0.000
+03-Mar-2020 Purchase - via Internet 50,000.00 1,813.236 27.5750 1,813.236
+06-Mar-2020 Purchase - via Internet 50,000.00 1,864.141 26.8220 3,677.377
+11-Mar-2020 Purchase - via Internet 100,000.00 3,845.887 26.0018 7,523.264
+11-Mar-2020 Purchase - via Internet 25,000.00 961.472 26.0018 8,484.736
+13-May-2022 Purchase 249,987.50 5,301.984 47.1498 13,786.720
+13-May-2022 *** Stamp Duty *** 12.50
+17-Jun-2022 Purchase 124,993.75 2,751.166 45.4330 16,537.886
+17-Jun-2022 *** Stamp Duty *** 6.25
+06-Apr-2023 Purchase - via Internet 249,987.50 4,645.382 53.8142 21,183.268
+06-Apr-2023 *** Stamp Duty *** 12.50
+16-Aug-2023 Purchase - via Internet 149,992.50 2,464.834 60.8530 23,648.102
+16-Aug-2023 *** Stamp Duty *** 7.50
+12-Sep-2023  499,975.00 7,909.808 63.2095 31,557.910
+12-Sep-2023 *** Stamp Duty *** 25.00
+08-Jan-2024 Purchase - via Internet 499,975.00 7,107.814 70.3416 38,665.724
+08-Jan-2024 *** Stamp Duty *** 25.00
+25-Jul-2025 Purchase - via Internet 249,987.50 2,715.606 92.0559 41,381.330
+25-Jul-2025 *** Stamp Duty *** 12.50
+25-Aug-2025 Purchase - via Internet 249,987.50 2,709.284 92.2707 44,090.614
+25-Aug-2025 *** Stamp Duty *** 12.50
+17-Sep-2025 Purchase - via Internet 499,975.00 5,289.493 94.5223 49,380.107
+17-Sep-2025 *** Stamp Duty *** 25.00
+07-Nov-2025 Purchase - via Internet 499,975.00 5,344.880 93.5428 54,724.987
+07-Nov-2025 *** Stamp Duty *** 25.00
+12-Jan-2026 Purchase - via Internet 249,987.50 2,650.166 94.3290 57,375.153
+12-Jan-2026 *** Stamp Duty *** 12.50
+11-Mar-2026  249,987.50 2,786.090 89.7270 60,161.243
+11-Mar-2026 *** Stamp Duty *** 12.50
+01-Apr-2026 Purchase - via Internet 249,987.50 2,895.253 86.3439 63,056.496
+01-Apr-2026 *** Stamp Duty *** 12.50
+NAV on 29-Jun-2026: INR 90.0430
+Closing Unit Balance: 63,056.496
+DM013-Parag Parikh Liquid Fund Direct Plan Growth - ISIN: INF879O01068(Advisor: DEMO)
+Folio No: DEMO-2012
+Opening Unit Balance: 0.000
+20-Apr-2020 Purchase - via Internet 450,000.00 401.935 1,119.5854 401.935
+NAV on 29-Jun-2026: INR 1,550.2048
+Closing Unit Balance: 401.935

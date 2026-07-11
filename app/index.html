@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- style-src needs 'unsafe-inline': React sets inline style="" attributes (the `style={{}}`
+         prop) and Vite's dev server injects CSS via <style> tags — both are blocked by a strict
+         style-src otherwise (confirmed live: without it the app renders unstyled). This is a much
+         lower-severity relaxation than script-src unsafe-inline, which stays off.
+         frame-ancestors is intentionally omitted here — per spec, a <meta> CSP silently ignores
+         frame-ancestors (and report-to/sandbox); it only takes effect via a real HTTP header, so
+         it belongs in whatever host serves this at deploy time (see tasks.md D1). -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://www.amfiindia.com https://mf.captnemo.in https://api.mfapi.in http://127.0.0.1:8765 http://127.0.0.1:8766; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'"
+    />
+    <title>Portfolio Dashboard</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

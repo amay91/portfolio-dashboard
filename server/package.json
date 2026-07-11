@@ -1,0 +1,21 @@
+{
+  "name": "portfolio-dashboard-feedback-server",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Local companion server for the dashboard's feedback form — same pattern as ../markitdown_server.py: a small process you run yourself, listening only on 127.0.0.1.",
+  "main": "feedback-server.js",
+  "scripts": {
+    "start": "node feedback-server.js",
+    "test": "node --test feedback-server.test.js"
+  },
+  "type": "commonjs",
+  "dependencies": {
+    "better-sqlite3": "^12.11.1",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "sanitize-html": "^2.17.5"
+  },
+  "allowScripts": {
+    "better-sqlite3@12.11.1": true
+  }
+}

@@ -1,0 +1,328 @@
+
+Canara Robeco Mutual Fund
+101SCDGG-Canara Robeco Small Cap Fund - Direct Growth - ISIN: INF760K01JC6(Advisor: INZ000208032)
+Folio No: 17760715584 / 0
+Opening Unit Balance: 0.000
+13-Feb-2024 Systematic Investment New Purchase with SIP (1) 9,999.50 278.538 35.90 278.538
+13-Feb-2024 *** Stamp Duty *** 0.50
+12-Mar-2024 Purchase 49,997.50 1,426.869 35.04 1,705.407
+12-Mar-2024 *** Stamp Duty *** 2.50
+19-Mar-2024 Systematic Investment (1) 9,999.50 294.971 33.90 2,000.378
+19-Mar-2024 *** Stamp Duty *** 0.50
+19-Apr-2024 Systematic Investment (1) 9,999.50 270.916 36.91 2,271.294
+19-Apr-2024 *** Stamp Duty *** 0.50
+21-May-2024 Systematic Investment (1) 9,999.50 256.200 39.03 2,527.494
+21-May-2024 *** Stamp Duty *** 0.50
+19-Jun-2024 Systematic Investment (1) 9,999.50 237.857 42.04 2,765.351
+19-Jun-2024 *** Stamp Duty *** 0.50
+19-Jul-2024 Systematic Investment (1) 9,999.50 236.004 42.37 3,001.355
+19-Jul-2024 *** Stamp Duty *** 0.50
+19-Aug-2024 Systematic Investment (1) 9,999.50 226.080 44.23 3,227.435
+19-Aug-2024 *** Stamp Duty *** 0.50
+06-Sep-2024 Systematic Investment Existing Folio with SIP (1) 19,999.00 443.044 45.14 3,670.479
+06-Sep-2024 *** Stamp Duty *** 1.00
+07-Oct-2024 Systematic Investment (1) 19,999.00 455.662 43.89 4,126.141
+07-Oct-2024 *** Stamp Duty *** 1.00
+06-Nov-2024 Systematic Investment (1) 19,999.00 443.929 45.05 4,570.070
+06-Nov-2024 *** Stamp Duty *** 1.00
+06-Dec-2024 Systematic Investment (1) 19,999.00 437.041 45.76 5,007.111
+06-Dec-2024 *** Stamp Duty *** 1.00
+06-Jan-2025 Systematic Investment (1) 19,999.00 461.764 43.31 5,468.875
+06-Jan-2025 *** Stamp Duty *** 1.00
+06-Feb-2025 Systematic Investment (1) 19,999.00 492.344 40.62 5,961.219
+06-Feb-2025 *** Stamp Duty *** 1.00
+06-Mar-2025 Systematic Investment (1) 19,999.00 542.566 36.86 6,503.785
+06-Mar-2025 *** Stamp Duty *** 1.00
+07-Apr-2025 Systematic Investment (1) 19,999.00 556.765 35.92 7,060.550
+07-Apr-2025 *** Stamp Duty *** 1.00
+06-May-2025 Systematic Investment (1) 19,999.00 517.975 38.61 7,578.525
+06-May-2025 *** Stamp Duty *** 1.00
+06-Jun-2025 Systematic Investment (1) 19,999.00 468.361 42.70 8,046.886
+06-Jun-2025 *** Stamp Duty *** 1.00
+07-Jul-2025 Systematic Investment (1) 19,999.00 454.833 43.97 8,501.719
+07-Jul-2025 *** Stamp Duty *** 1.00
+06-Aug-2025 Systematic Investment (1) 19,999.00 473.798 42.21 8,975.517
+06-Aug-2025 *** Stamp Duty *** 1.00
+08-Sep-2025 Systematic Investment (1) 19,999.00 472.790 42.30 9,448.307
+08-Sep-2025 *** Stamp Duty *** 1.00
+06-Oct-2025 Systematic Investment (1) 19,999.00 467.266 42.80 9,915.573
+06-Oct-2025 *** Stamp Duty *** 1.00
+NAV on 31-Oct-2025: INR 43.48 Market Value on 31-Oct-2025: INR 431,129.11
+Closing Unit Balance: 9,915.573 Total Cost Value: 400,000.00
+Franklin Templeton Mutual Fund
+FTI219-Franklin India Small Cap Fund - Growth - ISIN: INF090I01569(Advisor: WEALTH)
+Folio No: 19411868 / 0
+Opening Unit Balance: 0.000
+11-Jun-2015 Systematic Investment Purchase - 1/36 1,000.00 27.330 36.5894 27.330
+13-Jul-2015 Purchase 1/ 1,000.00 25.810 38.7444 53.140
+11-Aug-2015 Purchase 2/ 1,000.00 24.848 40.2441 77.988
+11-Sep-2015 Purchase 3/ 1,000.00 26.616 37.5718 104.604
+13-Oct-2015 Purchase 4/ 1,000.00 25.427 39.3280 130.031
+13-Nov-2015 Purchase 5/ 1,000.00 25.889 38.6267 155.920
+11-Dec-2015 Purchase 6/ 1,000.00 26.031 38.4162 181.951
+12-Jan-2016 Purchase 7/ 1,000.00 25.719 38.8818 207.670
+11-Feb-2016 Purchase 8/ 1,000.00 28.535 35.0443 236.205
+11-Mar-2016 Purchase 9/ 1,000.00 27.404 36.4906 263.609
+12-Apr-2016 Purchase 10/ 1,000.00 25.586 39.0837 289.195
+11-May-2016 Purchase 11/ 1,000.00 24.650 40.5686 313.845
+13-Jun-2016 Purchase 12/ 1,000.00 23.642 42.2973 337.487
+12-Jul-2016 Purchase 13/ 1,000.00 22.462 44.5193 359.949
+11-Aug-2016 Purchase 14/ 1,000.00 22.106 45.2370 382.055
+14-Sep-2016 Purchase 15/ 1,000.00 21.182 47.2097 403.237
+13-Oct-2016 Purchase 16/ 1,000.00 20.754 48.1824 423.991
+11-Nov-2016 Purchase 17/ 1,000.00 21.799 45.8739 445.790
+14-Dec-2016 Purchase 18/ 1,000.00 22.396 44.6500 468.186
+11-Jan-2017 Purchase 19/ 1,000.00 21.712 46.0582 489.898
+13-Feb-2017 Purchase 20/ 1,000.00 20.460 48.8749 510.358
+14-Mar-2017 Purchase 21/ 1,000.00 20.362 49.1116 530.720
+11-Apr-2017 Purchase 22/ 1,000.00 18.939 52.8021 549.659
+11-May-2017 Purchase 23/ 1,000.00 18.490 54.0847 568.149
+13-Jun-2017 Purchase 24/ 1,000.00 18.311 54.6132 586.460
+11-Jul-2017 Purchase 25/ 1,000.00 18.183 54.9956 604.643
+11-Aug-2017 Purchase 26/ 1,000.00 18.987 52.6666 623.630
+12-Sep-2017 Purchase 27/ 1,000.00 17.540 57.0131 641.170
+11-Oct-2017 Purchase 28/ 1,000.00 17.486 57.1896 658.656
+13-Nov-2017 Purchase 29/ 1,000.00 16.975 58.9101 675.631
+12-Dec-2017 Purchase 30/ 1,000.00 16.474 60.7014 692.105
+11-Jan-2018 Purchase 31/ 1,000.00 15.501 64.5099 707.606
+14-Feb-2018 Purchase 32/ 1,000.00 16.317 61.2847 723.923
+13-Mar-2018 Purchase 33/ 1,000.00 16.706 59.8595 740.629
+11-Apr-2018 Purchase 34/ 1,000.00 16.458 60.7613 757.087
+11-May-2018 Purchase 35/ 1,000.00 16.401 60.9708 773.488
+14-May-2018 Redemption Of Units (46,933.09) (773.488) 60.6772 0.000
+NAV on 31-Oct-2025: INR 171.6736 Market Value on 31-Oct-2025: INR 0.00
+Closing Unit Balance: 0.000 Total Cost Value: 0.00
+HDFC Mutual Fund
+HHREDP-HDFC Retirement Savings Fund - Equity Plan - Direct Plan -Growth Option - ISIN: INF179KB1MF0(Advisor: INZ000208032)
+Folio No: 26763188 / 52
+Opening Unit Balance: 0.000
+15-Jan-2024 SIP Purchase-BSE - Instalment No - 1 Online 99,995.00 2,097.519 47.673 2,097.519
+15-Jan-2024 *** Stamp Duty *** 5.00
+19-Feb-2024 SIP Purchase-BSE - Instalment No - 1 Online 19,999.00 411.392 48.613 2,508.911
+19-Feb-2024 *** Stamp Duty *** 1.00
+06-Mar-2024 Purchase-BSE - Online 99,995.00 2,037.388 49.080 4,546.299
+06-Mar-2024 *** Stamp Duty *** 5.00
+15-Mar-2024 SIP Purchase-BSE - Instalment No - 1 Online 39,998.00 834.230 47.946 5,380.529
+15-Mar-2024 *** Stamp Duty *** 2.00
+04-Apr-2024 Purchase-BSE - Online 99,995.00 2,008.012 49.798 7,388.541
+04-Apr-2024 *** Stamp Duty *** 5.00
+16-Apr-2024 SIP Purchase-BSE - Instalment No - 2/999 Online 39,998.00 812.588 49.223 8,201.129
+16-Apr-2024 *** Stamp Duty *** 2.00
+15-May-2024 SIP Purchase-BSE - Instalment No - 3/999 Online 39,998.00 798.921 50.065 9,000.050
+15-May-2024 *** Stamp Duty *** 2.00
+18-Jun-2024 SIP Purchase-BSE - Instalment No - 4/999 Online 39,998.00 738.747 54.143 9,738.797
+18-Jun-2024 *** Stamp Duty *** 2.00
+15-Jul-2024 SIP Purchase-BSE - Instalment No - 5/999 Online 39,998.00 714.441 55.985 10,453.238
+15-Jul-2024 *** Stamp Duty *** 2.00
+16-Aug-2024 SIP Purchase-BSE - Instalment No - 6/999 Online 39,998.00 711.835 56.190 11,165.073
+16-Aug-2024 *** Stamp Duty *** 2.00
+06-Sep-2024 SIP Purchase-BSE - Instalment No - 1 Online 59,997.00 1,045.517 57.385 12,210.590
+06-Sep-2024 *** Stamp Duty *** 3.00
+08-Oct-2024 SIP Purchase-BSE - Instalment No - 2/999 Online 59,997.00 1,048.074 57.245 13,258.664
+08-Oct-2024 *** Stamp Duty *** 3.00
+05-Nov-2024 SIP Purchase-BSE - Instalment No - 3/999 Online 59,997.00 1,066.026 56.281 14,324.690
+05-Nov-2024 *** Stamp Duty *** 3.00
+05-Dec-2024 SIP Purchase-BSE - Instalment No - 4/999 Online 59,997.00 1,051.988 57.032 15,376.678
+05-Dec-2024 *** Stamp Duty *** 3.00
+06-Jan-2025 SIP Purchase-BSE - Instalment No - 5/999 Online 59,997.00 1,088.223 55.133 16,464.901
+06-Jan-2025 *** Stamp Duty *** 3.00
+05-Feb-2025 SIP Purchase-BSE - Instalment No - 6/999 Online 59,997.00 1,113.737 53.870 17,578.638
+05-Feb-2025 *** Stamp Duty *** 3.00
+07-Apr-2025 SIP Purchase-BSE - Instalment No - 8/999 Online 59,997.00 1,185.337 50.616 18,763.975
+07-Apr-2025 *** Stamp Duty *** 3.00
+05-May-2025 SIP Purchase-BSE - Instalment No - 9/999 Online 59,997.00 1,083.878 55.354 19,847.853
+05-May-2025 *** Stamp Duty *** 3.00
+05-Jun-2025 SIP Purchase-BSE - Instalment No - 10/999 Online 59,997.00 1,057.011 56.761 20,904.864
+05-Jun-2025 *** Stamp Duty *** 3.00
+07-Jul-2025 SIP Purchase-BSE - Instalment No - 11/999 Online 59,997.00 1,032.277 58.121 21,937.141
+07-Jul-2025 *** Stamp Duty *** 3.00
+05-Aug-2025 SIP Purchase-BSE - Instalment No - 12/999 Online 59,997.00 1,061.762 56.507 22,998.903
+05-Aug-2025 *** Stamp Duty *** 3.00
+05-Sep-2025 SIP Purchase-BSE - Instalment No - 13/999 Online 59,997.00 1,057.533 56.733 24,056.436
+05-Sep-2025 *** Stamp Duty *** 3.00
+06-Oct-2025 SIP Purchase-BSE - Instalment No - 14/999 Online 59,997.00 1,040.260 57.675 25,096.696
+06-Oct-2025 *** Stamp Duty *** 3.00
+NAV on 31-Oct-2025: INR 58.712 Market Value on 31-Oct-2025: INR 1,473,477.22
+Closing Unit Balance: 25,096.696 Total Cost Value: 1,340,000.00
+ICICI Prudential Mutual Fund
+P8145-ICICI Prudential All Seasons Bond Fund - Direct Plan - Growth - ISIN: INF109K016E5(Advisor: INZ000208032)
+Folio No: 31387470 / 49
+Opening Unit Balance: 0.000
+16-Feb-2024 SIP Purchase-BSE - Instalment No - 1 - INZ000208032 9,999.50 283.617 35.2571 283.617
+16-Feb-2024 *** Stamp Duty *** 0.50
+22-Mar-2024 SIP Purchase-BSE - Instalment No - 2/999 - INZ000208032 9,999.50 281.369 35.5388 564.986
+22-Mar-2024 *** Stamp Duty *** 0.50
+22-Apr-2024 SIP Purchase-BSE - Instalment No - 3/999 - INZ000208032 9,999.50 280.667 35.6276 845.653
+22-Apr-2024 *** Stamp Duty *** 0.50
+22-May-2024 SIP Purchase-BSE - Instalment No - 4/999 - INZ000208032 9,999.50 277.139 36.0812 1,122.792
+22-May-2024 *** Stamp Duty *** 0.50
+24-Jun-2024 SIP Purchase-BSE - Instalment No - 5/999 - INZ000208032 9,999.50 275.145 36.3426 1,397.937
+24-Jun-2024 *** Stamp Duty *** 0.50
+22-Jul-2024 SIP Purchase-BSE - Instalment No - 6/999 - INZ000208032 9,999.50 273.425 36.5713 1,671.362
+22-Jul-2024 *** Stamp Duty *** 0.50
+22-Aug-2024 SIP Purchase-BSE - Instalment No - 7/999 - INZ000208032 9,999.50 270.561 36.9584 1,941.923
+22-Aug-2024 *** Stamp Duty *** 0.50
+10-Sep-2024 SIP Purchase-BSE - Instalment No - 1 - INZ000208032 19,999.00 539.244 37.0871 2,481.167
+10-Sep-2024 *** Stamp Duty *** 1.00
+10-Oct-2024 SIP Purchase-BSE - Instalment No - 2/999 - INZ000208032 19,999.00 534.307 37.4298 3,015.474
+10-Oct-2024 *** Stamp Duty *** 1.00
+11-Nov-2024 SIP Purchase-BSE - Instalment No - 3/999 - INZ000208032 19,999.00 531.250 37.6452 3,546.724
+11-Nov-2024 *** Stamp Duty *** 1.00
+10-Dec-2024 SIP Purchase-BSE - Instalment No - 4/999 - INZ000208032 19,999.00 527.179 37.9359 4,073.903
+10-Dec-2024 *** Stamp Duty *** 1.00
+10-Jan-2025 SIP Purchase-BSE - Instalment No - 5/999 - INZ000208032 19,999.00 525.076 38.0878 4,598.979
+10-Jan-2025 *** Stamp Duty *** 1.00
+10-Feb-2025 SIP Purchase-BSE - Instalment No - 6/999 - INZ000208032 19,999.00 521.322 38.3621 5,120.301
+10-Feb-2025 *** Stamp Duty *** 1.00
+10-Mar-2025 SIP Purchase-BSE - Instalment No - 7/999 - INZ000208032 19,999.00 518.430 38.5761 5,638.731
+10-Mar-2025 *** Stamp Duty *** 1.00
+11-Apr-2025 SIP Purchase-BSE - Instalment No - 8/999 - INZ000208032 19,999.00 507.865 39.3786 6,146.596
+11-Apr-2025 *** Stamp Duty *** 1.00
+13-May-2025 SIP Purchase-BSE - Instalment No - 9/999 - INZ000208032 19,999.00 502.863 39.7703 6,649.459
+13-May-2025 *** Stamp Duty *** 1.00
+10-Jun-2025 SIP Purchase-BSE - Instalment No - 10/999 - INZ000208032 19,999.00 500.221 39.9803 7,149.680
+10-Jun-2025 *** Stamp Duty *** 1.00
+10-Jul-2025 SIP Purchase-BSE - Instalment No - 11/999 - INZ000208032 19,999.00 498.552 40.1142 7,648.232
+10-Jul-2025 *** Stamp Duty *** 1.00
+11-Aug-2025 SIP Purchase-BSE - Instalment No - 12/999 - INZ000208032 19,999.00 497.722 40.1811 8,145.954
+11-Aug-2025 *** Stamp Duty *** 1.00
+10-Sep-2025 SIP Purchase-BSE - Instalment No - 13/999 - INZ000208032 19,999.00 497.186 40.2244 8,643.140
+10-Sep-2025 *** Stamp Duty *** 1.00
+10-Oct-2025 SIP Purchase-BSE - Instalment No - 14/999 - INZ000208032 19,999.00 491.425 40.6959 9,134.565
+10-Oct-2025 *** Stamp Duty *** 1.00
+NAV on 31-Oct-2025: INR 40.6948 Market Value on 31-Oct-2025: INR 371,729.30
+Closing Unit Balance: 9,134.565 Total Cost Value: 350,000.00
+P8178-ICICI Prudential Equity Arbitrage Fund - Direct Plan - Growth - ISIN: INF109K016O4(Advisor: INZ000208032)
+Folio No: 31387470 / 49
+Opening Unit Balance: 0.000
+03-Mar-2025 SIP Purchase-BSE - Instalment No - 1 - INZ000208032 49,997.50 1,392.987 35.8923 1,392.987
+03-Mar-2025 *** Stamp Duty *** 2.50
+07-Apr-2025 SIP Purchase-BSE - Instalment No - 2/999 - INZ000208032 49,997.50 1,380.388 36.2199 2,773.375
+07-Apr-2025 *** Stamp Duty *** 2.50
+07-May-2025 SIP Purchase-BSE - Instalment No - 3/999 - INZ000208032 49,997.50 1,372.347 36.4321 4,145.722
+07-May-2025 *** Stamp Duty *** 2.50
+09-Jun-2025 SIP Purchase-BSE - Instalment No - 4/999 - INZ000208032 49,997.50 1,364.065 36.6533 5,509.787
+09-Jun-2025 *** Stamp Duty *** 2.50
+07-Jul-2025 SIP Purchase-BSE - Instalment No - 5/999 - INZ000208032 49,997.50 1,356.902 36.8468 6,866.689
+07-Jul-2025 *** Stamp Duty *** 2.50
+07-Aug-2025 SIP Purchase-BSE - Instalment No - 6/999 - INZ000208032 49,997.50 1,351.061 37.0061 8,217.750
+07-Aug-2025 *** Stamp Duty *** 2.50
+08-Sep-2025 SIP Purchase-BSE - Instalment No - 7/999 - INZ000208032 49,997.50 1,344.427 37.1887 9,562.177
+08-Sep-2025 *** Stamp Duty *** 2.50
+07-Oct-2025 SIP Purchase-BSE - Instalment No - 8/999 - INZ000208032 49,997.50 1,338.650 37.3492 10,900.827
+07-Oct-2025 *** Stamp Duty *** 2.50
+NAV on 31-Oct-2025: INR 37.5004 Market Value on 31-Oct-2025: INR 408,785.37
+Closing Unit Balance: 10,900.827 Total Cost Value: 400,000.00
+P8004-ICICI Prudential Multi-Asset Fund - Direct Plan - Growth - ISIN: INF109K015K4(Advisor: INZ000208032)
+Folio No: 31387470 / 49
+Opening Unit Balance: 0.000
+16-Feb-2024 SIP Purchase-BSE - Instalment No - 1 - INZ000208032 19,999.00 29.718 672.9505 29.718
+16-Feb-2024 *** Stamp Duty *** 1.00
+12-Mar-2024 Purchase-BSE - - INZ000208032 199,990.00 292.151 684.5431 321.869
+12-Mar-2024 *** Stamp Duty *** 10.00
+15-Mar-2024 SIP Purchase-BSE - Instalment No - 1 - INZ000208032 39,998.00 58.970 678.2813 380.839
+15-Mar-2024 *** Stamp Duty *** 2.00
+04-Apr-2024 Purchase-BSE - - INZ000208032 99,995.00 142.379 702.3176 523.218
+04-Apr-2024 *** Stamp Duty *** 5.00
+15-Apr-2024 SIP Purchase-BSE - Instalment No - 2/999 - INZ000208032 39,998.00 56.648 706.0761 579.866
+15-Apr-2024 *** Stamp Duty *** 2.00
+15-May-2024 SIP Purchase-BSE - Instalment No - 3/999 - INZ000208032 39,998.00 55.945 714.9549 635.811
+15-May-2024 *** Stamp Duty *** 2.00
+18-Jun-2024 SIP Purchase-BSE - Instalment No - 4/999 - INZ000208032 39,998.00 54.165 738.4421 689.976
+18-Jun-2024 *** Stamp Duty *** 2.00
+15-Jul-2024 SIP Purchase-BSE - Instalment No - 5/999 - INZ000208032 39,998.00 52.621 760.1093 742.597
+15-Jul-2024 *** Stamp Duty *** 2.00
+16-Aug-2024 SIP Purchase-BSE - Instalment No - 6/999 - INZ000208032 39,998.00 52.766 758.0223 795.363
+16-Aug-2024 *** Stamp Duty *** 2.00
+06-Sep-2024 SIP Purchase-BSE - Instalment No - 1 - INZ000208032 59,997.00 77.494 774.2134 872.857
+06-Sep-2024 *** Stamp Duty *** 3.00
+07-Oct-2024 SIP Purchase-BSE - Instalment No - 2/999 - INZ000208032 59,997.00 76.921 779.9808 949.778
+07-Oct-2024 *** Stamp Duty *** 3.00
+05-Nov-2024 SIP Purchase-BSE - Instalment No - 3/999 - INZ000208032 59,997.00 77.498 774.1715 1,027.276
+05-Nov-2024 *** Stamp Duty *** 3.00
+05-Dec-2024 SIP Purchase-BSE - Instalment No - 4/999 - INZ000208032 59,997.00 77.282 776.3371 1,104.558
+05-Dec-2024 *** Stamp Duty *** 3.00
+06-Jan-2025 SIP Purchase-BSE - Instalment No - 5/999 - INZ000208032 59,997.00 78.354 765.7204 1,182.912
+06-Jan-2025 *** Stamp Duty *** 3.00
+05-Feb-2025 SIP Purchase-BSE - Instalment No - 6/999 - INZ000208032 59,997.00 76.654 782.7006 1,259.566
+05-Feb-2025 *** Stamp Duty *** 3.00
+07-Apr-2025 SIP Purchase-BSE - Instalment No - 8/999 - INZ000208032 59,997.00 78.486 764.4305 1,338.052
+07-Apr-2025 *** Stamp Duty *** 3.00
+05-May-2025 SIP Purchase-BSE - Instalment No - 9/999 - INZ000208032 59,997.00 74.252 808.0191 1,412.304
+05-May-2025 *** Stamp Duty *** 3.00
+05-Jun-2025 SIP Purchase-BSE - Instalment No - 10/999 - INZ000208032 59,997.00 72.802 824.1170 1,485.106
+05-Jun-2025 *** Stamp Duty *** 3.00
+07-Jul-2025 SIP Purchase-BSE - Instalment No - 11/999 - INZ000208032 59,997.00 71.621 837.6955 1,556.727
+07-Jul-2025 *** Stamp Duty *** 3.00
+05-Aug-2025 SIP Purchase-BSE - Instalment No - 12/999 - INZ000208032 59,997.00 72.500 827.5430 1,629.227
+05-Aug-2025 *** Stamp Duty *** 3.00
+05-Sep-2025 SIP Purchase-BSE - Instalment No - 13/999 - INZ000208032 59,997.00 71.153 843.2154 1,700.380
+05-Sep-2025 *** Stamp Duty *** 3.00
+06-Oct-2025 SIP Purchase-BSE - Instalment No - 14/999 - INZ000208032 59,997.00 69.280 866.0041 1,769.660
+06-Oct-2025 *** Stamp Duty *** 3.00
+NAV on 31-Oct-2025: INR 879.7107 Market Value on 31-Oct-2025: INR 1,556,788.84
+Closing Unit Balance: 1,769.660 Total Cost Value: 1,340,000.00
+Kotak Mutual Fund
+K104-Kotak Small Cap Fund - Growth (Regular Plan) - ISIN: INF174K01211(Advisor: WEALTH)
+Folio No: 9859946 / 21
+Opening Unit Balance: 0.000
+07-Dec-2021 Systematic Purchase (Continuous Offer) 999.95 6.031 165.799 6.031
+07-Dec-2021 *** Stamp Duty *** 0.05
+06-Jan-2022 Purchase (Continuous Offer) 999.95 5.888 169.822 11.919
+06-Jan-2022 *** Stamp Duty *** 0.05
+07-Feb-2022 Purchase (Continuous Offer) 999.95 6.024 165.983 17.943
+07-Feb-2022 *** Stamp Duty *** 0.05
+07-Mar-2022 Purchase (Continuous Offer) 999.95 6.667 149.981 24.610
+07-Mar-2022 *** Stamp Duty *** 0.05
+07-Apr-2022 Purchase (Continuous Offer) 999.95 5.994 166.822 30.604
+07-Apr-2022 *** Stamp Duty *** 0.05
+06-May-2022 Purchase (Continuous Offer) 999.95 6.336 157.821 36.940
+06-May-2022 *** Stamp Duty *** 0.05
+07-Jun-2022 Systematic Purchase (Continuous Offer) 999.95 6.586 151.825 43.526
+07-Jun-2022 *** Stamp Duty *** 0.05
+06-Jul-2022 Purchase (Continuous Offer) 999.95 6.686 149.569 50.212
+06-Jul-2022 *** Stamp Duty *** 0.05
+08-Aug-2022 Purchase (Continuous Offer) 999.95 6.191 161.525 56.403
+08-Aug-2022 *** Stamp Duty *** 0.05
+06-Sep-2022 Purchase (Continuous Offer) 999.95 5.937 168.427 62.340
+06-Sep-2022 *** Stamp Duty *** 0.05
+07-Oct-2022 Purchase (Continuous Offer) 999.95 5.972 167.441 68.312
+07-Oct-2022 *** Stamp Duty *** 0.05
+07-Nov-2022 Purchase (Continuous Offer) 999.95 6.014 166.266 74.326
+07-Nov-2022 *** Stamp Duty *** 0.05
+06-Jan-2023 Purchase (Continuous Offer) 999.95 6.178 161.844 80.504
+06-Jan-2023 *** Stamp Duty *** 0.05
+07-Feb-2023 Purchase (Continuous Offer) 999.95 6.186 161.643 86.690
+07-Feb-2023 *** Stamp Duty *** 0.05
+08-Mar-2023 Purchase (Continuous Offer) 999.95 6.160 162.323 92.850
+08-Mar-2023 *** Stamp Duty *** 0.05
+10-Apr-2023 Systematic Purchase (Continuous Offer) Instalment No - 16/230 999.95 6.264 159.624 99.114
+10-Apr-2023 *** Stamp Duty *** 0.05
+08-May-2023 Systematic Purchase (Continuous Offer) Instalment No - 17/230 999.95 6.029 165.869 105.143
+08-May-2023 *** Stamp Duty *** 0.05
+06-Jun-2023 Systematic Purchase (Continuous Offer) Instalment No - 18/230 999.95 5.711 175.084 110.854
+06-Jun-2023 *** Stamp Duty *** 0.05
+06-Jul-2023 Systematic Purchase (Continuous Offer) Instalment No - 19/230 999.95 5.380 185.864 116.234
+06-Jul-2023 *** Stamp Duty *** 0.05
+NAV on 31-Oct-2025: INR 260.949 Market Value on 31-Oct-2025: INR 30,331.15
+Closing Unit Balance: 116.234 Total Cost Value: 19,000.00
+PPFAS Mutual Fund
+PPLFGZ-Parag Parikh Liquid Fund Direct Plan Growth - ISIN: INF879O01068(Advisor: INZ000208032)
+Folio No: 14536001
+Opening Unit Balance: 0.000
+13-Feb-2024 Purchase Systematic-BSE - Instalment No - 1 4,999.75 3.761 1,329.4968 3.761
+13-Feb-2024 *** Stamp Duty *** 0.25
+17-Mar-2024 Purchase Systematic-BSE - Instalment No - 2/999 4,999.75 3.736 1,338.1730 7.497
+17-Mar-2024 *** Stamp Duty *** 0.25
+15-Apr-2024 Purchase Systematic-BSE - Instalment No - 3/999 4,999.75 3.714 1,346.0240 11.211
+15-Apr-2024 *** Stamp Duty *** 0.25
+15-May-2024 Purchase Systematic-BSE - Instalment No - 4/999 4,999.75 3.695 1,353.1670 14.906
+15-May-2024 *** Stamp Duty *** 0.25
+18-Jun-2024 Purchase Systematic-BSE - Instalment No - 5/999 4,999.75 3.671 1,361.9627 18.577
+18-Jun-2024 *** Stamp Duty *** 0.25
+15-Jul-2024 Purchase Systematic-BSE - Instalment No - 6/999 4,999.75 3.652 1,368.9363 22.229
+15-Jul-2024 *** Stamp Duty *** 0.25
+18-Aug-2024 Purchase Systematic-BSE - Instalment No - 7/999 4,999.75 3.630 1,377.3930 25.859
+18-Aug-2024 *** Stamp Duty *** 0.25
+NAV on 02-Nov-2025: INR 1,487.3484 Market Value on 02-Nov-2025: INR 38,461.34
+Closing Unit Balance: 25.859 Total Cost Value: 35,000.00

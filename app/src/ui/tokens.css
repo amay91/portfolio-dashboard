@@ -1,0 +1,115 @@
+/* Design tokens — two full themes, "Terminal Deck" (dark) and "The Ledger"
+   (light), toggled instantly via a single [data-theme] attribute on <html>
+   (see features/theme/ThemeToggle.tsx). Every component in app.css/deck.css
+   and every TS color constant (categories.ts, geography.ts, via CSS var()
+   *strings*) reads these custom properties rather than hardcoding colors —
+   keep it that way, or a component silently gets stuck in one theme. See
+   docs/DECISIONS.md "Dark/Light theme toggle". */
+:root,
+[data-theme='dark'] {
+  /* Neutral-contrast revision (2026-07-08): the first pass tinted every
+     structural color (paper/ink/card/line/muted) with the same warm amber
+     bias as the accent color, which read as an overall yellow cast rather
+     than a deliberate accent — see docs/DECISIONS.md "Terminal Deck
+     contrast pass". Structural colors are now a true neutral gray ramp with
+     clearly distinct lightness steps; amber survives only as an accent
+     (--green/--brass/--cat-equity), used sparingly, not as body text. */
+  --paper: #0a0b0d;
+  --ink: #edeff2;
+  --green: #e8a33d;
+  --brass: #c98a2e;
+  --teal: #5eead4;
+  --clay: #d97757;
+  --muted: #8a8f99;
+  --line: #333842;
+  --card: #1a1d22;
+  --card-hover: #262a31;
+  --pos: #5eead4;
+  --neg: #ff6b5e;
+  --frame: #101216;
+  --frame-line: #23262c;
+
+  --cat-equity: #e8a33d;
+  --cat-debt: #5eead4;
+  --cat-cash: #6e7a8a;
+  --cat-other: #b491c8;
+  --geo-other: #5c5548;
+  --geo-fallback: #5c7a72;
+
+  --font-sans: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --font-serif: var(--font-sans);
+}
+
+[data-theme='light'] {
+  --paper: #fbf3e7;
+  --ink: #2b2118;
+  --green: #2f5233;
+  --brass: #b8935a;
+  --teal: #3b5563;
+  --clay: #8b2e2e;
+  --muted: #8b7a5e;
+  --line: #d9c7a3;
+  --card: #f5ecdc;
+  --card-hover: #ecdcc0;
+  --pos: #2f5233;
+  --neg: #8b2e2e;
+  --frame: #f2e7d0;
+  --frame-line: #c9b99a;
+
+  --cat-equity: #2f5233;
+  --cat-debt: #3b5563;
+  --cat-cash: #b8935a;
+  --cat-other: #8a5a8f;
+  --geo-other: #a68a5b;
+  --geo-fallback: #7a8f86;
+
+  --font-sans: 'Courier Prime', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --font-mono: 'Courier Prime', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --font-serif: 'Fraunces', Georgia, serif;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+/* Baseline for every button across the app — a safety net for anything not
+   already covered by its own class (.deck-btn/.btn-demo/.deck-advt/.gbtn/
+   .dc-link/.legrow[role=button] all set this explicitly too, since they'd
+   otherwise win on class-specificity over this tag selector). */
+button, [role='button'] { font-weight: 700; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+}
+.mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+a { color: var(--green); }
+
+/* Atmosphere — theme-specific, never intercepts clicks. Terminal Deck gets a
+   CRT scanline + vignette texture; The Ledger gets an equivalent paper-grain
+   texture, so neither theme feels like the "undecorated" one. */
+[data-theme='dark'] body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background:
+    repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.018) 0px, rgba(255, 255, 255, 0.018) 1px, transparent 1px, transparent 3px),
+    radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.03), transparent 60%);
+}
+[data-theme='light'] body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(43, 33, 24, 0.035) 0, transparent 45%),
+    radial-gradient(circle at 82% 64%, rgba(43, 33, 24, 0.03) 0, transparent 50%),
+    radial-gradient(circle at 46% 92%, rgba(43, 33, 24, 0.025) 0, transparent 40%);
+}

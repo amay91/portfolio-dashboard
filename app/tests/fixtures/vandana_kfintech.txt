@@ -1,0 +1,844 @@
+Consolidated Account Statement
+01-Jan-1990 To 03-Jul-2026
+This Consolidated Account Statement is brought to you as an investor
+Email Id: vandana.funds@vvhome.net
+friendly initiative by CAMS and KFintech, and lists the transactions,
+balances and valuation of Mutual Funds in which you are holding
+Vandana Srivastava
+investments. The consolidation has been carried out based on the email id
+entered by you. If you have not entered a PAN Number and if the email id
+545 BANAGIRI NAGAR 1ST B
+is common to several members of your family, this statement will
+CROSS BSK 3RD STAGE BANGALORE SOUTH
+consolidate all those investments as well.
+BANGALORE - 560085
+Karnataka If you find any folios missing from this consolidation, you have not
+India registered your email id against those folios.
+Phone Res: 918026690724 Phone Off: 080 64506083
+This statement may not reflect the complete information on your DEMAT
+Mobile: +917829202483
+holdings. Please check with your DP for details on DEMAT holdings.
+PORTFOLIO SUMMARY
+Cost Value Market Value
+Mutual Fund
+(INR) (INR)
+ICICI Prudential Mutual Fund 9,700,000.00 12,351,872.03
+PPFAS Mutual Fund 8,538,809.37 10,518,538.96
+Quant MF 100,000.00 190,162.27
+UTI Mutual Fund 0.00 0.00
+AXIS Mutual Fund 4,000,000.00 5,152,314.65
+Quantum Mutual Fund 2,021,141.22 5,989,491.67
+Total 24,359,950.59 34,202,379.59
+Date Transaction Amount Units Price Unit
+(INR) (INR) Balance
+AXIS Mutual Fund
+Folio No: 91077769431 / 0 PAN: AESPS5883B KYC: OK PAN: OK
+vandana srivastava
+Registrar :
+128EADGG-Axis Arbitrage Fund - Direct Growth (Non Demat) - ISIN: INF846K01PZ1
+KFINTECH
+Nominee 1: DEVIKA NARAYAN Nominee 2: AMAY VIVEK NARAYAN Nominee 3:
+Opening Unit Balance: 0.000
+06-Apr-2021 Purchase 4,499,775.01 291,240.033 15.4504 291,240.033
+06-Apr-2021 *** Stamp Duty *** 224.99
+15-Apr-2021 Lateral Shift In (From Axis NIFTY 100 Index Fund Direct Growth 1,096,684.19 70,815.954 15.4864 362,055.987
+F.No:91077769431)
+15-Apr-2021 *** Stamp Duty *** 54.83
+20-May-2021 Redemption Directly credited to your Bank account (DC-AXIS) less TDS, (2,562,622.37) (165,000.000) 15.5312 197,055.987
+STT
+20-May-2021 *** STT Paid *** 25.63
+24-Mar-2022 Purchase 1,999,900.00 123,718.674 16.1649 320,774.661
+*** Stamp Duty ***
+24-Mar-2022 100.00
+06-Apr-2022 Purchase 1,499,925.00 92,552.542 16.2062 413,327.203
+06-Apr-2022 *** Stamp Duty *** 75.00
+28-Apr-2022 Redemption Directly credited to your Bank account (DC-AXIS) less TDS, (2,054,144.60) (126,240.030) 16.2719 287,087.173
+STT
+28-Apr-2022 *** STT Paid *** 20.54
+27-Mar-2023 Lateral Shift Out (To Axis Dynamic Bond Fund - Direct Plan - Growth Plan (4,000,000.00) (234,580.311) 17.0519 52,506.862
+F.No:91077769431) less TDS, STT
+27-Mar-2023 *** STT Paid *** 40.00
+22-Mar-2024 Redemption Directly credited to your Bank account (DC-AXIS) less TDS, (968,096.09) (52,506.862) 18.4377 0.000
+STT
+22-Mar-2024 *** STT Paid *** 9.68
+Closing Unit Balance: 0.000 NAV on 02-Jul-2026: INR 21.6631 Total Cost Value: 0.00 Market Value on 02-Jul-2026: INR 0.00
+Entry Load - Nil, Exit Load - If redeemed/switched out within 15 days from the date of investment/allotment: 0.25%. If redeemed/switched out after 15 days from
+the date of investment/allotment: Nil. w.e.f. July, 17, 2023.Exit Load - If redeemed/switched out within 30 days from the date of investment/allotment: 0.25%. If
+redeemed/switched out after 30 days from the date of investment/allotment: Nil. w.e.f. April 10, 2023.Exit Load - If redeemed/switched out within 7 days from the
+date of investment/allotment: 0.25%. w.e.f. May, 15, 2015.
+Page 1 of 12
+CAMSCASWS-0307260282 Version:V3.4 Live-1017
+Consolidated Account Statement
+01-Jan-1990 To 03-Jul-2026
+Date Transaction Amount Units Price Unit
+(INR) (INR) Balance
+Folio No: 91077769431 / 0 PAN: AESPS5883B KYC: OK PAN: OK
+vandana srivastava
+Registrar :
+128DBDGG-Axis Dynamic Bond Fund - Direct Plan - Growth Plan (Non Demat) - ISIN: INF846K01DI3
+KFINTECH
+Nominee 1: DEVIKA NARAYAN Nominee 2: AMAY VIVEK NARAYAN Nominee 3:
+Opening Unit Balance: 0.000
+29-Mar-2023 Lateral Shift In (From Axis Arbitrage Fund - Direct Growth 3,999,800.01 148,250.556 26.9800 148,250.556
+F.No:91077769431)
+29-Mar-2023 *** Stamp Duty *** 199.99
+Closing Unit Balance: 148,250.556 NAV on 02-Jul-2026: INR 34.7541 Total Cost Value: 4,000,000.00 Market Value on 02-Jul-2026: INR 5,152,314.65
+Entry Load - NIL, Exit load NIL w.ef., 10/11/2017. Exit Load :If redeemed/switched out within 12 months from the date of allotment: - For 10% of investment : Nil
+FIFO basis,For remaining 1% w.e.f., 22/06/2015. 1% if units are redeemed/switchedout within 1Exit Load : 1% if units are redeemed/switchedout within 3 years from
+the date of allotment w.e.f 01/10/2014.Exit Load : 1% if units are redeemed/switched out within 12 months from date of allotment w.e.f 10/02/2014.Exit Load : 1%
+if units are redeemed/switched out within 6 months from the date of allotment w.e.f 12/11/2012.
+Folio No: 91077769431 / 0 PAN: AESPS5883B KYC: OK PAN: OK
+vandana srivastava
+Registrar :
+128CFDGG-Axis Liquid Fund - Direct Growth (Non Demat) - ISIN: INF846K01CX4
+KFINTECH
+Nominee 1: DEVIKA NARAYAN Nominee 2: AMAY VIVEK NARAYAN Nominee 3:
+Opening Unit Balance: 0.000
+15-Apr-2020 Purchase Trxn.Ref. No.738148542 1,000,000.00 452.758 2,208.6861 452.758
+13-Jul-2020 Redemption Directly credited to your Bank account (DC-AXIS) (1,011,023.78) (452.758) 2,233.0335 0.000
+Market Value on 02-Jul-2026: INR 0.00
+Closing Unit Balance: 0.000 NAV on 02-Jul-2026: INR 3,123.3158 Total Cost Value: 0.00
+Entry Load - NIL; Exit Load - 0.0070% If redeemed or switched out within 1 day, 0.0065% If redeemed or switched out within 2 days,0.0060% If redeemed or switched
+out within 3 days, 0.0055% If redeemed or switched out within 4 days,0.0050% If redeemed or switched out within 5 days, 0.0045% If redeemed or switched out within
+6 days, from date of allotmentand NIL exit load from day 7 onwards w.e.f., 20/10/2019
+Folio No: 91077769431 / 0 PAN: AESPS5883B KYC: OK PAN: OK
+vandana srivastava
+Registrar :
+128NIDGG-Axis NIFTY 100 Index Fund Direct Growth (Non Demat) - ISIN: INF846K01S29
+KFINTECH
+Nominee 1: DEVIKA NARAYAN Nominee 2: AMAY VIVEK NARAYAN Nominee 3:
+Opening Unit Balance: 0.000
+Purchase Trxn.Ref. No.728523961
+28-Feb-2020 500,000.00 52,083.333 9.6000 52,083.333
+27-Mar-2020 Purchase Trxn.Ref. No.734979667 250,000.00 33,333.333 7.5000 85,416.666
+08-Apr-2021 Lateral Shift Out (To Axis Arbitrage Fund - Direct Growth (1,096,739.02) (85,416.666) 12.8400 0.000
+F.No:91077769431) less TDS, STT
+08-Apr-2021 *** STT Paid *** 10.97
+13-Mar-2023 Redemption Directly credited to your Bank account (DC-AXIS) (208.36) 0.000
+Market Value on 02-Jul-2026: INR 0.00
+Closing Unit Balance: 0.000 NAV on 02-Jul-2026: INR 22.5778 Total Cost Value: 0.00
+Entry Load: Nil. Exit Load: Nil w.e.f 12/08/2021
+Folio No: 91077769431 / 0 PAN: AESPS5883B KYC: OK PAN: OK
+vandana srivastava
+Registrar :
+128SCDGG-Axis Small Cap Fund Direct Growth (Non Demat) - ISIN: INF846K01K35
+KFINTECH
+Nominee 1: DEVIKA NARAYAN Nominee 2: AMAY VIVEK NARAYAN Nominee 3:
+Opening Unit Balance: 0.000
+28-Feb-2020 Purchase Trxn.Ref. No.728494702 500,000.00 13,616.558 36.72 13,616.558
+27-Mar-2020 Purchase Trxn.Ref. No.734980812 250,000.00 9,563.887 26.14 23,180.445
+0.000
+02-May-2023 Redemption Directly credited to your Bank account (DC-AXIS) less TDS, (1,685,201.50) (23,180.445) 72.70
+STT
+02-May-2023 *** STT Paid *** 16.85
+Closing Unit Balance: 0.000 NAV on 02-Jul-2026: INR 132.00 Total Cost Value: 0.00 Market Value on 02-Jul-2026: INR 0.00
+Entry Load - NIL, Exit Load - NIL,Scheme re-opens on: November 29, 2018 (after 5 years, on conversion to an open ended scheme)Exit Load: If redeemed / switched-
+out within 12 months from the date of allotment:For 10% of investments: NIL on FIFO basis For remaining investments: 1% w.e.f., 29/11/2018
+ICICI Prudential Mutual Fund
+Folio No: 8917491 / 30 PAN: AESPS5883B KYC: OK PAN: OK
+Vandana Srivastava
+P8178-ICICI Prudential Arbitrage Fund - Direct Plan - Growth (Non-Demat) - ISIN: INF109K016O4(Advisor: DIRECT) Registrar : CAMS
+Nominee 1: DEVIKA NARAYAN Nominee 2: AMAY VIVEK NARAYAN Nominee 3:
+Opening Unit Balance: 0.000
+22-Dec-2017 Purchase - DIRECT 500,000.00 21,501.122 23.2546 21,501.122
+Page 2 of 12
+CAMSCASWS-0307260282 Version:V3.4 Live-1017
+Consolidated Account Statement
+01-Jan-1990 To 03-Jul-2026
+Date Transaction Amount Units Price Unit
+(INR) (INR) Balance
+01-Jan-2018 Purchase - DIRECT 500,000.00 21,477.017 23.2807 42,978.139
+Equity Switch in - From Value Discovery Fund - DP Growth - DIRECT 54,755.721
+15-Jul-2019 304,448.15 11,777.582 25.8498
+09-Mar-2020 Redemption - HDFCR52020031373918116 , less STT (1,152,735.22) (42,978.139) 26.8217 11,777.582
+09-Mar-2020 *** STT Paid *** 11.53
+19-Mar-2020 Switch Out - To Liquid Fund - DP Growth , less STT (316,585.30) (11,777.582) 26.8806 0.000
+*** STT Paid ***
+19-Mar-2020 3.17
+20-Jan-2021 Purchase - via Internet - DIRECT 999,950.00 35,937.107 27.8250 35,937.107
+20-Jan-2021 *** Stamp Duty *** 50.00
+17-Feb-2021 Purchase - via Internet - DIRECT 2,199,890.01 78,835.259 27.9049 114,772.366
+17-Feb-2021 *** Stamp Duty *** 109.99
+Redemption - HDFCR52021022577913689 , less STT 78,835.259
+22-Feb-2021 (1,003,824.76) (35,937.107) 27.9331
+22-Feb-2021 *** STT Paid *** 10.04
+09-Mar-2021 Purchase - via Internet - DIRECT 999,950.00 35,785.349 27.9430 114,620.608
+09-Mar-2021 *** Stamp Duty *** 50.00
+*Switch Out - To Debt Management Fund (FOF) - DP Gro - via Internet ,
+24-Mar-2021 (1,000,000.00) (35,678.200) 28.0286 78,942.408
+less STT
+24-Mar-2021 *** STT Paid *** 10.00
+28-Apr-2021 Redemption - ELECTRONIC PAYMENT - via Internet - (563,730.36) (20,000.000) 28.1868 58,942.408
+HDFCR52021050390679552 , less STT
+28-Apr-2021 *** STT Paid *** 5.64
+14-May-2021 Purchase - via Internet - DIRECT 999,950.00 35,432.457 28.2213 94,374.865
+14-May-2021 *** Stamp Duty *** 50.00
+04-Jun-2021 Purchase - via Internet - DIRECT 3,999,800.01 141,267.801 28.3136 235,642.666
+*** Stamp Duty ***
+04-Jun-2021 199.99
+11-Jun-2021 Redemption - ELECTRONIC PAYMENT - via Internet - (1,670,310.95) (58,942.408) 28.3383 176,700.258
+HDFCR52021061697546716 , less STT
+11-Jun-2021 *** STT Paid *** 16.70
+Redemption - ELECTRONIC PAYMENT - via Internet , less STT
+01-Oct-2021 (2,059,210.82) (71,700.258) 28.7200 105,000.000
+01-Oct-2021 *** STT Paid *** 20.59
+13-Jun-2022 Redemption - ELECTRONIC PAYMENT - HDFCR52022061675681328 , (1,034,026.16) (35,000.000) 29.5439 70,000.000
+less STT
+13-Jun-2022 *** STT Paid *** 10.34
+26-Sep-2022 Redemption - ELECTRONIC PAYMENT - HDFCR52022092999169000 , (2,094,015.06) (70,000.000) 29.9148 0.000
+less STT
+26-Sep-2022 *** STT Paid *** 20.94
+17-Apr-2023 ***Change of ContactsEMAIL updated from New CAMSonline for
+AESPSXXXXB***
+08-Feb-2024 Purchase - DIRECT 499,975.00 15,102.749 33.1049 15,102.749
+08-Feb-2024 *** Stamp Duty *** 25.00
+05-Jul-2024 ***Change of ContactsMOBILE updated from New CAMSonline for
+AESPSXXXXB***
+20-Sep-2024 Purchase - via Internet - DIRECT 1,699,915.00 48,889.435 34.7706 63,992.184
+20-Sep-2024 *** Stamp Duty *** 85.00
+28-Aug-2025 Redemption - ELECTRONIC PAYMENT - via Internet - (561,140.05) (15,102.749) 37.1552 48,889.435
+HDFCR52025090156318631 , less STT
+28-Aug-2025 *** STT Paid *** 5.61
+10-Apr-2026 Purchase - via Internet - DIRECT 499,975.00 12,935.663 38.6509 61,825.098
+10-Apr-2026 *** Stamp Duty *** 25.00
+Closing Unit Balance: 61,825.098 NAV on 02-Jul-2026: INR 39.2108 Total Cost Value: 2,200,000.00 Market Value on 02-Jul-2026: INR 2,424,211.55
+"Current : Entry Load - Nil. Exit Load w.e.f 06-Apr-2015 [including SIP,STP,SWP&Micro(SIP) wherever available] if redeemed or switched out within 1 month - 0.25%, >
+1 month - Nil. For lumpsum investment/switch in, the applicable load will be based on the load structure as on the date of investment/applicable NAV date. For
+SIP/STP transactions, load for each transaction is based on the applicable load structure as on the registration date. For details, please refer to SID and Addenda
+available on www.icicipruamc.com.
+Scheme Name of ICICI Prudential Equity Arbitrage Fund has been changed to ICICI Prudential Arbitrage Fund w.e.f May 27, 2026.Please ensure that your account
+information is up to date. If there are any changes to your KYC details like address, contact details, occupation, income, PEP status, FATCA/CRS information etc.
+kindly update them immediately."
+Folio No: 8917491 / 30 PAN: AESPS5883B KYC: OK PAN: OK
+Vandana Srivastava
+Registrar : CAMS
+P8180-ICICI Prudential Balanced Advantage Fund - Direct Plan - Growth (Non-Demat) - ISIN: INF109K012B0(Advisor: DIRECT)
+Nominee 1: DEVIKA NARAYAN Nominee 2: AMAY VIVEK NARAYAN Nominee 3:
+Opening Unit Balance: 0.000
+13-Jun-2022 Purchase - DIRECT 999,950.00 18,792.520 53.21 18,792.520
+13-Jun-2022 *** Stamp Duty *** 50.00
+Page 3 of 12
+CAMSCASWS-0307260282 Version:V3.4 Live-1017
+Consolidated Account Statement
+01-Jan-1990 To 03-Jul-2026
+Date Transaction Amount Units Price Unit
+(INR) (INR) Balance
+Closing Unit Balance: 18,792.520 NAV on 02-Jul-2026: INR 87.60 Total Cost Value: 1,000,000.00 Market Value on 02-Jul-2026: INR 1,646,224.75
+Current : Entry Load - Nil. Exit Load w.e.f 12-May-2023 [including SIP,STP,SWP&Micro(SIP) wherever available] - If redeemed or switched out upto 30% of the units
+(the limit) within 1 Year - Nil, excess of the limit within 1 Year - 1%, after 1 year - Nil. For lumpsum investment/switch in, the applicable load will be based on the
+load structure as on the date of investment/applicable NAV date. For SIP/STP transactions, load for each transaction is based on the applicable load structure as on
+the registration date. For details, please refer to SID and Addenda available on www.icicipruamc.com "Please ensure that your account information is up to date. If
+there are any changes to your KYC details like address, contact details, occupation, income, PEP status, FATCA/CRS information etc. kindly update them
+immediately."
+Folio No: 8917491 / 30 PAN: AESPS5883B KYC: OK PAN: OK
+Vandana Srivastava
+P8048-ICICI Prudential Bond Fund - Direct Plan - Growth (formerly ICICI Prudential Income Opportunities Fund) (Non-Demat) - ISIN: INF109K01
+Registrar : CAMS
+V83(Advisor: DIRECT)
+Nominee 1: DEVIKA NARAYAN Nominee 2: AMAY VIVEK NARAYAN Nominee 3:
+Opening Unit Balance: 0.000
+11-May-2020 Switch In - From Liquid Fund - DP Growth - DIRECT 1,000,000.00 33,581.162 29.7786 33,581.162
+Closing Unit Balance: 33,581.162 NAV on 02-Jul-2026: INR 45.0370 Total Cost Value: 1,000,000.00 Market Value on 02-Jul-2026: INR 1,512,394.79
+Current: Entry Load - Nil. Exit Load : NIl.wef 15.11.2021. For lumpsum investment/switch in, the applicable load will be based on the load structure as on the date of
+investment/applicable NAV date. For SIP/STP transactions, load for each transaction is based on the applicable load structure as on the registration date. For details,
+please refer to SID and Addenda available on www.icicipruamc.com.
+Scheme Name of ICICI Prudential Income Opportunities Fund has been changed to ICICI Prudential Bond Fund with effect from May 28, 2018. "Please ensure that your
+account information is up to date. If there are any changes to your KYC details like address, contact details, occupation, income, PEP status, FATCA/CRS information
+etc. kindly update them immediately."
+Folio No: 8917491 / 30 PAN: AESPS5883B KYC: OK PAN: OK
+Vandana Srivastava
+P8166-ICICI Prudential Diversified Debt Strategy Active FOF(erstwhile Debt Management Fund)-Direct-Growth (formerly ICICI Prudential
+Registrar : CAMS
+Advisor Series - Dynamic Accrual Plan) (Non-Demat) - ISIN: INF109K01X73(Advisor: DIRECT)
+Nominee 1: DEVIKA NARAYAN Nominee 2: AMAY VIVEK NARAYAN Nominee 3:
+Opening Unit Balance: 0.000
+30-Mar-2021 Switch In - From Equity Arbitrage Fund - Drt Growth - via Internet - DIRECT 999,950.00 28,235.530 35.4146 28,235.530
+*** Stamp Duty ***
+30-Mar-2021 50.00
+13-Jun-2022 Redemption - ELECTRONIC PAYMENT - HDFCR52022061575417392 (1,032,234.51) (28,235.530) 36.5580 0.000
+Market Value on 02-Jul-2026: INR 0.00
+Closing Unit Balance: 0.000 NAV on 02-Jul-2026: INR 49.8244 Total Cost Value: 0.00
+Current : Entry Load - Exit Load w.e.f 01-Jul-2021 [including SIP,STP,SWP&Micro(SIP) wherever available] - For redemption/switch-out of units upto 15 days from the
+date of allotment - 0.25% of applicable NAV For redemption/switch-out of units after 15 days from the date of allotment - Nil. For lumpsum investment/switch in, the
+applicable load will be based on the load structure as on the date of investment/applicable NAV date. For SIP/STP transactions, load for each transaction is based on
+the applicable load structure as on the registration date. For details, please refer to SID and Addenda available on www.icicipruamc.com.
+Scheme Name of ICICI Prudential Debt Management Fund has been changed to ICICI Prudential Debt Management Fund (FOF) with effect from November 29, 2019.
+"Please ensure that your account information is up to date. If there are any changes to your KYC details like address, contact details, occupation, income, PEP status,
+FATCA/CRS information etc. kindly update them immediately."
+Folio No: 8917491 / 30 PAN: AESPS5883B KYC: OK PAN: OK
+Vandana Srivastava
+P8015-ICICI Prudential Gilt Fund - Direct Plan - Growth (formerly ICICI Prudential LT Gilt Fund, erstwhile Gilt Fund - Investment Plan - PF Registrar : CAMS
+Option, Gilt Fund - Treasury Plan - PF Option, ST Gilt Fund merged) (Non-Demat) - ISIN: INF109K018C5(Advisor: DIRECT)
+Nominee 1: DEVIKA NARAYAN Nominee 2: AMAY VIVEK NARAYAN Nominee 3:
+Opening Unit Balance: 0.000
+11-May-2020 Switch In - From Liquid Fund - DP Growth - DIRECT 800,000.00 10,348.525 77.3057 10,348.525
+12,939.095
+12-May-2020 Purchase - DIRECT 200,000.00 2,590.570 77.2031
+10-Jun-2021 ***Open Mandate Registration***
+25-Mar-2023 ***Address Updated from KRA Data***
+25-Mar-2023 ***Address Updated from KRA Data***
+21-Apr-2023 ***Address Updated from KRA Data***
+22-Apr-2023 ***Address Updated from KRA Data***
+12-May-2023 ***Address Updated from KRA Data***
+12-May-2023 ***Address Updated from KRA Data***
+24-May-2023 ***Address Updated from KRA Data***
+24-May-2023 ***Address Updated from KRA Data***
+20-Oct-2023 ***Address Updated from KRA Data***
+21-Oct-2024 ***Address Updated from KRA Data***
+21-Oct-2024 ***Address Updated from KRA Data***
+02-Mar-2026 ***Registration of Nominee***
+02-Mar-2026 ***Registration of Nominee***
+16-Apr-2026 ***Address Updated from KRA Data***
+16-Apr-2026 ***Address Updated from KRA Data***
+Page 4 of 12
+CAMSCASWS-0307260282 Version:V3.4 Live-1017
+Consolidated Account Statement
+01-Jan-1990 To 03-Jul-2026
+Date Transaction Amount Units Price Unit
+(INR) (INR) Balance
+Closing Unit Balance: 12,939.095 NAV on 02-Jul-2026: INR 117.6095 Total Cost Value: 1,000,000.00 Market Value on 02-Jul-2026: INR 1,521,760.49
+Current : Entry Load - NIL for all transactions, including, SIP / STPs accepted by the Fund from 01.08.09. Exit Load [including SIP & STP] - Nil. For lumpsum
+investment/switch in, the applicable load will be based on the load structure as on the date of investment/applicable NAV date. For SIP/STP transactions, load for
+each transaction is based on the applicable load structure as on the registration date. For details, please refer to SID and Addenda available on
+www.icicipruamc.com.
+Scheme Name of ICICI Prudential Long Term Gilt Fund has been changed to ICICI Prudential Gilt Fund with effect from May 28, 2018. "Please ensure that your account
+information is up to date. If there are any changes to your KYC details like address, contact details, occupation, income, PEP status, FATCA/CRS information etc.
+kindly update them immediately."
+Folio No: 8917491 / 30 PAN: AESPS5883B KYC: OK PAN: OK
+Vandana Srivastava
+P8096-ICICI Prudential Liquid Fund - Direct Plan - Growth (formerly ICICI Prudential Liquid Plan) (Non-Demat) - ISIN: INF109K01Q49(Advisor: Registrar : CAMS
+DIRECT)
+Nominee 1: DEVIKA NARAYAN Nominee 2: AMAY VIVEK NARAYAN Nominee 3:
+Opening Unit Balance: 0.000
+Switch in - From Equity Arbitrage Fund - Drt Growth - DIRECT 1,082.497
+23-Mar-2020 316,585.30 1,082.497 292.4583
+07-Apr-2020 Purchase - DIRECT 1,500,000.00 5,100.452 294.0916 6,182.949
+10-May-2020 Switch Out - To Bond Fund - Direct Plan Growth (1,000,000.00) (3,384.236) 295.4877 2,798.713
+10-May-2020 Switch Out - To Gilt Fund - Direct Plan Growth (800,000.00) (2,707.388) 295.4877 91.325
+Redemption - N203201192105801
+20-Jul-2020 (27,210.83) (91.325) 297.9560 0.000
+Market Value on 02-Jul-2026: INR 0.00
+Closing Unit Balance: 0.000 NAV on 02-Jul-2026: INR 415.3754 Total Cost Value: 0.00
+Current: Entry Load - Nil. Exit Load w.e.f 20-Oct-2019 - If redeemed or switched out from Day1 - 0.0070% ; Day2 - 0.0065% ; Day3 - 0.0060% ; Day4 - 0.0055% ; Day5 -
+0.0050% ; Day6 - 0.0045% and Day7 onwards Nil. (Calendar Days). For lumpsum investment/switch in, the applicable load will be based on the load structure as on the
+date of investment/applicable NAV date. For SIP/STP transactions, load for each transaction is based on the applicable load structure as on the installment date. For
+details, please refer to SID and Addenda available on www.icicipruamc.com.
+Scheme Name of ICICI Prudential Liquid Plan has been changed to ICICI Prudential Liquid Fund with effect from May 28, 2018. "Please ensure that your account
+information is up to date. If there are any changes to your KYC details like address, contact details, occupation, income, PEP status, FATCA/CRS information etc.
+kindly update them immediately."
+Folio No: 8917491 / 30 PAN: AESPS5883B KYC: OK PAN: OK
+Vandana Srivastava
+Registrar : CAMS
+P8101-ICICI Prudential Money Market Fund - Direct Plan - Growth (Non-Demat) - ISIN: INF109K01R14(Advisor: DIRECT)
+Nominee 1: DEVIKA NARAYAN Nominee 2: AMAY VIVEK NARAYAN Nominee 3:
+Opening Unit Balance: 0.000
+11-Dec-2020 Purchase - via Internet - DIRECT 1,799,910.00 6,164.381 291.9855 6,164.381
+11-Dec-2020 *** Stamp Duty *** 90.00
+28-Dec-2020 Redemption - HDFCR52020122965871675 (1,802,654.87) (6,164.381) 292.4308 0.000
+Closing Unit Balance: 0.000 NAV on 02-Jul-2026: INR 410.2790 Total Cost Value: 0.00 Market Value on 02-Jul-2026: INR 0.00
+Current : Entry Load - Nil. Exit Load w.e.f 31-Mar-2015 [including SIP,STP,SWP&Micro(SIP) wherever available] - Nil. For lumpsum investment/switch in, the
+applicable load will be based on the load structure as on the date of investment/applicable NAV date. For SIP/STP transactions, load for each transaction is based on
+the applicable load structure as on the registration date. For details, please refer to SID and Addenda available on www.icicipruamc.com. "Please ensure that your
+account information is up to date. If there are any changes to your KYC details like address, contact details, occupation, income, PEP status, FATCA/CRS information
+etc. kindly update them immediately."
+Folio No: 8917491 / 30 PAN: AESPS5883B KYC: OK PAN: OK
+Vandana Srivastava
+P9669-ICICI Prudential Passive Multi-Asset Fund of Funds Direct Plan Growth (Non-Demat) - ISIN: INF109KC1Y15(Advisor: DIRECT) Registrar : CAMS
+Nominee 1: DEVIKA NARAYAN Nominee 2: AMAY VIVEK NARAYAN Nominee 3:
+Opening Unit Balance: 0.000
+14-Jul-2022 Purchase - DIRECT 499,975.00 51,748.675 9.6616 51,748.675
+14-Jul-2022 *** Stamp Duty *** 25.00
+17-Sep-2022 ***Change of ContactsChange of EMAIL through MFCENTRAL -
+CAMSONLINE-COL1663420214880***
+Market Value on 01-Jul-2026: INR 868,834.38
+Closing Unit Balance: 51,748.675 NAV on 01-Jul-2026: INR 16.7895 Total Cost Value: 500,000.00
+Current : Entry Load - Nil. Exit Load [including SIP,STP,SWP&Micro(SIP) wherever available] - If redeemed or switched out upto 12 months - 1.00 %, more than 12
+months - Nil. For lumpsum investment/switch in, the applicable load will be based on the load structure as on the date of investment/applicable NAV date. For
+SIP/STP transactions, load for each transaction is based on the applicable load structure as on the registration date. For details, please refer to SID and Addenda
+available on www.icicipruamc.com. "Please ensure that your account information is up to date. If there are any changes to your KYC details like address, contact
+details, occupation, income, PEP status, FATCA/CRS information etc. kindly update them immediately."
+Folio No: 8917491 / 30 PAN: AESPS5883B KYC: OK PAN: OK
+Vandana Srivastava
+Registrar : CAMS
+P8176-ICICI Prudential Value Fund (erstwhile Value Discovery Fund) - Direct Plan - Growth (Non-Demat) - ISIN: INF109K012K1(Advisor: DIRECT)
+Nominee 1: DEVIKA NARAYAN Nominee 2: AMAY VIVEK NARAYAN Nominee 3:
+Opening Unit Balance: 0.000
+Purchase - DIRECT 2,015.966
+16-Dec-2016 250,000.00 2,015.966 124.01
+Page 5 of 12
+CAMSCASWS-0307260282 Version:V3.4 Live-1017
+Consolidated Account Statement
+01-Jan-1990 To 03-Jul-2026
+Date Transaction Amount Units Price Unit
+(INR) (INR) Balance
+17-Dec-2016 ***Registration of Nominee***
+Switch Out - To Equity Arbitrage Fund - Drt Growth , less STT 0.000
+10-Jul-2019 (304,448.15) (2,015.966) 151.02
+10-Jul-2019 *** STT Paid *** 3.04
+30-Jul-2019 ***NCT Change of Default Bank Mandate***
+30-Jul-2019 ***CAN Data Updation***
+***NCT - Change of Default Bank Mandate***
+21-Mar-2023
+21-Mar-2023 ***Additional Bank Mandate Unregistered***
+21-Mar-2023 ***NCT Change of Bank Mandate***
+27-Mar-2023 ***NCT Correction of ARS***
+27-Mar-2023 ***NCT Correction of Change of Address***
+***NCT Correction of Permanent Address***
+27-Mar-2023
+05-Feb-2024 ***NCT Correction of ARS***
+12-Jul-2024 ***NCT - Change of Default Bank Mandate***
+12-Jul-2024 ***Additional Bank Mandate Unregistered***
+***NCT Change of Bank Mandate***
+12-Jul-2024
+12-Jul-2024 ***Additional Bank Mandate Unregistered***
+12-Jul-2024 ***NCT Change of Bank Mandate***
+02-Mar-2026 ***Deletion of Nominee***
+04-Mar-2026 ***NCT Change of Contact***
+07-Apr-2026 ***NCT Change of Contact***
+Market Value on 02-Jul-2026: INR 0.00
+Closing Unit Balance: 0.000 NAV on 02-Jul-2026: INR 512.31 Total Cost Value: 0.00
+Current : Entry Load - Nil. Exit Load w.e.f 07-May-2013 [including SIP,STP,SWP&Micro(SIP) wherever available] - If redeemed or switched out upto 12 months - 1.0%, >
+12 months - Nil. For lumpsum investment/switch in, the applicable load will be based on the load structure as on the date of investment/applicable NAV date. For
+SIP/STP transactions, load for each transaction is based on the applicable load structure as on the registration date. For details, please refer to SID and Addenda
+available on www.icicipruamc.com. Scheme Name of ICICI Prudential Value Discovery Fund has been changed to ICICI Prudential Value Fund with effect from June 16,
+2025. "Please ensure that your account information is up to date. If there are any changes to your KYC details like address, contact details, occupation, income, PEP
+status, FATCA/CRS information etc. kindly update them immediately."
+Folio No: 8917492 / 27 PAN: AESPS5883B KYC: OK PAN: OK
+Vandana Srivastava
+P8145-ICICI Prudential All Seasons Bond Fund - Direct Plan - Growth (formerly ICICI Prudential Long Term Plan) (Non-Demat) - ISIN: INF109K Registrar : CAMS
+016E5(Advisor: DIRECT)
+Nominee 1: DEVIKA NARAYAN Nominee 2: AMAY VIVEK NARAYAN Nominee 3:
+Opening Unit Balance: 0.000
+16-Dec-2016 Purchase - DIRECT 500,000.00 24,315.755 20.5628 24,315.755
+17-Dec-2016 ***Registration of Nominee***
+30-Dec-2016 Purchase - DIRECT 1,000,000.00 48,595.115 20.5782 72,910.870
+23-Jan-2017 Purchase - DIRECT 1,000,000.00 48,108.379 20.7864 121,019.249
+109,588.431
+14-Feb-2018 Switch Out - To Value Discovery Fund - DP Growth (250,000.00) (11,430.818) 21.8707
+13-Mar-2018 Switch Out - To Equity Arbitrage Fund - Drt Growth (2,403,033.19) (109,588.431) 21.9278 0.000
+30-Jul-2019 ***NCT Change of Default Bank Mandate***
+30-Jul-2019 ***CAN Data Updation***
+21-Mar-2023 ***NCT - Change of Default Bank Mandate***
+21-Mar-2023 ***Additional Bank Mandate Unregistered***
+21-Mar-2023 ***NCT Change of Bank Mandate***
+27-Mar-2023 ***NCT Correction of ARS***
+27-Mar-2023 ***NCT Correction of Change of Address***
+***NCT Correction of Permanent Address***
+27-Mar-2023
+05-Feb-2024 ***NCT Correction of ARS***
+12-Jul-2024 ***NCT - Change of Default Bank Mandate***
+12-Jul-2024 ***Additional Bank Mandate Unregistered***
+12-Jul-2024 ***NCT Change of Bank Mandate***
+12-Jul-2024 ***Additional Bank Mandate Unregistered***
+12-Jul-2024 ***NCT Change of Bank Mandate***
+02-Mar-2026 ***Deletion of Nominee***
+04-Mar-2026 ***NCT Change of Contact***
+***NCT Change of Contact***
+07-Apr-2026
+Market Value on 02-Jul-2026: INR 0.00
+Closing Unit Balance: 0.000 NAV on 02-Jul-2026: INR 42.5970 Total Cost Value: 0.00
+Current: Entry Load - Nil. Exit Load w.e.f. 01-Jan-2015 [including SIP,STP,SWP(SIP) wherever available] if redeemed or switched out within 1 month - 0.25%, > 1
+month - Nil. For lumpsum investment/switch in, the applicable load will be based on the load structure as on the date of investment/applicable NAV date. For
+SIP/STP transactions, load for each transaction is based on the applicable load structure as on the registration date. For details, please refer to SID and Addenda
+available on www.icicipruamc.com.
+Scheme Name of ICICI Prudential Long Term Plan has been changed to ICICI Prudential All Seasons Bond Fund with effect from May 28, 2018. "Please ensure that your
+account information is up to date. If there are any changes to your KYC details like address, contact details, occupation, income, PEP status, FATCA/CRS information
+etc. kindly update them immediately."
+Page 6 of 12
+CAMSCASWS-0307260282 Version:V3.4 Live-1017
+Consolidated Account Statement
+01-Jan-1990 To 03-Jul-2026
+Date Transaction Amount Units Price Unit
+(INR) (INR) Balance
+Folio No: 8917492 / 27 PAN: AESPS5883B KYC: OK PAN: OK
+Vandana Srivastava
+Registrar : CAMS
+P8178-ICICI Prudential Arbitrage Fund - Direct Plan - Growth (Non-Demat) - ISIN: INF109K016O4(Advisor: DIRECT)
+Nominee 1: DEVIKA NARAYAN Nominee 2: AMAY VIVEK NARAYAN Nominee 3:
+Opening Unit Balance: 0.000
+14-Mar-2018 Switch In - From Long Term Plan- Direct Growth - DIRECT 2,403,033.19 101,985.493 23.5625 101,985.493
+Equity Switch in - From Value Discovery Fund - DP Growth - DIRECT 111,540.235
+15-Jul-2019 246,988.17 9,554.742 25.8498
+11-Oct-2019 Redemption - ELECTRONIC PAYMENT - HDFCR52019101699956434 , (1,206,774.93) (46,000.000) 26.2345 65,540.235
+less STT
+11-Oct-2019 *** STT Paid *** 12.07
+9,554.742
+09-Mar-2020 Redemption - HDFCR52020031373876078 , less STT (1,501,611.08) (55,985.493) 26.8217
+09-Mar-2020 *** STT Paid *** 15.02
+19-Mar-2020 Switch Out - To Liquid Fund - DP Growth , less STT (256,834.63) (9,554.742) 26.8806 0.000
+19-Mar-2020 *** STT Paid *** 2.57
+24-Jun-2024 Purchase - DIRECT 1,199,940.00 35,149.892 34.1378 35,149.892
+24-Jun-2024 *** Stamp Duty *** 60.00
+05-Jul-2024 Purchase - DIRECT 1,999,900.00 58,440.211 34.2213 93,590.103
+05-Jul-2024 *** Stamp Duty *** 100.00
+05-Jul-2024 ***Change of ContactsMOBILE updated from New CAMSonline for
+AESPSXXXXB***
+28-Aug-2025 Redemption - ELECTRONIC PAYMENT - via Internet - (371,548.28) (10,000.000) 37.1552 83,590.103
+HDFCR52025090156318109 , less STT
+28-Aug-2025 *** STT Paid *** 3.72
+Redemption - ELECTRONIC PAYMENT - via Internet -
+03-Oct-2025 (373,397.27) (10,000.000) 37.3401 73,590.103
+HDFCR52025100769065203 , less STT
+03-Oct-2025 *** STT Paid *** 3.73
+07-Nov-2025 Purchase - via Internet - DIRECT 1,999,900.00 53,224.077 37.5751 126,814.180
+07-Nov-2025 *** Stamp Duty *** 100.00
+02-Dec-2025 Redemption - ELECTRONIC PAYMENT - via Internet - (571,530.02) (15,149.892) 37.7254 111,664.288
+HDFCR52025120490876865 , less STT
+02-Dec-2025 *** STT Paid *** 5.72
+Closing Unit Balance: 111,664.288 NAV on 02-Jul-2026: INR 39.2108 Total Cost Value: 4,000,000.00 Market Value on 02-Jul-2026: INR 4,378,446.06
+"Current : Entry Load - Nil. Exit Load w.e.f 06-Apr-2015 [including SIP,STP,SWP&Micro(SIP) wherever available] if redeemed or switched out within 1 month - 0.25%, >
+1 month - Nil. For lumpsum investment/switch in, the applicable load will be based on the load structure as on the date of investment/applicable NAV date. For
+SIP/STP transactions, load for each transaction is based on the applicable load structure as on the registration date. For details, please refer to SID and Addenda
+available on www.icicipruamc.com.
+Scheme Name of ICICI Prudential Equity Arbitrage Fund has been changed to ICICI Prudential Arbitrage Fund w.e.f May 27, 2026.Please ensure that your account
+information is up to date. If there are any changes to your KYC details like address, contact details, occupation, income, PEP status, FATCA/CRS information etc.
+kindly update them immediately."
+Folio No: 8917492 / 27 PAN: AESPS5883B KYC: OK PAN: OK
+Vandana Srivastava
+P8096-ICICI Prudential Liquid Fund - Direct Plan - Growth (formerly ICICI Prudential Liquid Plan) (Non-Demat) - ISIN: INF109K01Q49(Advisor:
+Registrar : CAMS
+DIRECT)
+Nominee 1: DEVIKA NARAYAN Nominee 2: AMAY VIVEK NARAYAN Nominee 3:
+Opening Unit Balance: 0.000
+23-Mar-2020 Switch in - From Equity Arbitrage Fund - Drt Growth - DIRECT 256,834.63 878.192 292.4583 878.192
+12-May-2020 Redemption - HDFCR52020051379458577 (259,600.49) (878.192) 295.6079 0.000
+17-Sep-2022 ***Change of ContactsChange of EMAIL through MFCENTRAL -
+CAMSONLINE-COL1663420215248***
+25-Mar-2023 ***Address Updated from KRA Data***
+25-Mar-2023 ***Address Updated from KRA Data***
+17-Apr-2023 ***Change of ContactsEMAIL updated from New CAMSonline for
+AESPSXXXXB***
+21-Apr-2023 ***Address Updated from KRA Data***
+22-Apr-2023 ***Address Updated from KRA Data***
+12-May-2023 ***Address Updated from KRA Data***
+12-May-2023 ***Address Updated from KRA Data***
+24-May-2023 ***Address Updated from KRA Data***
+24-May-2023 ***Address Updated from KRA Data***
+20-Oct-2023 ***Address Updated from KRA Data***
+21-Oct-2024 ***Address Updated from KRA Data***
+21-Oct-2024 ***Address Updated from KRA Data***
+02-Mar-2026 ***Registration of Nominee***
+02-Mar-2026 ***Registration of Nominee***
+16-Apr-2026 ***Address Updated from KRA Data***
+***Address Updated from KRA Data***
+16-Apr-2026
+Page 7 of 12
+CAMSCASWS-0307260282 Version:V3.4 Live-1017
+Consolidated Account Statement
+01-Jan-1990 To 03-Jul-2026
+Date Transaction Amount Units Price Unit
+(INR) (INR) Balance
+Closing Unit Balance: 0.000 NAV on 02-Jul-2026: INR 415.3754 Total Cost Value: 0.00 Market Value on 02-Jul-2026: INR 0.00
+Current: Entry Load - Nil. Exit Load w.e.f 20-Oct-2019 - If redeemed or switched out from Day1 - 0.0070% ; Day2 - 0.0065% ; Day3 - 0.0060% ; Day4 - 0.0055% ; Day5 -
+0.0050% ; Day6 - 0.0045% and Day7 onwards Nil. (Calendar Days). For lumpsum investment/switch in, the applicable load will be based on the load structure as on the
+date of investment/applicable NAV date. For SIP/STP transactions, load for each transaction is based on the applicable load structure as on the installment date. For
+details, please refer to SID and Addenda available on www.icicipruamc.com.
+Scheme Name of ICICI Prudential Liquid Plan has been changed to ICICI Prudential Liquid Fund with effect from May 28, 2018. "Please ensure that your account
+information is up to date. If there are any changes to your KYC details like address, contact details, occupation, income, PEP status, FATCA/CRS information etc.
+kindly update them immediately."
+Folio No: 8917492 / 27 PAN: AESPS5883B KYC: OK PAN: OK
+Vandana Srivastava
+Registrar : CAMS
+P8176-ICICI Prudential Value Fund (erstwhile Value Discovery Fund) - Direct Plan - Growth (Non-Demat) - ISIN: INF109K012K1(Advisor: DIRECT)
+Nominee 1: DEVIKA NARAYAN Nominee 2: AMAY VIVEK NARAYAN Nominee 3:
+Opening Unit Balance: 0.000
+15-Feb-2018 Switch In - From Long Term Plan- Direct Growth - DIRECT 250,000.00 1,635.483 152.86 1,635.483
+Switch Out - To Equity Arbitrage Fund - Drt Growth , less STT 0.000
+10-Jul-2019 (246,988.17) (1,635.483) 151.02
+10-Jul-2019 *** STT Paid *** 2.47
+Market Value on 02-Jul-2026: INR 0.00
+Closing Unit Balance: 0.000 NAV on 02-Jul-2026: INR 512.31 Total Cost Value: 0.00
+Current : Entry Load - Nil. Exit Load w.e.f 07-May-2013 [including SIP,STP,SWP&Micro(SIP) wherever available] - If redeemed or switched out upto 12 months - 1.0%, >
+12 months - Nil. For lumpsum investment/switch in, the applicable load will be based on the load structure as on the date of investment/applicable NAV date. For
+SIP/STP transactions, load for each transaction is based on the applicable load structure as on the registration date. For details, please refer to SID and Addenda
+available on www.icicipruamc.com. Scheme Name of ICICI Prudential Value Discovery Fund has been changed to ICICI Prudential Value Fund with effect from June 16,
+2025. "Please ensure that your account information is up to date. If there are any changes to your KYC details like address, contact details, occupation, income, PEP
+status, FATCA/CRS information etc. kindly update them immediately."
+PPFAS Mutual Fund
+Folio No: 11313397 PAN: AESPS5883B KYC: OK PAN: OK
+Vandana Srivastava
+PPAFDG-Parag Parikh Arbitrage Fund - Direct Plan Growth (Non-Demat) - ISIN: INF879O01225(Advisor: DIRECT) Registrar : CAMS
+Nominee 1: Devika Narayan Nominee 2: Amay Vivek Narayan Nominee 3:
+Opening Unit Balance: 0.000
+28-Apr-2025 Purchase - via Internet 2,999,850.01 268,890.503 11.1564 268,890.503
+28-Apr-2025 *** Stamp Duty *** 149.99
+*Switch-Out - To Parag Parikh DAAF Dir Plan Growth - via Internet , less
+25-Jul-2025 (2,500,000.00) (220,596.929) 11.3330 48,293.574
+STT
+25-Jul-2025 *** STT Paid *** 25.00
+17-Apr-2026 ***Address Updated from KRA Data***
+20-May-2026 ***Address Updated from KRA Data - 1st Joint Holder***
+26-May-2026 ***Address Updated from KRA Data - 1st Joint Holder***
+Market Value on 02-Jul-2026: INR 579,648.45
+Closing Unit Balance: 48,293.574 NAV on 02-Jul-2026: INR 12.0026 Total Cost Value: 538,809.37
+Entry Load - NIL, Exit load - In respect of each purchase / switch-in of units, an Exit Load of 0.25% is payable if Units are redeemed/ switched-out within 30 days from
+the date of allotment. No Exit Load is payable if Units are redeemed / switched-out after 30 days from the date of allotment. stamp duty @ 0.005% will be deducted
+from the Net investment amount. Units will be allotted for the balance amount. "Please ensure that your account information is up to date. If there are any changes
+to your KYC details like address, contact details, occupation, income, PEP status, FATCA/CRS information etc. kindly update them immediately."
+Folio No: 11313397 PAN: AESPS5883B KYC: OK PAN: OK
+Vandana Srivastava
+Registrar : CAMS
+PPCHFGZ-Parag Parikh Conservative Hybrid Fund - Direct Plan Growth (Non-Demat) - ISIN: INF879O01175(Advisor: DIRECT)
+Nominee 1: Devika Narayan Nominee 2: Amay Vivek Narayan Nominee 3:
+Opening Unit Balance: 0.000
+30-Jul-2021 Purchase - via Internet 499,975.00 49,870.331 10.0255 49,870.331
+30-Jul-2021 *** Stamp Duty *** 25.00
+31-Jul-2021 ***Address Updated from KRA Data***
+31-Jul-2021 ***Address Updated from KRA Data - 1st Joint Holder***
+31-Jul-2021 ***Registration of Nominee***
+Purchase - via Internet 99,596.327
+04-Aug-2021 499,975.00 49,725.996 10.0546
+04-Aug-2021 *** Stamp Duty *** 25.00
+08-Oct-2021 Purchase - via Internet 1,999,900.00 192,093.055 10.4111 291,689.382
+08-Oct-2021 *** Stamp Duty *** 100.00
+19-Oct-2021 ***Additional Investor Payout Default Bank Mandate***
+17-Sep-2022 ***Change of ContactsChange of EMAIL through MFCENTRAL -
+CAMSONLINE-COL1663420215785***
+27-Mar-2023 ***Address Updated from KRA Data***
+17-Apr-2023 ***Change of ContactsEMAIL updated from New CAMSonline for
+AESPSXXXXB***
+26-Apr-2023 ***Address Updated from KRA Data***
+Page 8 of 12
+CAMSCASWS-0307260282 Version:V3.4 Live-1017
+Consolidated Account Statement
+01-Jan-1990 To 03-Jul-2026
+Date Transaction Amount Units Price Unit
+(INR) (INR) Balance
+12-May-2023 ***Address Updated from KRA Data***
+***Address Updated from KRA Data***
+19-Oct-2023
+19-Oct-2023 ***Address Updated from KRA Data - 1st Joint Holder***
+02-Jan-2024 ***Address Updated from KRA Data - 1st Joint Holder***
+05-Feb-2024 ***Address Updated from KRA Data - 1st Joint Holder***
+***Address Updated from KRA Data - 1st Joint Holder***
+26-Mar-2024
+26-Mar-2024 ***Address Updated from KRA Data - 1st Joint Holder***
+05-Jul-2024 ***Change of ContactsMOBILE updated from New CAMSonline for
+AESPSXXXXB***
+18-Oct-2024 ***Address Updated from KRA Data - 1st Joint Holder***
+18-Oct-2024 ***Address Updated from KRA Data***
+Market Value on 02-Jul-2026: INR 4,705,766.46
+Closing Unit Balance: 291,689.382 NAV on 02-Jul-2026: INR 16.1328 Total Cost Value: 3,000,000.00
+Current Load Structure:- Entry Load: Nil ; Exit Load: In each of purchase/Switch-In units, 10% of the units('the limit') may be redeemed without any exit load from the
+date of allotment.
+Any redemption or switch-out in excess of the above limit shall be subject to the following exit load:
+- Exit load of 1% is applicable, if Units are redeemed/switched-out within 1 year from the date of allotment of units and thereafter there is no exit load.
+"Effective from July 01, 2020, stamp duty @ 0.005% will be deducted from the Net investment amount. Units will be allotted for the balance amount". "Please ensure
+that your account information is up to date. If there are any changes to your KYC details like address, contact details, occupation, income, PEP status, FATCA/CRS
+information etc. kindly update them immediately."
+Folio No: 11313397 PAN: AESPS5883B KYC: OK PAN: OK
+Vandana Srivastava
+Registrar : CAMS
+PPDAFGZ-Parag Parikh Dynamic Asset Allocation Fund - Direct Plan Growth (Non-Demat) - ISIN: INF879O01266(Advisor: DIRECT)
+Nominee 1: Devika Narayan Nominee 2: Amay Vivek Narayan Nominee 3:
+Opening Unit Balance: 0.000
+24-Apr-2025 Purchase - via Internet 999,950.00 88,849.694 11.2544 88,849.694
+*** Stamp Duty ***
+24-Apr-2025 50.00
+22-May-2025 Purchase - via Internet 1,499,925.00 132,539.676 11.3168 221,389.370
+22-May-2025 *** Stamp Duty *** 75.00
+29-Jul-2025 Switch-In - From Parag Parikh Arbitrage Direct Pl Growth - via Internet 2,499,875.01 219,183.458 11.4054 440,572.828
+29-Jul-2025 *** Stamp Duty *** 124.99
+26-May-2026 ***Change of Contacts***
+Market Value on 02-Jul-2026: INR 5,233,124.05
+Closing Unit Balance: 440,572.828 NAV on 02-Jul-2026: INR 11.8780 Total Cost Value: 5,000,000.00
+Current Load Structure:- Entry Load: Nil ; Exit Load: In each of purchase/Switch-In units, 10% of the units('the limit') may be redeemed without any exit load from the
+date of allotment. Any redemption or switch-out in excess of the above limit shall be subject to the following exit load: - Exit load of 1% is applicable, if Units are
+redeemed/switched-out within 1 year from the date of allotment of units and thereafter there is no exit load. "Effective from July 01, 2020, stamp duty @ 0.005% will
+be deducted from the Net investment amount. Units will be allotted for the balance amount".
+"Please ensure that your account information is up to date. If there are any changes to your KYC details like address, contact details, occupation, income, PEP status,
+FATCA/CRS information etc. kindly update them immediately."
+Quant MF
+Folio No: 51011238062 / 0 PAN: AESPS5883B KYC: OK PAN: OK
+VANDANA SRIVASTAVA
+Registrar :
+166TPDGG-quant ELSS Tax Saver Fund - Direct Plan - Growth (Non Demat) - ISIN: INF966L01986
+KFINTECH
+Nominee 1: DEVIKA NARAYAN Nominee 2: AMAY VIVEK NARAYAN Nominee 3:
+Opening Unit Balance: 0.000
+28-Mar-2022 New Purchase 99,995.00 417.339 239.6014 417.339
+28-Mar-2022 *** Stamp Duty *** 5.00
+29-Mar-2022 ******Address Updated from CVL Data******
+Market Value on 02-Jul-2026: INR 190,162.27
+Closing Unit Balance: 417.339 NAV on 02-Jul-2026: INR 455.6542 Total Cost Value: 100,000.00
+Entry load - NILL, Exit load - NILL. Lock in period is 3 years from the date of subscription.The above investment in Quant Tax Plan Fund is eligible for availing tax
+benefits under Section 80C of Income Tax Act,1961.
+Quantum Mutual Fund
+Folio No: 9991044166 / 0 PAN: AESPS5883B KYC: OK PAN: OK
+VANDANA SRIVASTAVA
+Registrar :
+123FEGPG-Quantum Diversified Equity All Cap Active FOF - Direct Plan Growth Option (Non Demat) - ISIN: INF082J01093
+KFINTECH
+Nominee 1: DEVIKA NARAYAN Nominee 2: AMAY VIVEK NARAYAN Nominee 3:
+Opening Unit Balance: 0.000
+22-Jul-2014 Purchase Trxn.Ref.No.112713815/Axis Bank 500,000.00 23,532.734 21.247 23,532.734
+16-Jul-2020 Lateral Shift In (From Quantum Value Fund - Direct Plan Growth Option 1,521,065.17 46,382.423 32.794 69,915.157
+F.No:9991044166)
+16-Jul-2020 *** Stamp Duty *** 76.05
+Page 9 of 12
+CAMSCASWS-0307260282 Version:V3.4 Live-1017
+Consolidated Account Statement
+01-Jan-1990 To 03-Jul-2026
+Date Transaction Amount Units Price Unit
+(INR) (INR) Balance
+Closing Unit Balance: 69,915.157 NAV on 01-Jul-2026: INR 85.668 Total Cost Value: 2,021,141.22 Market Value on 01-Jul-2026: INR 5,989,491.67
+Entry Load - Not Applicable, Exit load - 10% of units if redeemed or switched out from the date of allotment - Nil,Remaining 90% of units if redeemed or switched out
+on or before 365 days from the date of allotment - 1%,If redeemed or switched out after 365 days from the date of allotment - Nil.
+Folio No: 9991044166 / 0 PAN: AESPS5883B KYC: OK PAN: OK
+VANDANA SRIVASTAVA
+Registrar :
+123TSGPG-Quantum ELSS Tax Saver Fund - Direct Plan Growth (Non Demat) - ISIN: INF082J01069
+KFINTECH
+Nominee 1: DEVIKA NARAYAN Nominee 2: AMAY VIVEK NARAYAN Nominee 3:
+Opening Unit Balance: 0.000
+06-Jan-2015 Purchase Trxn.Ref.No.130381725/Axis Bank 150,000.00 4,014.989 37.36 4,014.989
+12-Feb-2018 Lateral Shift Out (To Quantum Value Fund - Direct Plan Growth Option (213,073.34) (4,014.989) 53.07 0.000
+F.No:9991044166) less TDS, STT
+*** STT Paid ***
+12-Feb-2018 2.13
+Market Value on 02-Jul-2026: INR 0.00
+Closing Unit Balance: 0.000 NAV on 02-Jul-2026: INR 125.19 Total Cost Value: 0.00
+Entry Load : Not applicable, Exit Load : NIL - Lock in period is 3 years from the date of allotment.The above investment in Quantum ELSS Tax Saver Fund is eligible
+for availing tax benefits under Section 80C of Income Tax Act 1961,Subject to the limits and conditions specified in Section 80C.
+Folio No: 9991044166 / 0 PAN: AESPS5883B KYC: OK PAN: OK
+VANDANA SRIVASTAVA
+Registrar :
+123LFGPG-Quantum Liquid Fund - Direct Plan Growth (Non Demat) - ISIN: INF082J01127
+KFINTECH
+Nominee 1: DEVIKA NARAYAN Nominee 2: AMAY VIVEK NARAYAN Nominee 3:
+Opening Unit Balance: 0.000
+13-Feb-2012 Purchase Trxn.Ref.No.40807459/Axis Bank(NAV Dt : 12/02/2012) 250,000.00 16,611.627 15.0497 16,611.627
+Purchase Trxn.Ref.No.41013227/Axis Bank(NAV Dt : 16/02/2012)
+16-Feb-2012 400,000.00 26,552.315 15.0646 43,163.942
+02-Jan-2013 Redemption(NAV Dt : 02/01/2013) (65,076.80) (4,000.000) 16.2692 39,163.942
+24-Feb-2013 Redemption(NAV Dt : 24/02/2013) (411,375.00) (25,000.000) 16.4550 14,163.942
+24-Feb-2013 Lateral Shift Out (To Quantum Value Fund - Direct Plan Growth Option (100,000.00) (6,077.180) 16.4550 8,086.762
+F.No:9991044166)
+03-Apr-2013 Lateral Shift Out (To Quantum Value Fund - Direct Plan Growth Option (100,000.00) (6,017.390) 16.6185 2,069.372
+F.No:9991044166)
+26-Jun-2013 Lateral Shift Out (To Quantum Value Fund - Direct Plan Growth Option (34,973.63) (2,069.372) 16.9006 0.000
+F.No:9991044166)
+Closing Unit Balance: 0.000 NAV on 02-Jul-2026: INR 37.3055 Total Cost Value: 0.00 Market Value on 02-Jul-2026: INR 0.00
+Entry Load : Not Applicable, Exit Load : W.e.f 20.10.2019: exit load on a graded basis is applicable for redemption/ switches i.e. Day1 - 0.0070%, Day 2 - 0.0065%,Day
+3 - 0.0060%, Day 4 - 0.0055%, Day 5 - 0.0050%, Day 6 - 0.0045%, Day 7 Onwards -Nil.
+Folio No: 9991044166 / 0 PAN: AESPS5883B KYC: OK PAN: OK
+VANDANA SRIVASTAVA
+Registrar :
+123EFGPG-Quantum Value Fund - Direct Plan Growth Option (Non Demat) - ISIN: INF082J01036
+KFINTECH
+Nominee 1: DEVIKA NARAYAN Nominee 2: AMAY VIVEK NARAYAN Nominee 3:
+Opening Unit Balance: 0.000
+21-Jul-2010 Purchase 50,000.00 2,395.783 20.87 2,395.783
+16-Mar-2011 Purchase Trxn.Ref.No.25473976/Axis Bank 50,000.00 2,315.887 21.59 4,711.670
+Purchase 9,549.599
+12-Aug-2011 100,000.00 4,837.929 20.67
+18-Aug-2011 Purchase Trxn.Ref.No.31734559/Axis Bank 100,000.00 4,992.511 20.03 14,542.110
+18-Aug-2011 Switch Over In (From Quantum Value Fund - Direct Plan IDCW Re- 49,217.50 2,457.189 20.03 16,999.299
+Investment Option F.No:9991044166)
+12-Sep-2011 Purchase Trxn.Ref.No.32825169/Axis Bank 250,000.00 12,444.002 20.09 29,443.301
+25-Feb-2013 Lateral Shift In (From Quantum Liquid Fund - Direct Plan Growth 100,000.00 3,966.680 25.21 33,409.981
+F.No:9991044166)
+03-Apr-2013 Lateral Shift In (From Quantum Liquid Fund - Direct Plan Growth 100,000.00 4,101.723 24.38 37,511.704
+F.No:9991044166)
+26-Jun-2013 Lateral Shift In (From Quantum Liquid Fund - Direct Plan Growth 34,973.63 1,485.080 23.55 38,996.784
+F.No:9991044166)
+28-Aug-2013 Purchase Trxn.Ref.No.82713310/Axis Bank 150,000.00 6,693.440 22.41 45,690.224
+04-Jul-2014 Purchase Trxn.Ref.No.110914793/Axis Bank 400,000.00 11,267.606 35.50 56,957.830
+Purchase Trxn.Ref.No.112589428/Axis Bank 69,896.300
+21-Jul-2014 450,000.00 12,938.470 34.78
+21-Mar-2016 Purchase Trxn.Ref.No.406707922/Axis Bank 500,000.00 13,144.059 38.04 83,040.359
+15-Nov-2016 Purchase Trxn.Ref.No.451952406/Axis Bank 250,000.00 5,807.201 43.05 88,847.560
+16-Feb-2018 Lateral Shift In (From Quantum ELSS Tax Saver Fund - Direct Plan Growth 213,073.34 4,027.851 52.90 92,875.411
+F.No:9991044166)
+13-Jul-2020 Lateral Shift Out (To Quantum Diversified Equity All Cap Active FOF - (1,521,141.22) (33,409.981) 45.53 59,465.430
+Direct Plan Growth Option F.No:9991044166) less TDS, STT
+13-Jul-2020 *** STT Paid *** 15.21
+0.000
+11-Dec-2023 Redemption Smile redemption of Rs.0 less TDS, STT (5,960,160.45) (59,465.430) 100.23
+11-Dec-2023 *** STT Paid *** 59.60
+Page 10 of 12
+CAMSCASWS-0307260282 Version:V3.4 Live-1017
+Consolidated Account Statement
+01-Jan-1990 To 03-Jul-2026
+Date Transaction Amount Units Price Unit
+(INR) (INR) Balance
+Closing Unit Balance: 0.000 NAV on 02-Jul-2026: INR 125.26 Total Cost Value: 0.00 Market Value on 02-Jul-2026: INR 0.00
+Entry Load - Not Applicable, Exit Load - W.e.f : 01.03.2019 - 10% of units if redeemed or switched out from the allotment - Nil, Remaining 90% of units in parts or full.
+(i) if redeemed or switched out on or before 365 days from the date of allotment - 2% exit load is applicable,(ii) if redeemed or switched out after 365 days but
+before 730 days from the date of allotment - 1 % of Exit load applicable,(iii) If units redeemed or switched out after 730 days from the date of allotment - Nil exit
+load.
+Folio No: 9991044166 / 0 PAN: AESPS5883B KYC: OK PAN: OK
+VANDANA SRIVASTAVA
+# Registrar :
+123EFDPR-Quantum Value Fund - Direct Plan IDCW Re-Investment Option (Non Demat) - ISIN: INF082J01051 - Reinvest
+KFINTECH
+Nominee 1: DEVIKA NARAYAN Nominee 2: AMAY VIVEK NARAYAN Nominee 3:
+Opening Unit Balance: 0.000
+30-Jun-2010 Purchase 50,000.00 2,442.599 20.47 2,442.599
+18-Aug-2011 Switch Over Out (To Quantum Value Fund - Direct Plan Growth Option (49,217.50) (2,442.599) 20.20 0.000
+F.No:9991044166) less TDS, STT
+18-Aug-2011 *** STT Paid *** 123.00
+Closing Unit Balance: 0.000 NAV on 02-Jul-2026: INR 125.52 Total Cost Value: 0.00 Market Value on 02-Jul-2026: INR 0.00
+Entry Load - Not Applicable, Exit Load - W.e.f : 01.03.2019 - 10% of units if redeemed or switched out from the allotment - Nil, Remaining 90% of units in parts or full.
+(i) if redeemed or switched out on or before 365 days from the date of allotment - 2% exit load is applicable,(ii) if redeemed or switched out after 365 days but
+before 730 days from the date of allotment - 1 % of Exit load applicable,(iii) If units redeemed or switched out after 730 days from the date of allotment - Nil exit
+load.
+UTI Mutual Fund
+Folio No: 599215637885 / 0 PAN: AESPS5883B KYC: OK PAN: OK
+VANDANA SRIVASTAVA
+Registrar :
+108INGPG-UTI Infrastructure Fund - Regular Plan (Non Demat) - ISIN: INF789F01752
+KFINTECH
+Nominee 1: DEVIKA NARAYAN Nominee 2: AMAY VIVEK NARAYAN Nominee 3:
+Opening Unit Balance: 0.000
+25-Jan-2008 Purchase 25,000.00 584.112 42.8000 584.112
+Purchase 1,286.359
+14-Mar-2008 25,000.00 702.247 35.6000
+12-May-2008 Purchase 50,000.00 1,412.828 35.3900 2,699.187
+30-Jun-2008 Purchase Trxn.Ref.No.4729870/AXIS BANK 25,000.00 871.688 28.6800 3,570.875
+01-Sep-2008 Purchase Trxn.Ref.No.5500369/AXIS BANK 25,000.00 824.266 30.3300 4,395.141
+Purchase Trxn.Ref.No.6304917/AXIS BANK
+27-Oct-2008 10,000.00 516.796 19.3500 4,911.937
+29-Oct-2008 Purchase Trxn.Ref.No.6329056/AXIS BANK 10,000.00 494.071 20.2400 5,406.008
+24-Dec-2008 Purchase Trxn.Ref.No.7117264/AXIS BANK 20,000.00 948.317 21.0900 6,354.325
+31-Aug-2009 Purchase Trxn.Ref.No.11489217/AXIS BANK 10,000.00 306.466 32.6300 6,660.791
+25-Apr-2013 Redemption Directly credited to your Bank account (DCB) less TDS, STT (188,268.84) (6,660.791) 28.3361 0.000
+25-Apr-2013 *** STT Paid *** 472.00
+Market Value on 02-Jul-2026: INR 0.00
+Closing Unit Balance: 0.000 NAV on 02-Jul-2026: INR 146.3097 Total Cost Value: 0.00
+Entry Load: NIL, W.e.f. 01/04/2021 Exit Load : 1.00% if redeemed before 30 days from the date of investment.No Exit load on or after 30 days from the date of
+investment.
+Folio No: 599215637906 / 0 PAN: AESPS5883B KYC: OK PAN: OK
+VANDANA SRIVASTAVA
+Registrar :
+108NIGPG-UTI Nifty 50 Index Fund - Regular Plan (Non Demat) - ISIN: INF789F01JN2
+KFINTECH
+Nominee 1: DEVIKA NARAYAN Nominee 2: AMAY VIVEK NARAYAN Nominee 3:
+Opening Unit Balance: 0.000
+Purchase 734.780
+25-Jan-2008 25,000.00 734.780 34.0238
+14-Mar-2008 Purchase 25,000.00 835.573 29.9196 1,570.353
+12-May-2008 Purchase 50,000.00 1,583.852 31.5686 3,154.205
+28-May-2008 Purchase Trxn.Ref.No.4375217/AXIS BANK 25,000.00 807.405 30.9634 3,961.610
+02-Jun-2008 Purchase Trxn.Ref.No.4437283/AXIS BANK 25,000.00 837.016 29.8680 4,798.626
+04-Jun-2008 Purchase Trxn.Ref.No.4467736/AXIS BANK 25,000.00 865.124 28.8976 5,663.750
+08-Jul-2008 Purchase Trxn.Ref.No.4848667/AXIS BANK 25,000.00 994.886 25.1285 6,658.636
+07-Oct-2008 Purchase Trxn.Ref.No.6041563/AXIS BANK 25,000.00 1,097.218 22.7849 7,755.854
+20-Nov-2008 Purchase Trxn.Ref.No.6646429/AXIS BANK 25,000.00 1,549.494 16.1343 9,305.348
+Purchase Trxn.Ref.No.7117160/AXIS BANK 10,662.789
+24-Dec-2008 25,000.00 1,357.441 18.4170
+31-Aug-2009 Purchase Trxn.Ref.No.11489179/AXIS BANK 25,000.00 855.444 29.2246 11,518.233
+25-Apr-2013 Redemption Directly credited to your Bank account (DCB) less TDS, STT (422,520.56) (11,518.233) 36.7747 0.000
+25-Apr-2013 *** STT Paid *** 1,059.00
+Page 11 of 12
+CAMSCASWS-0307260282 Version:V3.4 Live-1017
+Consolidated Account Statement
+01-Jan-1990 To 03-Jul-2026
+Date Transaction Amount Units Price Unit
+(INR) (INR) Balance
+Closing Unit Balance: 0.000 NAV on 02-Jul-2026: INR 167.2310 Total Cost Value: 0.00 Market Value on 02-Jul-2026: INR 0.00
+W.e.f. 02-05-2016 - Entry load and Exit load : Nil.
+#
+IDCW - Income Distribution cum Capital Withdrawal
+Page 12 of 12
+CAMSCASWS-0307260282 Version:V3.4 Live-1017

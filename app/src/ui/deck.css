@@ -1,0 +1,202 @@
+/* "Command Deck" — the dark lean-core dashboard (tasks.md §U, locked
+   2026-07-04; retheme to dual dark/light "Terminal Deck" / "The Ledger",
+   2026-07-08). Every color here routes through tokens.css custom properties
+   — no hardcoded hex — so both themes (and the instant toggle between them)
+   apply without touching this file again. See docs/DECISIONS.md "Dark/Light
+   theme toggle". */
+.deck {
+  padding: 28px 0;
+}
+.deck-frame {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 20px;
+  background: var(--frame);
+  border: 1px solid var(--frame-line);
+  border-radius: 14px;
+}
+
+/* ---- masthead ---- */
+.deck-mast {
+  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+  padding-bottom: 14px; margin-bottom: 16px; border-bottom: 1px solid var(--frame-line);
+}
+.deck-mast-title { font-family: var(--font-serif); font-size: 18px; font-weight: 500; letter-spacing: -.2px; margin: 0; color: var(--ink); }
+.deck-mast-meta { font-size: 12.5px; color: var(--muted); }
+.deck-mast-space { flex: 1; }
+.deck-btn {
+  border: 1px solid var(--line); border-radius: 9px; background: var(--card); color: var(--ink);
+  font-family: inherit; font-size: 12.5px; font-weight: 700; padding: 8px 13px;
+  cursor: pointer; display: inline-flex; align-items: center; gap: 7px;
+}
+.deck-btn:hover { background: var(--card-hover); }
+.deck-btn:disabled { opacity: .55; cursor: default; }
+.deck-btn:focus-visible, .deck-advt:focus-visible, .deck-ilink:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
+.deck-btn.spin .deck-ic { animation: deck-spin 1s linear infinite; }
+.deck-ic { width: 15px; height: 15px; flex: none; color: var(--ink); }
+@keyframes deck-spin { to { transform: rotate(360deg); } }
+
+/* ---- KPI row (4 tiles, full width, under the masthead) ---- */
+.deck-kpi-rail { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 14px; }
+
+/* ---- 2-column grid: chart+holdings | allocation+insight ----
+   Left column is a fixed 512px (matches the "Value vs Invested" chart box's
+   own fixed width below) rather than an even 1fr/1fr split, so that box's
+   width is a real invariant instead of "whatever the grid happens to leave
+   it" — see docs/DECISIONS.md "Value vs Invested: fixed size, Holdings
+   grows to match". */
+.deck-grid-2col { display: grid; grid-template-columns: 512px 1fr; gap: 14px; }
+.deck-col { display: flex; flex-direction: column; gap: 14px; }
+
+/* ---- tiles (KPI row) ---- */
+.deck-tile { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; display: flex; flex-direction: column; }
+.deck-lbl { font-size: 12px; color: var(--muted); margin: 0 0 6px; }
+.deck-val { font-family: var(--font-serif); font-size: 22px; font-weight: 500; line-height: 1.1; color: var(--ink); font-variant-numeric: tabular-nums; }
+.deck-sub { font-size: 12px; margin-top: 6px; font-variant-numeric: tabular-nums; }
+.deck-pos { color: var(--pos); }
+.deck-neg { color: var(--neg); }
+.deck-mut { color: var(--muted); }
+.deck-clay { color: var(--clay); }
+.deck-accent { color: var(--green); }
+
+/* secondary footer inside a tile (Total Value -> Total Invested + fund
+   count) — label+amount on one line, fund count on its own line below, so
+   neither wraps mid-phrase at narrower tile widths. */
+.deck-tile-foot { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); font-size: 12px; }
+.deck-tile-foot-row { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+.deck-tile-foot-v { color: var(--ink); font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+.deck-tile-foot-sub { color: var(--muted); text-align: right; margin-top: 2px; }
+
+/* small 2-col split, secondary emphasis (Total Gain -> Short/Long Term) */
+.deck-stlt { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); }
+.deck-stlt-k { font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin: 0 0 2px; }
+.deck-stlt-v { font-size: 13px; font-variant-numeric: tabular-nums; margin: 0; }
+
+/* bigger 2-col split, primary emphasis (CAGR/XIRR shown side by side) */
+.deck-dual { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.deck-dual-k { font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin: 0 0 3px; }
+.deck-dual-v { font-size: 19px; font-weight: 500; margin: 0; line-height: 1.1; color: var(--ink); font-variant-numeric: tabular-nums; }
+.deck-dual-bench { font-size: 10.5px; color: var(--ink); margin: 5px 0 0; font-variant-numeric: tabular-nums; }
+
+/* ---- generic card ---- */
+.deck-card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+.deck-sec { font-family: var(--font-serif); font-size: 12.5px; font-weight: 500; color: var(--muted); margin: 0; }
+
+/* ---- value-vs-invested chart card ---- */
+.deck-charthead { display: flex; align-items: center; justify-content: space-between; margin: 0 0 8px; }
+.deck-chart-svg { display: flex; flex-direction: column; }
+.deck-chart-svg svg { display: block; width: 100%; height: auto; }
+.deck-chart-svg .gslide-legend { margin: 8px 0 0; color: var(--muted); justify-content: center; }
+.deck-empty { font-size: 12.5px; color: var(--muted); margin: 8px 0 4px; }
+
+/* ---- top-holdings mini table ---- */
+/* Equal margin on every side of the table within the box (was 6/16/4px,
+   asymmetric) — the table's own font sizes are unchanged; this box grows
+   taller instead (see the height rules below) rather than the table text
+   ever spilling past the card's edge. */
+.deck-holdings { padding: 16px; }
+
+/* ---- left/right column height matching (desktop only) ----
+   "Value vs Invested" (the chart column's first card) is a fixed 512x400 —
+   not part of the height-matching system at all. Top Holdings (the chart
+   column's second/last card) and the Allocation card are both `flex: 1`
+   with NO min-height override, so each can grow to fit its own natural
+   content (default `min-height: auto` — the flexbox spec's built-in "never
+   shrink below your own content" floor) while still stretching to match
+   whichever of the two ends up taller, via the grid row's default
+   align-items: stretch. That's what keeps their bottoms aligned in EITHER
+   direction: if Allocation's natural content is taller, Holdings stretches
+   down to match (as before); if Holdings' 5 rows need more room than
+   Allocation would otherwise dictate, the whole row — and so Allocation
+   too — grows to match instead of Holdings' content overflowing its box.
+   Below 1024px the grid drops to a single column and boxes just take their
+   natural height instead. ---- */
+@media (min-width: 1024px) {
+  .deck-col-chart, .deck-col-alloc { display: flex; flex-direction: column; }
+  .deck-col-alloc > .deck-card { flex: 1; min-height: 0; }
+  .deck-col-chart > .deck-card:first-child {
+    flex: 0 0 400px; width: 512px; max-width: 100%; height: 400px;
+    display: flex; flex-direction: column;
+  }
+  .deck-col-chart > .deck-card:first-child .deck-chart-svg { flex: 1; min-height: 0; }
+  .deck-col-chart > .deck-card:first-child .deck-chart-svg svg { flex: 1; min-height: 0; height: auto; }
+  .deck-col-chart > .deck-card:last-child { flex: 1; }
+}
+/* table-layout: fixed + explicit widths per numeric column (Value and Total
+   Gain each need room for real 9/8-figure amounts with a currency symbol
+   and, for gains, a +/- sign — CAGR is always a short percentage and stays
+   narrow) stops large figures from spilling into a neighboring column;
+   Holding (left unset) takes the remainder. */
+.deck-tbl { width: 100%; border-collapse: collapse; font-size: 12.5px; table-layout: fixed; }
+.deck-tbl th, .deck-tbl td { padding: 8px 6px; border-bottom: 1px solid var(--line); font-variant-numeric: tabular-nums; color: var(--ink); }
+.deck-tbl th { color: var(--muted); font-weight: 400; text-align: left; }
+.deck-tbl tr:last-child td { border-bottom: none; }
+.deck-rt { text-align: right; white-space: nowrap; }
+.deck-rt-value { width: 112px; }
+.deck-rt-gain { width: 112px; }
+.deck-rt-cagr { width: 60px; }
+.deck-nm { color: var(--ink); }
+
+/* ---- allocation card (hosts the existing AllocationSection) ----
+   Sized generously now that Allocation gets half the deck's width — a small
+   donut left the center hole too cramped for its own text to fit without
+   wrapping across the ring. */
+.deck-alloc-head { margin-bottom: 12px; }
+.deck-alloc-card .alloc { grid-template-columns: 1fr; justify-items: center; gap: 16px; }
+/* 240px * 1.15 — the donut's inner hole (where the center value/label text
+   sits) is a fixed fraction of the overall SVG size, so enlarging the
+   container proportionally enlarges that hole too, giving 8-figure amounts
+   (₹1,23,45,678) room without touching the SVG geometry itself. */
+.deck-alloc-card .donut-wrap { width: 276px; height: 276px; margin: 0 auto; }
+.deck-alloc-card .donut-center .dc-k { font-size: 10px; }
+.deck-alloc-card .donut-center .dc-v { font-size: 18px; }
+.deck-alloc-card .donut-center .dc-s { font-size: 11px; max-width: 150px; }
+.deck-alloc-card .legend { width: 100%; }
+.deck-alloc-card .drill { font-size: 12.5px; }
+
+/* ---- insight card ---- */
+.deck-insight-head { display: flex; align-items: center; gap: 6px; margin-bottom: 9px; }
+.deck-insight-head .deck-ic { color: var(--muted); }
+.deck-insight-text { margin: 0; font-size: 12.5px; line-height: 1.65; color: var(--muted); }
+.deck-ilink {
+  margin-top: 11px; font-size: 12.5px; color: var(--teal); font-weight: 500; font-family: inherit;
+  background: none; border: none; padding: 0; cursor: pointer; display: inline-flex; align-items: center; gap: 5px;
+}
+.deck-ilink .deck-ic { color: var(--teal); }
+
+/* ---- Portfolio Analysis: compact frame (header + buttons only) ---- */
+.deck-frame-compact { padding: 18px 20px; }
+.pa-header { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 16px; }
+.pa-header .deck-mast-title { margin: 0; }
+
+/* ---- Portfolio Analysis / advanced section buttons ---- */
+.deck-adv-tiles { display: grid; grid-template-columns: repeat(6, 1fr); gap: 11px; }
+.deck-adv-tiles-standalone { margin: 0; padding: 0; border-top: none; }
+/* The chart-picker row (ChartGallery.tsx) reuses this same button-row
+   pattern but needs a bottom gap before the gallery box below it — 14px
+   matches the standard inter-box gap used throughout the deck
+   (.deck-kpi-rail/.deck-grid-2col/.deck-col/.funds). Declared after
+   .deck-adv-tiles-standalone (not in app.css, which loads first) so its
+   margin-bottom isn't clobbered by that rule's margin:0 shorthand. */
+.gtabs { margin-bottom: 14px; }
+.deck-advt {
+  background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 14px 6px;
+  text-align: center; font-size: 11.5px; font-weight: 700; color: var(--ink); font-family: inherit;
+  display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer;
+}
+.deck-advt:hover { background: var(--card-hover); }
+.deck-advt-ic { width: 20px; height: 20px; color: var(--ink); }
+.deck-advt-open, .deck-advt-open:hover { background: var(--brass); color: var(--paper); }
+.deck-advt-open .deck-advt-ic { color: var(--paper); }
+
+/* ---- responsive: 4/2 -> 2/1 columns ---- */
+@media (max-width: 1023px) {
+  .deck-kpi-rail { grid-template-columns: 1fr 1fr; }
+  .deck-grid-2col { grid-template-columns: 1fr; }
+  .deck-adv-tiles { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 639px) {
+  .deck-kpi-rail { grid-template-columns: 1fr; }
+  .deck-adv-tiles { grid-template-columns: repeat(2, 1fr); }
+  .deck-mast-meta { display: none; }
+}
