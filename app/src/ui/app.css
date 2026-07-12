@@ -15,10 +15,15 @@
    Mode button") — vertically centered rather than pinned to the top, so the
    two floating buttons read as a deliberate pair, not a coincidence. */
 .feedback-corner { position: fixed; top: 50%; right: 16px; transform: translateY(-50%); z-index: 50; }
-/* "Feedback" is shorter than "Light Mode"/"Dark Mode", so the two buttons'
-   auto-sized widths differ by default — a fixed shared min-width plus
-   centered content makes them read as a genuinely matched pair. */
-.theme-toggle-corner .deck-btn, .feedback-corner .deck-btn { min-width: 125px; justify-content: center; }
+/* Bottom-right — the one corner ThemeToggle (top-right) and Feedback
+   (right-edge, vertically centered) don't already occupy (task D2). Always
+   mounted regardless of whether a portfolio has loaded, same as the other
+   two, so the privacy statement is one tap away from the very first paint. */
+.privacy-corner { position: fixed; bottom: 16px; right: 16px; z-index: 50; }
+/* "Feedback"/"Privacy" are shorter than "Light Mode"/"Dark Mode", so the
+   buttons' auto-sized widths differ by default — a fixed shared min-width
+   plus centered content makes them read as a deliberately matched set. */
+.theme-toggle-corner .deck-btn, .feedback-corner .deck-btn, .privacy-corner .deck-btn { min-width: 125px; justify-content: center; }
 
 .feedback-overlay {
   position: fixed; inset: 0; background: rgba(0, 0, 0, .5); z-index: 100;
@@ -41,6 +46,15 @@
 .feedback-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 4px; }
 .feedback-sent { text-align: center; padding: 10px 0; }
 .feedback-sent p { margin: 0 0 16px; color: var(--ink); }
+
+/* Reuses .feedback-overlay/.feedback-modal for the dimmed backdrop + card —
+   only the body content differs (plain static text, not a form). */
+.privacy-body { font-size: 13px; color: var(--muted); line-height: 1.65; }
+.privacy-body p { margin: 0 0 12px; }
+.privacy-body b { color: var(--ink); font-weight: 600; }
+.privacy-body code { font-family: var(--font-mono); font-size: 12px; background: var(--paper); padding: 1px 5px; border-radius: 4px; }
+.privacy-footnote { margin: 14px 0 0 !important; padding-top: 12px; border-top: 1px solid var(--line); }
+.privacy-footnote .deck-ilink { margin-top: 0; display: inline-flex; }
 
 /* ---- masthead ---- */
 .masthead { border-bottom: 1.5px solid var(--ink); padding: 40px 0 22px; }
