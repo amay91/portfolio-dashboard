@@ -26,7 +26,7 @@ import { ChartGallery } from './charts/ChartGallery'
 import { EmptyState } from './EmptyState'
 import { Feedback } from './features/feedback/Feedback'
 import { Footer } from './Footer'
-import { PrivacyNote } from './features/privacy/PrivacyNote'
+import { HelpMenu } from './features/help/HelpMenu'
 import { ThemeToggle } from './features/theme/ThemeToggle'
 
 const MARKITDOWN_ENDPOINT = 'http://127.0.0.1:8765/convert'
@@ -65,7 +65,6 @@ function App() {
   // real statement has been uploaded — drives the masthead title (Masthead.tsx).
   const [isSample, setIsSample] = useState(true)
   const [commentaryOpen, setCommentaryOpen] = useState(false)
-  const [privacyOpen, setPrivacyOpen] = useState(false)
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({})
   const [niftyAllTime, setNiftyAllTime] = useState<number | null>(null)
   const [nifty1Y, setNifty1Y] = useState<number | null>(null)
@@ -300,7 +299,7 @@ function App() {
         <ThemeToggle />
       </div>
       <Feedback />
-      <PrivacyNote open={privacyOpen} onOpenChange={setPrivacyOpen} onOpenMethodNotes={() => openSection('notes')} />
+      <HelpMenu />
       <UploadBar
         status={status}
         uploadPhase={uploadPhase}

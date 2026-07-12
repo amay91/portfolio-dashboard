@@ -1577,6 +1577,54 @@ the existing geometry/keyboard unit tests and the render-smoke specs above.
   (no overlap with the other two corner buttons, modal fits within a 375px viewport); 9 new
   render-smoke tests (`PrivacyNote.spec.tsx`, real-client-render technique per T2's convention);
   full gate (typecheck/lint/347 Vitest tests/2 Playwright e2e tests) green.
+  **Superseded 2026-07-11 by U7** — this floating button and its modal were removed; the same
+  facts now live in U7's "Privacy and Data" menu item, expanded to a full layperson explainer.
+
+### U7 — Top-left Help menu: Instructions / Privacy and Data / FAQ  ✅
+- **Do:** a menu, permanently visible top-left on desktop and click-to-open on mobile, with three
+  items — a step-by-step CAMS statement-download + dashboard-usage guide (with the user's own
+  CAMS screenshot as a clickable-to-enlarge thumbnail, plus an in-app SVG redraw of the same
+  steps), a comprehensive layperson-facing "Privacy and Data" explainer, and an FAQ covering
+  XIRR, Rolling Returns, ST/LT Split, Portfolio Commentary, and Asset Allocation — each answer
+  layperson-first, with the dashboard's actual formula underneath for a technical reader.
+- **Accept:** all three panels open/close correctly on both desktop and mobile widths; content is
+  accurate to what the app actually does (not generic/textbook).
+- **Resolution note (2026-07-11):** `features/help/` — `HelpMenu.tsx` (menu shell: click-outside
+  and Escape to close, `PanelId = 'instructions' | 'privacy' | 'faq'`), `InstructionsContent.tsx`,
+  `PrivacyDataContent.tsx`, `FaqContent.tsx`. Mounted unconditionally in `App.tsx` (outside the
+  `pf &&` gate), same pattern as `ThemeToggle`/`Feedback`.
+  - **Responsive, CSS-only:** `.help-menu-list` renders inline (all 3 items visible) by default;
+    `@media (max-width: 780px)` hides it behind a "Menu" toggle button. No viewport-width JS
+    detection needed — desktop needs no visibility logic at all.
+  - **Instructions**: numbered steps for requesting a Detailed / Specific Period / With-zero-
+    balance-folios CAS from CAMS (`camsonline.com/Investors/Statements/Consolidated-Account-
+    Statement`), the user's own screenshot (`app/public/cams-instructions.png`) as a click-to-
+    enlarge thumbnail (`.help-lightbox`), a small in-app `CamsStepsDiagram` SVG (reuses the
+    dashboard's own theme tokens, so — unlike the static screenshot — it re-themes correctly
+    between Terminal Deck and The Ledger), then a second numbered list explaining every dashboard
+    section (KPI row, Value vs Invested chart, Top holdings/Allocation, all 6 Portfolio Analysis
+    sub-sections by name, Portfolio Commentary with its "not financial advice" disclaimer).
+  - **Privacy and Data**: supersedes D2's `PrivacyNote` (see above) — every claim grounded in
+    `marketdata/egress.spec.ts`'s exact allowlist (`www.amfiindia.com` / `mf.captnemo.in` /
+    `api.mfapi.in` / `127.0.0.1`), written for a non-technical reader, includes a "verify it
+    yourself" Dev-Tools walkthrough.
+  - **FAQ**: 5 Q&As, each layperson prose first then a `.help-formula` block with the dashboard's
+    actual math, sourced directly from `engine/xirr.ts` (bisection + Newton fallback),
+    `engine/series.ts`'s `dietz()` (Modified Dietz for Rolling Returns), `engine/gains.ts` (ST/LT
+    lot logic), `features/allocation/categories.ts` + `engine/scheme.ts` (Asset Allocation), and
+    `features/commentary/commentaryText.ts` (lifecycle-stage bands + Bogle's age-in-bonds
+    cross-check) — intentionally overlaps with Method Notes by design (user's instruction), as
+    the fuller, layperson-first version of the same facts.
+  - Two review diagrams (a custom SVG explainer of the CAMS form, and a "Process Flow" flowchart
+    of using the dashboard end-to-end) were shown to the user for review via the visualize tool
+    before implementation began; the in-app `CamsStepsDiagram` above is a separate, simplified,
+    theme-aware redraw for in-product use.
+  - Verified live in both themes and at both desktop and mobile (375px) widths: menu opens/closes
+    (click, Escape, click-outside), all 3 panels render with correct content, the screenshot
+    thumbnail/lightbox opens and closes, the in-app diagram re-themes correctly, mobile
+    click-to-open toggle works, no console errors. 5 new render-smoke tests
+    (`HelpMenu.spec.tsx`, real-client-render technique per T2's convention). Full gate
+    (typecheck/lint/69 files, 353 Vitest tests) green.
 
 ---
 

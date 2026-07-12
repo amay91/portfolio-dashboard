@@ -15,15 +15,64 @@
    Mode button") — vertically centered rather than pinned to the top, so the
    two floating buttons read as a deliberate pair, not a coincidence. */
 .feedback-corner { position: fixed; top: 50%; right: 16px; transform: translateY(-50%); z-index: 50; }
-/* Bottom-right — the one corner ThemeToggle (top-right) and Feedback
-   (right-edge, vertically centered) don't already occupy (task D2). Always
-   mounted regardless of whether a portfolio has loaded, same as the other
-   two, so the privacy statement is one tap away from the very first paint. */
-.privacy-corner { position: fixed; bottom: 16px; right: 16px; z-index: 50; }
-/* "Feedback"/"Privacy" are shorter than "Light Mode"/"Dark Mode", so the
-   buttons' auto-sized widths differ by default — a fixed shared min-width
-   plus centered content makes them read as a deliberately matched set. */
-.theme-toggle-corner .deck-btn, .feedback-corner .deck-btn, .privacy-corner .deck-btn { min-width: 125px; justify-content: center; }
+/* "Feedback"/"Light Mode" auto-size to different widths by default — a
+   fixed shared min-width plus centered content makes the two floating
+   right-edge buttons read as a deliberately matched pair. */
+.theme-toggle-corner .deck-btn, .feedback-corner .deck-btn { min-width: 125px; justify-content: center; }
+
+/* ---- Help menu (Instructions / Privacy and Data / FAQ) ----
+   Top-left, the one corner the theme/feedback buttons (both right-edge)
+   don't occupy. Permanently visible on desktop (the 3 items render inline,
+   no toggle needed); collapses behind a "Menu" button on narrow screens —
+   .help-menu-toggle/.help-menu-list visibility is flipped by the media
+   query below, JS only needs to control the mobile open/close state. */
+.help-menu-corner { position: fixed; top: 16px; left: 16px; z-index: 50; }
+.help-menu-toggle { display: none; }
+.help-menu-list { display: flex; flex-direction: column; gap: 6px; }
+.help-menu-list .deck-btn { justify-content: flex-start; min-width: 168px; }
+@media (max-width: 780px) {
+  .help-menu-toggle { display: flex; }
+  .help-menu-list { display: none; position: absolute; top: calc(100% + 6px); left: 0; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 6px; box-shadow: 0 8px 24px rgba(0, 0, 0, .35); }
+  .help-menu-list.open { display: flex; }
+}
+
+/* Reuses .feedback-overlay's dimmed backdrop, but a wider, taller,
+   scrollable card — Instructions/Privacy/FAQ are long-form content
+   (one has an embedded image), unlike Feedback's short form. */
+.help-overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, .5); z-index: 100; display: flex; align-items: center; justify-content: center; padding: 20px; }
+.help-modal { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 22px; max-width: 680px; width: 100%; max-height: 85vh; box-sizing: border-box; display: flex; flex-direction: column; }
+.help-modal-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex: 0 0 auto; }
+.help-modal-body { overflow-y: auto; }
+
+/* Shared prose classes for all 3 content panels — same recipe as
+   Notes.tsx's .notes/.notes p/.notes b, since this is the same kind of
+   long-form static content. */
+.help-body { font-size: 13px; color: var(--muted); line-height: 1.7; }
+.help-body p { margin: 0 0 12px; }
+.help-body b { color: var(--ink); font-weight: 600; }
+.help-body code { font-family: var(--font-mono); font-size: 12px; background: var(--paper); padding: 1px 5px; border-radius: 4px; }
+.help-body h4 { color: var(--ink); font-size: 13.5px; margin: 20px 0 8px; }
+.help-body h4:first-child { margin-top: 0; }
+.help-body a { color: var(--teal); }
+
+/* Instructions: numbered step list */
+.help-steps { list-style: none; margin: 0 0 16px; padding: 0; counter-reset: help-step; }
+.help-steps li { counter-increment: help-step; position: relative; padding: 0 0 14px 34px; }
+.help-steps li::before { content: counter(help-step); position: absolute; left: 0; top: 0; width: 24px; height: 24px; border-radius: 50%; background: var(--teal); color: var(--paper); font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+.help-steps b { color: var(--ink); }
+
+/* Instructions: screenshot thumbnail + lightbox */
+.help-thumb { display: block; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; cursor: zoom-in; margin: 4px 0 16px; background: var(--paper); }
+.help-thumb img { display: block; width: 100%; height: auto; max-width: 320px; }
+.help-thumb-caption { font-size: 11.5px; color: var(--muted); margin-top: 6px; }
+.help-lightbox { position: fixed; inset: 0; background: rgba(0, 0, 0, .82); z-index: 200; display: flex; align-items: center; justify-content: center; padding: 24px; cursor: zoom-out; }
+.help-lightbox img { max-width: 100%; max-height: 100%; border-radius: 6px; box-shadow: 0 20px 60px rgba(0, 0, 0, .5); }
+
+/* FAQ: formula callouts, visually distinct from the layperson prose above them */
+.help-formula { background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; margin: 8px 0 16px; font-family: var(--font-mono); font-size: 12px; color: var(--ink); line-height: 1.6; overflow-x: auto; }
+.help-formula-label { font-size: 10.5px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin-bottom: 6px; }
+.help-faq-q { color: var(--ink); font-size: 14px; margin: 24px 0 8px; }
+.help-faq-q:first-child { margin-top: 0; }
 
 .feedback-overlay {
   position: fixed; inset: 0; background: rgba(0, 0, 0, .5); z-index: 100;
@@ -47,12 +96,6 @@
 .feedback-sent { text-align: center; padding: 10px 0; }
 .feedback-sent p { margin: 0 0 16px; color: var(--ink); }
 
-/* Reuses .feedback-overlay/.feedback-modal for the dimmed backdrop + card —
-   only the body content differs (plain static text, not a form). */
-.privacy-body { font-size: 13px; color: var(--muted); line-height: 1.65; }
-.privacy-body p { margin: 0 0 12px; }
-.privacy-body b { color: var(--ink); font-weight: 600; }
-.privacy-body code { font-family: var(--font-mono); font-size: 12px; background: var(--paper); padding: 1px 5px; border-radius: 4px; }
 .privacy-footnote { margin: 14px 0 0 !important; padding-top: 12px; border-top: 1px solid var(--line); }
 .privacy-footnote .deck-ilink { margin-top: 0; display: inline-flex; }
 
