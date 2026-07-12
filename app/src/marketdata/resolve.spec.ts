@@ -1,5 +1,6 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { resolveLiveNavs } from './resolve'
+import * as dayCache from './dayCache'
 import type { Scheme } from '../engine/types'
 
 function jsonResponse(body: unknown): Response {
@@ -149,5 +150,76 @@ describe('resolveLiveNavs', () => {
     )
     const { live } = await resolveLiveNavs([s1, s2, s3], true)
     expect(live?.source).toBe('mf.captnemo.in')
+  })
+
+  describe('N4: IndexedDB day-cache for the AMFI tier', () => {
+    // dayCache.ts's own logic (day-boundary, serialization, store failures)
+    // is unit-tested directly in dayCache.spec.ts against an injected fake
+    // store — jsdom has no real indexedDB to exercise here. These tests
+    // cover the seam instead: does resolve.ts actually call into
+    // getDayCachedAmfiMap/setDayCachedAmfiMap the way it's supposed to.
+    afterEach(() => {
+      vi.restoreAllMocks()
+    })
+
+    it('a same-day cache hit skips the network AMFI fetch entirely, but still counts as a reachable AMFI match', async () => {
+      const s = scheme({ isin: 'INF090I01PD7', name: 'Franklin India Equity Savings Fund - Direct Plan - Growth', nav: 18.5 })
+      vi.spyOn(dayCache, 'getDayCachedAmfiMap').mockResolvedValue({
+        byIsin: { INF090I01PD7: { nav: 18.7, date: new Date('2026-07-02'), source: 'AMFI', name: s.name } },
+        byName: {},
+        rows: [],
+      })
+      const fetchMock = vi.fn().mockRejectedValue(new Error('unreachable')) // captnemo/mfapi fail; AMFI must come from cache, not this
+      vi.stubGlobal('fetch', fetchMock)
+
+      const { live, diag } = await resolveLiveNavs([s], false)
+
+      expect(diag.amfiOk).toBe(true)
+      expect(live?.byIsin?.['INF090I01PD7']?.nav).toBe(18.7)
+      expect(fetchMock.mock.calls.some((c) => String(c[0]).includes('amfiindia.com'))).toBe(false)
+    })
+
+    it('a cache miss falls through to a real fetch and persists the result for next time', async () => {
+      const s = scheme({ isin: 'INF090I01PD7', name: 'Franklin India Equity Savings Fund - Direct Plan - Growth', nav: 18.5 })
+      vi.spyOn(dayCache, 'getDayCachedAmfiMap').mockResolvedValue(null)
+      const setSpy = vi.spyOn(dayCache, 'setDayCachedAmfiMap').mockResolvedValue(undefined)
+      const amfiText = syntheticAmfiText([amfiRow('INF090I01PD7', s.name, 18.6)])
+      vi.stubGlobal(
+        'fetch',
+        vi.fn().mockImplementation((url: string) => {
+          if (url.includes('amfiindia.com')) return Promise.resolve(textResponse(amfiText))
+          return Promise.reject(new Error('unreachable'))
+        }),
+      )
+
+      const { diag } = await resolveLiveNavs([s], false)
+
+      expect(diag.amfiOk).toBe(true)
+      expect(setSpy).toHaveBeenCalledWith(expect.objectContaining({ byIsin: expect.objectContaining({ INF090I01PD7: expect.objectContaining({ nav: 18.6 }) }) }))
+    })
+
+    it('force (Refresh) skips the day-cache read even when a cached entry exists, and re-persists the fresh fetch', async () => {
+      const s = scheme({ isin: 'INF090I01PD7', name: 'Franklin India Equity Savings Fund - Direct Plan - Growth', nav: 18.5 })
+      const getSpy = vi.spyOn(dayCache, 'getDayCachedAmfiMap').mockResolvedValue({
+        byIsin: { INF090I01PD7: { nav: 18.7, date: new Date('2026-07-02'), source: 'AMFI', name: s.name } },
+        byName: {},
+        rows: [],
+      })
+      const setSpy = vi.spyOn(dayCache, 'setDayCachedAmfiMap').mockResolvedValue(undefined)
+      const amfiText = syntheticAmfiText([amfiRow('INF090I01PD7', s.name, 19.1)]) // a fresher NAV than the stale cache above
+      vi.stubGlobal(
+        'fetch',
+        vi.fn().mockImplementation((url: string) => {
+          if (url.includes('amfiindia.com')) return Promise.resolve(textResponse(amfiText))
+          return Promise.reject(new Error('unreachable'))
+        }),
+      )
+
+      const { live } = await resolveLiveNavs([s], true) // force=true, as the Refresh button sends
+
+      expect(getSpy).not.toHaveBeenCalled()
+      expect(live?.byIsin?.['INF090I01PD7']?.nav).toBe(19.1) // the fresh fetch, not the stale 18.7 in the mocked cache
+      expect(setSpy).toHaveBeenCalledWith(expect.objectContaining({ byIsin: expect.objectContaining({ INF090I01PD7: expect.objectContaining({ nav: 19.1 }) }) }))
+    })
   })
 })

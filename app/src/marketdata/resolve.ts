@@ -1,4 +1,5 @@
 import { createTtlCache } from './cache'
+import { getDayCachedAmfiMap, setDayCachedAmfiMap } from './dayCache'
 import { fetchAmfi, parseAmfi } from './sources/amfi'
 import type { AmfiMap } from './sources/amfi'
 import { fetchAmfiEdge } from './sources/amfiEdge'
@@ -45,12 +46,28 @@ interface AmfiTier {
 // covers that case. `edgeUrl` is undefined today everywhere (dev, tests,
 // production) since nothing is deployed yet — this is inert until D1
 // assigns a real URL and App.tsx is given it via an env var.
+//
+// N4: below the in-memory 180s TTL cache above (which only helps repeated
+// calls within one tab session) sits a second, IndexedDB-backed layer
+// (dayCache.ts) that survives a page reload — `force` (the Refresh button)
+// skips straight past it to a real fetch, same as it already skips the
+// in-memory cache; a successful fetch always re-persists so the next
+// same-day reload picks up whatever "Refresh" just got. Edge-fn path isn't
+// day-cached here — N2's function already sets a day-long CDN
+// `Cache-Control` server-side, so caching it again client-side would only
+// save a round-trip, not real data freshness, for a case that isn't
+// deployed yet anyway.
 async function fetchAmfiTier(force: boolean | undefined, edgeUrl: string | undefined): Promise<AmfiTier | null> {
   if (edgeUrl) {
     const byIsin = await fetchAmfiEdge(edgeUrl)
     return byIsin ? { byIsin, byName: {}, rows: [] } : null
   }
+  if (!force) {
+    const dayCached = await getDayCachedAmfiMap()
+    if (dayCached) return dayCached
+  }
   const amfi = await amfiCache.get(force)
+  if (amfi) await setDayCachedAmfiMap(amfi)
   return amfi ? { byIsin: amfi.byIsin, byName: amfi.byName, rows: amfi.rows || [] } : null
 }
 

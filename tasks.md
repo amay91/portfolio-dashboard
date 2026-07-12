@@ -48,12 +48,12 @@ but it means a future refactor has no automated net for these components. Tracke
 Legend: ⬜ not started · 🔄 in progress · ✅ done · ⏸️ deferred (do not build)
 
 - **C — Consolidation:** ✅ C1 · ✅ C2 · ✅ C3
-- **N — Market data:** ✅ N1 · ✅ N2 · ✅ N3 · ⬜ N4 (opt)
+- **N — Market data:** ✅ N1 · ✅ N2 · ✅ N3 · ✅ N4 (opt, IndexedDB day-cache, 2026-07-11) — **workstream complete**
 - **U — Lean core:** ✅ U1 · ✅ U2 (redesigned, Rev. 2) · ✅ U2a · ✅ U3 (redesigned, Rev. 2) · ✅ U4 (upload bar redesign, 2026-07-05) · ✅ U5 (PDF password support, 2026-07-05 — Python bridge changes unexecuted, no interpreter available) · ✅ U6 (Dark/Light theme toggle — "Terminal Deck" / "The Ledger", 2026-07-08)
 - **A — Accessibility:** ✅ A1 (manual verification; automated axe check waits on T1) · ✅ A2 (all pairs already pass AA) · ✅ A3 (already satisfied pre-existing)
 - **S — Security/privacy:** ✅ S1 · ✅ S2 · ✅ S3 · ✅ S4 (0 vulnerabilities, all deps justified) — **workstream complete**
-- **T — Testing:** ✅ T1 (Playwright e2e, 2 tests, CI-wired) · ✅ T2 (338 Vitest tests + 6 feedback-server `node --test` tests, up from 225)
-- **D — Deploy:** ✅ D1 (Cloudflare Pages Function config done + verified locally, 2026-07-11 — account/push steps are the user's) · ⬜ D2
+- **T — Testing:** ✅ T1 (Playwright e2e, 2 tests, CI-wired) · ✅ T2 (357 Vitest tests + 6 feedback-server `node --test` tests, up from 225)
+- **D — Deploy:** ✅ D1 (Cloudflare Pages Function config done + verified locally, 2026-07-11 — account/push steps are the user's) · ✅ D2 (in-app privacy note, 2026-07-11) — **workstream complete**
 - **X — Deferred:** ⏸️ X1 · ⏸️ X2 · ⏸️ X3 · ⏸️ X4 · ✅ X5 (charts done; Commentary sink stays, by design)
 
 > On resume: this line-item state + the per-task acceptance criteria below are all a fresh
@@ -183,10 +183,43 @@ Legend: ⬜ not started · 🔄 in progress · ✅ done · ⏸️ deferred (do n
     back exactly as before) and 1 to `liveIntegration.spec.ts` (edge-fn match through the full
     real-fixture pipeline) — 180/180 tests green.
 
-### N4 — *(optional)* IndexedDB NAV day-cache
+### N4 — *(optional)* IndexedDB NAV day-cache  ✅
 - **Do:** persist the day's NAV map in IndexedDB (idb, ~1 tiny dep) so a reload within the day
   skips the fetch. Only if N1–N3 land cleanly and there's appetite.
 - **Accept:** second load same-day makes no network NAV call; "Refresh" forces a refetch.
+- **Resolution note (2026-07-11):** scoped to the AMFI tier specifically — the one large,
+  statement-independent bulk resource (~18,500 ISINs in one response) — not a general
+  fetch-memoization overhaul across every tier; matches the task's own framing, "persist THE
+  DAY'S NAV MAP" (singular). captnemo/mfapi stay uncached (per-fund, already fast, scoped to
+  whatever's currently held) and the edge-fn path (N2/D1) stays uncached too — it already gets a
+  day-long CDN `Cache-Control` server-side, so client-side caching would only save a round-trip,
+  not real freshness, for a path that isn't deployed yet regardless.
+  - **No new dependency** — hand-rolled `marketdata/dayCache.ts` against the raw `indexedDB`
+    browser API instead of the `idb` package the task suggested. The actual surface needed (get/
+    put one record in one object store) is small enough that a library would add supply-chain
+    surface (this project's S4 dependency audit is explicitly proud of "0 vulnerabilities, all
+    deps justified") for close to zero benefit over ~40 lines of Promise-wrapped native API.
+  - **Storage seam is injectable** (`DayCacheStore` interface, defaults to the real IndexedDB
+    implementation) specifically because jsdom — this project's Vitest environment — has no real
+    `indexedDB` at all (confirmed directly: `typeof indexedDB` is `'undefined'` under `npm test`).
+    `dayCache.spec.ts` unit-tests the day-boundary/serialization/failure-handling logic in
+    isolation against an in-memory fake store; `resolve.spec.ts` separately tests the *seam*
+    (does `resolve.ts` call `getDayCachedAmfiMap`/`setDayCachedAmfiMap` at the right times, does
+    `force` correctly skip the read) via `vi.spyOn` on the real module's exports.
+  - **The real (non-fake) IndexedDB code path has no jsdom coverage at all**, so it was verified
+    directly in a real browser instead (not just reasoned about): a raw round-trip through
+    `dayCache.ts`'s actual `realStore` (open → transaction → get/put), confirmed surviving an
+    actual page reload (a fresh JS context, not just "the same variable is still in scope"), and
+    a full `resolveLiveNavs()` integration proving exactly 1 network call across 2 same-day
+    resolutions plus a 3rd call with `force: true` correctly bypassing a stale cached value for a
+    fresh one — all against the browser's real `indexedDB`, not a mock.
+  - **`Date` fields round-trip correctly** (`LiveMatch.date`) because IndexedDB uses the
+    structured-clone algorithm, unlike `localStorage`/`JSON.stringify`, which would silently
+    turn every `Date` into a string and need a custom reviver to undo.
+  - A failed read/write (IndexedDB unavailable — old browser, some private-browsing modes, quota
+    exceeded, a mid-transaction error) fails open to `null`/no-op rather than throwing, so a
+    broken cache can only ever cost the round-trip it was meant to save, never break a live-NAV
+    resolution outright.
 
 ---
 
@@ -1523,10 +1556,27 @@ the existing geometry/keyboard unit tests and the render-smoke specs above.
     (`0714c74`) ready for that; **no remote configured, nothing pushed**. Full checklist in
     `docs/DEPLOY.md`.
 
-### D2 — In-app privacy note + methods docs
+### D2 — In-app privacy note + methods docs  ✅
 - **Do:** a concise, visible privacy statement (what leaves the device: only NAV lookups by
   ISIN/name; nothing else) distinct from the methods `Notes` section.
 - **Accept:** privacy note visible in the lean view (or one tap away).
+- **Resolution note (2026-07-11):** a third floating corner button, `PrivacyNote.tsx`
+  (`features/privacy/`), joins `ThemeToggle` (top-right) and `Feedback` (right-edge, centered) at
+  the one remaining corner (bottom-right) — mounted outside the `pf &&` gate in `App.tsx`, same
+  as the other two, so it's present from first paint regardless of whether a statement has been
+  uploaded yet. Opens a small modal (reusing `.feedback-overlay`/`.feedback-modal`'s visual
+  language) with 3 short paragraphs: nothing is uploaded (parsing is local), the only network
+  calls are NAV lookups by ISIN/name to AMFI/mf.captnemo.in/mfapi.in with folio/amounts never
+  sent, and the optional MarkItDown/Feedback bridges only ever talk to `127.0.0.1`. Every claim
+  is the same one `marketdata/egress.spec.ts` (task S3) already enforces with a real fetch-spy
+  test — this note is prose describing what that test guarantees, not a new claim. A footnote
+  link ("Method Notes") closes the privacy modal and opens the Method Notes section — keeps the
+  two documents genuinely distinct (short/privacy-specific vs. long/methods-reference) while
+  still connecting them for anyone who wants the fuller detail, matching `DataCheck`'s existing
+  "Details Shown in Data Sources" cross-link pattern. Verified live at desktop and mobile widths
+  (no overlap with the other two corner buttons, modal fits within a 375px viewport); 9 new
+  render-smoke tests (`PrivacyNote.spec.tsx`, real-client-render technique per T2's convention);
+  full gate (typecheck/lint/347 Vitest tests/2 Playwright e2e tests) green.
 
 ---
 
