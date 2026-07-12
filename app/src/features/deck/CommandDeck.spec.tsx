@@ -9,6 +9,7 @@ describe('CommandDeck', () => {
     expect(html).toContain('deck-mast-title')
     expect(html).toContain('Value vs Invested')
     expect(html).toContain('Allocation')
+    expect(html).toContain('Save as PNG')
   })
 
   it('renders with no chart history and no holdings without throwing', () => {

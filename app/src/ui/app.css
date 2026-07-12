@@ -20,20 +20,31 @@
    right-edge buttons read as a deliberately matched pair. */
 .theme-toggle-corner .deck-btn, .feedback-corner .deck-btn { min-width: 125px; justify-content: center; }
 
-/* ---- Help menu (Instructions / Privacy and Data / FAQ) ----
+/* ---- Help menu (Instructions / Reading the Dashboard / Privacy and Data /
+   FAQ) ----
    Top-left, the one corner the theme/feedback buttons (both right-edge)
-   don't occupy. Permanently visible on desktop (the 3 items render inline,
-   no toggle needed); collapses behind a "Menu" button on narrow screens —
-   .help-menu-toggle/.help-menu-list visibility is flipped by the media
-   query below, JS only needs to control the mobile open/close state. */
+   don't occupy. Permanently visible on desktop (the items render inline, no
+   toggle needed — there's nothing to click to reveal them); collapses
+   behind a "Menu" button on narrow screens — .help-menu-toggle/
+   .help-menu-list visibility is flipped by the media query below, JS only
+   needs to control the mobile open/close state. `top` is a JS-computed
+   inline style (HelpMenu.tsx) that tracks the "Sample Portfolio Summary"
+   box on desktop, falling back to this 16px default before that effect
+   runs (or on mobile, where it's pinned here regardless of scroll).
+   Selectors below are scoped under .help-menu-corner (not bare
+   .help-menu-toggle/.help-menu-list) so their specificity reliably beats
+   .deck-btn's `display: inline-flex` (deck.css) regardless of which
+   stylesheet happens to load later — two bare single-class selectors of
+   equal specificity would otherwise let simple CSS file import order
+   silently decide which `display` wins. */
 .help-menu-corner { position: fixed; top: 16px; left: 16px; z-index: 50; }
-.help-menu-toggle { display: none; }
-.help-menu-list { display: flex; flex-direction: column; gap: 6px; }
-.help-menu-list .deck-btn { justify-content: flex-start; min-width: 168px; }
+.help-menu-corner .help-menu-toggle { display: none; }
+.help-menu-corner .help-menu-list { display: flex; flex-direction: column; gap: 6px; }
+.help-menu-corner .help-menu-list .deck-btn { justify-content: flex-start; min-width: 168px; }
 @media (max-width: 780px) {
-  .help-menu-toggle { display: flex; }
-  .help-menu-list { display: none; position: absolute; top: calc(100% + 6px); left: 0; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 6px; box-shadow: 0 8px 24px rgba(0, 0, 0, .35); }
-  .help-menu-list.open { display: flex; }
+  .help-menu-corner .help-menu-toggle { display: flex; }
+  .help-menu-corner .help-menu-list { display: none; position: absolute; top: calc(100% + 6px); left: 0; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 6px; box-shadow: 0 8px 24px rgba(0, 0, 0, .35); }
+  .help-menu-corner .help-menu-list.open { display: flex; }
 }
 
 /* Reuses .feedback-overlay's dimmed backdrop, but a wider, taller,

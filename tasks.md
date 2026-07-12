@@ -1625,6 +1625,75 @@ the existing geometry/keyboard unit tests and the render-smoke specs above.
     click-to-open toggle works, no console errors. 5 new render-smoke tests
     (`HelpMenu.spec.tsx`, real-client-render technique per T2's convention). Full gate
     (typecheck/lint/69 files, 353 Vitest tests) green.
+  **Revised 2026-07-12 by U8** — menu positioning fixed and a 4th item ("Reading the Dashboard")
+  split out of Instructions; see below.
+
+### U8 — Help menu repositioning + "Reading the Dashboard" split + Save as PNG  ✅
+- **Do:** (1) the "Menu" toggle button was visibly (and uselessly) rendering on desktop
+  alongside the always-visible item list — remove it there, mobile-only click-to-open unchanged.
+  (2) Align the top menu item with the "Sample Portfolio Summary" box on desktop, floating/
+  sticking in place once scrolled past. (3) Split Instructions into "Download your Statement from
+  CAMS" (was "Step 1 —…") and a new standalone "Reading the Dashboard" item (was "Step 2 —…"),
+  inserted right under Instructions. (4) A "Save as PNG" button, top-right of the Portfolio
+  Summary box above the Insight tile, downloading an HD (163 PPI, i.e. a 27" 4K monitor's pixel
+  density) PNG of just the summary box (masthead + KPI row + chart/holdings/allocation) —
+  excluding Commentary and Portfolio Analysis below it.
+- **Accept:** no visible "Menu" button on desktop; menu starts level with the summary box and
+  stays in view on scroll; Instructions/Reading the Dashboard read cleanly as separate items;
+  Save as PNG downloads a correctly-cropped, correctly-scaled PNG that doesn't include its own
+  button.
+- **Resolution note (2026-07-12):**
+  - **Root cause of the stray desktop "Menu" button:** not a missing responsive rule — `app.css`
+    already had `.help-menu-toggle { display: none }` outside the `max-width: 780px` query, but
+    `deck.css` (imported *after* `app.css` in `main.tsx`) sets `.deck-btn { display: inline-flex }`
+    on the same element (the toggle carries both classes). Equal specificity (both single-class
+    selectors) means CSS file import order — not intent — decided which `display` won. Fixed by
+    scoping every rule under `.help-menu-corner` (e.g. `.help-menu-corner .help-menu-toggle`),
+    which now reliably outranks `.deck-btn` regardless of stylesheet order. Worth remembering: two
+    bare single-class selectors targeting the same element is a latent bug even when today's file
+    order happens to produce the right result.
+  - **Desktop sticky-to-target positioning** (`HelpMenu.tsx`): true CSS `position: sticky` wasn't
+    usable — the menu is a `position: fixed` overlay (so it can sit in the page's left margin,
+    outside the centered 1080px `.wrap`/`.deck-frame` column) rather than a flow sibling of the
+    summary box, and `sticky` only has a meaningful "resting position" for actual flow elements.
+    Reproduced the same visual effect in JS instead: on scroll/resize (rAF-throttled) and on a
+    `ResizeObserver` watching `document.body` (catches the initial EmptyState → full-dashboard
+    reflow, which isn't a scroll or resize event), read `.deck-frame`'s live
+    `getBoundingClientRect().top` (already viewport-relative) and clamp to a 16px minimum — this
+    is exactly sticky's pre-stuck/stuck behaviour, driven by measurement instead of layout.
+    Gated behind `window.matchMedia('(min-width: 781px)')` (guarded for environments without
+    `matchMedia`, e.g. jsdom) so mobile keeps its original fixed `top: 16px`.
+  - **Content split**: `ReadingDashboardContent.tsx` (new) holds everything that was "Step 2" in
+    `InstructionsContent.tsx` verbatim (Summary row / Value vs Invested / Top holdings &
+    Allocation / Portfolio Analysis / Portfolio Commentary, plus the Refresh/Clear Data closing
+    note) — a straight extraction, no rewording. `InstructionsContent.tsx` now ends after the CAMS
+    steps + screenshot + in-app diagram. `HelpMenu.tsx`'s `PanelId` gained `'reading'`.
+  - **Save as PNG** (`CommandDeck.tsx` + `Masthead.tsx`): `html-to-image`'s `toPng()` (added as a
+    dependency — no existing screenshot lib; chosen over html2canvas for better fidelity with this
+    app's CSS custom properties / grid layout, since it clones the DOM into an SVG
+    `<foreignObject>` rather than manually re-implementing layout on a canvas) captures a `ref` on
+    `.deck-frame` — the same element Masthead/KpiRail/the chart+holdings+allocation grid render
+    into, and nothing else, so Commentary/Portfolio Analysis are structurally excluded, not
+    filtered out. `pixelRatio: 163/96` (~1.698) — 96 CSS px/inch is the standard browser/canvas
+    reference, so scaling by target-PPI/96 reproduces "163 PPI" output density directly rather
+    than guessing a round `2x`. The button itself is excluded from its own screenshot via
+    `toPng`'s `filter` option, matched on a dedicated `deck-mast-pngbtn` class (confirmed live —
+    downloaded PNG has a clean top-right corner where the button sits on-screen). Downloaded
+    filename is `portfolio-summary-<valDate ISO date>.png`. Button reuses the `deck-btn`/`.spin`
+    (busy-state) convention already established by Refresh.
+  - **Verified live**: desktop screenshot shows the menu list with no toggle, aligned level with
+    the summary box, sticking to 16px from viewport top once scrolled past and re-aligning to the
+    box on scroll-up; mobile (375px) shows only "Menu", revealing all 4 items on click. Clicked
+    Save as PNG for real (monkey-patched `HTMLAnchorElement.prototype.click` to intercept the
+    generated data URL rather than relying on a browser download dialog): produced a
+    1833×1901px PNG from a 1080×1120 CSS-px source — ratio 1.697, matching 163/96 to 3 decimal
+    places — rendered it back into the page to visually confirm the crop (summary box only, no
+    Commentary/Analysis, no self-included button) and correctness in both themes. No console
+    errors in either viewport.
+  - 1 new Masthead test (Save as PNG button + `Saving…` state) plus an added assertion in
+    `CommandDeck.spec.tsx`; `HelpMenu.spec.tsx` updated for the 4-item menu and the
+    Instructions/Reading-the-Dashboard content split. Full gate (typecheck/lint/69 files, 354
+    Vitest tests) green.
 
 ---
 

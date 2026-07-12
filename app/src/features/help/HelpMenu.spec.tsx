@@ -27,10 +27,10 @@ describe('HelpMenu', () => {
     return root
   }
 
-  it('renders the three menu items and no open modal by default', () => {
+  it('renders the four menu items and no open modal by default', () => {
     renderHelpMenu()
     const items = Array.from(container.querySelectorAll('.help-menu-list button')).map((b) => b.textContent)
-    expect(items).toEqual(['Instructions', 'Privacy and Data', 'FAQ'])
+    expect(items).toEqual(['Instructions', 'Reading the Dashboard', 'Privacy and Data', 'FAQ'])
     expect(container.querySelector('.help-overlay')).toBeNull()
   })
 
@@ -46,6 +46,12 @@ describe('HelpMenu', () => {
     clickItem('Instructions')
     expect(container.querySelector('#help-modal-title')?.textContent).toBe('Instructions')
     expect(container.querySelector('.help-thumb img')?.getAttribute('src')).toBe('/cams-instructions.png')
+    expect(container.textContent).toContain('Download your Statement from CAMS')
+    expect(container.textContent).not.toContain('Summary row.')
+
+    clickItem('Reading the Dashboard')
+    expect(container.querySelector('#help-modal-title')?.textContent).toBe('Reading the Dashboard')
+    expect(container.textContent).toContain('Summary row.')
 
     clickItem('Privacy and Data')
     expect(container.querySelector('#help-modal-title')?.textContent).toBe('Privacy and Data')
