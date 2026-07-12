@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { HoverButton } from '../../ui/HoverLift'
+import { useStickyToTarget } from '../../ui/useStickyToTarget'
 
 export type FeedbackCategory = 'Bug Report' | 'Feature Request' | 'General Feedback'
 const CATEGORIES: FeedbackCategory[] = ['Bug Report', 'Feature Request', 'General Feedback']
@@ -8,13 +9,21 @@ const MAX_LENGTH = 5000
 
 type SubmitState = 'idle' | 'sending' | 'sent' | 'error'
 
-// A floating Feedback button (right edge, vertically centered — matches
-// ThemeToggle's fixed top-right button in size and styling, see
-// docs/DECISIONS.md "Feedback system") that opens a small modal: category
-// + free-text message, posted to a local companion server (server/
-// feedback-server.js, same "run it yourself on 127.0.0.1" pattern as
-// markitdown_server.py). This component owns only the form/request
-// lifecycle — the server does the actual sanitizing/persisting.
+// A floating Feedback button (right edge, matches ThemeToggle's fixed
+// top-right button in size and styling, see docs/DECISIONS.md "Feedback
+// system") that opens a small modal: category + free-text message, posted
+// to a local companion server (server/feedback-server.js, same "run it
+// yourself on 127.0.0.1" pattern as markitdown_server.py). This component
+// owns only the form/request lifecycle — the server does the actual
+// sanitizing/persisting.
+//
+// Desktop vertical position tracks the top of the "Sample Portfolio
+// Summary" box via useStickyToTarget (ui/useStickyToTarget.ts) — the same
+// hook HelpMenu.tsx uses, so Feedback sits level with the top-left
+// Instructions button and moves in lockstep with it on scroll (tasks.md
+// U9). Was vertically centered (`top: 50%`) before that; now `top` is a
+// JS-computed inline style like HelpMenu's, so the old centering transform
+// moved out of app.css.
 export function Feedback() {
   const [open, setOpen] = useState(false)
   const [category, setCategory] = useState<FeedbackCategory>('General Feedback')
@@ -22,6 +31,7 @@ export function Feedback() {
   const [state, setState] = useState<SubmitState>('idle')
   const [errorMsg, setErrorMsg] = useState('')
   const textareaRef = useRef<HTMLTextAreaElement>(null)
+  const top = useStickyToTarget('.deck-frame')
 
   useEffect(() => {
     if (!open) return
@@ -67,7 +77,7 @@ export function Feedback() {
 
   return (
     <>
-      <div className="feedback-corner">
+      <div className={`feedback-corner${top !== null ? ' tracked' : ''}`} style={top !== null ? { top } : undefined}>
         <HoverButton className="deck-btn" onClick={() => setOpen(true)}>
           <svg className="deck-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden="true">
             <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z" />

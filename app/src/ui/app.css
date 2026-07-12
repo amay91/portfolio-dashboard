@@ -12,9 +12,17 @@
 .theme-toggle-corner { position: fixed; top: 16px; right: 16px; z-index: 50; }
 /* Same right-edge offset and .deck-btn sizing as the theme toggle above it
    (per the user's ask: "aligned and the same size as the Dark Mode / Light
-   Mode button") — vertically centered rather than pinned to the top, so the
-   two floating buttons read as a deliberate pair, not a coincidence. */
+   Mode button"). Vertically centered by default (top: 50%) — deliberately
+   NOT pinned to 16px like .theme-toggle-corner, which shares this same
+   right edge, so the two never collide on mobile, where there's no room to
+   track .deck-frame (see ui/useStickyToTarget.ts). On desktop,
+   useStickyToTarget returns a real pixel value tracking the "Sample
+   Portfolio Summary" box (same mechanism/target as .help-menu-corner, so
+   Feedback sits level with Instructions and moves with it on scroll —
+   tasks.md U9); Feedback.tsx adds the .tracked class in that case, which
+   swaps the centering transform for a literal top offset. */
 .feedback-corner { position: fixed; top: 50%; right: 16px; transform: translateY(-50%); z-index: 50; }
+.feedback-corner.tracked { transform: none; }
 /* "Feedback"/"Light Mode" auto-size to different widths by default — a
    fixed shared min-width plus centered content makes the two floating
    right-edge buttons read as a deliberately matched pair. */
@@ -28,9 +36,11 @@
    behind a "Menu" button on narrow screens — .help-menu-toggle/
    .help-menu-list visibility is flipped by the media query below, JS only
    needs to control the mobile open/close state. `top` is a JS-computed
-   inline style (HelpMenu.tsx) that tracks the "Sample Portfolio Summary"
-   box on desktop, falling back to this 16px default before that effect
-   runs (or on mobile, where it's pinned here regardless of scroll).
+   inline style (HelpMenu.tsx, via ui/useStickyToTarget.ts — also used by
+   .feedback-corner, so the two corners move in lockstep) that tracks the
+   "Sample Portfolio Summary" box on desktop, falling back to this 16px
+   default before that effect runs (or on mobile, where it's pinned here
+   regardless of scroll).
    Selectors below are scoped under .help-menu-corner (not bare
    .help-menu-toggle/.help-menu-list) so their specificity reliably beats
    .deck-btn's `display: inline-flex` (deck.css) regardless of which

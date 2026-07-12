@@ -1695,6 +1695,38 @@ the existing geometry/keyboard unit tests and the render-smoke specs above.
     Instructions/Reading-the-Dashboard content split. Full gate (typecheck/lint/69 files, 354
     Vitest tests) green.
 
+### U9 — Feedback aligns with Instructions on desktop, same sticky-to-target tracking  ✅
+- **Do:** the right-edge Feedback button was vertically centered (`top: 50%`); align it level
+  with the top-left Instructions button instead, and have it move the same sticky-like way on
+  scroll — the same behaviour U8 gave the help menu.
+- **Accept:** Feedback sits at the same height as Instructions on desktop and moves with it on
+  scroll; no regression on mobile (Feedback and the top-right theme toggle both live at the
+  right edge — they mustn't collide once Feedback is no longer vertically centered there).
+- **Resolution note (2026-07-12):** extracted U8's tracking logic out of `HelpMenu.tsx` into a
+  shared hook, `ui/useStickyToTarget.ts`, and reused it from `Feedback.tsx`. Both now call
+  `useStickyToTarget('.deck-frame')`, so they read the exact same live measurement each frame and
+  move in lockstep (confirmed live: identical `getBoundingClientRect().top` on both corners,
+  before and after scroll).
+  - **Mobile collision, caught before it shipped:** the hook originally always returned a number
+    (falling back to a flat 16px off desktop, mirroring HelpMenu's own mobile default). Reusing
+    that for Feedback would have pinned it to `top: 16px; right: 16px` on mobile — exactly
+    `.theme-toggle-corner`'s own fixed position, i.e. the two buttons would render on top of each
+    other. Fixed by having the hook return `number | null` — `null` specifically means "narrow
+    viewport, caller's own CSS default applies," rather than baking in one specific fallback
+    value. `HelpMenu.tsx` needed no change (`style={top !== null ? {top} : undefined}` — CSS
+    already defaults `.help-menu-corner` to `top: 16px`, identical to what the hook used to force
+    inline). `Feedback.tsx` now adds a `.tracked` class only when `top !== null`; `app.css`
+    restores `.feedback-corner`'s original `top: 50%; transform: translateY(-50%)` as the
+    (mobile) default and `.feedback-corner.tracked { transform: none }` clears it for the desktop
+    pixel-`top` case (leaving the transform in place while overriding `top` to a literal pixel
+    value would have mispositioned it — `translateY(-50%)` shifts by 50% of the element's own
+    height, which only means "centered" when paired with `top: 50%`).
+  - **Verified live**: desktop — both corners read the identical computed `top` (e.g. 213px on
+    load, 276.75px after data finished loading and content reflowed, 16px once scrolled past the
+    summary box) at every point checked. Mobile (375px) — Feedback renders vertically centered,
+    clearly separated from "Light Mode" pinned at the top-right corner; no overlap. No console
+    errors in either viewport. Full gate (typecheck/lint/69 files, 354 Vitest tests) green.
+
 ---
 
 ## X — Deferred / documented seams  *(do NOT build without a fresh decision)*
