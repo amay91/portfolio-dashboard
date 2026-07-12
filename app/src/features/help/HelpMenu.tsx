@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { HoverButton } from '../../ui/HoverLift'
 import { useStickyToTarget } from '../../ui/useStickyToTarget'
+import { Feedback } from '../feedback/Feedback'
 import { InstructionsContent } from './InstructionsContent'
 import { ReadingDashboardContent } from './ReadingDashboardContent'
 import { PrivacyDataContent } from './PrivacyDataContent'
@@ -16,21 +17,28 @@ const TITLES: Record<PanelId, string> = {
 }
 
 // Top-left help menu: Instructions / Reading the Dashboard / Privacy and
-// Data / FAQ. Permanently visible on desktop (the items render inline, no
-// toggle — see app.css: .help-menu-corner .help-menu-toggle is scoped so it
-// reliably beats .deck-btn's `display: inline-flex` regardless of CSS file
-// import order); collapses behind a "Menu" toggle button on narrow screens.
-// Mounted outside the `pf &&` gate in App.tsx (same as ThemeToggle/
-// Feedback), so it's available from first paint regardless of whether a
-// statement has been uploaded yet.
+// Data / FAQ / Feedback. Permanently visible on desktop (the items render
+// inline, no toggle — see app.css: .help-menu-corner .help-menu-toggle is
+// scoped so it reliably beats .deck-btn's `display: inline-flex` regardless
+// of CSS file import order); collapses behind a "Menu" toggle button on
+// narrow screens, where Feedback drops down with the rest of the items
+// rather than floating separately (tasks.md U10 — Feedback used to be its
+// own right-edge corner button). Mounted outside the `pf &&` gate in
+// App.tsx (same as ThemeToggle), so it's available from first paint
+// regardless of whether a statement has been uploaded yet.
 //
 // Desktop vertical position tracks the top of the "Sample Portfolio
 // Summary" box (.deck-frame, rendered by CommandDeck) via useStickyToTarget
-// (ui/useStickyToTarget.ts) — shared with Feedback.tsx so the two corners
-// (top-left menu, right-edge Feedback) move in lockstep.
+// (ui/useStickyToTarget.ts).
+//
+// Feedback is a distinct modal (its own form/submit lifecycle — see
+// Feedback.tsx) rather than a read-only content panel like the other four,
+// so it gets its own open state (`feedbackOpen`) instead of going through
+// `active`/`TITLES`/.help-modal.
 export function HelpMenu() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [active, setActive] = useState<PanelId | null>(null)
+  const [feedbackOpen, setFeedbackOpen] = useState(false)
   const top = useStickyToTarget('.deck-frame')
   const menuRef = useRef<HTMLDivElement>(null)
 
@@ -52,8 +60,13 @@ export function HelpMenu() {
     return () => document.removeEventListener('keydown', onKeyDown)
   }, [active])
 
-  function open(id: PanelId) {
+  function openPanel(id: PanelId) {
     setActive(id)
+    setMenuOpen(false)
+  }
+
+  function openFeedback() {
+    setFeedbackOpen(true)
     setMenuOpen(false)
   }
 
@@ -67,17 +80,20 @@ export function HelpMenu() {
           Menu
         </HoverButton>
         <nav className={`help-menu-list${menuOpen ? ' open' : ''}`} aria-label="Help menu">
-          <HoverButton className="deck-btn" onClick={() => open('instructions')}>
+          <HoverButton className="deck-btn" onClick={() => openPanel('instructions')}>
             Instructions
           </HoverButton>
-          <HoverButton className="deck-btn" onClick={() => open('reading')}>
+          <HoverButton className="deck-btn" onClick={() => openPanel('reading')}>
             Reading the Dashboard
           </HoverButton>
-          <HoverButton className="deck-btn" onClick={() => open('privacy')}>
+          <HoverButton className="deck-btn" onClick={() => openPanel('privacy')}>
             Privacy and Data
           </HoverButton>
-          <HoverButton className="deck-btn" onClick={() => open('faq')}>
+          <HoverButton className="deck-btn" onClick={() => openPanel('faq')}>
             FAQ
+          </HoverButton>
+          <HoverButton className="deck-btn" onClick={openFeedback}>
+            Feedback
           </HoverButton>
         </nav>
       </div>
@@ -101,6 +117,7 @@ export function HelpMenu() {
           </div>
         </div>
       )}
+      <Feedback open={feedbackOpen} onClose={() => setFeedbackOpen(false)} />
     </>
   )
 }

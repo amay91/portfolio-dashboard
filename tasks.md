@@ -1726,6 +1726,121 @@ the existing geometry/keyboard unit tests and the render-smoke specs above.
     summary box) at every point checked. Mobile (375px) — Feedback renders vertically centered,
     clearly separated from "Light Mode" pinned at the top-right corner; no overlap. No console
     errors in either viewport. Full gate (typecheck/lint/69 files, 354 Vitest tests) green.
+  **Superseded 2026-07-12 by U10** — the right-edge Feedback corner button (and the
+  useStickyToTarget tracking this note describes) was removed entirely; Feedback moved into
+  HelpMenu's own nav list instead. See below.
+
+### U10 — Feedback moves into the Help menu (last item), drops down on mobile like the rest  ✅
+- **Do:** Feedback was its own floating right-edge corner button (tracking the Portfolio Summary
+  box per U9). Move it into the Help menu instead, as the last item below FAQ; on mobile it should
+  reveal/hide along with Instructions/Reading the Dashboard/Privacy and Data/FAQ when "Menu" is
+  toggled, not float separately.
+- **Accept:** Feedback appears as a 5th item at the bottom of the desktop menu list; on mobile it's
+  hidden behind "Menu" and drops down with the other four on click; the feedback form itself
+  (category select, message, submit/error/sent states) is unchanged.
+- **Resolution note (2026-07-12):**
+  - **`Feedback.tsx`** changed from an uncontrolled component owning its own `open` state and
+    floating trigger button to a fully controlled one — `{ open, onClose }` props, no more
+    internal `useState` for open/closed, no more `.feedback-corner` button/div, no more
+    `useStickyToTarget` usage (a component embedded in a menu list doesn't need to track anything
+    — it just renders inline, or in this case, its overlay/modal render is gated on the `open`
+    prop). Returns `null` when `!open` rather than always rendering a corner + conditional overlay.
+  - **`HelpMenu.tsx`** now owns a `feedbackOpen` boolean and renders `<Feedback open={feedbackOpen}
+    onClose={() => setFeedbackOpen(false)} />` alongside the existing `active`/`.help-modal`
+    panel system. Feedback deliberately does NOT go through the `PanelId`/`TITLES`/`.help-modal`
+    machinery the other four items use — it's a distinct form/submission modal with its own
+    styling (`.feedback-overlay`/`.feedback-modal`), not read-only prose content — so it gets its
+    own `openFeedback()` handler and its own state, added as a 5th `<HoverButton>` in the same
+    `<nav className="help-menu-list">` the other four already render into. Being a normal item in
+    that list is what gives it the mobile drop-down behaviour for free — no separate mobile
+    handling needed, since it's now subject to the exact same `.help-menu-list`/`.open` CSS the
+    other four items already had.
+  - **`App.tsx`**: removed the standalone `<Feedback />` render and its now-unused import — it's
+    rendered by `HelpMenu` now, not mounted twice.
+  - **Dead code removed**: `.feedback-corner`/`.feedback-corner.tracked` and the
+    `.feedback-corner .deck-btn` half of the old shared min-width rule (in `app.css`) — nothing
+    renders a `.feedback-corner` element anymore. `ui/useStickyToTarget.ts` is back to a single
+    consumer (`HelpMenu.tsx`) but kept as its own file rather than inlined back in, since a second
+    corner-tracking need is plausible later.
+  - **Tests**: `Feedback.spec.tsx` rewritten for the controlled API — a shared `root` re-rendered
+    with `open={true|false}` instead of clicking an internal trigger button, and Cancel/Escape/
+    overlay-click assertions now check the `onClose` mock's call count rather than the DOM
+    disappearing (the component no longer removes itself — its parent does, by flipping `open`).
+    `HelpMenu.spec.tsx` gained a "Feedback" item to its menu-items assertion (now 5, not 4) and a
+    new test confirming Feedback opens its own `.feedback-overlay` (not `.help-overlay`) and closes
+    on Cancel.
+  - **Verified live**: desktop — Feedback item renders as the last row in the always-visible menu
+    list (no separate right-edge button); clicking it opens the same feedback form as before.
+    Mobile (375px) — only "Menu" shows before clicking; after clicking, all 5 items (including
+    Feedback) drop down together; clicking Feedback opens the form correctly at mobile width too.
+    No console errors in either viewport. Full gate (typecheck/lint/69 files, 355 Vitest tests)
+    green.
+
+### U11 — Fix Save as PNG cropping (real bug, not a design change)  ✅
+- **Bug:** the downloaded PNG was badly cropped in real use — only the left ~33-84% of the
+  Portfolio Summary box actually rendered; the rest (4th KPI tile, right portion of the
+  Allocation card) was blank/missing, making the export unusable.
+- **Accept:** the downloaded PNG shows the complete, uncropped Portfolio Summary box — masthead,
+  full 4-tile KPI row, chart, holdings table, and the complete Allocation donut + legend — exactly
+  as it appears on screen.
+- **Root cause, found empirically** (bisected by capturing individual sub-elements in isolation
+  until the crop appeared/disappeared — see the session transcript for the full elimination
+  sequence): `html-to-image` clones the target node into a detached `<svg><foreignObject>`,
+  serializes it to an SVG data URI, and rasterizes that via an `<img>`. `.deck-frame` (the
+  captured element) is sized with `max-width: 1080px; margin: 0 auto` (deck.css) — inside that
+  detached clone, `max-width` + auto-margin gets **re-resolved against a different, effectively
+  much narrower containing block** than the live page, so most of the row's content silently
+  overflows past the foreignObject's implicit clip and never gets painted. Confirmed precisely:
+  capturing `.deck-kpi-rail` or `.deck-grid-2col` **alone** (no `max-width`/auto-margin parent) is
+  pixel-perfect (99.8%+ width fidelity, measured by sampling canvas pixel data for where real
+  content stops vs. background); wrapping either in a plain `max-width` + `margin:0 auto` parent
+  and recapturing reproduces the exact crop; explicit `border`/`padding`/`border-radius` on that
+  parent were each tested and ruled out individually. Not a scroll-position bug (reproduced
+  identically scrolled and unscrolled) and not caused by the `filter` option (reproduced with
+  `filter` removed) or `pixelRatio` (reproduced at `pixelRatio: 1` too, just less severely).
+- **Fix** (`CommandDeck.tsx`): immediately before calling `toPng`, read `.deck-frame`'s current
+  `getBoundingClientRect().width` and temporarily overwrite its inline style to
+  `max-width: none; margin: 0; width: <that literal pixel value>px` — freezing it at an
+  unambiguous fixed width with no `max-width`/auto-margin left to re-resolve — then restore the
+  original (empty, class-driven) inline style in a `finally` block once the capture completes.
+  Verified pixel-perfect (99.8% width fidelity) at both `pixelRatio: 1` and the real target ratio
+  (163/96), both scrolled and unscrolled, and via the actual UI button (not just the debug
+  harness used to isolate the bug).
+- **Verified live**: clicked the real "Save as PNG" button after scrolling the page, rendered the
+  downloaded PNG back into the page at full width — all 4 KPI tiles, the full chart, the complete
+  holdings table, and the full Allocation donut + all 4 legend rows (previously truncated,
+  e.g. "Bonds & fixed inc…") are now all present and complete. Full gate (typecheck/lint/69 files,
+  355 Vitest tests) green.
+
+### U12 — Mobile: Menu + theme toggle move above Data Check, out of the upload box's way  ✅
+- **Bug:** on mobile, the "Menu" button (top-left) and "Dark Mode / Light Mode" button (top-right)
+  are `position: fixed` corners pinned to the viewport's top edge — on a narrow screen they visibly
+  overlapped the upload box, which also sits near the top of the page.
+- **Accept:** on mobile only, both buttons move to sit just above the Data Check box (or
+  EmptyState, before a statement's loaded) instead of floating fixed over the upload box; desktop
+  is unchanged.
+- **Resolution note (2026-07-12):** `App.tsx` — both were previously rendered before `<UploadBar>`;
+  moved to a new `<div className="mobile-header-row">` rendered **after** `<UploadBar>`, right
+  before `<main id="app">` (i.e. immediately above whatever `<main>` shows — Data Check once a
+  portfolio's loaded, EmptyState during the brief window before that). On desktop this has zero
+  effect: both children stay `position: fixed`, which takes them out of normal flow entirely, so
+  the wrapping row has no height/visual footprint regardless of where it sits in the DOM tree —
+  moving *where in the DOM* a `position: fixed` element is declared never changes *where on
+  screen* it renders. The actual repositioning is pure CSS, scoped to the existing
+  `@media (max-width: 780px)` breakpoint: `.theme-toggle-corner` switches to `position: static`
+  (no absolutely-positioned children, so nothing else needed); `.help-menu-corner` switches to
+  `position: relative` (not `static`) with `top`/`left` reset to `0` — it needed to stay a
+  positioned ancestor because its own mobile dropdown (`.help-menu-list`) is `position: absolute`
+  and anchors to it; losing that would've made the dropdown jump to some further-out ancestor.
+  `.mobile-header-row` itself only gets `display: flex` inside the same media query (space-between,
+  centered), matching the page's `28px` horizontal gutter.
+  - **Verified live**: mobile (375px) — "Light Mode" and "Menu" now render as a row directly above
+    "Data check passed…", no overlap with the upload box above; clicking "Menu" still correctly
+    drops its dropdown anchored right below the button (confirms the `position: relative` fix);
+    all 5 items still open their correct panels. Desktop (unaffected, confirmed) — both remain
+    fixed corners, still sticky-tracking the Portfolio Summary box on scroll exactly as before
+    (U8/U9). No console errors in either viewport. Full gate (typecheck/lint/69 files, 355 Vitest
+    tests) green.
 
 ---
 

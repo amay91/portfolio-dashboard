@@ -1,6 +1,4 @@
 import { useEffect, useRef, useState } from 'react'
-import { HoverButton } from '../../ui/HoverLift'
-import { useStickyToTarget } from '../../ui/useStickyToTarget'
 
 export type FeedbackCategory = 'Bug Report' | 'Feature Request' | 'General Feedback'
 const CATEGORIES: FeedbackCategory[] = ['Bug Report', 'Feature Request', 'General Feedback']
@@ -9,29 +7,22 @@ const MAX_LENGTH = 5000
 
 type SubmitState = 'idle' | 'sending' | 'sent' | 'error'
 
-// A floating Feedback button (right edge, matches ThemeToggle's fixed
-// top-right button in size and styling, see docs/DECISIONS.md "Feedback
-// system") that opens a small modal: category + free-text message, posted
-// to a local companion server (server/feedback-server.js, same "run it
-// yourself on 127.0.0.1" pattern as markitdown_server.py). This component
-// owns only the form/request lifecycle — the server does the actual
-// sanitizing/persisting.
+// The feedback form modal: category + free-text message, posted to a local
+// companion server (server/feedback-server.js, same "run it yourself on
+// 127.0.0.1" pattern as markitdown_server.py). This component owns only the
+// form/request lifecycle — the server does the actual sanitizing/persisting.
 //
-// Desktop vertical position tracks the top of the "Sample Portfolio
-// Summary" box via useStickyToTarget (ui/useStickyToTarget.ts) — the same
-// hook HelpMenu.tsx uses, so Feedback sits level with the top-left
-// Instructions button and moves in lockstep with it on scroll (tasks.md
-// U9). Was vertically centered (`top: 50%`) before that; now `top` is a
-// JS-computed inline style like HelpMenu's, so the old centering transform
-// moved out of app.css.
-export function Feedback() {
-  const [open, setOpen] = useState(false)
+// Fully controlled (`open`/`onClose`) rather than owning its own floating
+// trigger button — it used to render its own right-edge corner button, but
+// that's now the "Feedback" item at the bottom of HelpMenu's nav list
+// (tasks.md U10), which owns the open/close state and renders this
+// component conditionally.
+export function Feedback({ open, onClose }: { open: boolean; onClose: () => void }) {
   const [category, setCategory] = useState<FeedbackCategory>('General Feedback')
   const [message, setMessage] = useState('')
   const [state, setState] = useState<SubmitState>('idle')
   const [errorMsg, setErrorMsg] = useState('')
   const textareaRef = useRef<HTMLTextAreaElement>(null)
-  const top = useStickyToTarget('.deck-frame')
 
   useEffect(() => {
     if (!open) return
@@ -45,7 +36,7 @@ export function Feedback() {
   }, [open])
 
   function close() {
-    setOpen(false)
+    onClose()
     setState('idle')
     setErrorMsg('')
   }
@@ -75,72 +66,62 @@ export function Feedback() {
     }
   }
 
+  if (!open) return null
+
   return (
-    <>
-      <div className={`feedback-corner${top !== null ? ' tracked' : ''}`} style={top !== null ? { top } : undefined}>
-        <HoverButton className="deck-btn" onClick={() => setOpen(true)}>
-          <svg className="deck-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden="true">
-            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z" />
-          </svg>
-          Feedback
-        </HoverButton>
-      </div>
-      {open && (
-        <div className="feedback-overlay" onClick={close}>
-          <div className="feedback-modal" role="dialog" aria-modal="true" aria-labelledby="feedback-title" onClick={(e) => e.stopPropagation()}>
-            <div className="feedback-modal-head">
-              <p id="feedback-title" className="deck-sec">
-                Send Feedback
-              </p>
-              <button className="feedback-close" onClick={close} aria-label="Close">
-                ×
+    <div className="feedback-overlay" onClick={close}>
+      <div className="feedback-modal" role="dialog" aria-modal="true" aria-labelledby="feedback-title" onClick={(e) => e.stopPropagation()}>
+        <div className="feedback-modal-head">
+          <p id="feedback-title" className="deck-sec">
+            Send Feedback
+          </p>
+          <button className="feedback-close" onClick={close} aria-label="Close">
+            ×
+          </button>
+        </div>
+        {state === 'sent' ? (
+          <div className="feedback-sent">
+            <p>Thanks — your feedback has been sent.</p>
+            <button className="btn-demo" onClick={close}>
+              Close
+            </button>
+          </div>
+        ) : (
+          <form onSubmit={submit}>
+            <label className="feedback-label">
+              Category
+              <select value={category} onChange={(e) => setCategory(e.target.value as FeedbackCategory)}>
+                {CATEGORIES.map((c) => (
+                  <option key={c} value={c}>
+                    {c}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label className="feedback-label">
+              Your feedback
+              <textarea
+                ref={textareaRef}
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                placeholder="What's on your mind?"
+                rows={5}
+                maxLength={MAX_LENGTH}
+                required
+              />
+            </label>
+            {state === 'error' && <p className="feedback-error">{errorMsg}</p>}
+            <div className="feedback-actions">
+              <button type="button" className="btn-demo" onClick={close}>
+                Cancel
+              </button>
+              <button type="submit" className="btn-demo" disabled={state === 'sending' || !message.trim()}>
+                {state === 'sending' ? 'Sending…' : 'Submit'}
               </button>
             </div>
-            {state === 'sent' ? (
-              <div className="feedback-sent">
-                <p>Thanks — your feedback has been sent.</p>
-                <button className="btn-demo" onClick={close}>
-                  Close
-                </button>
-              </div>
-            ) : (
-              <form onSubmit={submit}>
-                <label className="feedback-label">
-                  Category
-                  <select value={category} onChange={(e) => setCategory(e.target.value as FeedbackCategory)}>
-                    {CATEGORIES.map((c) => (
-                      <option key={c} value={c}>
-                        {c}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-                <label className="feedback-label">
-                  Your feedback
-                  <textarea
-                    ref={textareaRef}
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                    placeholder="What's on your mind?"
-                    rows={5}
-                    maxLength={MAX_LENGTH}
-                    required
-                  />
-                </label>
-                {state === 'error' && <p className="feedback-error">{errorMsg}</p>}
-                <div className="feedback-actions">
-                  <button type="button" className="btn-demo" onClick={close}>
-                    Cancel
-                  </button>
-                  <button type="submit" className="btn-demo" disabled={state === 'sending' || !message.trim()}>
-                    {state === 'sending' ? 'Sending…' : 'Submit'}
-                  </button>
-                </div>
-              </form>
-            )}
-          </div>
-        </div>
-      )}
-    </>
+          </form>
+        )}
+      </div>
+    </div>
   )
 }

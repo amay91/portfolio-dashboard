@@ -43,11 +43,29 @@ export function CommandDeck({
   // this element, so they're never included. The Save-as-PNG button itself
   // is excluded from the capture via `filter` (it'd otherwise render inside
   // its own screenshot).
+  //
+  // .deck-frame is sized with `max-width: 1080px; margin: 0 auto` (deck.css)
+  // — html-to-image clones the node into a detached <svg><foreignObject>,
+  // and that clone re-resolves `max-width`+auto-margin against a DIFFERENT
+  // containing block than the live page, silently shrinking the usable
+  // width and clipping most of the KPI row / Allocation card (confirmed
+  // empirically: capturing .deck-kpi-rail or .deck-grid-2col alone is
+  // pixel-perfect; only wrapping them in a max-width+auto-margin parent
+  // reproduces the crop). Freezing the frame at an explicit literal pixel
+  // `width` with `max-width: none; margin: 0` for the moment of capture
+  // sidesteps the re-resolution entirely — verified pixel-perfect at both
+  // the default and target pixelRatio, scrolled and unscrolled.
   async function handleSaveAsPng() {
-    if (!frameRef.current || savingPng) return
+    const frame = frameRef.current
+    if (!frame || savingPng) return
     setSavingPng(true)
+    const prevStyle = { maxWidth: frame.style.maxWidth, margin: frame.style.margin, width: frame.style.width }
     try {
-      const dataUrl = await toPng(frameRef.current, {
+      const pxWidth = frame.getBoundingClientRect().width
+      frame.style.maxWidth = 'none'
+      frame.style.margin = '0px'
+      frame.style.width = `${pxWidth}px`
+      const dataUrl = await toPng(frame, {
         pixelRatio: PNG_PIXEL_RATIO,
         backgroundColor: getComputedStyle(document.documentElement).getPropertyValue('--frame').trim() || undefined,
         filter: (node) => !(node instanceof HTMLElement && node.classList.contains('deck-mast-pngbtn')),
@@ -59,6 +77,7 @@ export function CommandDeck({
     } catch (err) {
       console.error('Save as PNG failed', err)
     } finally {
+      Object.assign(frame.style, prevStyle)
       setSavingPng(false)
     }
   }

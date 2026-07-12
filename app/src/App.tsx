@@ -24,7 +24,6 @@ import { resolveLiveNavs } from './marketdata/resolve'
 import { benchmarkCagr, fetchNiftyBenchmark } from './marketdata/sources/benchmark'
 import { ChartGallery } from './charts/ChartGallery'
 import { EmptyState } from './EmptyState'
-import { Feedback } from './features/feedback/Feedback'
 import { Footer } from './Footer'
 import { HelpMenu } from './features/help/HelpMenu'
 import { ThemeToggle } from './features/theme/ThemeToggle'
@@ -295,11 +294,6 @@ function App() {
 
   return (
     <>
-      <div className="theme-toggle-corner">
-        <ThemeToggle />
-      </div>
-      <Feedback />
-      <HelpMenu />
       <UploadBar
         status={status}
         uploadPhase={uploadPhase}
@@ -314,6 +308,20 @@ function App() {
         onConvertMarkitdown={handleConvertMarkitdown}
         onSubmitPassword={handleSubmitPassword}
       />
+      {/* On desktop these two stay position:fixed corners (top-left/top-right),
+          unaffected by their position here in the DOM. On mobile (<=780px)
+          they switch to position:static/relative and render in normal flow
+          at exactly this point — just above Data Check (or EmptyState,
+          before a statement loads) — instead of floating fixed over the
+          upload box, which they used to visually collide with (tasks.md
+          U11). See app.css's .mobile-header-row / .theme-toggle-corner /
+          .help-menu-corner mobile media query. */}
+      <div className="mobile-header-row">
+        <div className="theme-toggle-corner">
+          <ThemeToggle />
+        </div>
+        <HelpMenu />
+      </div>
       <main id="app">
         {!pf && <EmptyState status={status} />}
         {pf && (

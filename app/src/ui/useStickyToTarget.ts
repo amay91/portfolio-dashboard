@@ -17,14 +17,15 @@ const MIN_TOP = 16
 //
 // Desktop only (`window.matchMedia`, guarded for environments without it,
 // e.g. jsdom) — returns `null` on narrow/mobile viewports rather than a
-// number, so each caller's own CSS default (not necessarily 16px — e.g.
-// Feedback.tsx keeps its original vertically-centered mobile position,
-// since a bare 16px would collide with ThemeToggle in the same corner)
-// applies untouched. Callers that DO want 16px on mobile (e.g. HelpMenu,
-// which had no such collision) simply have that as their CSS default too.
+// number, so each caller's own CSS default applies untouched instead of
+// this hook forcing one specific fallback value.
 //
-// First used by HelpMenu.tsx (tracks .deck-frame); shared with
-// Feedback.tsx so the two corners move in lockstep (tasks.md U9).
+// Used by HelpMenu.tsx (tracks .deck-frame). Was also used by Feedback.tsx
+// when Feedback was its own floating corner button (tasks.md U9); that
+// button became a HelpMenu nav item in U10, so this hook is back to a
+// single consumer — kept as its own file rather than inlined back into
+// HelpMenu since a second corner-tracking need is plausible later (e.g. if
+// ThemeToggle ever needs the same treatment).
 export function useStickyToTarget(targetSelector: string): number | null {
   const [top, setTop] = useState<number | null>(null)
 

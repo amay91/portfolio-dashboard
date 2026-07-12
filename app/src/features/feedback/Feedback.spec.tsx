@@ -1,18 +1,29 @@
 import { act } from 'react'
 import { createRoot } from 'react-dom/client'
+import type { Root } from 'react-dom/client'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { Feedback } from './Feedback'
 
-// Real client render (not renderToStaticMarkup) — the modal's open/close,
-// fetch submission, and keyboard handling are all side effects that a
-// static render never exercises. Same technique as ThemeToggle.spec.tsx.
+// Real client render (not renderToStaticMarkup) — the form's fetch
+// submission and keyboard handling are all side effects that a static
+// render never exercises. Same technique as ThemeToggle.spec.tsx.
+//
+// Feedback is now a fully controlled component (open/onClose — tasks.md
+// U10, when it moved from its own floating corner button into HelpMenu's
+// nav list) rather than owning its own open state, so these tests drive
+// `open` from the outside via re-render, and assert against the onClose
+// mock instead of an internal toggle button.
 describe('Feedback', () => {
   let container: HTMLDivElement
+  let root: Root
+  let onClose: () => void
 
   beforeEach(() => {
     ;(globalThis as unknown as { IS_REACT_ACT_ENVIRONMENT: boolean }).IS_REACT_ACT_ENVIRONMENT = true
     container = document.createElement('div')
     document.body.appendChild(container)
+    root = createRoot(container)
+    onClose = vi.fn<() => void>()
   })
 
   afterEach(() => {
@@ -20,26 +31,19 @@ describe('Feedback', () => {
     vi.unstubAllGlobals()
   })
 
-  function renderFeedback() {
-    const root = createRoot(container)
+  function renderFeedback(open: boolean) {
     act(() => {
-      root.render(<Feedback />)
+      root.render(<Feedback open={open} onClose={onClose} />)
     })
-    return root
   }
 
-  it('renders a floating Feedback button, closed by default', () => {
-    renderFeedback()
-    expect(container.querySelector('.feedback-corner button')?.textContent).toContain('Feedback')
+  it('renders nothing when closed', () => {
+    renderFeedback(false)
     expect(container.querySelector('.feedback-overlay')).toBeNull()
   })
 
-  it('opens the modal on click, with category select and message textarea', () => {
-    renderFeedback()
-    const openBtn = container.querySelector('.feedback-corner button') as HTMLButtonElement
-    act(() => {
-      openBtn.click()
-    })
+  it('renders the modal with category select and message textarea when open', () => {
+    renderFeedback(true)
     expect(container.querySelector('.feedback-overlay')).not.toBeNull()
     const select = container.querySelector('select') as HTMLSelectElement
     const options = Array.from(select.options).map((o) => o.value)
@@ -50,11 +54,7 @@ describe('Feedback', () => {
   it('submits category + message to the feedback endpoint and shows a confirmation', async () => {
     const fetchMock = vi.fn().mockResolvedValue(new Response(JSON.stringify({ ok: true }), { status: 201 }))
     vi.stubGlobal('fetch', fetchMock)
-    renderFeedback()
-    const openBtn = container.querySelector('.feedback-corner button') as HTMLButtonElement
-    act(() => {
-      openBtn.click()
-    })
+    renderFeedback(true)
     const select = container.querySelector('select') as HTMLSelectElement
     const textarea = container.querySelector('textarea') as HTMLTextAreaElement
     const nativeSelectSetter = Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype, 'value')!.set!
@@ -82,11 +82,7 @@ describe('Feedback', () => {
 
   it('shows a specific, actionable message when the local server is not running', async () => {
     vi.stubGlobal('fetch', vi.fn().mockRejectedValue(new TypeError('Failed to fetch')))
-    renderFeedback()
-    const openBtn = container.querySelector('.feedback-corner button') as HTMLButtonElement
-    act(() => {
-      openBtn.click()
-    })
+    renderFeedback(true)
     const textarea = container.querySelector('textarea') as HTMLTextAreaElement
     const nativeTextareaSetter = Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype, 'value')!.set!
     act(() => {
@@ -103,11 +99,7 @@ describe('Feedback', () => {
 
   it('surfaces the server-provided error message on a validation failure', async () => {
     vi.stubGlobal('fetch', vi.fn().mockResolvedValue(new Response(JSON.stringify({ error: 'Choose a valid category.' }), { status: 400 })))
-    renderFeedback()
-    const openBtn = container.querySelector('.feedback-corner button') as HTMLButtonElement
-    act(() => {
-      openBtn.click()
-    })
+    renderFeedback(true)
     const textarea = container.querySelector('textarea') as HTMLTextAreaElement
     const nativeTextareaSetter = Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype, 'value')!.set!
     act(() => {
@@ -122,35 +114,28 @@ describe('Feedback', () => {
     expect(container.querySelector('.feedback-error')?.textContent).toBe('Choose a valid category.')
   })
 
-  it('closes the modal on Cancel and on Escape', () => {
-    renderFeedback()
-    const openBtn = container.querySelector('.feedback-corner button') as HTMLButtonElement
-    act(() => {
-      openBtn.click()
-    })
-    expect(container.querySelector('.feedback-overlay')).not.toBeNull()
+  it('calls onClose on Cancel, on Escape, and on overlay click', () => {
+    renderFeedback(true)
     const cancelBtn = Array.from(container.querySelectorAll('button')).find((b) => b.textContent === 'Cancel') as HTMLButtonElement
     act(() => {
       cancelBtn.click()
     })
-    expect(container.querySelector('.feedback-overlay')).toBeNull()
+    expect(onClose).toHaveBeenCalledTimes(1)
 
-    act(() => {
-      openBtn.click()
-    })
-    expect(container.querySelector('.feedback-overlay')).not.toBeNull()
     act(() => {
       document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }))
     })
-    expect(container.querySelector('.feedback-overlay')).toBeNull()
+    expect(onClose).toHaveBeenCalledTimes(2)
+
+    const overlay = container.querySelector('.feedback-overlay') as HTMLDivElement
+    act(() => {
+      overlay.click()
+    })
+    expect(onClose).toHaveBeenCalledTimes(3)
   })
 
   it('disables Submit while the message is empty', () => {
-    renderFeedback()
-    const openBtn = container.querySelector('.feedback-corner button') as HTMLButtonElement
-    act(() => {
-      openBtn.click()
-    })
+    renderFeedback(true)
     const submitBtn = Array.from(container.querySelectorAll('button')).find((b) => b.textContent === 'Submit') as HTMLButtonElement
     expect(submitBtn.disabled).toBe(true)
   })

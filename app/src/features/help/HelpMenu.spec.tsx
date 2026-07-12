@@ -27,11 +27,29 @@ describe('HelpMenu', () => {
     return root
   }
 
-  it('renders the four menu items and no open modal by default', () => {
+  it('renders the five menu items and no open modal by default', () => {
     renderHelpMenu()
     const items = Array.from(container.querySelectorAll('.help-menu-list button')).map((b) => b.textContent)
-    expect(items).toEqual(['Instructions', 'Reading the Dashboard', 'Privacy and Data', 'FAQ'])
+    expect(items).toEqual(['Instructions', 'Reading the Dashboard', 'Privacy and Data', 'FAQ', 'Feedback'])
     expect(container.querySelector('.help-overlay')).toBeNull()
+    expect(container.querySelector('.feedback-overlay')).toBeNull()
+  })
+
+  it('opens the Feedback form (not the shared help-modal) and closes it on Cancel', () => {
+    renderHelpMenu()
+    const feedbackBtn = Array.from(container.querySelectorAll('.help-menu-list button')).find((b) => b.textContent === 'Feedback') as HTMLButtonElement
+    act(() => {
+      feedbackBtn.click()
+    })
+    expect(container.querySelector('.feedback-overlay')).not.toBeNull()
+    expect(container.querySelector('.help-overlay')).toBeNull()
+    expect(container.querySelector('select')).not.toBeNull()
+
+    const cancelBtn = Array.from(container.querySelectorAll('button')).find((b) => b.textContent === 'Cancel') as HTMLButtonElement
+    act(() => {
+      cancelBtn.click()
+    })
+    expect(container.querySelector('.feedback-overlay')).toBeNull()
   })
 
   it('opens each panel with the correct title and content', () => {
