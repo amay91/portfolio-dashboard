@@ -1580,6 +1580,58 @@ the existing geometry/keyboard unit tests and the render-smoke specs above.
   **Superseded 2026-07-11 by U7** — this floating button and its modal were removed; the same
   facts now live in U7's "Privacy and Data" menu item, expanded to a full layperson explainer.
 
+### D3 — Production feedback: Cloudflare Pages Function forwarding to a webhook  ✅
+- **Do:** the Feedback button posts to `server/feedback-server.js` at `http://127.0.0.1:8766` — a
+  local companion process that only exists on the machine of whoever's running the app. Once
+  deployed, a real visitor's own `127.0.0.1:8766` never has this server running, so every
+  production submission fails silently. Give the site owner an actual way to receive feedback
+  once the app is live.
+- **Accept:** submissions from a deployed instance reach the site owner (not a database only they
+  remember to check) with no new hosted database/admin UI to build or maintain; local dev is
+  unaffected.
+- **Resolution note (2026-07-12):** same "thin per-platform entry point around a plain
+  Web-standard handler" shape as N2/D1's AMFI edge function.
+  - **`app/src/server/feedbackWebhook.ts`** (new) — `(Request, webhookUrl) => Promise<Response>`,
+    no platform imports. Re-validates everything the client already validates server-side (never
+    trust client input): allowed categories, non-empty message, under 5000 chars. Forwards
+    `{category, message}` to `webhookUrl` as `{ text, content, category, message, submittedAt }` —
+    `text` is Slack's Incoming Webhook field, `content` is Discord's, so the exact same deployed
+    code works with either provider (or a generic Zapier/Make/n8n catcher via the raw fields) with
+    zero code changes, only which URL gets configured. `neutralizeMentions()` inserts a zero-width
+    space after every `@` before forwarding — this endpoint accepts free text from anyone on the
+    public internet and forwards it into a Slack/Discord channel, so an unneutralized `@everyone`
+    in a "bug report" would ping the whole channel; deliberately *not* the local server's
+    full-HTML-stripping `sanitize-html`, since this handler never renders the message as HTML
+    anywhere in its own pipeline (see `docs/DECISIONS.md` for the full reasoning). Returns 500
+    (not a crash, not a silent drop) when `FEEDBACK_WEBHOOK_URL` isn't configured; 502 if the
+    webhook itself is unreachable or rejects the payload.
+  - **`app/functions/api/feedback.ts`** (new) — Cloudflare Pages Function entry point, auto-routed
+    to `POST /api/feedback`; unwraps `env.FEEDBACK_WEBHOOK_URL` and delegates.
+  - **`Feedback.tsx`**: endpoint is now `VITE_FEEDBACK_URL || 'http://127.0.0.1:8766/api/feedback'`
+    — unset (unchanged default), local dev behaves exactly as before this task; set to
+    `/api/feedback` (Cloudflare dashboard, same-origin), it hits the new Function. The
+    "server not running, start it with `cd server && npm start`" error only makes sense in local
+    dev, so it's now conditional on which endpoint is active — the edge path shows a generic
+    "couldn't send feedback, try again" instead.
+  - **`docs/DEPLOY.md`** extended with the new `VITE_FEEDBACK_URL` (plain text) and
+    `FEEDBACK_WEBHOOK_URL` (**secret**) dashboard steps, a `curl` + real-UI deploy-verification
+    check, and a "Local testing" section for pointing `wrangler pages dev` at a real webhook (or a
+    throwaway local listener) via a gitignored `app/.dev.vars`. `.dev.vars` added to `app/
+    .gitignore` alongside the existing `.wrangler/` entry.
+  - **Verified end-to-end without touching any real external service**: built with
+    `VITE_FEEDBACK_URL=/api/feedback` baked in, ran `wrangler pages dev` with
+    `FEEDBACK_WEBHOOK_URL` in a local `.dev.vars` pointed at a throwaway local HTTP listener on
+    the same machine, then drove a real submission through the actual Feedback form in a live
+    browser — confirmed the `201`, the "Thanks — your feedback has been sent" UI state, and the
+    listener receiving the exact expected payload with `@everyone` correctly neutralized to
+    `@​everyone`. All temporary local-only test files (`.env.local`, `.dev.vars`, the mock
+    listener) removed after verification — nothing real was contacted, nothing left behind.
+  - 10 new unit tests (`feedbackWebhook.spec.ts`, mocked `fetch`, same convention as
+    `amfiNav.spec.ts`): method rejection, invalid category, empty/oversized message, unparseable
+    body, not-configured 500, successful forwarding (payload shape asserted field-by-field),
+    mention neutralization, webhook-unreachable 502, webhook-rejected 502. Full gate
+    (typecheck/lint/70 files, 365 Vitest tests) green.
+
 ### U7 — Top-left Help menu: Instructions / Privacy and Data / FAQ  ✅
 - **Do:** a menu, permanently visible top-left on desktop and click-to-open on mobile, with three
   items — a step-by-step CAMS statement-download + dashboard-usage guide (with the user's own

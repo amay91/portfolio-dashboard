@@ -47,6 +47,17 @@ retained as reference. Locked decisions that override the original phases:
    (Tasks A/S/T/D). BUT the **Web Worker and full PWA-offline items in Phase 7 are DEFERRED**
    as unmeasured gold-plating (Tasks X3–X4): statements are tiny, pdf.js is already off-thread,
    and NAVs need the network anyway. Profile before optimizing.
+6. **In-app user feedback is a Cloudflare Pages Function forwarding to a webhook, not a database
+   (2026-07-12, task D3).** The Feedback button's local companion server (`server/
+   feedback-server.js`, SQLite) only ever works for the person running the app locally — a real
+   deployed visitor's `127.0.0.1:8766` is their own machine, not the site owner's. Rather than
+   standing up a hosted database + admin view, submissions are validated server-side, then
+   forwarded to a Slack or Discord "Incoming Webhook" URL (site owner's choice, set as a
+   Cloudflare secret) — same zero-infrastructure spirit as the rest of this project, and the site
+   owner is notified the moment someone submits rather than needing to remember to check a log.
+   Same "thin per-platform entry point around a plain Web-standard handler" shape as N2/D1's AMFI
+   edge function. See `docs/DEPLOY.md` and `docs/DECISIONS.md` ("Production feedback: a Pages
+   Function forwarding to a webhook").
 
 ---
 
@@ -305,7 +316,8 @@ Phased so that a **thin end‑to‑end slice works early** and every phase ships
 ### Phase 8 — Testing, docs, launch (½–1 week)
 25. Playwright e2e: upload sample → live refresh → sort → open commentary → navigate charts; offline path.
 26. Threat‑model review (CSP, no‑egress verification, dependency audit); privacy note + methods docs in‑app.
-27. Deploy static PWA to Cloudflare/Netlify/Vercel; ship the NAV edge function; set up preview deploys.
+27. Deploy static PWA to Cloudflare/Netlify/Vercel; ship the NAV edge function and the feedback
+    webhook edge function (§0.6); set up preview deploys.
 
 ### Phase 9 — Roadmap (post‑launch)
 28. Multi‑statement merge over time; NSDL/CDSL demat support; CSV/PDF export; encrypted local save + optional E2E‑encrypted sync; glide‑path scenario simulator; publish `engine` + `parsing` as an open‑source npm package.

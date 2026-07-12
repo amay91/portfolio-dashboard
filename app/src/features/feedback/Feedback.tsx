@@ -2,15 +2,22 @@ import { useEffect, useRef, useState } from 'react'
 
 export type FeedbackCategory = 'Bug Report' | 'Feature Request' | 'General Feedback'
 const CATEGORIES: FeedbackCategory[] = ['Bug Report', 'Feature Request', 'General Feedback']
-const FEEDBACK_ENDPOINT = 'http://127.0.0.1:8766/api/feedback'
+// Local dev default: server/feedback-server.js, a companion process you run
+// yourself (same "127.0.0.1 only" pattern as markitdown_server.py) — there's
+// no such process on a real visitor's machine once this is deployed, so
+// production sets VITE_FEEDBACK_URL to the same-origin Pages Function
+// instead (`/api/feedback`, task D3 — see functions/api/feedback.ts and
+// docs/DEPLOY.md). Left unset, behaviour is unchanged from before D3.
+const EDGE_FEEDBACK_URL = import.meta.env.VITE_FEEDBACK_URL as string | undefined
+const FEEDBACK_ENDPOINT = EDGE_FEEDBACK_URL || 'http://127.0.0.1:8766/api/feedback'
 const MAX_LENGTH = 5000
 
 type SubmitState = 'idle' | 'sending' | 'sent' | 'error'
 
-// The feedback form modal: category + free-text message, posted to a local
-// companion server (server/feedback-server.js, same "run it yourself on
-// 127.0.0.1" pattern as markitdown_server.py). This component owns only the
-// form/request lifecycle — the server does the actual sanitizing/persisting.
+// The feedback form modal: category + free-text message, posted to
+// FEEDBACK_ENDPOINT above (local companion server in dev, edge Function in
+// production). This component owns only the form/request lifecycle — the
+// receiving end does the actual sanitizing/forwarding.
 //
 // Fully controlled (`open`/`onClose`) rather than owning its own floating
 // trigger button — it used to render its own right-edge corner button, but
@@ -60,7 +67,9 @@ export function Feedback({ open, onClose }: { open: boolean; onClose: () => void
       const msg = (err as Error).message
       setErrorMsg(
         msg === 'Failed to fetch'
-          ? 'Couldn’t reach the feedback server at 127.0.0.1:8766. Start it with  cd server && npm install && npm start  then try again.'
+          ? EDGE_FEEDBACK_URL
+            ? 'Couldn’t send feedback right now — please try again in a moment.'
+            : 'Couldn’t reach the feedback server at 127.0.0.1:8766. Start it with  cd server && npm install && npm start  then try again.'
           : msg,
       )
     }

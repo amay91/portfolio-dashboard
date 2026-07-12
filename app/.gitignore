@@ -12,8 +12,10 @@ dist
 dist-ssr
 *.local
 
-# Cloudflare Wrangler local dev state (task D1)
+# Cloudflare Wrangler local dev state (task D1) + local secrets for
+# `wrangler pages dev` (task D3 — e.g. a real FEEDBACK_WEBHOOK_URL)
 .wrangler/
+.dev.vars
 
 # Playwright (T1)
 /test-results/

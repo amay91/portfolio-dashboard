@@ -1,14 +1,15 @@
-# Deploy (task D1)
+# Deploy (task D1, extended by D3)
 
-The app deploys as a static SPA on **Cloudflare Pages**, with the N2 AMFI edge function riding
-along as a **Cloudflare Pages Function** at `/api/amfi-nav` — one deployment, one dashboard
-connection, same origin as the site (so no CSP or CORS changes were needed: `index.html`'s
-`connect-src 'self'` already covers a same-origin `/api/amfi-nav` fetch).
+The app deploys as a static SPA on **Cloudflare Pages**, with two **Cloudflare Pages Functions**
+riding along at `/api/amfi-nav` (task N2/D1) and `/api/feedback` (task D3) — one deployment, one
+dashboard connection, same origin as the site (so no CSP or CORS changes were needed:
+`index.html`'s `connect-src 'self'` already covers same-origin fetches to either).
 
 Everything below the "Cloudflare dashboard" section is already done in this repo and verified
-locally (`npm run build` + `wrangler pages dev dist`, hitting the real AMFI feed through the
-Function). What's left is account-level and has to happen in your own GitHub/Cloudflare accounts —
-I can't do that part for you.
+locally (`npm run build` + `wrangler pages dev dist`, hitting the real AMFI feed through
+`/api/amfi-nav`, and a local mock webhook receiver through `/api/feedback`). What's left is
+account-level and has to happen in your own GitHub/Cloudflare accounts — I can't do that part for
+you.
 
 ## What's already in the repo
 
@@ -17,15 +18,32 @@ I can't do that part for you.
   (fetch AMFI, parse, CORS headers, caching). Pages auto-routes this file to
   `GET/OPTIONS /api/amfi-nav` based on its path — see
   [Cloudflare's Pages Functions docs](https://developers.cloudflare.com/pages/functions/).
+- **`app/functions/api/feedback.ts`** — same pattern, wrapping `app/src/server/feedbackWebhook.ts`'s
+  `handleFeedbackWebhook()` (task D3): validates a `{category, message}` POST body (same rules as
+  the local dev server — allowed categories, non-empty, under 5000 chars), neutralizes
+  Slack/Discord mention syntax (`@everyone`, `@here`, `<!channel>` etc. — this is a public-facing
+  endpoint accepting free text from anyone), then forwards it to a webhook URL read from
+  `env.FEEDBACK_WEBHOOK_URL` (a Cloudflare Pages **secret**, not a public `VITE_` var — see below).
+  The forwarded payload includes both `text` (Slack's field) and `content` (Discord's field) set
+  to the same formatted string, plus raw `category`/`message`/`submittedAt` fields for a generic
+  webhook catcher (Zapier/Make/n8n) if you'd rather use one of those instead.
+- **`app/src/features/feedback/Feedback.tsx`** — posts to `VITE_FEEDBACK_URL` if set, else the
+  local dev server (`http://127.0.0.1:8766/api/feedback`, unchanged default — no regression for
+  local dev if you leave this unset). Also swaps the "server not running, start it with..." error
+  message for a generic one when running against the edge endpoint, since that instruction only
+  makes sense in local dev.
 - **`app/wrangler.toml`** — minimal project config (`name`, `compatibility_date`,
   `pages_build_output_dir = "dist"`) so `wrangler pages dev` and Cloudflare's own build both know
   where the built site lives.
-- **`npm run preview:pages`** (in `app/`) — builds the SPA and serves it *plus* the Function
+- **`npm run preview:pages`** (in `app/`) — builds the SPA and serves it *plus* both Functions
   locally via `wrangler pages dev dist`, for testing the whole thing (static assets + edge
-  function) exactly as Cloudflare will run it, before ever touching a real deploy.
-- **`.gitignore`** (root and `app/`) — extended to ignore `.wrangler/` (Wrangler's local dev
-  state) and `.env*` (secrets never get committed; the one env var this app needs is set in the
-  Cloudflare dashboard instead, see below).
+  functions) exactly as Cloudflare will run it, before ever touching a real deploy. For
+  `/api/feedback` specifically, `wrangler pages dev` reads a local `app/.dev.vars` file
+  (gitignored, never committed) for `FEEDBACK_WEBHOOK_URL` — see "Local testing" below.
+- **`.gitignore`** (root and `app/`) — ignores `.wrangler/` (Wrangler's local dev state), `.env*`
+  (Vite build-time vars), and `.dev.vars` (Wrangler's local **secrets** file, e.g. a real
+  `FEEDBACK_WEBHOOK_URL` for your own local testing) — none of these ever get committed; the real
+  values live in the Cloudflare dashboard instead, see below.
 
 ## Cloudflare dashboard setup (your steps)
 
@@ -40,15 +58,33 @@ I can't do that part for you.
    | Build command | `npm run build` |
    | Build output directory | `dist` |
    | Framework preset | None / Vite (either works — the build command is explicit either way) |
-4. **Environment variable** (Settings → Environment variables, for the Production and Preview
-   environments): `VITE_AMFI_EDGE_URL` = `/api/amfi-nav`.
-   - This is a **relative** path, not a full URL — the Function always lives on the same domain
-     as the static site (that's the whole point of using Pages Functions instead of a separate
-     Worker), so a relative path is correct for every environment: production, and every PR
-     preview URL alike.
-   - Left unset, the app behaves exactly as it does today (no regression) — `resolve.ts`'s edge
-     tier is opt-in via this one var (task N3), and falls back to mf.captnemo.in/mfapi.in for any
-     gap either way.
+4. **Environment variables** (Settings → Environment variables, for the Production and Preview
+   environments):
+   | Variable | Value | Type |
+   |---|---|---|
+   | `VITE_AMFI_EDGE_URL` | `/api/amfi-nav` | Plain text |
+   | `VITE_FEEDBACK_URL` | `/api/feedback` | Plain text |
+   | `FEEDBACK_WEBHOOK_URL` | *(your Slack or Discord Incoming Webhook URL)* | **Secret** |
+   - The two `VITE_` vars are **relative** paths, not full URLs — both Functions always live on
+     the same domain as the static site (that's the whole point of using Pages Functions instead
+     of a separate Worker), so a relative path is correct for every environment: production, and
+     every PR preview URL alike.
+   - `VITE_AMFI_EDGE_URL` left unset behaves exactly as before D1 (no regression) — `resolve.ts`'s
+     edge tier is opt-in (task N3), falling back to mf.captnemo.in/mfapi.in for any gap either way.
+   - `VITE_FEEDBACK_URL` left unset means the deployed site's Feedback form will try to reach
+     `127.0.0.1:8766` — i.e. **every visitor's own machine**, which never has that server running.
+     Feedback submissions will silently fail for real users until this is set; there's no
+     "fallback to something else" here the way there is for NAV lookups. Set it before shipping if
+     you want the Feedback button to actually work in production.
+   - `FEEDBACK_WEBHOOK_URL` needs a real Incoming Webhook URL from wherever you want to receive
+     submissions — [Slack](https://api.slack.com/messaging/webhooks) or
+     [Discord](https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks) both
+     offer free, no-code "Incoming Webhook" URLs you create from a channel's settings; the handler
+     is compatible with either without any code changes (see `feedback.ts` above). Mark this one
+     as a **Secret**, not plain text — Cloudflare hides secret values in the dashboard/logs after
+     they're set, same care as any credential. Left unset, `/api/feedback` responds `500
+     "Feedback isn't configured on this deployment yet"` rather than crashing or silently
+     dropping submissions — you'll notice quickly if you forget this step.
 5. Deploy. Cloudflare Pages gives every PR its own preview URL automatically (no extra CI
    workflow needed for this — it's built into Cloudflare's GitHub integration) satisfying D1's
    "preview deploys on PR" acceptance line.
@@ -65,19 +101,16 @@ I can't do that part for you.
   in parallel and lets a successful captnemo match overwrite the AMFI one (existing design,
   predates D1) — that's normal, not a sign the edge function isn't working. Confirm the edge
   function itself independently with the `curl` check above.
-
-## Git status
-
-This repo was git-initialized locally as part of D1, with an initial commit of the working tree
-(everything except what `.gitignore` excludes — `node_modules`, `dist`, `.wrangler`, `.env*`,
-`server/feedback.db`). **No remote is configured and nothing has been pushed anywhere** — that,
-and creating the actual GitHub repo, is on you:
-
-```bash
-# from the PortfolioDashboard/ root
-git remote add origin <your-new-github-repo-url>
-git push -u origin main
-```
+- `curl -i -X POST https://<your-deploy>/api/feedback -H "Content-Type: application/json" -d
+  '{"category":"Bug Report","message":"deploy check"}'` should return `201 {"ok":true}`, and the
+  message should show up wherever `FEEDBACK_WEBHOOK_URL` points (your Slack channel/Discord
+  channel/webhook catcher) within a few seconds. If it returns `500`, `FEEDBACK_WEBHOOK_URL` isn't
+  set for that environment (Production and Preview are configured separately — check both if
+  you're testing a PR preview URL). Delete the test message from your channel afterward if you'd
+  rather not leave it there.
+- Open the Feedback form in the actual UI (Help menu → Feedback) and submit something real — this
+  is the path an actual user hits, and it's worth confirming once end-to-end rather than trusting
+  the `curl` check alone.
 
 ## Local testing without any of the above
 
@@ -86,5 +119,32 @@ cd app
 npm run preview:pages
 ```
 
-Builds the SPA and serves it locally via Wrangler, Function included, at whatever port it prints
-(no Cloudflare account or GitHub push needed for this — it's fully local).
+Builds the SPA and serves it locally via Wrangler, both Functions included, at whatever port it
+prints (no Cloudflare account or GitHub push needed for this — it's fully local).
+
+For `/api/amfi-nav` this just works — it needs no secrets, only the public AMFI feed. For
+`/api/feedback` to do anything other than return its "not configured" 500, create
+**`app/.dev.vars`** (gitignored, never committed) with a real webhook URL:
+
+```
+FEEDBACK_WEBHOOK_URL=https://hooks.slack.com/services/...
+```
+
+and rebuild your app with `VITE_FEEDBACK_URL=/api/feedback` set (e.g. in a matching, also-gitignored
+`app/.env.local`) so the built site actually calls the local Function instead of
+`127.0.0.1:8766`. Without a real webhook handy, point `FEEDBACK_WEBHOOK_URL` at any local HTTP
+listener on your own machine to confirm the Function reaches it correctly — that's how this was
+verified during development, without sending anything to a real external service.
+
+## Git status
+
+This repo was git-initialized locally as part of D1, with an initial commit of the working tree
+(everything except what `.gitignore` excludes — `node_modules`, `dist`, `.wrangler`, `.env*`,
+`.dev.vars`, `server/feedback.db`). **No remote is configured and nothing has been pushed
+anywhere** — that, and creating the actual GitHub repo, is on you:
+
+```bash
+# from the PortfolioDashboard/ root
+git remote add origin <your-new-github-repo-url>
+git push -u origin main
+```
