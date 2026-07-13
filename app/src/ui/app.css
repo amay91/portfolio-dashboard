@@ -311,10 +311,18 @@ section { padding: 46px 0; border-bottom: 1px solid var(--line); }
 .htable { width: 100%; border-collapse: collapse; font-size: 14px; }
 .htable th { text-align: right; font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 500; padding: 0 0 12px; border-bottom: 1px solid var(--ink); }
 .htable th:first-child { text-align: left; }
-.htable th.sortable { cursor: pointer; user-select: none; -webkit-user-select: none; transition: color .12s; }
-.htable th.sortable:hover { color: var(--ink); }
-.htable th.sortable.active { color: var(--green); }
-.htable th.sortable:focus-visible { outline: 2px solid var(--green); outline-offset: -2px; }
+/* .th-sortbtn carries the sort interaction (B4, review item) so the <th>
+   keeps its native columnheader role instead of being overridden by
+   role="button" — background/border/font reset to disappear into the th's
+   inline flow. Deliberately NOT display:flex/width:100% on the <th> itself
+   (tried and reverted) — overriding a table-cell's display breaks the
+   browser's table column-width algorithm outright (every column collapses
+   to the same width). The th's own onClick (SortableTable.tsx) restores
+   full-cell clickability instead. */
+.th-sortbtn { background: none; border: none; padding: 0; margin: 0; font: inherit; color: inherit; cursor: pointer; display: inline-flex; align-items: center; user-select: none; -webkit-user-select: none; transition: color .12s; }
+.htable th.sortable .th-sortbtn:hover { color: var(--ink); }
+.htable th.sortable.active .th-sortbtn { color: var(--green); }
+.htable th.sortable .th-sortbtn:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
 .htable th .sar { display: inline-block; width: .9em; margin-left: .15em; font-size: 11px; }
 .htable td { padding: 13px 0; border-bottom: 1px solid var(--line); text-align: right; font-family: var(--font-mono); font-size: 14px; }
 .htable td:first-child { text-align: left; font-family: var(--font-sans); }

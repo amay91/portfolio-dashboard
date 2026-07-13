@@ -62,27 +62,38 @@ export function SortableTable<T>({ id, columns, data, totalCells, defaultSort, c
             // here means dir 1, matching the visible arrow direction below.
             const ariaSort = active ? (sort.dir === 1 ? 'ascending' : 'descending') : 'none'
             return (
+              // A native <button> carries the sort control (B4, review item)
+              // instead of role="button" on the <th> itself — the earlier
+              // approach silently stripped the th's native columnheader role
+              // from assistive tech, since explicit role="button" overrides
+              // implicit host semantics. aria-sort stays on the <th>, per
+              // spec. The button and InfoTip's own button are siblings, not
+              // nested — nested <button>s are invalid HTML and InfoTip
+              // already stops propagation on its own click/keydown.
+              //
+              // th also keeps a click handler so the whole cell stays
+              // clickable (not just the label text) — critically, th must
+              // NOT get display:flex/etc. to stretch the button, since
+              // overriding a table-cell's display breaks the browser's
+              // table column-width algorithm entirely. The target check
+              // stops this from double-firing when the click actually
+              // originated on the button (which already handled it via its
+              // own onClick) or bubbled up from InfoTip (which stops
+              // propagation itself).
               <th
                 key={c.key}
                 className={`sortable${active ? ' active' : ''}`}
                 style={c.align ? { textAlign: c.align } : undefined}
-                title={`Sort by ${c.label}`}
-                tabIndex={0}
-                role="button"
                 aria-sort={ariaSort}
-                onClick={() => onHeaderClick(c)}
-                onKeyDown={(e) => {
-                  // target check: Enter pressed on a nested InfoTip button
-                  // must toggle the tip, not also re-sort the column.
-                  if (e.target === e.currentTarget && (e.key === 'Enter' || e.key === ' ')) {
-                    e.preventDefault()
-                    onHeaderClick(c)
-                  }
+                onClick={(e) => {
+                  if (e.target === e.currentTarget) onHeaderClick(c)
                 }}
               >
-                {c.label}
+                <button type="button" className="th-sortbtn" title={`Sort by ${c.label}`} onClick={() => onHeaderClick(c)}>
+                  {c.label}
+                  <span className="sar">{active ? (sort.dir === 1 ? '↑' : '↓') : ''}</span>
+                </button>
                 {c.tip ? <InfoTip text={c.tip} label={`What does ${c.label} mean?`} align="right" /> : null}
-                <span className="sar">{active ? (sort.dir === 1 ? '↑' : '↓') : ''}</span>
               </th>
             )
           })}

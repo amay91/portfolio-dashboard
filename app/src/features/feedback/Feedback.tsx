@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
+import { ModalShell } from '../../ui/primitives/ModalShell'
 
 export type FeedbackCategory = 'Bug Report' | 'Feature Request' | 'General Feedback'
 const CATEGORIES: FeedbackCategory[] = ['Bug Report', 'Feature Request', 'General Feedback']
@@ -30,17 +31,6 @@ export function Feedback({ open, onClose }: { open: boolean; onClose: () => void
   const [state, setState] = useState<SubmitState>('idle')
   const [errorMsg, setErrorMsg] = useState('')
   const textareaRef = useRef<HTMLTextAreaElement>(null)
-
-  useEffect(() => {
-    if (!open) return
-    textareaRef.current?.focus()
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') close()
-    }
-    document.addEventListener('keydown', onKeyDown)
-    return () => document.removeEventListener('keydown', onKeyDown)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [open])
 
   function close() {
     onClose()
@@ -78,59 +68,57 @@ export function Feedback({ open, onClose }: { open: boolean; onClose: () => void
   if (!open) return null
 
   return (
-    <div className="feedback-overlay" onClick={close}>
-      <div className="feedback-modal" role="dialog" aria-modal="true" aria-labelledby="feedback-title" onClick={(e) => e.stopPropagation()}>
-        <div className="feedback-modal-head">
-          <p id="feedback-title" className="deck-sec">
-            Send Feedback
-          </p>
-          <button className="feedback-close" onClick={close} aria-label="Close">
-            ×
+    <ModalShell
+      titleId="feedback-title"
+      title="Send Feedback"
+      onClose={close}
+      overlayClassName="feedback-overlay"
+      modalClassName="feedback-modal"
+      headClassName="feedback-modal-head"
+      initialFocusRef={textareaRef}
+    >
+      {state === 'sent' ? (
+        <div className="feedback-sent">
+          <p>Thanks — your feedback has been sent.</p>
+          <button className="btn-demo" onClick={close}>
+            Close
           </button>
         </div>
-        {state === 'sent' ? (
-          <div className="feedback-sent">
-            <p>Thanks — your feedback has been sent.</p>
-            <button className="btn-demo" onClick={close}>
-              Close
+      ) : (
+        <form onSubmit={submit}>
+          <label className="feedback-label">
+            Category
+            <select value={category} onChange={(e) => setCategory(e.target.value as FeedbackCategory)}>
+              {CATEGORIES.map((c) => (
+                <option key={c} value={c}>
+                  {c}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label className="feedback-label">
+            Your feedback
+            <textarea
+              ref={textareaRef}
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              placeholder="What's on your mind?"
+              rows={5}
+              maxLength={MAX_LENGTH}
+              required
+            />
+          </label>
+          {state === 'error' && <p className="feedback-error">{errorMsg}</p>}
+          <div className="feedback-actions">
+            <button type="button" className="btn-demo" onClick={close}>
+              Cancel
+            </button>
+            <button type="submit" className="btn-demo" disabled={state === 'sending' || !message.trim()}>
+              {state === 'sending' ? 'Sending…' : 'Submit'}
             </button>
           </div>
-        ) : (
-          <form onSubmit={submit}>
-            <label className="feedback-label">
-              Category
-              <select value={category} onChange={(e) => setCategory(e.target.value as FeedbackCategory)}>
-                {CATEGORIES.map((c) => (
-                  <option key={c} value={c}>
-                    {c}
-                  </option>
-                ))}
-              </select>
-            </label>
-            <label className="feedback-label">
-              Your feedback
-              <textarea
-                ref={textareaRef}
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                placeholder="What's on your mind?"
-                rows={5}
-                maxLength={MAX_LENGTH}
-                required
-              />
-            </label>
-            {state === 'error' && <p className="feedback-error">{errorMsg}</p>}
-            <div className="feedback-actions">
-              <button type="button" className="btn-demo" onClick={close}>
-                Cancel
-              </button>
-              <button type="submit" className="btn-demo" disabled={state === 'sending' || !message.trim()}>
-                {state === 'sending' ? 'Sending…' : 'Submit'}
-              </button>
-            </div>
-          </form>
-        )}
-      </div>
-    </div>
+        </form>
+      )}
+    </ModalShell>
   )
 }

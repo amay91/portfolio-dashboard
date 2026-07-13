@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { HoverButton } from '../../ui/HoverLift'
+import { ModalShell } from '../../ui/primitives/ModalShell'
 import { useStickyToTarget } from '../../ui/useStickyToTarget'
 import { Feedback } from '../feedback/Feedback'
 import { InstructionsContent } from './InstructionsContent'
@@ -51,15 +52,6 @@ export function HelpMenu() {
     return () => document.removeEventListener('mousedown', onClickOutside)
   }, [menuOpen])
 
-  useEffect(() => {
-    if (!active) return
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setActive(null)
-    }
-    document.addEventListener('keydown', onKeyDown)
-    return () => document.removeEventListener('keydown', onKeyDown)
-  }, [active])
-
   function openPanel(id: PanelId) {
     setActive(id)
     setMenuOpen(false)
@@ -98,24 +90,21 @@ export function HelpMenu() {
         </nav>
       </div>
       {active && (
-        <div className="help-overlay" onClick={() => setActive(null)}>
-          <div className="help-modal" role="dialog" aria-modal="true" aria-labelledby="help-modal-title" onClick={(e) => e.stopPropagation()}>
-            <div className="help-modal-head">
-              <p id="help-modal-title" className="deck-sec">
-                {TITLES[active]}
-              </p>
-              <button className="feedback-close" onClick={() => setActive(null)} aria-label="Close">
-                ×
-              </button>
-            </div>
-            <div className="help-modal-body">
-              {active === 'instructions' && <InstructionsContent />}
-              {active === 'reading' && <ReadingDashboardContent />}
-              {active === 'privacy' && <PrivacyDataContent />}
-              {active === 'faq' && <FaqContent />}
-            </div>
+        <ModalShell
+          titleId="help-modal-title"
+          title={TITLES[active]}
+          onClose={() => setActive(null)}
+          overlayClassName="help-overlay"
+          modalClassName="help-modal"
+          headClassName="help-modal-head"
+        >
+          <div className="help-modal-body">
+            {active === 'instructions' && <InstructionsContent />}
+            {active === 'reading' && <ReadingDashboardContent />}
+            {active === 'privacy' && <PrivacyDataContent />}
+            {active === 'faq' && <FaqContent />}
           </div>
-        </div>
+        </ModalShell>
       )}
       <Feedback open={feedbackOpen} onClose={() => setFeedbackOpen(false)} />
     </>

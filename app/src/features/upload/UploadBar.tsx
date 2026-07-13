@@ -133,7 +133,13 @@ export function UploadBar({
             }}
           />
         </label>
-        <span className={`upload-status${status?.isErr ? ' err' : ''}`}>{status?.message || ''}</span>
+        {/* role alternates status/alert (B2, review item) so a screen reader
+            hears every status change — including the live-NAV fetch
+            starting and finishing — without needing to focus this span;
+            alert additionally interrupts, appropriate only for errors. */}
+        <span className={`upload-status${status?.isErr ? ' err' : ''}`} role={status?.isErr ? 'alert' : 'status'} aria-live={status?.isErr ? 'assertive' : 'polite'}>
+          {status?.message || ''}
+        </span>
         <button className={`deck-btn${busy ? ' spin' : ''}`} onClick={onRefresh} disabled={busy}>
           <svg className="deck-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8}>
             <path d="M20 11A8.1 8.1 0 0 0 4.5 9M4 5v4h4" />

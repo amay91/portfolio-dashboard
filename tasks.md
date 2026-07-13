@@ -2058,6 +2058,96 @@ the existing geometry/keyboard unit tests and the render-smoke specs above.
   - Verified live in both themes and at 375px; `HelpMenu.spec.tsx` asserts the new KFintech
     paragraph is present. Full gate green.
 
+### R7 (review item B1) — Fix light-theme contrast failures  ✅
+- **Do:** `--brass` and `--muted` — the theme's most-used secondary-text colors (table headers,
+  tile labels, captions) — measured 2.59:1 and 3.78:1 against `--paper`, both failing WCAG AA's
+  4.5:1 for body text. Dark theme already passed (5.2–13.3:1) and was left untouched.
+  Dark-theme value: `--brass` #c98a2e (unchanged), `--muted` #8a8f99 (unchanged).
+- **Accept:** both tokens pass 4.5:1 against `--paper` in the light theme; hue/character stays
+  recognizably "brass"/"muted", not shifted to an unrelated color; every surface using them
+  (table headers, KPI captions, help/feedback body text, tags, chart labels — ~50 call sites)
+  still reads correctly in both themes at desktop and 375px.
+- **Resolution note (2026-07-12):** darkened both in place (same hue/saturation, lower
+  lightness) in `tokens.css`'s `[data-theme='light']` block: `--brass` #b8935a → #846639
+  (2.59:1 → 4.84:1), `--muted` #8b7a5e → #74654e (3.78:1 → 5.14:1). Values hand-derived via the
+  WCAG relative-luminance formula, then verified live by reading the same formula back out of
+  `getComputedStyle` in the browser (both tokens confirmed 4.84:1 / 5.14:1 against the live
+  `--paper`). Verified live in both themes and at 375px — no visual regression, text reads more
+  crisply if anything. Full gate green (typecheck/lint/391 unit tests/2 e2e).
+
+### R8 (review item B2) — aria-live regions for async status  ✅
+- **Do:** zero `aria-live` anywhere in the app — upload status, live-NAV fetch progress, and the
+  Data Check pass/fail verdict all change asynchronously with no signal to a screen reader.
+- **Accept:** a screen-reader user is notified when upload/live-NAV status text changes, and when
+  the Data Check panel first appears or its verdict changes (e.g. on Refresh); errors interrupt,
+  routine status doesn't.
+- **Resolution note (2026-07-12):** `UploadBar.tsx`'s `.upload-status` span (already carries
+  every status message: "Reading…", "…fetching latest NAVs…", "Live update failed…", done/idle
+  labels) gets `role="status"`/`aria-live="polite"` normally, switching to
+  `role="alert"`/`aria-live="assertive"` when `status.isErr` — one region covers both the upload
+  lifecycle and the live-NAV fetch (they already share the same `status` state in `App.tsx`, so
+  no second region was needed there). `DataCheck.tsx`'s `#datacheck-body` wrapper gets
+  `role="status"`/`aria-live="polite"` — it renders nothing until a live-NAV attempt resolves and
+  its headline can change on Refresh, so both first-appearance and verdict-changes now announce.
+  No existing test asserted the old markup; `UploadBar.spec.tsx`'s error-status test still passes
+  unchanged. Full gate green.
+
+### R9 (review item B3) — Modal a11y baseline: focus trap + shared ModalShell  ✅
+- **Do:** the Help-menu content modal and the Feedback modal were two independently-written,
+  near-identical dialog implementations (overlay/role="dialog"/aria-modal/close-button/Escape),
+  neither of which trapped Tab inside the modal or restored focus to whatever opened it — a
+  keyboard user tabbing past the last control fell through to the page behind the dimmed
+  backdrop, and closing left focus stranded at the top of the document.
+- **Accept:** Tab/Shift+Tab cycle only within the open modal, wrapping at both ends; closing by
+  any path (×, Escape, overlay click) returns focus to the element that opened it; Feedback's
+  existing behavior (autofocus the textarea, not the close button) is preserved.
+- **Resolution note (2026-07-12):** new `ui/primitives/ModalShell.tsx` owns the shell only —
+  overlay, `role="dialog"`/`aria-modal`/`aria-labelledby`, title + shared `.feedback-close`
+  button, focus trap (queries focusable descendants — `a[href], button, textarea, input, select,
+  [tabindex]` — fresh on every Tab keypress, so it stays correct as modal content changes),
+  initial focus (an optional `initialFocusRef`, else the first focusable element), and
+  focus-restore (captures `document.activeElement` on mount, refocuses it on unmount — correct
+  because both callers only ever mount ModalShell while open). Callers keep their own body
+  markup: `HelpMenu.tsx`'s scrollable `.help-modal-body` wrapper and per-panel content are
+  unchanged, just passed as `children`; `Feedback.tsx` passes `initialFocusRef={textareaRef}` to
+  keep its existing autofocus-to-textarea behavior and dropped its now-redundant `open`-gated
+  Escape/focus `useEffect` entirely. `HelpMenu.tsx`'s own Escape-handling effect (now redundant)
+  was also removed — its unrelated click-outside effect for the nav dropdown stays. All existing
+  `Feedback.spec.tsx`/`HelpMenu.spec.tsx` tests pass unchanged (they already asserted Escape/
+  overlay-click/Cancel all call `onClose`). Verified live: Tab from the last focusable element in
+  the Instructions modal wraps to the close button; Shift+Tab from the close button wraps to the
+  last element; Escape closes and restores focus to the exact trigger button clicked (confirmed
+  for both the Help-menu FAQ item and the Feedback nav item, desktop and 375px, both themes).
+  Full gate green.
+
+### R10 (review item B4) — Fix SortableTable header semantics  ✅
+- **Do:** every sortable `<th>` carried `role="button"` — an explicit ARIA role always overrides
+  a host element's implicit semantics, so this silently stripped the `columnheader` role every
+  `<th>` gets for free, replacing it with a generic, less useful "button" for assistive tech.
+- **Accept:** headers keep their native columnheader semantics (with `aria-sort` layered on top,
+  as the spec intends) while remaining fully keyboard/screen-reader operable as sort controls;
+  the whole header cell stays clickable, not just the label text; column widths render correctly.
+- **Resolution note (2026-07-12):** moved the interactive behavior onto a real nested
+  `<button className="th-sortbtn">` (siblings with the per-column `InfoTip`, not nested inside
+  it — nested `<button>`s are invalid HTML) — `aria-sort` stays on the `<th>` itself, and a real
+  `<button>` gets native keyboard activation for free (Enter/Space), so the old manual keydown
+  handler was deleted entirely. **First attempt regressed the table layout**: giving the `<th>`
+  itself `display: flex` (to let the button stretch full-width for a full-cell click target)
+  broke the browser's table column-width algorithm outright — overriding a table-cell's `display`
+  takes it out of table layout, and every header collapsed to the same width with content pushed
+  out of the visible row (caught via live-browser screenshot, not just the automated suite —
+  the DOM/computed-style checks alone looked fine while the visual render was actually broken).
+  Reverted to the `<th>`'s default table-cell display; `.th-sortbtn` is a plain `inline-flex`
+  sized to its own content, and the `<th>` keeps its own `onClick`, guarded with
+  `e.target === e.currentTarget` so a click that already landed on (and was handled by) the
+  button, or that bubbled up from InfoTip (which stops propagation itself), doesn't double-fire
+  the sort toggle. This restores the original full-cell hit area without touching table layout.
+  The e2e suite's header-click assertion caught the layout regression immediately (`aria-sort`
+  never reached "ascending" because Playwright's default click-center landed outside the
+  shrunken button) — fixed, then reverified: full gate green (typecheck/lint/391 unit tests/2
+  e2e), plus live-browser checks of computed column widths, real-click-to-sort on empty cell
+  area, InfoTip-click-does-not-sort, and keyboard focus/activation on the button.
+
 ## X — Deferred / documented seams  *(do NOT build without a fresh decision)*
 
 - **X1** Document the `IngestSource → ParsedStatement` seam (comment/type in `ingest/router.ts`)

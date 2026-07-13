@@ -42,13 +42,19 @@
 }
 
 [data-theme='light'] {
+  /* Contrast pass (2026-07-12): --brass and --muted are the theme's most-used
+     secondary-text colors (table headers, tile labels, captions) but the
+     original values only hit 2.59:1 and 3.78:1 against --paper — both fail
+     WCAG AA's 4.5:1 for body text. Darkened in place (same hue/saturation,
+     lower lightness) to 4.84:1 and 5.14:1; dark theme already passes and is
+     untouched. See docs/DECISIONS.md "Light theme contrast pass". */
   --paper: #fbf3e7;
   --ink: #2b2118;
   --green: #2f5233;
-  --brass: #b8935a;
+  --brass: #846639;
   --teal: #3b5563;
   --clay: #8b2e2e;
-  --muted: #8b7a5e;
+  --muted: #74654e;
   --line: #d9c7a3;
   --card: #f5ecdc;
   --card-hover: #ecdcc0;

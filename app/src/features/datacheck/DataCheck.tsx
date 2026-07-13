@@ -38,7 +38,11 @@ export function DataCheck({ pf, diag, onOpenDataSources }: { pf: Portfolio; diag
   }
 
   return (
-    <div id="datacheck-body">
+    // role="status" + aria-live (B2, review item): this panel appears only
+    // after a live-NAV attempt resolves and its headline can change on
+    // Refresh — without this a screen-reader user gets no signal that the
+    // trust-critical pass/fail verdict just showed up or changed.
+    <div id="datacheck-body" role="status" aria-live="polite">
       <HoverDiv className={`datacheck ${cls}`}>
         <div className="dc-icon">{icon}</div>
         <div className="dc-main">
