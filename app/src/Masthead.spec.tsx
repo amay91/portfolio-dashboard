@@ -12,15 +12,18 @@ describe('Masthead', () => {
     expect(html).toContain('Live NAV')
   })
 
-  it('shows "Sample Portfolio Summary" for the sample portfolio with no investor name', () => {
+  it('shows "Sample Portfolio Summary" and the sample-data callout for the sample portfolio with no investor name', () => {
     const html = renderToStaticMarkup(<Masthead pf={makePortfolio()} investorName={null} isSample={true} onSaveAsPng={noop} savingPng={false} />)
     expect(html).toContain('Sample Portfolio Summary')
+    expect(html).toContain('deck-sample-note')
+    expect(html).toContain('This is example data')
   })
 
-  it('falls back to "Your Portfolio Summary" for a real upload with no extractable name, and shows "Statement values" when not live', () => {
+  it('falls back to "Your Portfolio Summary" for a real upload with no extractable name, shows "Statement values" when not live, and omits the sample-data callout', () => {
     const html = renderToStaticMarkup(<Masthead pf={makePortfolio({ live: false, liveMatched: 0 })} investorName={null} isSample={false} onSaveAsPng={noop} savingPng={false} />)
     expect(html).toContain('Your Portfolio Summary')
     expect(html).toContain('Statement values')
+    expect(html).not.toContain('deck-sample-note')
   })
 
   it('shows a "Save as PNG" button that calls onSaveAsPng, and "Saving…" while in progress', () => {

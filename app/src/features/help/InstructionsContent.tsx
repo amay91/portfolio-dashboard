@@ -84,6 +84,12 @@ export function InstructionsContent() {
         </li>
       </ol>
 
+      <p>
+        <b>Only have a KFintech login, not CAMS?</b> No need to do this twice — either registrar's portal generates the same full <b>Consolidated</b> Account Statement, covering
+        every fund you hold regardless of which registrar actually services it. Search “KFintech consolidated account statement” to find their equivalent request page and use
+        the same Detailed / Specific Period / with-zero-balance-folios choices above; the PDF it emails you works here exactly the same way.
+      </p>
+
       <button className="help-thumb" onClick={() => setLightboxOpen(true)} aria-label="Enlarge the CAMS request form screenshot">
         <img src="/cams-instructions.png" alt="The CAMS CAS request form, with Detailed, Specific Period, and With zero balance folios highlighted" />
       </button>

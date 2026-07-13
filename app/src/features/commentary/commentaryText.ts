@@ -1,4 +1,5 @@
-import { escapeHtml, inr, shortName } from '../../format'
+import { escapeHtml, inr, pct, shortName } from '../../format'
+import { projectCorpus } from './corpusProjection'
 import type { Portfolio } from '../../engine/types'
 
 export interface CommentaryBand {
@@ -123,6 +124,20 @@ export function buildCommentaryHTML(age: number, retireAge: number, pf: Portfoli
       )
     else notes.push(`Roughly <b>${intl.toFixed(0)}% is invested outside India</b>, giving you some genuine global diversification — see the Geographical Concentration chart.`)
     if (notes.length) P.push(`<p>` + notes.join(' ') + `</p>`)
+
+    const proj = z > 0 ? projectCorpus(pf!, z) : null
+    if (proj) {
+      P.push(`<h4>Where this could take you</h4>`)
+      P.push(
+        `<p>Since your first investment, you’ve put in roughly <b>${inr(proj.annualContribution)}/year</b> on average. Keep investing at that pace for the next <b>${proj.years} year${proj.years === 1 ? '' : 's'}</b> and — <i>with no guarantee markets cooperate</i> — today’s ${inr(tv)} could grow to somewhere in this range:</p>`,
+      )
+      P.push(
+        `<div class="co-metric co-projection"><div><span class="co-proj-k">Conservative (${pct(proj.conservativeRate * 100)}/yr)</span><span class="co-proj-v">${inr(proj.conservativeFV)}</span></div><div><span class="co-proj-k">At your own pace (${pct(proj.expectedRate * 100)}/yr)</span><span class="co-proj-v">${inr(proj.expectedFV)}</span></div></div>`,
+      )
+      P.push(
+        `<p class="commentary-disc">This is a straight-line projection from your own numbers, not a forecast: it assumes your contribution rate and growth rate both hold steady for ${proj.years} year${proj.years === 1 ? '' : 's'}, which real markets never do. Treat it as a rough sense of scale, not a plan.</p>`,
+      )
+    }
   } else {
     P.push(`<p class="commentary-empty">Load a statement to see how your <i>actual</i> equity/debt mix and geography compare with the band above.</p>`)
   }

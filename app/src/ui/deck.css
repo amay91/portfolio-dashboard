@@ -24,6 +24,14 @@
 .deck-mast-title { font-family: var(--font-serif); font-size: 18px; font-weight: 500; letter-spacing: -.2px; margin: 0; color: var(--ink); }
 .deck-mast-meta { font-size: 12.5px; color: var(--muted); }
 .deck-mast-space { flex: 1; }
+/* Sample-data callout (review item A5) — sits between the masthead and the
+   KPI row, in the same amber family as Worth a Look so "example data" and
+   "flagged" read as related-but-distinct signals, not identical warnings. */
+.deck-sample-note {
+  margin: -6px 0 16px; font-size: 12.5px; line-height: 1.5; color: var(--ink);
+  background: color-mix(in srgb, var(--brass) 12%, transparent); border: 1px solid var(--brass);
+  border-radius: 8px; padding: 9px 13px;
+}
 .deck-btn {
   border: 1px solid var(--line); border-radius: 9px; background: var(--card); color: var(--ink);
   font-family: inherit; font-size: 12.5px; font-weight: 700; padding: 8px 13px;
@@ -154,10 +162,28 @@
 .deck-alloc-card .legend { width: 100%; }
 .deck-alloc-card .drill { font-size: 12.5px; }
 
-/* ---- insight card ---- */
+/* ---- Worth a Look (review item A2) ----
+   A single amber-accented card, full width, between the KPI row and the
+   chart/holdings grid — deliberately distinct from the neutral .deck-card
+   default so it reads as "flagged" without needing an alarming red. */
+.deck-worthalook { border-color: var(--brass); margin-bottom: 14px; }
+.deck-worthalook-head { display: flex; align-items: center; gap: 6px; margin-bottom: 10px; }
+.deck-worthalook-head .deck-ic { color: var(--brass); }
+.deck-worthalook-list { margin: 0; padding: 0 0 0 20px; font-size: 12.5px; line-height: 1.65; color: var(--muted); }
+.deck-worthalook-list li { margin-bottom: 6px; }
+.deck-worthalook-list li:last-child { margin-bottom: 0; }
+.deck-worthalook-list li::marker { color: var(--brass); }
+
+/* ---- insight card (review item A4) ----
+   Was visually identical to the three jargon-dense number tiles beside it
+   despite being the one plain-English takeaway — a teal accent border/tint
+   (matching the "Full Commentary" link's existing teal) plus full-strength
+   ink text (was --muted, the same weight as secondary captions everywhere
+   else) gives it the visual priority its content already deserved. */
+.deck-tile.deck-insight { border-color: var(--teal); background: color-mix(in srgb, var(--teal) 7%, var(--card)); }
 .deck-insight-head { display: flex; align-items: center; gap: 6px; margin-bottom: 9px; }
-.deck-insight-head .deck-ic { color: var(--muted); }
-.deck-insight-text { margin: 0; font-size: 12.5px; line-height: 1.65; color: var(--muted); }
+.deck-insight-head .deck-ic { color: var(--teal); }
+.deck-insight-text { margin: 0; font-size: 12.5px; line-height: 1.65; color: var(--ink); }
 .deck-ilink {
   margin-top: 11px; font-size: 12.5px; color: var(--teal); font-weight: 500; font-family: inherit;
   background: none; border: none; padding: 0; cursor: pointer; display: inline-flex; align-items: center; gap: 5px;

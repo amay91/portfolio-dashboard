@@ -29,20 +29,31 @@ export function Masthead({
   const asOfLabel = pf.live && pf.liveMatched > 0 ? 'Live NAV' : 'Statement values'
 
   return (
-    <div className="deck-mast">
-      <p className="deck-mast-title">{title}</p>
-      <span className="deck-mast-meta">
-        As of {fmtDate(pf.liveAsOf || pf.valDate)} &middot; {asOfLabel}
-      </span>
-      <div className="deck-mast-space" />
-      {/* deck-mast-pngbtn is excluded from the PNG capture itself (CommandDeck.tsx's `filter`) — otherwise the button would appear inside its own screenshot. */}
-      <HoverButton className={`deck-btn deck-mast-pngbtn${savingPng ? ' spin' : ''}`} onClick={onSaveAsPng} disabled={savingPng} aria-label="Save portfolio summary as PNG">
-        <svg className="deck-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden="true">
-          <path d="M12 4v11m0 0-4-4m4 4 4-4" />
-          <path d="M5 18v1a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-1" />
-        </svg>
-        {savingPng ? 'Saving…' : 'Save as PNG'}
-      </HoverButton>
-    </div>
+    <>
+      <div className="deck-mast">
+        <p className="deck-mast-title">{title}</p>
+        <span className="deck-mast-meta">
+          As of {fmtDate(pf.liveAsOf || pf.valDate)} &middot; {asOfLabel}
+        </span>
+        <div className="deck-mast-space" />
+        {/* deck-mast-pngbtn is excluded from the PNG capture itself (CommandDeck.tsx's `filter`) — otherwise the button would appear inside its own screenshot. */}
+        <HoverButton className={`deck-btn deck-mast-pngbtn${savingPng ? ' spin' : ''}`} onClick={onSaveAsPng} disabled={savingPng} aria-label="Save portfolio summary as PNG">
+          <svg className="deck-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden="true">
+            <path d="M12 4v11m0 0-4-4m4 4 4-4" />
+            <path d="M5 18v1a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-1" />
+          </svg>
+          {savingPng ? 'Saving…' : 'Save as PNG'}
+        </HoverButton>
+      </div>
+      {/* Explicit in-content callout, not just the masthead title (review
+          item A5) — a first-time visitor scrolling straight to the numbers
+          could easily miss "Sample Portfolio Summary" as the only signal
+          this isn't their real data. */}
+      {isSample && (
+        <p className="deck-sample-note">
+          This is example data so you can see how the dashboard works. Drop your own CAMS / KFintech statement in the box above to see your real numbers.
+        </p>
+      )}
+    </>
   )
 }

@@ -65,6 +65,7 @@ describe('HelpMenu', () => {
     expect(container.querySelector('#help-modal-title')?.textContent).toBe('Instructions')
     expect(container.querySelector('.help-thumb img')?.getAttribute('src')).toBe('/cams-instructions.png')
     expect(container.textContent).toContain('Download your Statement from CAMS')
+    expect(container.textContent).toContain('Only have a KFintech login')
     expect(container.textContent).not.toContain('Summary row.')
 
     clickItem('Reading the Dashboard')

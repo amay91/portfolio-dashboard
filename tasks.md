@@ -1959,6 +1959,105 @@ the existing geometry/keyboard unit tests and the render-smoke specs above.
   assertion (`dashboard.spec.ts` offline path). "Data check passed" phrasing kept stable.
   Verified live in both themes; full gate green.
 
+### R3 (review item A2) — Actionable insight flags ("Worth a Look")  ✅
+- **Do:** the review's biggest product gap — the app displays numbers but never nudges toward
+  action, despite already computing everything needed for a few honest, concrete flags. Surface
+  them without requiring any user input.
+- **Accept:** a small, always-visible list appears when (and only when) something's actually
+  worth flagging; every flag names the specific fund/figure so it's independently checkable, not
+  a vague warning; nothing requires age/retirement input.
+- **Resolution note (2026-07-12):** the review's original wording for one flag ("fund vs its own
+  benchmark") turned out not to be honestly computable — `FundMeta.benchmark` is a display-only
+  *name* string ("Nifty Smallcap 250 TRI"), not a return figure; the app has no per-benchmark
+  return data. Rather than fabricate a comparison, substituted the closest honest equivalent
+  already available: for funds in genuinely Nifty-50-comparable categories (Large/Flexi/Multi Cap,
+  Index), compare the fund's own CAGR against the Nifty 50 CAGR the KPI rail already fetches —
+  deliberately *excluding* Small/Mid/Sector/Debt/Hybrid funds, where that comparison would be
+  misleading rather than insightful.
+  - **`engine/insightFlags.ts`** (new) — pure `computeInsightFlags(pf, niftyAllTimeCagr)`, three
+    checks: (1) concentration, top holding > 35% of portfolio (same threshold already used inside
+    Commentary's gated text — now also surfaced un-gated); (2) broad-market equity fund trailing
+    Nifty 50 by >1pp (noise buffer); (3) expense ratio above a category-appropriate band —
+    parsed from the free-text `expense` field (e.g. "0.49% (Direct)"), three coarse bands
+    (index/ETF 0.3%, debt/liquid/arbitrage 0.75%, everything else 1.5%) since the field is
+    display text, not a clean dataset. Capped at 4 flags total, worst-first within each category,
+    so a portfolio with many minor issues shows what matters most rather than a wall of text.
+  - **`features/deck/WorthALook.tsx`** (new) — renders nothing when `flags.length === 0`; sits
+    between the KPI row and the chart/holdings grid in `CommandDeck.tsx`, amber-accented (same
+    family as the new A5 sample-data note, visually distinct from the teal-promoted Insight tile
+    — see R4 below).
+  - **Verified live**: sample portfolio genuinely flags "Parag Parikh Flexi Cap Fund is 45% of
+    your portfolio…" (real computed concentration, not a fixture). 8 new unit tests
+    (`insightFlags.spec.ts`) covering the concentration threshold, the broad-market/small-cap
+    distinction, the noise buffer, the index-vs-active expense distinction, the debt-band
+    exemption, and the 4-flag cap. Full gate green.
+
+### R4 (review item A3) — Retirement corpus projection  ✅
+- **Do:** Commentary's horizon band ("your equity % fits your ~15-year runway") never turned
+  into an actual number to plan around, despite the engine already knowing today's value, the
+  portfolio's own historical CAGR, and (via total invested ÷ years invested) an implied
+  contribution rate.
+- **Accept:** shown only when there's enough history to infer a stable rate; shows two scenarios,
+  not a single false-precision number; states plainly that it's not a forecast.
+- **Resolution note (2026-07-12):** `features/commentary/corpusProjection.ts` (new) —
+  `projectCorpus(pf, yearsToRetirement)`, standard future-value-of-an-ordinary-annuity math
+  (today's value compounds for the remaining years; each future year's assumed contribution
+  compounds for the years remaining after it lands) — verified against a hand-calculated
+  round-number case in the test suite, not just eyeballed. Two scenarios: "conservative" (a fixed
+  8%/yr floor, standard long-term assumption) and "at your own pace" (the portfolio's own
+  historical CAGR, **clamped to [4%, 16%]** so a short lucky/unlucky window can't extrapolate an
+  implausible rate decades out) — conservative is capped to never exceed expected, so a portfolio
+  with a historically low rate doesn't show a nonsensically-higher "conservative" figure. Returns
+  `null` (silently omitted) with under 6 months of history, no positive value, or at/past the
+  target date. Wired into `buildCommentaryHTML` right after the existing allocation-verdict
+  section, as a new "Where this could take you" block ending in an explicit
+  "not a forecast…real markets never do" disclaimer, matching the existing commentary's own
+  disclaimer conventions. New `.co-projection` CSS reuses the existing `.co-metric` card shell.
+  9 new unit tests (`corpusProjection.spec.ts`) plus 3 new `commentaryText.spec.ts` cases (shown
+  with enough history, omitted with too little, omitted at z=0). Verified live: entering age
+  35/retire 60 against the sample portfolio produces a real, hand-checked figure (₹1.27cr growing
+  at 8–10%/yr over 25 years with ongoing ~₹15L/yr contributions to ~₹19–29cr — confirmed by hand
+  before trusting the UI). Full gate green.
+
+### R5 (review item A4) — Promote the Insight card, de-gate warnings  ✅
+- **Do:** the one plain-English KPI tile (Insight) was visually identical to the three
+  jargon-dense number tiles beside it; the concentration warning existed only inside Commentary,
+  gated behind two required inputs.
+- **Accept:** Insight reads as the takeaway, not just another stat; a concentration warning is
+  visible without entering age/retirement age.
+- **Resolution note (2026-07-12):** the de-gating half is now satisfied by R3's Worth a Look
+  panel (needs no input at all) rather than a separate mechanism — one deliverable, two review
+  items. For the visual promotion: `.deck-tile.deck-insight` gets a teal border + tint (matching
+  the existing "Full Commentary" link's teal, `deck.css`), and `.deck-insight-text` moved from
+  `var(--muted)` to `var(--ink)` (previously the one human-readable sentence on the row read at
+  the same visual weight as secondary captions everywhere else). Verified live in both themes and
+  at 375px — reads clearly as the emphasized tile in every case checked.
+
+### R6 (review item A5) — First-run clarity: sample-data callout + KFintech parity  ✅
+- **Do:** the only signal that the default view is fake data was the masthead's "Sample Portfolio
+  Summary" title — easy to miss scrolling straight to the numbers; Instructions covered only
+  CAMS's request flow despite the app accepting KFintech statements too.
+- **Accept:** an explicit in-content callout when `isSample`, not just the title; some form of
+  KFintech guidance parity.
+- **Resolution note (2026-07-12):**
+  - **`Masthead.tsx`** now returns a fragment; when `isSample`, an amber `.deck-sample-note`
+    renders between the masthead and the KPI row: "This is example data… Drop your own CAMS /
+    KFintech statement in the box above to see your real numbers." Omitted entirely once a real
+    statement loads (`Masthead.spec.tsx` asserts both states).
+  - **KFintech**: deliberately did **not** add a parallel step-by-step walkthrough with a guessed
+    KFintech URL — I don't have verified knowledge of their current request-page URL, and
+    fabricating one risks sending a user somewhere wrong (this app's own operating rules
+    prohibit guessing URLs). Instead added a short clarifying paragraph to
+    `InstructionsContent.tsx`: either registrar's portal generates the *same* full consolidated
+    statement covering every fund regardless of which registrar actually services it (consistent
+    with — not a new claim beyond — the page's existing "CAMS and KFintech… issue this jointly"
+    line), so a KFintech-only user doesn't need to do this twice; points them to search
+    "KFintech consolidated account statement" rather than a hardcoded link. **Flagging this as a
+    conscious gap**: if you have KFintech's actual current CAS request URL, it's worth adding a
+    real link here to match CAMS's.
+  - Verified live in both themes and at 375px; `HelpMenu.spec.tsx` asserts the new KFintech
+    paragraph is present. Full gate green.
+
 ## X — Deferred / documented seams  *(do NOT build without a fresh decision)*
 
 - **X1** Document the `IngestSource → ParsedStatement` seam (comment/type in `ingest/router.ts`)

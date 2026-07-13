@@ -5,6 +5,7 @@ import { AllocationSection } from '../allocation/AllocationSection'
 import { KpiRail } from './KpiRail'
 import { TopHoldings } from './TopHoldings'
 import { ValueVsInvestedCard } from './ValueVsInvestedCard'
+import { WorthALook } from './WorthALook'
 import { HoverDiv } from '../../ui/HoverLift'
 import type { Portfolio } from '../../engine/types'
 
@@ -87,6 +88,7 @@ export function CommandDeck({
       <div className="deck-frame" ref={frameRef}>
         <Masthead pf={pf} investorName={investorName} isSample={isSample} onSaveAsPng={handleSaveAsPng} savingPng={savingPng} />
         <KpiRail pf={pf} niftyAllTime={niftyAllTime} nifty1Y={nifty1Y} onOpenCommentary={onOpenCommentary} />
+        <WorthALook pf={pf} niftyAllTime={niftyAllTime} />
         <div className="deck-grid-2col">
           <div className="deck-col deck-col-chart">
             <ValueVsInvestedCard pf={pf} />

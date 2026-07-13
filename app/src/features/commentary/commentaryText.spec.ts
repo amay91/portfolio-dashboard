@@ -87,4 +87,48 @@ describe('buildCommentaryHTML', () => {
     expect(html).toContain('targeting retirement at age <b>65</b>')
     expect(html).toContain('about <b>20 years</b> away')
   })
+
+  // Corpus projection (review item A3).
+  it('shows a corpus projection when there is enough history to infer a contribution rate', () => {
+    const pf = {
+      totalValue: 1000000,
+      totalCost: 800000,
+      inceptionYears: 4,
+      allTimeReturn: 0.12,
+      alloc: { equity: 700000, debt: 200000, cash: 100000, other: 0 },
+      geo: [{ country: 'India', pct: 0.85 }],
+      funds: [{ active: true, marketValue: 900000, name: 'Some Fund - Direct Growth' }],
+    } as unknown as Parameters<typeof buildCommentaryHTML>[2]
+    const html = buildCommentaryHTML(35, 60, pf)
+    expect(html).toContain('Where this could take you')
+    expect(html).toContain('co-projection')
+    expect(html).toContain('Conservative')
+  })
+
+  it('omits the corpus projection when there is too little history to infer a contribution rate', () => {
+    const pf = {
+      totalValue: 1000000,
+      totalCost: 950000,
+      inceptionYears: 0.2,
+      alloc: { equity: 700000, debt: 200000, cash: 100000, other: 0 },
+      geo: [{ country: 'India', pct: 0.85 }],
+      funds: [{ active: true, marketValue: 900000, name: 'Some Fund - Direct Growth' }],
+    } as unknown as Parameters<typeof buildCommentaryHTML>[2]
+    const html = buildCommentaryHTML(35, 60, pf)
+    expect(html).not.toContain('Where this could take you')
+  })
+
+  it('omits the corpus projection at the target retirement age (z=0, defensive — the UI never allows this)', () => {
+    const pf = {
+      totalValue: 1000000,
+      totalCost: 800000,
+      inceptionYears: 4,
+      allTimeReturn: 0.12,
+      alloc: { equity: 700000, debt: 200000, cash: 100000, other: 0 },
+      geo: [{ country: 'India', pct: 0.85 }],
+      funds: [{ active: true, marketValue: 900000, name: 'Some Fund - Direct Growth' }],
+    } as unknown as Parameters<typeof buildCommentaryHTML>[2]
+    const html = buildCommentaryHTML(60, 60, pf)
+    expect(html).not.toContain('Where this could take you')
+  })
 })
