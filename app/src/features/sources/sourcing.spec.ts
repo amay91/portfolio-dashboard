@@ -52,14 +52,16 @@ describe('sourceFor', () => {
   it('live match across a rename: surfaces the current name', () => {
     const s = sourceFor(fund({ navLive: true, navSource: 'AMFI', liveName: 'New Fund Name - Direct Plan - Growth', name: 'Old Fund Name - Direct Plan - Growth' }), true, { reachable: true })
     expect(s.current).toBe('New Fund Name - Direct Plan - Growth')
-    expect(s.reason).toContain('name change')
+    expect(s.reason).toContain('renamed')
+    // reassures the user the match is intentional, not a mix-up
+    expect(s.reason).toContain('same fund')
   })
 
   it('exited fund: needs no live NAV', () => {
     const s = sourceFor(fund({ active: false, marketValue: 0 }), true, { reachable: true })
     expect(s.live).toBe(false)
     expect(s.source).toBe('—')
-    expect(s.reason).toContain('Exited')
+    expect(s.reason).toContain('Fully sold')
   })
 
   it('rejected decoy: explains the plausibility rejection with both NAVs', () => {
@@ -70,15 +72,18 @@ describe('sourceFor', () => {
     expect(s.reason).toContain('Wrong Fund')
   })
 
-  it('unreachable network: explains it was a connectivity issue', () => {
+  it('unreachable network: explains it was a connectivity issue and what to do', () => {
     const s = sourceFor(fund({}), false, null)
-    expect(s.reason).toContain('unreachable')
+    expect(s.reason).toContain("couldn't be reached")
+    expect(s.reason).toContain('connection problem')
+    expect(s.reason).toContain('Refresh')
   })
 
-  it('no match found (reachable but missed): names the sources tried', () => {
+  it('no match found (reachable but missed): names the sources tried and what to do', () => {
     const s = sourceFor(fund({}), true, { reachable: true })
-    expect(s.reason).toContain('AMFI, mf.captnemo.in or mfapi.in')
+    expect(s.reason).toContain('AMFI, mf.captnemo.in, mfapi.in')
     expect(s.reason).toContain(fund({}).isin)
+    expect(s.reason).toContain('Refresh')
     expect(s.status).toBe('Fail')
   })
 

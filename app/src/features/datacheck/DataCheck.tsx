@@ -18,18 +18,23 @@ export function DataCheck({ pf, diag, onOpenDataSources }: { pf: Portfolio; diag
   let icon: string
   let head: string
 
+  // Copy is layperson-first (review item A6): say what happened, whether
+  // the numbers can be trusted, and what to do next — before any term of
+  // art. "Today's price" is the plain phrasing; "live NAV" rides along in
+  // parentheses once so the Data Sources detail table's vocabulary still
+  // connects.
   if (dc.allLive) {
     cls = 'dc-ok'
     icon = '✓'
-    head = `Data check passed — all ${dc.checked} current holding${dc.checked === 1 ? '' : 's'} valued on live NAVs (as of ${fmtDate(dc.asOf)}).`
+    head = `Data check passed — all ${dc.checked} of your current holding${dc.checked === 1 ? '' : 's'} ${dc.checked === 1 ? 'is' : 'are'} valued at today's official price (live NAV, as of ${fmtDate(dc.asOf)}).`
   } else if (!dc.reachable) {
     cls = 'dc-warn'
     icon = '⚠'
-    head = `Data check failed — live NAV sources couldn't be reached, so all ${dc.checked} holdings are shown at their statement NAVs.`
+    head = `Today's prices couldn't be fetched — this usually means a connection problem. All ${dc.checked} holdings are shown at the prices printed in your statement instead; every figure is still accurate as of the statement date. Try Refresh in a little while.`
   } else {
     cls = 'dc-warn'
     icon = '⚠'
-    head = `Data check — ${dc.live} of ${dc.checked} holdings passed (valued on live NAVs); ${dc.onStatement} failed and ${dc.onStatement === 1 ? 'is' : 'are'} shown at the statement NAV.`
+    head = `Data check — ${dc.live} of ${dc.checked} holdings are valued at today's price; ${dc.onStatement} couldn't be matched to a live price and ${dc.onStatement === 1 ? 'uses' : 'use'} the statement price instead (accurate as of the statement date).`
   }
 
   return (
@@ -41,7 +46,12 @@ export function DataCheck({ pf, diag, onOpenDataSources }: { pf: Portfolio; diag
           <button className="dc-link" onClick={onOpenDataSources}>
             Details Shown in Data Sources
           </button>
-          {!dc.reconciles && <div className="dc-note dc-err">Note: holdings didn't reconcile exactly to the headline value — please re-upload the statement.</div>}
+          {!dc.reconciles && (
+            <div className="dc-note dc-err">
+              Note: the per-fund values in this statement don't quite add up to its own headline total — the file may not have uploaded cleanly. Re-uploading the PDF usually
+              fixes this.
+            </div>
+          )}
         </div>
       </HoverDiv>
     </div>

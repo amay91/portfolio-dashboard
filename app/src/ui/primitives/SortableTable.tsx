@@ -1,5 +1,6 @@
 import { cloneElement, isValidElement, useState } from 'react'
 import type { ReactNode } from 'react'
+import { InfoTip } from '../InfoTip'
 
 // Generic sortable table, React port of reference/engine.js renderSortable.
 // Numeric columns toggle desc/asc (default desc — biggest first); text
@@ -13,6 +14,11 @@ export interface SortableColumn<T> {
   value: (row: T) => string | number
   cell: (row: T) => ReactNode
   align?: 'left' | 'right' | 'center'
+  // Optional point-of-use explainer for a jargon header (review item A1) —
+  // rendered as an InfoTip after the label. Interacting with the tip does
+  // not sort the column (InfoTip stops propagation; the keydown guard
+  // below only fires for keys pressed on the <th> itself).
+  tip?: string
 }
 
 export interface SortableTableProps<T> {
@@ -66,13 +72,16 @@ export function SortableTable<T>({ id, columns, data, totalCells, defaultSort, c
                 aria-sort={ariaSort}
                 onClick={() => onHeaderClick(c)}
                 onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
+                  // target check: Enter pressed on a nested InfoTip button
+                  // must toggle the tip, not also re-sort the column.
+                  if (e.target === e.currentTarget && (e.key === 'Enter' || e.key === ' ')) {
                     e.preventDefault()
                     onHeaderClick(c)
                   }
                 }}
               >
                 {c.label}
+                {c.tip ? <InfoTip text={c.tip} label={`What does ${c.label} mean?`} align="right" /> : null}
                 <span className="sar">{active ? (sort.dir === 1 ? '↑' : '↓') : ''}</span>
               </th>
             )

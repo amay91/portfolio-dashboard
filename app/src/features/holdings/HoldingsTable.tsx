@@ -2,6 +2,7 @@ import { sourceFor } from '../sources/sourcing'
 import type { SortableColumn } from '../../ui/primitives/SortableTable'
 import { SortableTable } from '../../ui/primitives/SortableTable'
 import { fmtDate, inr, pct, shortSchemeName } from '../../format'
+import { EXPLAIN } from '../../ui/explainers'
 import type { Fund, Portfolio } from '../../engine/types'
 
 function NavTag({ live, source }: { live: boolean; source: string }) {
@@ -55,6 +56,7 @@ export function HoldingsTable({ pf, live, diag }: { pf: Portfolio; live: boolean
     {
       key: 'cagr',
       label: 'Wtd. CAGR',
+      tip: EXPLAIN.wtdCagr,
       type: 'num',
       value: (f) => (f.cagr != null ? f.cagr : NaN),
       cell: (f) => <td style={{ color: f.cagr != null ? 'var(--green)' : 'var(--muted)' }}>{f.cagr != null ? pct(f.cagr * 100) : '—'}</td>,
@@ -62,6 +64,7 @@ export function HoldingsTable({ pf, live, diag }: { pf: Portfolio; live: boolean
     {
       key: 'navd',
       label: 'NAV Date',
+      tip: EXPLAIN.navDate,
       type: 'num',
       value: (f) => (f.navDate ? f.navDate.getTime() : -Infinity),
       cell: (f) => {

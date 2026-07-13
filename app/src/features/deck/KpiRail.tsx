@@ -1,6 +1,8 @@
 import { inr, pct } from '../../format'
 import { InsightCard } from './InsightCard'
 import { HoverDiv } from '../../ui/HoverLift'
+import { InfoTip } from '../../ui/InfoTip'
+import { EXPLAIN } from '../../ui/explainers'
 import type { Portfolio } from '../../engine/types'
 
 // Total Value and Invested merged into one tile — freed up the 4th KPI slot
@@ -12,7 +14,10 @@ function TotalValueTile({ pf }: { pf: Portfolio }) {
 
   return (
     <HoverDiv className="deck-tile">
-      <p className="deck-lbl">Total Value</p>
+      <p className="deck-lbl">
+        Total Value
+        <InfoTip text={EXPLAIN.totalValue} label="What does Total Value mean?" align="left" />
+      </p>
       <div className="deck-val">{inr(pf.totalValue)}</div>
       {gainKnown && <div className={`deck-sub ${gainUp ? 'deck-pos' : 'deck-neg'}`}>{`${gainUp ? '▲' : '▼'} ${inr(Math.abs(pf.unrealised))} · ${pct(pf.gainPct)}`}</div>}
       <div className="deck-tile-foot">
@@ -38,7 +43,10 @@ function TotalGainTile({ pf }: { pf: Portfolio }) {
 
   return (
     <HoverDiv className="deck-tile">
-      <p className="deck-lbl">Total Gain / ST-LT Split</p>
+      <p className="deck-lbl">
+        Total Gain / ST-LT Split
+        <InfoTip text={EXPLAIN.totalGain} label="What does Total Gain / ST-LT Split mean?" />
+      </p>
       <div className={`deck-val${gainKnown ? '' : ' deck-mut'}`}>{gainKnown ? `${gainUp ? '+' : '−'}${inr(Math.abs(pf.unrealised))}` : '—'}</div>
       {span && <div className="deck-sub deck-mut">{span}</div>}
       <div className="deck-stlt">
@@ -67,7 +75,12 @@ function TotalGainTile({ pf }: { pf: Portfolio }) {
 function XirrTile({ pf, niftyAllTime, nifty1Y }: { pf: Portfolio; niftyAllTime: number | null; nifty1Y: number | null }) {
   return (
     <HoverDiv className="deck-tile">
-      <p className="deck-lbl">XIRR</p>
+      <p className="deck-lbl">
+        XIRR
+        {/* align=left: on mobile the stacked tile puts this icon near the
+            viewport's left edge, where a centered 250px popover clips */}
+        <InfoTip text={EXPLAIN.xirr} label="What does XIRR mean?" align="left" />
+      </p>
       <div className="deck-dual">
         <div>
           <p className="deck-dual-k">All-Time</p>

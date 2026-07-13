@@ -1,6 +1,8 @@
 import { inr, pct } from '../../format'
 import { fundHouseShortName } from '../../reference/fundHouses'
 import { HoverArticle } from '../../ui/HoverLift'
+import { InfoTip } from '../../ui/InfoTip'
+import { EXPLAIN } from '../../ui/explainers'
 import type { Fund, Portfolio } from '../../engine/types'
 
 // Per-fund KIM/SID cards. Ported from reference/engine.js renderFunds.
@@ -66,15 +68,26 @@ function FundCard({ f }: { f: Fund }) {
               <div className="sv">{f.units.toLocaleString('en-IN', { maximumFractionDigits: 3 })}</div>
             </div>
             <div>
-              <div className="sk">Avg cost</div>
+              <div className="sk">
+                Avg cost
+                <InfoTip text={EXPLAIN.avgCost} label="What does average cost mean?" />
+              </div>
               <div className="sv">{f.hasCostBasis && f.avgCost ? inr(f.avgCost, 2) : '—'}</div>
             </div>
             <div>
-              <div className="sk">XIRR</div>
+              <div className="sk">
+                XIRR
+                {/* align=right: 3rd of 4 stat columns — a centered popover
+                    clips the right edge of a 375px viewport */}
+                <InfoTip text={EXPLAIN.xirr} label="What does XIRR mean?" align="right" />
+              </div>
               <div className="sv" style={{ color: 'var(--green)' }}>{f.xirr != null ? pct(f.xirr * 100) : '—'}</div>
             </div>
             <div>
-              <div className="sk">CAGR</div>
+              <div className="sk">
+                CAGR
+                <InfoTip text={EXPLAIN.cagr} label="What does CAGR mean?" align="right" />
+              </div>
               <div className="sv" style={{ color: 'var(--green)' }}>{f.cagr != null ? pct(f.cagr * 100) : '—'}</div>
             </div>
           </div>
@@ -84,7 +97,10 @@ function FundCard({ f }: { f: Fund }) {
               <div className="gv">{f.hasCostBasis ? inr(f.costValue) : '—'}</div>
             </div>
             <div>
-              <div className="gk">Short-term gain</div>
+              <div className="gk">
+                Short-term gain
+                <InfoTip text={EXPLAIN.stltGain} label="What do short-term and long-term gains mean?" />
+              </div>
               <div className="gv" style={{ color: 'var(--clay)' }}>{f.hasCostBasis ? inr(f.stcg) : '—'}</div>
             </div>
             <div>
@@ -92,7 +108,10 @@ function FundCard({ f }: { f: Fund }) {
               <div className="gv">{f.hasCostBasis ? inr(f.ltcg) : '—'}</div>
             </div>
             <div>
-              <div className="gk">NAV</div>
+              <div className="gk">
+                NAV
+                <InfoTip text={EXPLAIN.nav} label="What does NAV mean?" align="right" />
+              </div>
               <div className="gv">{f.nav ? inr(f.nav, 4) : '—'}</div>
             </div>
           </div>
@@ -126,19 +145,31 @@ function FundCard({ f }: { f: Fund }) {
       )}
       <div className="kim">
         <div className="krow">
-          <div className="kk">Benchmark</div>
+          <div className="kk">
+            Benchmark
+            <InfoTip text={EXPLAIN.benchmark} label="What does benchmark mean?" align="left" />
+          </div>
           <div className="kv">{m.benchmark}</div>
         </div>
         <div className="krow">
-          <div className="kk">Riskometer</div>
+          <div className="kk">
+            Riskometer
+            <InfoTip text={EXPLAIN.riskometer} label="What does riskometer mean?" align="left" />
+          </div>
           <div className="kv">{m.risk}</div>
         </div>
         <div className="krow">
-          <div className="kk">Expense Ratio</div>
+          <div className="kk">
+            Expense Ratio
+            <InfoTip text={EXPLAIN.expenseRatio} label="What does expense ratio mean?" align="left" />
+          </div>
           <div className="kv">{m.expense}</div>
         </div>
         <div className="krow">
-          <div className="kk">Exit Load</div>
+          <div className="kk">
+            Exit Load
+            <InfoTip text={EXPLAIN.exitLoad} label="What does exit load mean?" align="left" />
+          </div>
           <div className="kv">{m.exit}</div>
         </div>
         <div className="krow">

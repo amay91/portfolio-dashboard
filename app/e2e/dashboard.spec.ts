@@ -92,7 +92,7 @@ test.describe('critical-path smoke', () => {
     await page.goto('/')
     await page.getByRole('button', { name: 'Clear Data — Reset Dashboard' }).click()
 
-    await expect(page.getByText(/Data check failed — live NAV sources couldn't be reached/)).toBeVisible({ timeout: 15000 })
+    await expect(page.getByText(/Today's prices couldn't be fetched/)).toBeVisible({ timeout: 15000 })
     await expect(page.locator('.deck-mast-meta')).toContainText('Statement values')
 
     // The dashboard still renders fully off statement NAVs — not a blank/error page.

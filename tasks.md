@@ -1896,6 +1896,69 @@ the existing geometry/keyboard unit tests and the render-smoke specs above.
 
 ---
 
+## R — Comprehensive-review follow-ups (2026-07-12)  *(items chosen from the review's recommendations menu — see the review plan/PDF; IDs there were A1/A6, renamed R1/R2 here because tasks.md's A-workstream is Accessibility)*
+
+### R1 (review item A1) — Point-of-use InfoTip explainers on jargon surfaces  ✅
+- **Do:** the FAQ/Notes explain XIRR/CAGR/NAV/ST-LT beautifully, but that help is stranded behind
+  Menu → FAQ — nothing explains a term at the moment it's actually read. Add small ⓘ affordances
+  with 1–2-sentence layperson popovers on the jargon surfaces themselves: KPI tile labels, table
+  headers, fund-card stat labels.
+- **Accept:** hover (mouse), tap (touch), and Enter (keyboard) all reveal the explanation;
+  interacting with a tip inside a sortable header must not trigger a sort; popovers fit within a
+  375px viewport; both themes.
+- **Resolution note (2026-07-12):**
+  - **`ui/explainers.ts`** (new) — one shared `EXPLAIN` record of ~14 layperson-first strings
+    (XIRR, CAGR, Wtd. CAGR, NAV, NAV Date, avg cost, ST/LT gains, expense ratio, exit load,
+    riskometer, benchmark, total value, total gain) — same facts as FaqContent/Notes, cut to
+    popover length, defined once so every surface says the same thing.
+  - **`ui/InfoTip.tsx`** (new) — the ⓘ primitive. Mouse hover is pure CSS (`.infotip:hover`
+    reveals the always-in-DOM popover); touch/keyboard use real `open` state toggled by click
+    (hover-only would make the tips invisible on exactly the devices where opening the FAQ is
+    least convenient). Escape and click-outside close. `aria-label`/`aria-expanded`/
+    `aria-describedby` + `role="tooltip"`. `stopPropagation` on click AND keydown — these sit
+    inside sortable `<th>`s where a bubbled event would sort the column.
+  - **`ui/primitives/SortableTable.tsx`** — new optional `tip?: string` per column, rendered
+    after the label; the `<th>`'s own keydown handler now checks `e.target === e.currentTarget`
+    so Enter on the nested tip button doesn't also re-sort.
+  - **Wired into:** `KpiRail.tsx` (Total Value, Total Gain / ST-LT Split, XIRR),
+    `TopHoldings.tsx` (CAGR — the first place a user meets the term), `HoldingsTable.tsx`
+    (Wtd. CAGR, NAV Date), `FundCards.tsx` (avg cost, XIRR, CAGR, ST/LT gains, NAV, benchmark,
+    riskometer, expense ratio, exit load → 9 per card).
+  - **CSS (`app.css`)** — `.infotip*` block; popover resets `text-transform`/`letter-spacing`/
+    `font-weight` (it sits inside uppercase micro-labels), themes via `var(--card)`/`var(--ink)`,
+    z-index 95 (above corners at 50, below modals at 100). `align: left|center|right` prop
+    controls anchoring — verified at 375px by measuring every popover's bounding rect and fixing
+    the two that clipped (KPI XIRR → left-aligned, fund-card stats XIRR → right-aligned). One
+    pre-existing (not tip-caused) issue noted for the deferred mobile workstream: the fund-card
+    4-column stats grid itself overflows a 375px viewport, carrying its (correctly-anchored)
+    tips offscreen with it.
+  - **Verified live:** desktop light + dark (popover re-themes), tip-click inside the Wtd. CAGR
+    header opens the tip *without* changing the active sort, header-click still sorts, Escape and
+    click-outside close, all 78 tips' popovers measured within-viewport at 375px after the two
+    alignment fixes. 4 new `InfoTip.spec.tsx` tests (real-client-render; includes a no-bubbling
+    regression test). Full gate green (71 files / 369 Vitest tests / 2 Playwright e2e).
+
+### R2 (review item A6) — Plain-language error/warning copy in DataCheck + Data Sources  ✅
+- **Do:** the trust surfaces spoke jargon exactly where comprehension matters most — "valued on
+  live NAVs", "holdings didn't reconcile", "No matching live NAV found … (no ISIN in statement,
+  name match failed)". Rewrite layperson-first: what happened, whether the numbers can be
+  trusted, what to do next.
+- **Accept:** every DataCheck headline and per-fund Data Sources reason leads with plain
+  language; failure copy names a likely cause and a next step; terms of art appear once, in
+  parentheses, so the vocabulary still connects to FAQ/Method Notes.
+- **Resolution note (2026-07-12):** rewrote `DataCheck.tsx` (3 headline variants + the
+  reconcile-failure note — now "the per-fund values don't quite add up to the statement's own
+  headline total … re-uploading usually fixes this"), `sources/sourcing.ts` (all 5 per-fund
+  reasons — e.g. unreachable → "usually a connection problem, or a browser privacy extension
+  blocking the requests … try Refresh in a little while"; no-match → adds "recently renamed or
+  merged funds often match after the sources update — try Refresh in a few days"; the
+  plausibility rejection now explains *why* rejecting protects the user's numbers), and
+  `DataSources.tsx` (head + diagnostics line — "CORS restrictions" jargon removed). Updated the
+  7 copy assertions across `DataCheck.spec.tsx` / `DataSources.spec.tsx` / `sourcing.spec.ts`
+  (now asserting meaning-bearing phrases: cause + reassurance + next step) and the one e2e
+  assertion (`dashboard.spec.ts` offline path). "Data check passed" phrasing kept stable.
+  Verified live in both themes; full gate green.
+
 ## X — Deferred / documented seams  *(do NOT build without a fresh decision)*
 
 - **X1** Document the `IngestSource → ParsedStatement` seam (comment/type in `ingest/router.ts`)

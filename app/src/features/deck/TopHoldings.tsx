@@ -1,5 +1,7 @@
 import { inr, pct, shortSchemeName } from '../../format'
 import { HoverDiv } from '../../ui/HoverLift'
+import { InfoTip } from '../../ui/InfoTip'
+import { EXPLAIN } from '../../ui/explainers'
 import type { Portfolio } from '../../engine/types'
 
 // Top-5 active holdings by market value, for the lean view. The full
@@ -22,7 +24,10 @@ export function TopHoldings({ pf }: { pf: Portfolio }) {
             <th>Holding</th>
             <th className="deck-rt deck-rt-value">Value</th>
             <th className="deck-rt deck-rt-gain">Total Gain</th>
-            <th className="deck-rt deck-rt-cagr">CAGR</th>
+            <th className="deck-rt deck-rt-cagr">
+              CAGR
+              <InfoTip text={EXPLAIN.cagr} label="What does CAGR mean?" align="right" />
+            </th>
           </tr>
         </thead>
         <tbody>

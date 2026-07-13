@@ -17,9 +17,12 @@ export function DataSources({ pf, diag }: { pf: Portfolio; diag: Diag | null }) 
   const shown = pf.funds.filter((f) => f.active)
   const exited = pf.funds.filter((f) => !f.active)
   const live = shown.filter((f) => sourceFor(f, pf.live, diag).live)
+  // Layperson-first phrasing (review item A6) — "today's price" leads,
+  // "NAV" stays available in the table below for anyone cross-checking
+  // against the FAQ/Method Notes vocabulary.
   const head = pf.live
-    ? `${live.length} of ${shown.length} current holdings valued on live NAVs${pf.liveAsOf ? ` (as of ${fmtDate(pf.liveAsOf)})` : ''}.`
-    : `Live market data was not reached on this run; all holdings are valued at their statement NAVs.`
+    ? `${live.length} of ${shown.length} current holdings are valued at today's official price${pf.liveAsOf ? ` (as of ${fmtDate(pf.liveAsOf)})` : ''}.`
+    : `Today's prices couldn't be fetched on this run — every holding is shown at the price printed in your statement, so all figures are accurate as of the statement date.`
 
   let diagLine = ''
   if (diag) {
@@ -27,7 +30,7 @@ export function DataSources({ pf, diag }: { pf: Portfolio; diag: Diag | null }) 
     parts.push(diag.amfiOk ? 'AMFI daily NAV file loaded' : 'AMFI file not reachable')
     if (diag.captnemoUsed) parts.push('mf.captnemo.in used for ISIN matches')
     if (diag.mfapiUsed) parts.push('mfapi.in used for name matches')
-    if (!diag.reachable) parts.push('no live source reachable (likely network or browser CORS restrictions)')
+    if (!diag.reachable) parts.push('no price source could be reached — usually a connection problem, or a browser privacy extension blocking the requests')
     diagLine = parts.join(' · ') + '.'
   }
 

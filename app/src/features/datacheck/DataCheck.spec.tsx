@@ -19,6 +19,9 @@ describe('DataCheck', () => {
     const pf = makePortfolio({ funds: [makeFund({ navLive: false })] })
     const html = renderToStaticMarkup(<DataCheck pf={pf} diag={makeDiag()} onOpenDataSources={() => {}} />)
     expect(html).toContain('Data check')
-    expect(html).toContain('failed and')
+    // layperson copy (review item A6): says the fallback plainly and that
+    // the fallback figures are still trustworthy as of the statement date
+    expect(html).toContain('statement price instead')
+    expect(html).toContain('accurate as of the statement date')
   })
 })
