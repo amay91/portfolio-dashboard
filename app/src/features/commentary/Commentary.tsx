@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { buildCommentaryHTML } from './commentaryText'
+import { buildCommentaryContent } from './commentaryText'
 import { HoverDiv } from '../../ui/HoverLift'
 import type { Portfolio } from '../../engine/types'
 
@@ -9,8 +9,8 @@ const HINT = 'Add your age & target retirement age for a tailored, index-investi
 // initCommentary/renderCommentaryOut. `open` is controlled from App.tsx (not
 // local state) so the deck's Insight card can open + scroll to this section
 // (by id, "commentary-sec") via a single "Full Commentary" link. The
-// generated guidance (buildCommentaryHTML) is pre-built, escaped HTML —
-// rendered via a scoped dangerouslySetInnerHTML.
+// generated guidance (buildCommentaryContent) is real JSX (review item C6),
+// not an HTML string — no dangerouslySetInnerHTML sink here anymore.
 //
 // Retirement is entered as a target AGE, not a calendar year — most people
 // think "retire around 60", not "retire in 2051" — so years-to-retirement is
@@ -67,7 +67,7 @@ export function Commentary({
               </div>
               <div className="commentary-out">
                 {ageOK && retOK ? (
-                  <div dangerouslySetInnerHTML={{ __html: buildCommentaryHTML(ageNum, retireAgeNum, pf) }} />
+                  <div>{buildCommentaryContent(ageNum, retireAgeNum, pf)}</div>
                 ) : (
                   <p className="commentary-empty">
                     Enter your age and a target retirement age above to generate commentary tailored to your horizon. The guidance draws on the low-cost, broadly-diversified

@@ -36,8 +36,9 @@ export function inrCompact(n: number | null | undefined): string {
 
 // Strips the plan/option suffix and any parenthetical from a scheme name,
 // e.g. "Kotak Small Cap Fund - Direct Growth (Non Demat)" -> "Kotak Small
-// Cap Fund". Callers must escapeHtml() the result before interpolating into
-// an SVG string — this only shortens, it doesn't sanitize.
+// Cap Fund". This only shortens — every caller renders the result as JSX
+// text, which React escapes on its own, so no separate sanitizing step is
+// needed here (see escapeHtml()'s removal, review item C6).
 export function shortName(n: string): string {
   return n
     .replace(/\s*-\s*(Direct|Regular)\b.*$/i, '')
@@ -92,22 +93,4 @@ export function fmtDate(d: Date | null | undefined): string {
 export function firstName(name: string | null | undefined): string | null {
   if (!name) return null
   return name.trim().split(/\s+/)[0] || null
-}
-
-// HTML-escapes a string before it's interpolated into a markup string that
-// will be rendered via dangerouslySetInnerHTML (charts/commentary). Fund,
-// scheme, and AMC names come from the parsed statement — not attacker-
-// controlled in the usual sense (you'd only be uploading your own CAS), but
-// a crafted PDF/MarkItDown file could still smuggle markup into a name
-// field, so anything derived from statement text gets escaped before it
-// lands in an HTML string. Computed numbers (already run through inr/pct)
-// don't need this.
-export function escapeHtml(s: string | null | undefined): string {
-  if (s == null) return ''
-  return String(s)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;')
 }

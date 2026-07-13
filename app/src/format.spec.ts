@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { escapeHtml, firstName, fmtDate, inr, inrCompact, longSchemeName, pct, shortName, shortSchemeName } from './format'
+import { firstName, fmtDate, inr, inrCompact, longSchemeName, pct, shortName, shortSchemeName } from './format'
 
 describe('inr', () => {
   it('formats with Indian lakh/crore grouping', () => {
@@ -101,16 +101,5 @@ describe('firstName', () => {
     expect(firstName(undefined)).toBeNull()
     expect(firstName('')).toBeNull()
     expect(firstName('   ')).toBeNull()
-  })
-})
-
-describe('escapeHtml', () => {
-  it('escapes markup-significant characters from statement-derived text', () => {
-    expect(escapeHtml('<script>alert(1)</script>')).toBe('&lt;script&gt;alert(1)&lt;/script&gt;')
-    expect(escapeHtml(`O'Reilly & "Sons"`)).toBe('O&#39;Reilly &amp; &quot;Sons&quot;')
-  })
-  it('handles null/undefined', () => {
-    expect(escapeHtml(null)).toBe('')
-    expect(escapeHtml(undefined)).toBe('')
   })
 })

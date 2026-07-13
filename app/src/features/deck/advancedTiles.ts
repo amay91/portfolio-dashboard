@@ -1,5 +1,12 @@
+// The accordion section ids, as a real union (review item C3) — previously
+// plain `string` everywhere (App.tsx's `openSections`/`selectSection`/
+// `openSection`, this file's `AdvancedTile.id`), so a typo'd id (e.g.
+// `openSections.chart`) silently always evaluated to `undefined`/falsy —
+// the section just never opened, no compile error, nothing to grep for.
+export type SectionId = 'charts' | 'holdings-full' | 'houses' | 'schemes' | 'sources' | 'notes'
+
 export interface AdvancedTile {
-  id: string
+  id: SectionId
   label: string
   iconPath: string
 }

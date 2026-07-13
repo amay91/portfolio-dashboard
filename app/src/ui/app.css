@@ -461,6 +461,12 @@ footer { padding: 30px 0 60px; font-size: 11.5px; color: var(--muted); }
 
 .hidden { display: none !important; }
 
+/* Shared hover-lift treatment (ui/HoverLift.tsx, review item C5 — replaces
+   framer-motion). The cubic-bezier overshoots past 1.05 before settling,
+   approximating the spring's "slight bounce" without a JS animation loop. */
+.hover-lift { transition: transform .25s cubic-bezier(.34, 1.56, .64, 1), box-shadow .2s ease-out; }
+.hover-lift:hover { transform: scale(1.05); box-shadow: 0 20px 40px -12px rgba(0, 0, 0, .45), 0 0 0 1px rgba(255, 255, 255, .06); }
+
 @media (max-width: 860px) {
   .wrap { padding: 0 20px; }
   h1 { font-size: 30px; }
@@ -471,6 +477,9 @@ footer { padding: 30px 0 60px; font-size: 11.5px; color: var(--muted); }
 }
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important; }
+  /* Not just an instant transition — no hover effect at all, matching the
+     old framer-motion `useReducedMotion() ? undefined : HOVER_STATE`. */
+  .hover-lift:hover { transform: none !important; box-shadow: none !important; }
 }
 
 /* ---- empty / loading state (main content area before the first parse) ---- */

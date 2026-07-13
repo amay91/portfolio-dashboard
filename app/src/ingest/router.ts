@@ -40,10 +40,24 @@ export async function resolveToText(source: IngestSource): Promise<string> {
   }
 }
 
-// Classifies a dropped/browsed File by extension into an IngestSource. PDF
-// falls back to pdf.js (in-browser, zero dependencies); .md/.txt are treated
-// as already-extracted text (e.g. MarkItDown output).
+// The canonical "is this a PDF" / "is this an already-extracted text file"
+// checks (review item C3) — App.tsx used to independently re-implement its
+// own copy of isPdfFile's logic (for the accept/reject gate ahead of
+// classifyFile, and to route password retries) with no MIME-type check,
+// only the extension — a genuine, silent divergence from this file's own
+// classifyFile, not just duplicated code.
+export function isPdfFile(file: File): boolean {
+  return file.type === 'application/pdf' || /\.pdf$/i.test(file.name)
+}
+
+export function isTextFile(file: File): boolean {
+  return /\.(md|markdown|txt|text)$/i.test(file.name) || /^text\//.test(file.type || '')
+}
+
+// Classifies a dropped/browsed File into an IngestSource. PDF falls back to
+// pdf.js (in-browser, zero dependencies); .md/.txt are treated as
+// already-extracted text (e.g. MarkItDown output).
 export function classifyFile(file: File): IngestSource {
-  if (/\.pdf$/i.test(file.name)) return { kind: 'pdf', file }
+  if (isPdfFile(file)) return { kind: 'pdf', file }
   return { kind: 'file', file }
 }

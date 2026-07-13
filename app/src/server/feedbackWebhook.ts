@@ -1,6 +1,12 @@
+// Shared with the local-dev counterpart, server/feedback-server.js (task
+// R13/review item C7) — category list + length cap are the one part of
+// validation genuinely identical between the two; the actual message
+// *cleaning* stays separate by design (see cleanMessage()'s comment below).
+import feedbackRules from '../../../feedback-rules.json'
+
 export type FeedbackCategory = 'Bug Report' | 'Feature Request' | 'General Feedback'
-const ALLOWED_CATEGORIES = new Set<FeedbackCategory>(['Bug Report', 'Feature Request', 'General Feedback'])
-const MAX_MESSAGE_LENGTH = 5000
+const ALLOWED_CATEGORIES = new Set<FeedbackCategory>(feedbackRules.categories as FeedbackCategory[])
+const MAX_MESSAGE_LENGTH: number = feedbackRules.maxMessageLength
 
 const JSON_HEADERS = { 'Content-Type': 'application/json; charset=utf-8' }
 

@@ -9,11 +9,17 @@ const express = require('express')
 const cors = require('cors')
 const sanitizeHtml = require('sanitize-html')
 const Database = require('better-sqlite3')
+// Shared with the production counterpart, app/src/server/feedbackWebhook.ts
+// (task R13/review item C7) — category list + length cap are the one part
+// of validation genuinely identical between the two; the actual message
+// *cleaning* stays separate by design (full HTML strip here vs. webhook
+// mention-neutralization there — see feedbackWebhook.ts's comment).
+const feedbackRules = require('../feedback-rules.json')
 
 const PORT = 8766
 const DB_PATH = path.join(__dirname, 'feedback.db')
-const ALLOWED_CATEGORIES = new Set(['Bug Report', 'Feature Request', 'General Feedback'])
-const MAX_MESSAGE_LENGTH = 5000
+const ALLOWED_CATEGORIES = new Set(feedbackRules.categories)
+const MAX_MESSAGE_LENGTH = feedbackRules.maxMessageLength
 
 function createApp(dbPath) {
   const db = new Database(dbPath)

@@ -1,4 +1,5 @@
 import { yearsBetween } from './dates'
+import { MIN_HELD_UNITS } from './types'
 
 // STCG/LTCG lot logic, extracted from the inline calc in reference/engine.js
 // analyzeScheme. There's no per-lot FIFO tracking in the source statement's
@@ -35,7 +36,7 @@ export function unrealisedGains(
 ): UnrealisedGains {
   let stcg = 0
   let ltcg = 0
-  if (unitsHeld > 0.0005 && isFinite(nav)) {
+  if (unitsHeld > MIN_HELD_UNITS && isFinite(nav)) {
     const remainFrac = unitsBought > 0 ? Math.min(1, unitsHeld / unitsBought) : 1
     for (const b of buys) {
       const remUnits = b.units * remainFrac

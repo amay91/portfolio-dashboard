@@ -1,43 +1,32 @@
-import { motion, useReducedMotion } from 'framer-motion'
-import type { HTMLMotionProps } from 'framer-motion'
+import type { ComponentPropsWithoutRef } from 'react'
 
 // Shared hover-lift treatment for every boxed surface in the dashboard — KPI
 // tiles, cards, fund cards, section buttons, legend rows, the data-check
-// banner. Scale + a softened, more diffuse shadow, eased with a spring so it
-// settles with a slight overshoot rather than linearly. NOT applied to table
-// rows (scaling a <tr> breaks the table's grid layout) — see
-// docs/DECISIONS.md "Hover-lift on every boxed element". `useReducedMotion`
-// skips the animation entirely (not just shortens it) for anyone who's asked
-// their OS for less motion.
-const HOVER_TRANSITION = { type: 'spring', stiffness: 300, damping: 20, mass: 0.6 } as const
-const HOVER_STATE = {
-  scale: 1.05,
-  boxShadow: '0 20px 40px -12px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.06)',
+// banner. Scale + a softened, more diffuse shadow. NOT applied to table rows
+// (scaling a <tr> breaks the table's grid layout) — see docs/DECISIONS.md
+// "Hover-lift on every boxed element".
+//
+// Plain CSS `.hover-lift` (app.css) instead of framer-motion (review item
+// C5) — a `:hover`-driven scale/shadow doesn't need a 35KB-gzip animation
+// library or per-instance JS state; the "settles with a slight overshoot"
+// character is a back-out cubic-bezier easing instead of a spring
+// simulation. `prefers-reduced-motion` is handled in CSS too — the
+// reduced-motion media query in app.css both disables the transition *and*
+// zeroes the hover transform/shadow outright, matching the old
+// `useReducedMotion() ? undefined : HOVER_STATE` behavior (no effect at
+// all, not just an instant one).
+function withHoverLift(className?: string) {
+  return className ? `hover-lift ${className}` : 'hover-lift'
 }
 
-export function HoverDiv({ children, ...rest }: HTMLMotionProps<'div'>) {
-  const reduceMotion = useReducedMotion()
-  return (
-    <motion.div whileHover={reduceMotion ? undefined : HOVER_STATE} transition={HOVER_TRANSITION} {...rest}>
-      {children}
-    </motion.div>
-  )
+export function HoverDiv({ className, ...rest }: ComponentPropsWithoutRef<'div'>) {
+  return <div className={withHoverLift(className)} {...rest} />
 }
 
-export function HoverArticle({ children, ...rest }: HTMLMotionProps<'article'>) {
-  const reduceMotion = useReducedMotion()
-  return (
-    <motion.article whileHover={reduceMotion ? undefined : HOVER_STATE} transition={HOVER_TRANSITION} {...rest}>
-      {children}
-    </motion.article>
-  )
+export function HoverArticle({ className, ...rest }: ComponentPropsWithoutRef<'article'>) {
+  return <article className={withHoverLift(className)} {...rest} />
 }
 
-export function HoverButton({ children, ...rest }: HTMLMotionProps<'button'>) {
-  const reduceMotion = useReducedMotion()
-  return (
-    <motion.button whileHover={reduceMotion ? undefined : HOVER_STATE} transition={HOVER_TRANSITION} {...rest}>
-      {children}
-    </motion.button>
-  )
+export function HoverButton({ className, ...rest }: ComponentPropsWithoutRef<'button'>) {
+  return <button className={withHoverLift(className)} {...rest} />
 }

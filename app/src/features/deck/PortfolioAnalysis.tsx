@@ -1,5 +1,6 @@
 import { firstName } from '../../format'
 import { ADVANCED_TILES } from './advancedTiles'
+import type { SectionId } from './advancedTiles'
 import { HoverButton } from '../../ui/HoverLift'
 
 // Permanent "«Name»'s Portfolio Analysis" header + 6 section buttons —
@@ -17,8 +18,8 @@ export function PortfolioAnalysis({
   onViewAll,
 }: {
   investorName: string | null
-  openSections: Record<string, boolean>
-  onSelect: (id: string) => void
+  openSections: Partial<Record<SectionId, boolean>>
+  onSelect: (id: SectionId) => void
   onViewAll: () => void
 }) {
   const first = firstName(investorName)

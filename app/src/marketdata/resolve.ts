@@ -7,6 +7,7 @@ import { captnemoByIsin } from './sources/captnemo'
 import { mfapiByName } from './sources/mfapi'
 import { fuzzyLive, isin0, liveKey, navPlausible } from '../engine/harmonise'
 import type { LiveMatch, LiveNavMap, LiveRow } from '../engine/harmonise'
+import { isSchemeHeld } from '../engine/types'
 import type { Scheme } from '../engine/types'
 
 export interface Diag {
@@ -80,9 +81,13 @@ export async function resolveLiveNavs(schemes: Scheme[], force?: boolean, edgeUr
   let rows: LiveRow[] = []
   const diag: Diag = { amfiOk: false, captnemoUsed: false, mfapiUsed: false, reachable: false }
 
-  const held = schemes.filter(
-    (s) => (isFinite(s.closingUnits) ? s.closingUnits > 0.0005 : false) || (isFinite(s.marketValue) && s.marketValue > 0),
-  )
+  // isSchemeHeld() (review item C3): this used to independently re-implement
+  // the same units-or-marketValue check with a subtly different fallback
+  // order (falling through to marketValue even when closingUnits was
+  // present-but-below-threshold) from engine/portfolio.ts's version — the
+  // two could disagree on a scheme sitting on redemption dust with a stale
+  // nonzero marketValue. Now genuinely shared, not just similar.
+  const held = schemes.filter(isSchemeHeld)
 
   // Race the AMFI tier (edge fn if configured, else the direct fetch) and
   // the CORS-native per-ISIN captnemo lookups in parallel rather than trying

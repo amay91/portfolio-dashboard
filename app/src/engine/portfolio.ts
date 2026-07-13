@@ -4,6 +4,7 @@ import { fuzzyLive, isin0, liveKey, navPlausible } from './harmonise'
 import type { LiveMatch, LiveNavMap } from './harmonise'
 import { analyzeScheme, groupSchemesByIdentity } from './scheme'
 import { buildPortfolioSeries } from './series'
+import { isSchemeHeld } from './types'
 import type { Fund, GeoEntry, HouseSummary, Portfolio, Scheme } from './types'
 import { xirr } from './xirr'
 import type { CashFlow } from './xirr'
@@ -69,9 +70,15 @@ export function analyzePortfolioFromSchemes(rawSchemes: Scheme[], opts?: Analyze
     if (d && (!valDate || d > valDate)) valDate = d
   }
   if (!valDate) valDate = new Date()
+  // A `const` alias, not the `as Date` cast this used to need (review item
+  // C3): TypeScript's narrowing of a mutable `let` doesn't survive into a
+  // closure (it can't prove valDate isn't reassigned before the closure
+  // runs), but a `const` binding can never be reassigned, so the narrowing
+  // does survive.
+  const asOfDate: Date = valDate
 
   const funds: Fund[] = schemes
-    .map((s) => analyzeScheme(s, valDate as Date, liveFor(s)))
+    .map((s) => analyzeScheme(s, asOfDate, liveFor(s)))
     .filter((f) => isFinite(f.marketValue))
   const liveMatched = funds.filter((f) => f.navLive).length
   const liveAsOf = funds.reduce<Date | null>(
@@ -155,8 +162,7 @@ export function analyzePortfolioFromSchemes(rawSchemes: Scheme[], opts?: Analyze
 
   const activeBuys: { date: Date; amount: number }[] = []
   for (const s of schemes) {
-    const held = isFinite(s.closingUnits) ? s.closingUnits > 0.0005 : isFinite(s.marketValue) && s.marketValue > 0
-    if (!held) continue
+    if (!isSchemeHeld(s)) continue
     for (const b of s.txns.filter((t) => t.units > 0)) activeBuys.push({ date: b.date, amount: b.amount + (b.stamp || 0) })
   }
   const portCagr = weightedCAGR(activeBuys, valuedCost, valDate, totalCost)

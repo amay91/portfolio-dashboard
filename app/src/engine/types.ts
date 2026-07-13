@@ -1,8 +1,42 @@
 // Statement model — what the parser produces — plus the Phase 2 analysis-
 // layer types (Fund, Portfolio) that build on it. Mirrors the shapes in
 // reference/engine.js's parseStatement()/analyzeScheme()/analyzePortfolio().
-
+//
+// Two different "this value is missing" conventions coexist here (review
+// item C3 — documented rather than migrated to one convention everywhere,
+// since that would mean touching every reader across engine/charts/UI for
+// no behavior change):
+//   - `T | null` (xirr, cagr, portXirr, portCagr, allTimeReturn,
+//     inceptionYears, liveAsOf, …) — a *structural* absence: there wasn't
+//     enough data to define the value at all (e.g. too few cash flows to
+//     solve an XIRR), so `null` reads naturally as "not applicable."
+//   - plain `number` carrying `NaN` (avgCost, costValue, unrealised,
+//     gainPct, closingUnits/marketValue after scheme-merging in
+//     engine/scheme.ts's sumOrNaN, …) — a *data-quality* gap: the raw
+//     statement didn't give us a cost basis or a parseable amount for this
+//     specific field. Always paired with a sibling signal a caller should
+//     check first — `Fund.hasCostBasis`, `Portfolio.someUnknownBasis`, or a
+//     plain `isFinite()` guard — rather than being tested for directly with
+//     `Number.isNaN()` at the read site.
 import type { Allocation, FundMeta } from '../reference/fundMeta'
+
+// The floor below which a scheme's reported closing balance is treated as
+// fully redeemed rather than a genuine tiny holding — real CAMS/KFintech
+// statements often leave a dust-sized fractional-unit remainder (rounding,
+// not an actual position) after a full exit. Shared by every "is this
+// scheme currently held" check (review item C3 — previously the same
+// `0.0005` magic number, and in one place a subtly different fallback
+// order, independently copy-pasted into engine/gains.ts, engine/portfolio.ts,
+// and marketdata/resolve.ts).
+export const MIN_HELD_UNITS = 0.0005
+
+// closingUnits is the primary signal — a statement that reports it at all is
+// authoritative, so a below-threshold reading means genuinely not held, full
+// stop, regardless of whatever marketValue happens to say. marketValue is
+// only consulted as a fallback when closingUnits itself is missing (NaN).
+export function isSchemeHeld(s: Pick<Scheme, 'closingUnits' | 'marketValue'>): boolean {
+  return isFinite(s.closingUnits) ? s.closingUnits > MIN_HELD_UNITS : isFinite(s.marketValue) && s.marketValue > 0
+}
 
 export interface Txn {
   date: Date
