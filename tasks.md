@@ -2259,13 +2259,17 @@ the existing geometry/keyboard unit tests and the render-smoke specs above.
 - **X2** Neutral IR for equities (ticker/price; no NAV/folio) — only when CSV lands.
 - **X3** Web Worker for parse+compute — only after profiling shows real jank (statements are
   tiny today).
-- **X4** Full PWA offline service-worker caching — marginal while NAVs need network.
-  (A manifest-only installability shim is a cheap optional if wanted.)
+- **X4** Full PWA offline service-worker caching — marginal while NAVs need network, still
+  deferred. The manifest-only installability shim this entry once flagged as "a cheap optional
+  if wanted" is **done** — see R23 (2026-07-13): `manifest.webmanifest` + description/theme-color
+  meta tags, deliberately with no service worker (offline caching would be actively misleading
+  for a page whose whole value is a live NAV fetch).
 - **X5** ✅ Rebuild charts/commentary/notes as structured-data JSX to remove
   `dangerouslySetInnerHTML` — large lift, do opportunistically when already editing a sink.
   **Done for all 6 charts** (invested/annual/rolling/capital/holdings/geography — rewritten to
   real JSX components during earlier 2026-07-04/05 chart-interactivity work; `Notes.tsx` was
   always plain JSX, never a sink). Discovered/logged during the S2 security audit (2026-07-05).
-  **Not done for Commentary** — `buildCommentaryHTML` still returns an HTML string; that one
-  sink stays as documented tech-debt (see `docs/DECISIONS.md`'s "HTML-string surface" note),
-  not reopened here since S2 already confirmed its one interpolation is properly escaped.
+  **Now also done for Commentary** (see R16, 2026-07-13 — `buildCommentaryHTML` was converted to
+  `buildCommentaryContent(): ReactNode`, retiring the last remaining sink app-wide). This entry
+  originally left Commentary as accepted tech-debt; superseded once C6 was picked off R15's
+  Theme C work, so the whole app is now `dangerouslySetInnerHTML`-free.
