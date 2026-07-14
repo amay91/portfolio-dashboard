@@ -98,18 +98,26 @@ function App() {
         onSubmitPassword={(password) => handleSubmitPassword(dispatch, currentSourceRef, pendingPassword, password)}
       />
       {/* On desktop these two stay position:fixed corners (top-left/top-right),
-          unaffected by their position here in the DOM. On mobile (<=780px)
+          unaffected by their position here in the DOM. On mobile (<=1023px)
           they switch to position:static/relative and render in normal flow
           at exactly this point — just above Data Check (or EmptyState,
           before a statement loads) — instead of floating fixed over the
           upload box, which they used to visually collide with (tasks.md
           U11). See app.css's .mobile-header-row / .theme-toggle-corner /
-          .help-menu-corner mobile media query. */}
+          .help-menu-corner mobile media query.
+          HelpMenu comes first in the DOM (not ThemeToggle) so this row's
+          justify-content: space-between puts it on the LEFT on mobile,
+          matching its desktop top-left corner — putting it on the right
+          (the previous order) anchored its dropdown's `left: 0` to a
+          right-edge button, pushing the menu list past the viewport's right
+          edge where body's overflow-x: hidden safety net (M1) silently
+          clipped it. Anchoring from the left instead gives the dropdown
+          room to open into, not off, the screen. */}
       <div className="mobile-header-row">
+        <HelpMenu />
         <div className="theme-toggle-corner">
           <ThemeToggle />
         </div>
-        <HelpMenu />
       </div>
       <main id="app">
         {!pf && <EmptyState status={status} />}
