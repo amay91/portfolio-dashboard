@@ -2234,6 +2234,24 @@ the existing geometry/keyboard unit tests and the render-smoke specs above.
 - **Accept:** a valid, fetchable web app manifest; a description meta tag; no new service worker or offline-caching behavior (the app depends on a live network fetch for NAV data every load — a cached/offline shell would be actively misleading, not a feature).
 - **Resolution note (2026‑07‑13):** new `app/public/manifest.webmanifest` — name/short_name/description, `start_url: "/"`, `display: "standalone"`, `background_color`/`theme_color` both set to the dark theme's `--paper` (`#0a0b0d`, the app's default theme per `tokens.css`'s `:root, [data-theme='dark']` pairing), and one icon entry reusing the existing `favicon.svg` with `sizes: "any"` (a real, spec-compliant PWA icon — SVG icons don't need a fixed pixel size — so this needed no new binary asset generation). `index.html` gained `<link rel="manifest" href="/manifest.webmanifest">`, `<meta name="description">` (same copy as the manifest's), and `<meta name="theme-color" content="#0a0b0d">`. No CSP change needed — `default-src 'self'` already covers a same-origin manifest fetch. Verified live: the manifest fetches and parses correctly in-browser (confirmed via a direct `fetch('/manifest.webmanifest')`, not just "no console error"), all three tags render with the correct content, and the app still loads and passes Data Check normally. Full gate green.
 
+> **Post-review polish (2026‑07‑13) — permanently highlight the upload drop zone.** User feedback:
+> the drop zone's default state (`--muted` text on a `--line`-dashed border) was easy to miss —
+> it only looked "noticed" on `:hover`. `app.css`'s `.drop` base rule now carries the former
+> hover look permanently (`border-color: var(--green)`, `color: var(--ink)`, `background-color:
+> var(--paper)`), matching a reference screenshot; `:hover`/`.over` now only deepens the
+> background further (`var(--card-hover)`), since color/border no longer have anywhere further
+> to go. **Real bug caught during live verification, not just a style tweak:** the original edit
+> kept `transition: background .15s` (later tried the `background-color` longhand too) on `.drop`,
+> and a live theme toggle — a pure custom-property cascade change on `<html data-theme>`, not a
+> class/pseudo change on `.drop` itself — left the transitioned background stuck showing the
+> pre-toggle theme's color indefinitely (confirmed via `getComputedStyle`, a forced synchronous
+> reflow, and a 1s wait, all still stuck; a full page reload was the only thing that fixed it).
+> Isolated via `transition: none !important`, which fixed it instantly, confirming the transition
+> itself was the cause. Removed the `transition` from `.drop` entirely — an instant color swap
+> is a minor cosmetic trade-off against a drop zone that visibly desyncs from the active theme
+> until the user reloads. Verified live in both themes (toggling repeatedly without reload) and
+> at 375px mobile width; full gate green (429 tests, typecheck, lint, e2e).
+
 ## X — Deferred / documented seams  *(do NOT build without a fresh decision)*
 
 - **X1** Document the `IngestSource → ParsedStatement` seam (comment/type in `ingest/router.ts`)

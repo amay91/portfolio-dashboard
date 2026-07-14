@@ -176,12 +176,24 @@ h1 { font-family: var(--font-serif); font-weight: 500; font-size: 38px; line-hei
 /* ---- upload ---- */
 .uploadbar { border-bottom: 1px solid var(--line); background: var(--card); }
 .uploadbar .wrap { display: flex; align-items: center; gap: 18px; padding: 14px 28px; flex-wrap: wrap; }
+/* Permanently styled in its "noticed" state (accent dashed border, full-
+   contrast text) rather than resting in a low-contrast --muted/--line look
+   that only brightened on hover — the drop zone is the app's primary call
+   to action and was easy to miss at rest. */
 .drop {
-  flex: 1; min-width: 260px; border: 1.5px dashed var(--line); border-radius: 9px;
-  padding: 11px 16px; font-size: 13px; color: var(--muted); cursor: pointer;
-  display: flex; align-items: center; gap: 10px; transition: border-color .15s, background .15s; background: transparent;
+  flex: 1; min-width: 260px; border: 1.5px dashed var(--green); border-radius: 9px;
+  padding: 11px 16px; font-size: 13px; color: var(--ink); cursor: pointer;
+  display: flex; align-items: center; gap: 10px; background-color: var(--paper);
 }
-.drop:hover, .drop.over { border-color: var(--green); color: var(--ink); background: var(--paper); }
+/* No `transition` on background-color here (deliberately) — verified live
+   that a transitioned background-color driven purely by a theme toggle's
+   custom-property cascade (no class/pseudo change on this element itself)
+   gets stuck showing the pre-toggle color indefinitely, not just delayed.
+   Confirmed by isolating with `transition: none !important`, which fixed
+   it instantly. An un-transitioned instant swap is a small cosmetic
+   trade-off; a drop zone stuck in the wrong theme's colors after toggling
+   is not. */
+.drop:hover, .drop.over { background-color: var(--card-hover); }
 .drop:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; border-color: var(--green); }
 .drop .ic { width: 18px; height: 18px; flex: none; stroke: currentColor; fill: none; stroke-width: 1.6; }
 .upload-status { font-size: 12.5px; color: var(--muted); min-height: 1em; }
