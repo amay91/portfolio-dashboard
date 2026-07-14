@@ -150,13 +150,18 @@ export function UploadBar({
         {hasExtractionProblem && (
           <>
             <button
-              className="btn-demo"
+              className="btn-demo mm-convert-btn"
               title="This statement didn't extract cleanly from the PDF. Converting it via MarkItDown often reads CAS tables more reliably."
               onClick={handleConvertClick}
             >
               Convert PDF to Markdown
             </button>
-            <button className="btn-demo" onClick={() => setShowInstructions((v) => !v)} aria-expanded={showInstructions} aria-controls="markitdown-instructions">
+            <button
+              className="btn-demo mm-instructions-btn"
+              onClick={() => setShowInstructions((v) => !v)}
+              aria-expanded={showInstructions}
+              aria-controls="markitdown-instructions"
+            >
               Instructions
             </button>
           </>
@@ -221,6 +226,19 @@ export function UploadBar({
           </ol>
           <p>Listens only on 127.0.0.1:8765 (your own machine) — nothing is uploaded anywhere, and nothing is stored.</p>
         </div>
+      )}
+      {/* Touch-device counterpart to the Convert/Instructions buttons above
+          (mobile optimization M5) — CSS-only swap via (pointer: coarse), see
+          app.css. The bridge those buttons talk to only listens on
+          127.0.0.1:8765, meaning it has to be separately started on a
+          desktop/laptop the user controls; there's no equivalent on a phone
+          or tablet, so showing the button there just leads to a confusing
+          "start it with python markitdown_server.py" failure message. */}
+      {hasExtractionProblem && (
+        <p className="mm-touch-note">
+          This statement didn't extract perfectly. Fixing it needs a small free program that only runs on a desktop or laptop computer — try re-uploading
+          this file from one, if you have access to it.
+        </p>
       )}
     </div>
   )

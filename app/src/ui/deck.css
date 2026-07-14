@@ -37,7 +37,6 @@
   font-family: inherit; font-size: 12.5px; font-weight: 700; padding: 8px 13px;
   cursor: pointer; display: inline-flex; align-items: center; gap: 7px;
 }
-.deck-btn:hover { background: var(--card-hover); }
 .deck-btn:disabled { opacity: .55; cursor: default; }
 .deck-btn:focus-visible, .deck-advt:focus-visible, .deck-ilink:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
 .deck-btn.spin .deck-ic { animation: deck-spin 1s linear infinite; }
@@ -218,10 +217,22 @@
   text-align: center; font-size: 11.5px; font-weight: 700; color: var(--ink); font-family: inherit;
   display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer;
 }
-.deck-advt:hover { background: var(--card-hover); }
 .deck-advt-ic { width: 20px; height: 20px; color: var(--ink); }
-.deck-advt-open, .deck-advt-open:hover { background: var(--brass); color: var(--paper); }
+/* Was `.deck-advt-open, .deck-advt-open:hover { ... }` — the :hover half was
+   dead weight: identical declaration to the unconditional base selector, so
+   it never changed anything with or without a mouse. Removed rather than
+   moved to the hover-only block below (mobile optimization M7). */
+.deck-advt-open { background: var(--brass); color: var(--paper); }
 .deck-advt-open .deck-advt-ic { color: var(--paper); }
+
+/* :hover-only effects, gated to hover-capable pointers only (mobile
+   optimization M7) — see app.css's own consolidated block for the full
+   rationale; kept separate here rather than merged into that block since
+   these two rules are deck.css-specific. */
+@media (hover: hover) {
+  .deck-btn:hover { background: var(--card-hover); }
+  .deck-advt:hover { background: var(--card-hover); }
+}
 
 /* ---- responsive: 4/2 -> 2/1 columns ----
    Breakpoint contract (review item D2), shared with app.css: 640 (mobile),

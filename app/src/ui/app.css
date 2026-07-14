@@ -84,8 +84,19 @@
   background: none; border: none; padding: 3px; margin: -3px 0; cursor: help;
   color: var(--muted); display: inline-flex; align-items: center; border-radius: 50%;
 }
-.infotip-btn:hover, .infotip.open .infotip-btn { color: var(--ink); }
+.infotip.open .infotip-btn { color: var(--ink); }
 .infotip-btn:focus-visible { outline: 2px solid var(--green); outline-offset: 1px; }
+/* Grow the tappable hit area to the ~44px minimum without growing the
+   visible ⓘ glyph or disturbing surrounding text layout (review item B5 /
+   mobile optimization M4) — negative margin cancels the padding's layout
+   footprint on every side, so this is purely an invisible, larger tap
+   target centered on the same visual icon. Scoped to mobile only: at
+   desktop this is a small, precisely-hoverable icon by design, and growing
+   its real footprint there would just make adjacent table-header/KPI-label
+   text sit further apart than intended. */
+@media (max-width: 640px) {
+  .infotip-btn { padding: 15px; margin: -15px; }
+}
 .infotip-pop {
   position: absolute; bottom: calc(100% + 9px); left: 50%; transform: translateX(-50%);
   width: 250px; max-width: calc(100vw - 32px); box-sizing: border-box;
@@ -95,7 +106,7 @@
   font-weight: 400; text-transform: none; letter-spacing: 0; white-space: normal;
   visibility: hidden; opacity: 0; transition: opacity .12s ease;
 }
-.infotip:hover .infotip-pop, .infotip.open .infotip-pop { visibility: visible; opacity: 1; }
+.infotip.open .infotip-pop { visibility: visible; opacity: 1; }
 .infotip-left .infotip-pop { left: -6px; transform: none; }
 .infotip-right .infotip-pop { left: auto; right: -6px; transform: none; }
 
@@ -147,10 +158,22 @@
 }
 .feedback-modal-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
 .feedback-close { background: none; border: none; color: var(--muted); font-size: 24px; line-height: 1; cursor: pointer; padding: 0; }
-.feedback-close:hover { color: var(--ink); }
+/* Measured 14x24px — the "x" glyph's own advance width is narrower than
+   its font-size-driven line-height, well under the ~44px tap-target
+   minimum (review item B5 / mobile optimization M4, shared by both the
+   Help and Feedback modals via ModalShell). Explicit box + centering,
+   rather than padding, since padding alone couldn't close a 30px width
+   gap without also making the glyph look oddly off-center. Mobile-only:
+   desktop already comfortably exceeds any minimum via mouse precision. */
+@media (max-width: 640px) {
+  .feedback-close { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; }
+}
 .feedback-label { display: flex; flex-direction: column; gap: 6px; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin-bottom: 14px; }
 .feedback-label select, .feedback-label textarea {
-  font: 14px/1.4 var(--font-sans); color: var(--ink); background: var(--paper);
+  /* 16px, not 14px (mobile optimization M8): iOS Safari auto-zooms the
+     viewport on focusing any form field under 16px, which then requires a
+     manual pinch-zoom back out to keep using the rest of the page. */
+  font: 16px/1.4 var(--font-sans); color: var(--ink); background: var(--paper);
   border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; resize: vertical;
 }
 .feedback-label select:focus, .feedback-label textarea:focus { outline: none; border-color: var(--green); }
@@ -193,7 +216,7 @@ h1 { font-family: var(--font-serif); font-weight: 500; font-size: 38px; line-hei
    it instantly. An un-transitioned instant swap is a small cosmetic
    trade-off; a drop zone stuck in the wrong theme's colors after toggling
    is not. */
-.drop:hover, .drop.over { background-color: var(--card-hover); }
+.drop.over { background-color: var(--card-hover); }
 .drop:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; border-color: var(--green); }
 .drop .ic { width: 18px; height: 18px; flex: none; stroke: currentColor; fill: none; stroke-width: 1.6; }
 .upload-status { font-size: 12.5px; color: var(--muted); min-height: 1em; }
@@ -202,7 +225,6 @@ h1 { font-family: var(--font-serif); font-weight: 500; font-size: 38px; line-hei
   font: inherit; font-size: 12.5px; font-weight: 700; border: 1px solid var(--line); background: var(--card);
   color: var(--ink); padding: 8px 14px; border-radius: 9px; cursor: pointer; white-space: nowrap;
 }
-.btn-demo:hover { background: var(--card-hover); }
 .upload-instructions {
   padding: 12px 28px 16px; font-size: 12.5px; color: var(--muted); line-height: 1.6;
   border-top: 1px solid var(--line);
@@ -210,6 +232,18 @@ h1 { font-family: var(--font-serif); font-weight: 500; font-size: 38px; line-hei
 .upload-instructions b { color: var(--ink); }
 .upload-instructions ol { margin: 6px 0; padding-left: 20px; }
 .upload-instructions code { font-family: var(--font-mono); background: var(--paper); padding: 1px 5px; border-radius: 3px; color: var(--ink); }
+/* Mobile optimization M5: the MarkItDown Convert/Instructions buttons talk
+   to a bridge that only exists if separately started on a desktop the user
+   controls (127.0.0.1:8765) — meaningless, and actively confusing on
+   failure, on a touch-primary device with no such bridge to reach.
+   (pointer: coarse) reflects the device's primary input mechanism (not
+   momentary input state), so a touchscreen laptop that also has a mouse
+   stays on the button path, not the note. */
+.mm-touch-note { display: none; }
+@media (pointer: coarse) {
+  .mm-convert-btn, .mm-instructions-btn { display: none; }
+  .mm-touch-note { display: block; padding: 12px 28px 16px; font-size: 12.5px; color: var(--muted); line-height: 1.6; border-top: 1px solid var(--line); }
+}
 /* Same box recipe as .wrap (max-width/margin/padding) so this lines up
    exactly with the drop-zone above it and the dashboard content below it —
    sized to the page's actual content column, not an arbitrarily narrow one.
@@ -227,9 +261,11 @@ h1 { font-family: var(--font-serif); font-weight: 500; font-size: 38px; line-hei
 .upload-password-block b { color: var(--ink); }
 .upload-password-block code { font-family: var(--font-mono); background: var(--paper); padding: 1px 5px; border-radius: 3px; color: var(--ink); }
 .upload-password-row { display: flex; align-items: center; gap: 10px; margin: 8px 0; width: fit-content; }
+/* 16px, not 13px (mobile optimization M8): iOS Safari auto-zooms the
+   viewport on focusing any form field under 16px. */
 .upload-password-row input[type="password"] {
   flex: 1; max-width: 260px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 8px;
-  background: var(--paper); color: var(--ink); font: 13px/1.4 var(--font-mono);
+  background: var(--paper); color: var(--ink); font: 16px/1.4 var(--font-mono);
 }
 .upload-password-row input[type="password"]:focus { outline: none; border-color: var(--green); }
 .upload-password-row .btn-demo:disabled { opacity: .5; cursor: default; }
@@ -271,7 +307,6 @@ section { padding: 46px 0; border-bottom: 1px solid var(--line); }
   padding: 13px 12px; border-radius: 4px; cursor: pointer; border: 1px solid transparent;
   transition: background .12s, border-color .12s;
 }
-.legrow:hover { background: var(--card-hover); }
 .legrow.active { background: var(--card-hover); border-color: var(--line); }
 .legrow:focus-visible { outline: 2px solid var(--green); outline-offset: -2px; }
 .legrow .sw { width: 13px; height: 13px; border-radius: 3px; }
@@ -310,6 +345,25 @@ section { padding: 46px 0; border-bottom: 1px solid var(--line); }
 .fcard .stats div:nth-child(4n) { border-right: none; }
 .fcard .stats .sk { font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
 .fcard .stats .sv { font-family: var(--font-mono); font-size: 14px; }
+/* 4 columns at ~84px each (minus 30px of horizontal padding per cell)
+   isn't wide enough for a real units figure like "63,056.496" — .fcard's
+   own `overflow: hidden` was silently clipping it rather than visibly
+   overflowing (measured: 465px of cell content in a 335px card at 375px
+   viewport width). 2x2 below the mobile breakpoint doubles each cell's
+   width; the border-right pattern moves from every 4th cell to every 2nd,
+   and a border-bottom is added between the two new rows to keep the same
+   "ruled grid" look the 4-col layout already has (mobile optimization M2).
+   .funds itself only collapses to 1 card-per-row at <=860px (app.css), so
+   above 640px a card is either full-width-but-still-roomy (641-860px) or
+   half a 2-column grid at a comfortable width (>860px) — 4 columns fit
+   fine in both cases; only the <=640px single-column-and-narrow case needs
+   this. */
+@media (max-width: 640px) {
+  .fcard .stats { grid-template-columns: 1fr 1fr; }
+  .fcard .stats div:nth-child(4n) { border-right: 1px solid var(--line); }
+  .fcard .stats div:nth-child(2n) { border-right: none; }
+  .fcard .stats div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+}
 .gainsplit { padding: 13px 20px; border-bottom: 1px solid var(--line); display: flex; gap: 22px; font-size: 12px; }
 .gainsplit .gk { color: var(--muted); letter-spacing: .06em; text-transform: uppercase; font-size: 10px; }
 .gainsplit .gv { font-family: var(--font-mono); font-size: 13px; margin-top: 2px; }
@@ -321,10 +375,34 @@ section { padding: 46px 0; border-bottom: 1px solid var(--line); }
 .kim .note { margin-top: 11px; font-size: 12px; color: var(--muted); line-height: 1.55; font-style: italic; }
 .fcard .foot { padding: 0 20px 16px; margin-top: auto; }
 .fcard .foot a { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; font-weight: 500; text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 1px; }
-.fcard .foot a:hover { color: var(--ink); }
 .fcard .foot a .ar { font-family: var(--font-mono); }
 
-/* ---- house / summary tables ---- */
+/* ---- scroll container for wide tables (mobile optimization M1) ----
+   .htable's natural content width (numeric columns, unwrapped scheme
+   names) can exceed a narrow viewport — `width: 100%` on the table only
+   sets a floor, not a ceiling, so without this the *page itself* scrolled
+   sideways (measured: 602px/437px content in a 375px viewport for Full
+   Holdings/Fund Houses). Wrapping every .htable in this container contains
+   that overflow to the table alone. Inert wherever a table already fits —
+   `overflow-x: auto` only engages once content actually overflows — so
+   this needs no media query to stay safe at desktop widths. */
+.table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+@media (max-width: 640px) {
+  /* Right-edge fade — a visual "there's more to the right" cue for a
+     horizontally-scrollable table, the same pattern used broadly for
+     scrollable data tables. Scoped to the mobile tier where these tables
+     are actually known to overflow; at wider widths the table already
+     fits, so this would otherwise look like a stray shadow past the last
+     column. var(--paper) matches the plain page background every .htable
+     sits on (Section/.wrap set no background of their own). */
+  .table-scroll { position: relative; }
+  .table-scroll::after {
+    content: ''; position: absolute; top: 0; right: 0; bottom: 0; width: 20px;
+    background: linear-gradient(to right, transparent, var(--paper));
+    pointer-events: none;
+  }
+}
+
 .htable { width: 100%; border-collapse: collapse; font-size: 14px; }
 .htable th { text-align: right; font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 500; padding: 0 0 12px; border-bottom: 1px solid var(--ink); }
 .htable th:first-child { text-align: left; }
@@ -337,7 +415,6 @@ section { padding: 46px 0; border-bottom: 1px solid var(--line); }
    to the same width). The th's own onClick (SortableTable.tsx) restores
    full-cell clickability instead. */
 .th-sortbtn { background: none; border: none; padding: 0; margin: 0; font: inherit; color: inherit; cursor: pointer; display: inline-flex; align-items: center; user-select: none; -webkit-user-select: none; transition: color .12s; }
-.htable th.sortable .th-sortbtn:hover { color: var(--ink); }
 .htable th.sortable.active .th-sortbtn { color: var(--green); }
 .htable th.sortable .th-sortbtn:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
 .htable th .sar { display: inline-block; width: .9em; margin-left: .15em; font-size: 11px; }
@@ -373,7 +450,6 @@ section { padding: 46px 0; border-bottom: 1px solid var(--line); }
   flex: 0 0 auto; width: 40px; border: 1px solid var(--line); background: var(--paper); color: var(--ink);
   border-radius: 10px; font-size: 22px; font-weight: 700; line-height: 1; cursor: pointer; transition: background .15s, color .15s, border-color .15s;
 }
-.gbtn:hover { background: var(--green); color: var(--paper); border-color: var(--green); }
 .gbtn:active { transform: translateY(1px); }
 .gbtn:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
 .chart-grid { stroke: var(--line); stroke-width: 1; stroke-dasharray: 2 4; opacity: .7; }
@@ -400,7 +476,48 @@ section { padding: 46px 0; border-bottom: 1px solid var(--line); }
    tooltip's coordinates belong to. */
 .chart-tip-dot { stroke: var(--paper); stroke-width: 2px; }
 
-@media (max-width: 640px) { .gbtn { width: 32px; font-size: 18px; } .gslide { padding: 16px 12px 12px; } }
+/* Mobile gallery + chart legibility (mobile optimization M6). Before this,
+   .gbtn sat in the same flex row as .gviewport, leaving the chart itself
+   only ~225px wide at 375px viewport — combined with the fixed 740x380
+   viewBox every chart shares (scales.ts CW/CH), that's a ~0.30 scale
+   factor, shrinking a 10px source tick label to ~3px on screen (measured).
+   Two changes: (1) the arrows become small floating overlay buttons instead
+   of claiming their own flex-row width, so .gviewport (and so the chart)
+   gets the full row width — also brings them up to a 44px tap target
+   (review item B5 / M4, same fix serves both); (2) chart text sources are
+   sized up so that *after* the same scale-down, the rendered text is still
+   legible — the source values are chosen for the resulting ~0.40-0.45
+   scale (verified live, not just computed), not for 1:1 desktop sizing. */
+@media (max-width: 640px) {
+  .gallery { position: relative; }
+  .gbtn {
+    position: absolute; top: 50%; transform: translateY(-50%); z-index: 5;
+    width: 44px; height: 44px; font-size: 20px; border-radius: 50%;
+    background: color-mix(in srgb, var(--card) 88%, transparent);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .3);
+  }
+  .gbtn.gprev { left: 8px; }
+  .gbtn.gnext { right: 8px; }
+  .gslide { padding: 16px 12px 12px; }
+  /* 16px, not a larger value: the y-axis's zero-tick label (y-offset "+3"
+     from its gridline, no descender so its glyph bottom sits at exactly
+     that baseline) and the x-axis's first tick label (y-offset "+16" from
+     the axis line) were tuned for a ~10px source size with enough gap
+     between them; above ~17px source, the two labels' glyphs start to
+     vertically overlap at the chart's bottom-left corner (verified via
+     each label's actual bounding-client-rect, not just eyeballing — a
+     larger bump was tried first and found to collide). Properly fixing
+     that would mean re-tuning the tick-offset constants in all 6 chart
+     geometry files, which needs visual re-verification this pass couldn't
+     do (screenshot tooling was unavailable) — left as a documented
+     follow-up rather than risked blind. 16px still roughly doubles the
+     rendered size versus the unscaled 10px source (measured ~4px on
+     screen before this change). */
+  .chart-tick { font-size: 14px; }
+  .chart-lbl { font-size: 15px; }
+  .chart-tip-yr { font-size: 18px; }
+  .chart-tip-v { font-size: 16px; }
+}
 
 /* ---- Data check panel ---- */
 #datacheck:empty, #datacheck .wrap:empty { display: none; }
@@ -427,7 +544,6 @@ section { padding: 46px 0; border-bottom: 1px solid var(--line); }
 #commentary-sec { margin: 26px auto 0; }
 .commentary-card { border: 1px solid var(--line); border-radius: 14px; background: var(--card); overflow: hidden; }
 .commentary-head { width: 100%; display: flex; align-items: center; gap: 14px; padding: 18px 22px; background: none; border: none; cursor: pointer; text-align: left; font: inherit; }
-.commentary-head:hover { background: color-mix(in srgb, var(--green) 6%, transparent); }
 .ch-title { font-family: var(--font-serif); font-size: 20px; color: var(--ink); font-weight: 700; flex: 0 0 auto; }
 .ch-sub { font-size: 12.5px; color: var(--muted); flex: 1 1 auto; }
 .ch-chevron { flex: 0 0 auto; font-size: 22px; color: var(--muted); transition: transform .25s; transform: rotate(0deg); }
@@ -480,7 +596,34 @@ footer { padding: 30px 0 60px; font-size: 11.5px; color: var(--muted); }
    framer-motion). The cubic-bezier overshoots past 1.05 before settling,
    approximating the spring's "slight bounce" without a JS animation loop. */
 .hover-lift { transition: transform .25s cubic-bezier(.34, 1.56, .64, 1), box-shadow .2s ease-out; }
-.hover-lift:hover { transform: scale(1.05); box-shadow: 0 20px 40px -12px rgba(0, 0, 0, .45), 0 0 0 1px rgba(255, 255, 255, .06); }
+
+/* Every :hover-only visual effect app-wide, consolidated here (mobile
+   optimization M7) instead of left scattered at each rule's own location.
+   `(hover: hover)` is true only for a device with a hover-capable pointer
+   (a mouse/trackpad) — false on a touchscreen. Without this guard, tapping
+   any of these elements on a touch device leaves it visibly stuck in its
+   "hovered" look (a fund card frozen mid-scale-up, a button that looks
+   permanently focused) until the user taps something else entirely,
+   because touch has no equivalent of a mouse actually leaving the element.
+   Each rule below used to live inline next to its base selector; moved
+   verbatim, not restyled — see git history/tasks.md if the original
+   location matters for context. Two selectors that combined a real :hover
+   with an unrelated persistent state (`.infotip.open`, `.drop.over`) were
+   split instead of moved, so the persistent-state half stays unconditional
+   right where it was. */
+@media (hover: hover) {
+  .infotip-btn:hover { color: var(--ink); }
+  .infotip:hover .infotip-pop { visibility: visible; opacity: 1; }
+  .drop:hover { background-color: var(--card-hover); }
+  .feedback-close:hover { color: var(--ink); }
+  .btn-demo:hover { background: var(--card-hover); }
+  .legrow:hover { background: var(--card-hover); }
+  .fcard .foot a:hover { color: var(--ink); }
+  .htable th.sortable .th-sortbtn:hover { color: var(--ink); }
+  .gbtn:hover { background: var(--green); color: var(--paper); border-color: var(--green); }
+  .commentary-head:hover { background: color-mix(in srgb, var(--green) 6%, transparent); }
+  .hover-lift:hover { transform: scale(1.05); box-shadow: 0 20px 40px -12px rgba(0, 0, 0, .45), 0 0 0 1px rgba(255, 255, 255, .06); }
+}
 
 @media (max-width: 860px) {
   .wrap { padding: 0 20px; }

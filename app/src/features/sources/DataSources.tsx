@@ -38,31 +38,36 @@ export function DataSources({ pf, diag }: { pf: Portfolio; diag: Diag | null }) 
     <div id="sources-body">
       <p className="srchead">{head}</p>
       {diagLine && <p className="srcdiag">{diagLine}</p>}
-      <table className="htable srctable">
-        <thead>
-          <tr>
-            <th>Scheme</th>
-            <th>NAV Source</th>
-            <th>Data Check Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          {shown.map((f) => {
-            const s = sourceFor(f, pf.live, diag)
-            return (
-              // folio, not just isin/name: the same scheme can legitimately
-              // be held across multiple folios — see FundCards.tsx's comment.
-              <tr key={`${f.isin || f.name}-${f.folio}`}>
-                <td className="nm">{f.name}</td>
-                <td><NavTag live={s.live} source={s.source} /></td>
-                <td className="why">
-                  <StatusTag status={s.status} /> {s.reason}
-                </td>
-              </tr>
-            )
-          })}
-        </tbody>
-      </table>
+      {/* Same wide-table overflow risk as SortableTable (mobile optimization
+          M1) — this table isn't sortable so it doesn't go through that
+          primitive, but needs the identical scroll containment. */}
+      <div className="table-scroll">
+        <table className="htable srctable">
+          <thead>
+            <tr>
+              <th>Scheme</th>
+              <th>NAV Source</th>
+              <th>Data Check Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {shown.map((f) => {
+              const s = sourceFor(f, pf.live, diag)
+              return (
+                // folio, not just isin/name: the same scheme can legitimately
+                // be held across multiple folios — see FundCards.tsx's comment.
+                <tr key={`${f.isin || f.name}-${f.folio}`}>
+                  <td className="nm">{f.name}</td>
+                  <td><NavTag live={s.live} source={s.source} /></td>
+                  <td className="why">
+                    <StatusTag status={s.status} /> {s.reason}
+                  </td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
+      </div>
       <p className="srcfoot">
         Primary source is AMFI (Association of Mutual Funds in India), matched by ISIN. Where a statement carries no ISIN or the AMFI match fails, the dashboard tries mf.captnemo.in
         (by ISIN) and mfapi.in (AMFI-derived) by scheme name.

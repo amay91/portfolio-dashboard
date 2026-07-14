@@ -91,6 +91,17 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   position: relative;
+  /* Global safety net (mobile optimization M1): a `visibility: hidden`
+     element (e.g. an unopened InfoTip popover, kept in normal flow rather
+     than `display: none` so its CSS opacity transition can still animate)
+     still contributes its full geometry to the page's scrollable area even
+     while invisible. Individual components are fixed to not *need* this,
+     but this catches anything — present or future — that would otherwise
+     make the page itself scroll sideways. No component here relies on
+     horizontal overflow being visible outside its own box (nothing uses
+     `overflow-x: visible` intentionally), so this is a pure safety margin,
+     not a behavior change. */
+  overflow-x: hidden;
 }
 .mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 a { color: var(--green); }

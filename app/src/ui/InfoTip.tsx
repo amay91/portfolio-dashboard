@@ -31,6 +31,40 @@ export function InfoTip({ text, label, align = 'center' }: { text: string; label
     }
   }, [open])
 
+  // The `align` prop's left/center/right CSS positioning (app.css) was
+  // tuned against 375px viewports (see A1's resolution note) and still
+  // clips at 320px — none of the three fixed anchor points guarantee the
+  // fixed 250px-wide popover stays fully on-screen at every combination of
+  // trigger position and narrow viewport (mobile optimization M1: found by
+  // auditing at 320px, not just 375px). Rather than hand-tune a 4th align
+  // value, clamp the popover's actual position into the viewport once open
+  // — but only for the `open` (click/touch/keyboard) path, not `:hover`,
+  // which stays pure-CSS on purpose (a mouse hovering a 320px-wide window
+  // isn't a real scenario worth the JS cost for every one of the ~80
+  // InfoTips on the page).
+  useEffect(() => {
+    const anchor = ref.current
+    const pop = anchor?.querySelector<HTMLElement>('.infotip-pop')
+    if (!open || !anchor || !pop) return
+    const anchorRect = anchor.getBoundingClientRect()
+    const margin = 12
+    // document.documentElement.clientWidth, not window.innerWidth — the two
+    // can diverge (verified against this exact environment: 365 vs the true
+    // 320px layout viewport), and clientWidth is the one that actually
+    // matches the CSS pixels everything is rendered against.
+    const maxLeft = document.documentElement.clientWidth - margin - pop.offsetWidth
+    const centeredLeft = anchorRect.left + anchorRect.width / 2 - pop.offsetWidth / 2
+    const clampedLeft = Math.max(margin, Math.min(centeredLeft, maxLeft))
+    pop.style.left = `${clampedLeft - anchorRect.left}px`
+    pop.style.right = 'auto'
+    pop.style.transform = 'none'
+    return () => {
+      pop.style.left = ''
+      pop.style.right = ''
+      pop.style.transform = ''
+    }
+  }, [open])
+
   return (
     <span className={`infotip infotip-${align}${open ? ' open' : ''}`} ref={ref}>
       <button
