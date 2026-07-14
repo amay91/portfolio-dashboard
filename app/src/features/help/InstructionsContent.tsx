@@ -1,5 +1,11 @@
 import { useState } from 'react'
 
+// BASE_URL (not a hardcoded leading '/') so this resolves under a sub-path
+// deploy too (e.g. GitHub Pages' /<repo>/) — a bare '/cams-instructions.png'
+// would 404 there since Vite only rewrites paths it sees in HTML/CSS/JS
+// imports, never a runtime string literal.
+const CAMS_INSTRUCTIONS_IMG = `${import.meta.env.BASE_URL}cams-instructions.png`
+
 // A simplified, in-app redraw of the CAMS request form's key fields (see
 // cams-instructions.png, the real screenshot shown as a thumbnail above
 // this) — reuses the dashboard's own theme tokens so it re-themes with the
@@ -91,7 +97,7 @@ export function InstructionsContent() {
       </p>
 
       <button className="help-thumb" onClick={() => setLightboxOpen(true)} aria-label="Enlarge the CAMS request form screenshot">
-        <img src="/cams-instructions.png" alt="The CAMS CAS request form, with Detailed, Specific Period, and With zero balance folios highlighted" />
+        <img src={CAMS_INSTRUCTIONS_IMG} alt="The CAMS CAS request form, with Detailed, Specific Period, and With zero balance folios highlighted" />
       </button>
       <p className="help-thumb-caption">↑ Tap to enlarge — the exact form, with the fields above boxed in red.</p>
 
@@ -99,7 +105,7 @@ export function InstructionsContent() {
 
       {lightboxOpen && (
         <div className="help-lightbox" onClick={() => setLightboxOpen(false)}>
-          <img src="/cams-instructions.png" alt="The CAMS CAS request form, enlarged" />
+          <img src={CAMS_INSTRUCTIONS_IMG} alt="The CAMS CAS request form, enlarged" />
         </div>
       )}
     </div>

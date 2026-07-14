@@ -127,7 +127,11 @@ export async function loadSamplePortfolio(
   dispatch({ uploadPhase: 'processing', status: { message: force ? 'Refreshing…' : 'Building sample dashboard…', isErr: false } })
   let raw: string
   try {
-    raw = await fetchImpl('/sample.txt').then((r) => r.text())
+    // BASE_URL (not a hardcoded leading '/') so this still resolves under a
+    // sub-path deploy (e.g. GitHub Pages' /<repo>/) — Vite only rewrites
+    // paths it can see in HTML/CSS/JS imports, never a runtime string
+    // literal like a bare '/sample.txt' would have been.
+    raw = await fetchImpl(`${import.meta.env.BASE_URL}sample.txt`).then((r) => r.text())
   } catch {
     dispatch((s) => ({ uploadPhase: s.pf ? 'done' : 'idle', status: { message: 'Could not load the sample statement.', isErr: true } }))
     return

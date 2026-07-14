@@ -1,0 +1,58 @@
+name: Deploy to GitHub Pages
+
+# Builds app/ and publishes it to GitHub Pages. Trigger on either default
+# branch name — a brand-new repo's default is usually "main", but a repo
+# pushed up from an existing local clone (as this one is) keeps whatever
+# branch it already had, which may be "master". Also runnable by hand from
+# the Actions tab (workflow_dispatch) without needing a new push.
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+# Pages deploys use GitHub's OIDC token (id-token: write) instead of a
+# personal access token — nothing to create or store as a secret.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Only one Pages deployment at a time; a second push while one is still
+# running cancels the older, now-outdated one rather than racing it.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      # GitHub Pages project sites serve from /<repo-name>/, not the domain
+      # root, so every asset URL needs that prefix baked in at build time
+      # (see vite.config.ts's `base`). github.event.repository.name is
+      # always the exact repo name, so this needs no manual editing no
+      # matter what the repo is called.
+      - run: npm run build
+        env:
+          VITE_BASE_PATH: /${{ github.event.repository.name }}/
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: app/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
