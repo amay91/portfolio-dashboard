@@ -161,6 +161,14 @@
 .deck-alloc-card .donut-center .dc-s { font-size: 11px; max-width: 150px; }
 .deck-alloc-card .legend { width: 100%; }
 .deck-alloc-card .drill { font-size: 12.5px; }
+/* Below the mobile breakpoint the fixed 276px donut can outgrow a narrow
+   .deck-card's padded content box — shrink it to fit (review item D3; this
+   used to be app.css's job via a plain `.donut-wrap` rule that .deck-alloc-
+   card's own unconditional sizing above always outranked, so it never
+   actually fired at any width). */
+@media (max-width: 640px) {
+  .deck-alloc-card .donut-wrap { width: min(220px, 68vw); height: min(220px, 68vw); }
+}
 
 /* ---- Worth a Look (review item A2) ----
    A single amber-accented card, full width, between the KPI row and the
@@ -215,13 +223,18 @@
 .deck-advt-open, .deck-advt-open:hover { background: var(--brass); color: var(--paper); }
 .deck-advt-open .deck-advt-ic { color: var(--paper); }
 
-/* ---- responsive: 4/2 -> 2/1 columns ---- */
+/* ---- responsive: 4/2 -> 2/1 columns ----
+   Breakpoint contract (review item D2), shared with app.css: 640 (mobile),
+   860 (narrow — app.css's .wrap/h1/.funds tier), 1023 (tablet — this grid's
+   own collapse, and app.css's .mobile-header-row/.help-menu-corner switch
+   to static/stacked positioning at the same point, closing what used to be
+   a broken 781-1023px seam between two uncoordinated breakpoints). */
 @media (max-width: 1023px) {
   .deck-kpi-rail { grid-template-columns: 1fr 1fr; }
   .deck-grid-2col { grid-template-columns: 1fr; }
   .deck-adv-tiles { grid-template-columns: repeat(3, 1fr); }
 }
-@media (max-width: 639px) {
+@media (max-width: 640px) {
   .deck-kpi-rail { grid-template-columns: 1fr; }
   .deck-adv-tiles { grid-template-columns: repeat(2, 1fr); }
   .deck-mast-meta { display: none; }

@@ -18,9 +18,9 @@ A **privacy‑first, browser‑based dashboard** that ingests an Indian **CAMS/K
 - **Three input routes** to the same parser: drop a **PDF** (pdf.js, in‑browser), drop a **MarkItDown `.md`** file, or **"Convert PDF to Markdown"** via a local MarkItDown bridge.
 - Exited/zero‑balance folios are hidden from views but retained in realised gains and since‑inception return.
 
-Design language: "paper/ink" palette, Fraunces + Inter + IBM Plex Mono, Indian lakh/crore INR formatting, en‑GB dates.
+Design language: dual dark/light theme ("Terminal Deck" / "The Ledger", instant-toggle, 2026‑07‑08) — JetBrains Mono throughout in dark, Fraunces + Courier Prime in light — Indian lakh/crore INR formatting, en‑GB dates. Point-of-use ⓘ explainers, actionable "Worth a Look" insight flags, and a retirement corpus projection turn the raw numbers into guidance rather than just a mirror of the statement.
 
-**A critical review (2026‑07‑03) is actively reshaping the UI and NAV layer** — see `plan.md` §0 and `tasks.md` before assuming the feature list above is the target shape; some of it is moving behind an "advanced" toggle and the NAV sourcing is being simplified. `tasks.md`'s progress checklist is authoritative for what's actually landed.
+**Two critical reviews have shaped this app**: the 2026‑07‑03 review (source of truth = `app/`, lean-core "Command Deck" UI, NAV-layer simplification — fully landed) and a 2026‑07‑12 comprehensive review against the "empower, not just display" objective, whose recommendations menu (Themes A–E, tracked as `tasks.md`'s `R` items) is largely landed as of this writing. `tasks.md`'s progress checklist is authoritative for what's actually done at any point in time — don't infer current shape from this file's feature list alone.
 
 ---
 
@@ -31,6 +31,9 @@ app/                    ← THE APP. Vite + React 19 + TS. See app/src layout in
                           `cd app && npm run dev` (local) / `npm test` / `npm run typecheck` (tsc -b —
                           use this, not a bare `tsc --noEmit`, which misses type re-export gaps) /
                           `npm run lint` (oxlint, not eslint).
+server/                 ← Local dev-only feedback-form relay (plain Node, CommonJS); production
+                          uses a Cloudflare Pages Function instead (app/functions/api/feedback.ts).
+feedback-rules.json     ← Category list + message-length cap, shared by both feedback backends.
 plan.md                 ← Blueprint + §0 locked review decisions (current architecture direction).
 tasks.md                ← Numbered task list + progress checklist. THE status source of truth.
 markitdown_server.py    ← Tiny localhost bridge for "Convert PDF to Markdown" (app/'s UploadBar
@@ -39,7 +42,10 @@ docs/ARCHITECTURE.md    ← Module/function map + data model + pipeline.
 docs/DECISIONS.md       ← Chronological decision & bug-fix log (READ THIS before touching the
                           engine or NAV-matching — the "Invariant" lines are regressions if moved).
 docs/TESTING.md         ← How to test (Vitest golden fixtures, all inside app/tests/fixtures/).
-.github/workflows/ci.yml  ← Single job: app/ typecheck + lint + test.
+docs/DEPLOY.md          ← Cloudflare Pages deploy steps.
+docs/manual-testing/    ← 10 randomized CAS fixtures for manual browser-driven exploratory
+                          testing (not wired into the automated suite — see its own README).
+.github/workflows/ci.yml  ← Two jobs: app/ typecheck+lint+unit-test, and Playwright e2e.
 .gitignore
 ```
 

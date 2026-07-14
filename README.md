@@ -33,7 +33,9 @@ cd app && npm run typecheck && npm run lint && npm test
 app/                Vite + React 19 + TS — the app. Fixtures live in app/tests/fixtures/.
                     See app/src layout in docs/ARCHITECTURE.md.
 markitdown_server.py    localhost MarkItDown bridge
-docs/                   ARCHITECTURE / DECISIONS / TESTING
+docs/                   ARCHITECTURE / DECISIONS / TESTING / DEPLOY
+docs/manual-testing/    10 randomized CAS fixtures for manual browser-driven exploratory
+                        testing (not wired into the automated suite — see its README)
 plan.md  tasks.md  handoff.md
 ```
 

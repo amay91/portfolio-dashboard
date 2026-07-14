@@ -1,0 +1,17 @@
+{
+  "name": "Portfolio Dashboard",
+  "short_name": "Portfolio",
+  "description": "A privacy-first browser dashboard for Indian mutual fund CAS statements — XIRR/CAGR, capital gains, live-NAV valuation, and allocation, computed entirely on-device.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0b0d",
+  "theme_color": "#0a0b0d",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

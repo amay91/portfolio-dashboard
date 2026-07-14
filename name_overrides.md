@@ -20,9 +20,9 @@ Name** and a **Short Name** — regardless of exactly how a given statement spel
 - **Full Name** — used **only** in the "Fund Houses" section ("Allocation Across AMCs" table).
 
 **Implementation:** `app/src/reference/fundHouses.ts`
-- `FUND_HOUSE_NAMES: Record<string, string>` — the map below, full → short.
+- `FUND_HOUSE_NAMES: Record<string, string>` — the canonical full → short map (see below).
 - `RAW_ALIASES: Record<string, string>` — known further-shortened variants a *statement itself*
-  uses (distinct from the canonical map) — see "Known raw statement variants" below.
+  uses (distinct from the canonical map, e.g. "Kotak Mutual Fund" → "Kotak Mahindra Mutual Fund").
 - `fundHouseFullName(house)` — canonical full name; applied **once, at the single point
   `Fund.house` is finally assigned** in `app/src/engine/scheme.ts`'s `analyzeScheme()`
   (`house: fundHouseFullName(meta.house || s.house)`), so every downstream field
@@ -43,67 +43,19 @@ Name** and a **Short Name** — regardless of exactly how a given statement spel
   full name by the time it reaches that table.
 - Tests: `app/src/reference/fundHouses.spec.ts`.
 
-**The list** (Full Name → Short Name):
+**The list** (Full Name → Short Name), and the known raw-statement shortenings that resolve to a
+canonical full name before lookup, live solely in `app/src/reference/fundHouses.ts` —
+`FUND_HOUSE_NAMES` and `RAW_ALIASES` respectively. *(Review item E1: this section used to carry a
+second, hand-copied table of the same 40 AMCs — real duplication risk, since nothing enforced the
+two staying in sync. `fundHouses.ts` is now the single source of the actual mapping data; this
+file documents the rule, the "why," and where each form is displayed, not the data itself.)*
 
-| Full Name (as CAMS/KFintech statements print it) | Short Name |
-|---|---|
-| 360 ONE Mutual Fund | 360 ONE MF |
-| Abakkus Mutual Fund | Abakkus MF |
-| Aditya Birla Sun Life Mutual Fund | Aditya Birla Sun Life MF |
-| Axis Mutual Fund | Axis MF |
-| Bajaj Finserv Mutual Fund | Bajaj Finserv MF |
-| Bandhan Mutual Fund | Bandhan MF |
-| Bank of India Mutual Fund | Bank of India MF |
-| Baroda BNP Paribas Mutual Fund | Baroda BNP Paribas MF |
-| Canara Robeco Mutual Fund | Canara Robeco MF |
-| Capitalmind Mutual Fund | Capitalmind MF |
-| DSP Mutual Fund | DSP MF |
-| Edelweiss Mutual Fund | Edelweiss MF |
-| Franklin Templeton Mutual Fund | Franklin Templeton MF |
-| HDFC Mutual Fund | HDFC MF |
-| HSBC Mutual Fund | HSBC MF |
-| Helios Mutual Fund | Helios MF |
-| ICICI Prudential Mutual Fund | **ICICI MF** *(irregular — not "ICICI Prudential MF")* |
-| ITI Mutual Fund | ITI MF |
-| Invesco Mutual Fund | Invesco MF |
-| JM Financial Mutual Fund | JM Financial MF |
-| Kotak Mahindra Mutual Fund *(statements sometimes shorten this to just "Kotak Mutual Fund" — see Known Raw Variants below)* | Kotak Mahindra MF |
-| LIC Mutual Fund | LIC MF |
-| Mahindra Manulife Mutual Fund | Mahindra Manulife MF |
-| Mirae Asset Mutual Fund | Mirae Asset MF |
-| Motilal Oswal Mutual Fund | Motilal Oswal MF |
-| Navi Mutual Fund | Navi MF |
-| Nippon India Mutual Fund | Nippon India MF |
-| Old Bridge Mutual Fund | Old Bridge MF |
-| PGIM India Mutual Fund | PGIM India MF |
-| PPFAS Mutual Fund | PPFAS MF |
-| Quant Mutual Fund | Quant MF |
-| Quantum Mutual Fund | Quantum MF |
-| SBI Mutual Fund | SBI MF |
-| Samco Mutual Fund | Samco MF |
-| Sundaram Mutual Fund | Sundaram MF |
-| TRUST Mutual Fund | TRUST MF |
-| Tata Mutual Fund | Tata MF |
-| The Wealth Company Mutual Fund | The Wealth Company MF |
-| UTI Mutual Fund | UTI MF |
-| Union Mutual Fund | Union MF |
-| WhiteOak Capital Mutual Fund | WhiteOak Capital MF |
-
-**Known raw statement variants** (a real statement's own shortening, distinct from the canonical
-list above — resolved via `RAW_ALIASES` in `fundHouses.ts`, checked before the exact-match
-lookup):
-
-| Raw text as parsed | Resolves to |
-|---|---|
-| Kotak Mutual Fund | Kotak Mahindra Mutual Fund |
-
-Found by auditing every real fixture's parsed `house` values against the canonical list — do
-that same audit (parse each fixture, diff the distinct `house` strings against
-`FUND_HOUSE_NAMES`' keys) whenever a new fixture is added, and add any new variant found here.
-
-**Adding a new AMC:** add one row to `FUND_HOUSE_NAMES` in `fundHouses.ts` *and* one row to the
-table above, in the same commit. An AMC missing from the list still displays (raw, un-harmonised)
-rather than breaking — but it won't get the Short/Full treatment until added here.
+**Adding a new AMC:** add one row to `FUND_HOUSE_NAMES` in `fundHouses.ts` — that's the only place
+it needs to go. An AMC missing from the list still displays (raw, un-harmonised) rather than
+breaking, but won't get the Short/Full treatment until added. A new raw-statement shortening
+(like "Kotak Mutual Fund" for "Kotak Mahindra Mutual Fund") goes in `RAW_ALIASES` the same way —
+found by auditing every real fixture's parsed `house` values against `FUND_HOUSE_NAMES`' keys
+whenever a new fixture is added.
 
 ---
 

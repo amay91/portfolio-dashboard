@@ -20,8 +20,16 @@
    parent's layout height) — it exists purely so both can be relocated
    together on mobile, right above Data Check / EmptyState instead of
    floating fixed over the upload box. */
+/* Breakpoint contract (review item D2): three tiers, shared with deck.css —
+   640 (mobile), 860 (narrow — .wrap/h1/type), 1023 (tablet — deck grid
+   collapse). This row used to switch at 780, a 4th uncoordinated value that
+   left a broken seam between 781-1023px: the deck grid had already
+   collapsed to its single-column tablet layout there, but these corner
+   buttons were still in fixed-position "desktop" mode and could float over
+   the now-stacked content. Matching deck.css's 1023 tablet breakpoint here
+   closes that gap — both switch to the safe static/stacked layout together. */
 .mobile-header-row { }
-@media (max-width: 780px) {
+@media (max-width: 1023px) {
   .mobile-header-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 14px 28px 0; }
   .theme-toggle-corner { position: static; }
 }
@@ -56,7 +64,7 @@
 .help-menu-corner .help-menu-toggle { display: none; }
 .help-menu-corner .help-menu-list { display: flex; flex-direction: column; gap: 6px; }
 .help-menu-corner .help-menu-list .deck-btn { justify-content: flex-start; min-width: 168px; }
-@media (max-width: 780px) {
+@media (max-width: 1023px) {
   .help-menu-corner { position: relative; top: 0; left: 0; }
   .help-menu-corner .help-menu-toggle { display: flex; }
   .help-menu-corner .help-menu-list { display: none; position: absolute; top: calc(100% + 6px); left: 0; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 6px; box-shadow: 0 8px 24px rgba(0, 0, 0, .35); }
@@ -151,13 +159,16 @@
 .feedback-sent { text-align: center; padding: 10px 0; }
 .feedback-sent p { margin: 0 0 16px; color: var(--ink); }
 
-.privacy-footnote { margin: 14px 0 0 !important; padding-top: 12px; border-top: 1px solid var(--line); }
+/* Two classes (not !important) so this reliably beats .help-body p's own
+   margin rule above — that's a class+element selector (0,1,1), which would
+   otherwise outrank a bare .privacy-footnote (0,1,0) regardless of source
+   order (review item D1). */
+.help-body .privacy-footnote { margin: 14px 0 0; padding-top: 12px; border-top: 1px solid var(--line); }
 .privacy-footnote .deck-ilink { margin-top: 0; display: inline-flex; }
 
 /* ---- masthead ---- */
 .masthead { border-bottom: 1.5px solid var(--ink); padding: 40px 0 22px; }
 .masthead .wrap { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; }
-.brandline { font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
 h1 { font-family: var(--font-serif); font-weight: 500; font-size: 38px; line-height: 1.02; margin: 0; letter-spacing: -.01em; }
 .masthead .meta { text-align: right; font-size: 12.5px; color: var(--muted); line-height: 1.7; }
 .masthead .meta b { color: var(--ink); font-weight: 500; }
@@ -210,20 +221,7 @@ h1 { font-family: var(--font-serif); font-weight: 500; font-size: 38px; line-hei
 }
 .upload-password-row input[type="password"]:focus { outline: none; border-color: var(--green); }
 .upload-password-row .btn-demo:disabled { opacity: .5; cursor: default; }
-.paste-wrap { padding: 0 28px 16px !important; display: block !important; }
-.paste-area {
-  width: 100%; min-height: 120px; box-sizing: border-box; padding: 12px 14px; border: 1px solid var(--line);
-  border-radius: 8px; background: var(--paper); font: 13px/1.5 var(--font-mono); color: var(--ink); resize: vertical;
-}
-.paste-area:focus { outline: none; border-color: var(--green); }
-.paste-actions { display: flex; gap: 10px; margin-top: 10px; }
 @keyframes sp { to { transform: rotate(360deg); } }
-.valbanner { display: inline-flex; align-items: center; gap: 8px; font-size: 11.5px; padding: 5px 11px; border-radius: 3px; margin-top: 10px; letter-spacing: .02em; }
-.valbanner.livev { background: color-mix(in srgb, var(--green) 12%, transparent); color: var(--green); }
-.valbanner.stmt { background: color-mix(in srgb, var(--brass) 15%, transparent); color: var(--brass); }
-.valbanner .dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
-.valbanner.livev .dot { animation: pulse 2s ease-in-out infinite; }
-@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
 
 /* ---- section scaffold ---- */
 section { padding: 46px 0; border-bottom: 1px solid var(--line); }
@@ -236,7 +234,14 @@ section { padding: 46px 0; border-bottom: 1px solid var(--line); }
    next to them. */
 #charts .sec-sub { max-width: none; }
 
-/* ---- allocation ---- */
+/* ---- allocation ----
+   Base/desktop shape only. AllocationSection currently mounts exclusively
+   inside deck.css's .deck-alloc-card, whose `.deck-alloc-card .alloc` /
+   `.deck-alloc-card .donut-wrap` rules always out-specificity these bare
+   classes — so any responsive override lives in deck.css, next to the rest
+   of that card's sizing, not here (review item D3: this file and deck.css
+   used to both claim ownership of .alloc's responsive behavior, and the
+   version here was silently dead at every viewport width). */
 .alloc { display: grid; grid-template-columns: 340px 1fr; gap: 46px; align-items: start; }
 .donut-wrap { position: relative; width: 340px; height: 340px; }
 .donut svg { display: block; width: 100%; height: 100%; overflow: visible; }
@@ -359,11 +364,9 @@ section { padding: 46px 0; border-bottom: 1px solid var(--line); }
 .gbtn:hover { background: var(--green); color: var(--paper); border-color: var(--green); }
 .gbtn:active { transform: translateY(1px); }
 .gbtn:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
-.chart-axis { stroke: var(--line); stroke-width: 1; }
 .chart-grid { stroke: var(--line); stroke-width: 1; stroke-dasharray: 2 4; opacity: .7; }
 .chart-tick { fill: var(--muted); font-family: var(--font-mono); font-size: 10px; }
 .chart-lbl { fill: var(--muted); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; }
-.chart-zero { stroke: var(--ink); stroke-width: 1; opacity: .5; }
 
 /* InvestedChart hover/keyboard tooltip (task U2a). Deliberately NOT
    `overflow: visible` — the tooltip/guide-line coordinates are already
@@ -395,11 +398,12 @@ section { padding: 46px 0; border-bottom: 1px solid var(--line); }
 .dc-icon { flex: 0 0 auto; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; color: var(--paper); }
 .dc-ok .dc-icon { background: var(--pos); }
 .dc-warn .dc-icon { background: var(--brass); }
+/* Second flex child of .datacheck, beside the fixed-size .dc-icon —
+   without flex:1 it sizes to its own content instead of claiming the
+   remaining row width, which is what a long dc-head headline needs to
+   wrap naturally rather than push .dc-icon's row taller than necessary. */
+.dc-main { flex: 1; min-width: 0; }
 .dc-head { font-size: 14.5px; color: var(--ink); font-weight: 600; line-height: 1.5; }
-.dc-list { margin: 10px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 7px; }
-.dc-list li { display: flex; flex-direction: column; gap: 1px; padding: 8px 12px; background: var(--card); border: 1px solid var(--line); border-radius: 8px; }
-.dc-nm { font-size: 13px; color: var(--ink); font-weight: 600; }
-.dc-why { font-size: 11.5px; color: var(--muted); }
 .dc-note { font-size: 12px; color: var(--muted); margin-top: 10px; line-height: 1.55; }
 .dc-err { color: var(--neg); }
 .dc-link {
@@ -429,7 +433,6 @@ section { padding: 46px 0; border-bottom: 1px solid var(--line); }
 .commentary-out .co-tag { display: inline-block; font-size: 11px; letter-spacing: .05em; text-transform: uppercase; color: var(--green); background: color-mix(in srgb, var(--green) 12%, transparent); padding: 2px 9px; border-radius: 20px; margin-bottom: 8px; }
 .commentary-out .co-metric { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 12px 15px; margin: 10px 0; font-size: 13.5px; }
 .commentary-out .co-metric b { color: var(--green); }
-.commentary-out .co-warn b { color: var(--brass); }
 /* Corpus projection (review item A3): two side-by-side scenarios inside
    the existing .co-metric card shell — reuses that card's background/
    border rather than inventing a new container. */
@@ -470,8 +473,6 @@ footer { padding: 30px 0 60px; font-size: 11.5px; color: var(--muted); }
 @media (max-width: 860px) {
   .wrap { padding: 0 20px; }
   h1 { font-size: 30px; }
-  .alloc { grid-template-columns: 1fr; gap: 30px; }
-  .donut-wrap { width: min(300px, 80vw); height: min(300px, 80vw); margin: 0 auto; }
   .funds { grid-template-columns: 1fr; }
   .uploadbar .wrap { padding: 12px 20px; }
 }

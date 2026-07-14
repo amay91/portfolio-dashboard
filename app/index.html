@@ -3,6 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- Cheap installability shim (review item E3) — a manifest + these two
+         tags is enough for "Add to Home Screen" / desktop install prompts
+         without taking on a service worker or any offline-caching behavior,
+         neither of which this app needs or wants (it depends on live
+         network fetches for NAV data every load). -->
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="description" content="A privacy-first browser dashboard for Indian mutual fund CAS statements — XIRR/CAGR, capital gains, live-NAV valuation, and allocation, computed entirely on-device." />
+    <meta name="theme-color" content="#0a0b0d" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- style-src needs 'unsafe-inline': React sets inline style="" attributes (the `style={{}}`
          prop) and Vite's dev server injects CSS via <style> tags — both are blocked by a strict

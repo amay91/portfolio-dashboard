@@ -1,5 +1,7 @@
-// AMC (fund house) name harmonisation — see ../../name_overrides.md "Fund
-// House Names" for the authoritative, actively-maintained list this mirrors.
+// AMC (fund house) name harmonisation. This map is the single source of
+// truth for the data (review item E1 — a hand-copied duplicate used to live
+// in ../../name_overrides.md, which is now just the human-readable "why" and
+// "where shown" doc, not a second copy that can drift from this one).
 // Keyed by the AMC's full name exactly as CAMS/KFintech statements print it
 // (RE_HOUSE in parsing/cas/scheme.ts always captures a string ending in
 // "Mutual Fund"). Matching is case/whitespace-insensitive so a statement's
