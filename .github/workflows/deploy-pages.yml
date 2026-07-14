@@ -1,12 +1,20 @@
 name: Deploy to GitHub Pages
 
-# Builds app/ and publishes it to GitHub Pages. Trigger on either default
-# branch name — a brand-new repo's default is usually "main", but a repo
-# pushed up from an existing local clone (as this one is) keeps whatever
-# branch it already had, which may be "master". Also runnable by hand from
-# the Actions tab (workflow_dispatch) without needing a new push.
+# Builds app/ and publishes it to GitHub Pages — but only once CI (typecheck,
+# lint, unit tests, Playwright e2e) has actually passed on the same commit.
+# Deliberately triggers on CI's completion (workflow_run), not on push
+# directly: the two workflows used to fire independently off the same push,
+# which meant a broken build could still redeploy the live site as long as
+# the deploy job itself succeeded — CI failing was informational only, not a
+# gate. `branches` here filters to workflow_run events whose *head branch*
+# (the branch CI ran on) was main or master, so a CI run from a pull request
+# branch never triggers a deploy. Also runnable by hand from the Actions tab
+# (workflow_dispatch), which skips the CI-passed check since there's no
+# associated CI run to check.
 on:
-  push:
+  workflow_run:
+    workflows: ["CI"]
+    types: [completed]
     branches: [main, master]
   workflow_dispatch:
 
@@ -26,11 +34,21 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # Runs when manually dispatched, or when the workflow_run event that
+    # triggered this is CI actually succeeding (not just finishing — a
+    # failed or cancelled CI run should not publish anything).
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
     defaults:
       run:
         working-directory: app
     steps:
+      # workflow_run always checks out the default branch's *latest* commit
+      # unless told otherwise — pinning to the exact commit CI just tested
+      # (head_sha) means what gets deployed is provably the commit that
+      # passed, even if something else was pushed in the few seconds since.
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
       - uses: actions/setup-node@v4
         with:
           node-version: 20
