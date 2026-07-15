@@ -123,6 +123,37 @@ describe('HelpMenu', () => {
     expect(container.querySelector('.help-lightbox')).toBeNull()
   })
 
+  it('keeps My Details (email/PAN) filled after closing and reopening Instructions', () => {
+    renderHelpMenu()
+    const clickItem = (label: string) => {
+      const btn = Array.from(container.querySelectorAll('.help-menu-list button')).find((b) => b.textContent === label) as HTMLButtonElement
+      act(() => {
+        btn.click()
+      })
+    }
+
+    clickItem('Instructions')
+    const emailInput = container.querySelector('#mydetails-email') as HTMLInputElement
+    const nativeSetter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value')!.set!
+    act(() => {
+      nativeSetter.call(emailInput, 'me@example.com')
+      emailInput.dispatchEvent(new Event('input', { bubbles: true }))
+    })
+    expect((container.querySelector('#mydetails-email') as HTMLInputElement).value).toBe('me@example.com')
+
+    const closeBtn = container.querySelector('.feedback-close') as HTMLButtonElement
+    act(() => {
+      closeBtn.click()
+    })
+    expect(container.querySelector('.help-overlay')).toBeNull()
+
+    clickItem('Instructions')
+    // State is lifted to HelpMenu (not local to InstructionsContent/
+    // MyDetailsPanel) precisely so it survives this remount — a fresh
+    // mount with locally-owned state would have reset to empty here.
+    expect((container.querySelector('#mydetails-email') as HTMLInputElement).value).toBe('me@example.com')
+  })
+
   it('toggles the mobile menu list open and closes it on click-outside', () => {
     renderHelpMenu()
     const toggle = container.querySelector('.help-menu-toggle') as HTMLButtonElement

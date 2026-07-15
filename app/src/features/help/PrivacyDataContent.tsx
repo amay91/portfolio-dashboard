@@ -58,7 +58,9 @@ export function PrivacyDataContent() {
         There's no sign-up, no login, and nothing you do here is saved on any server — there is no server to save it on. If you use the optional MarkItDown conversion or the
         Feedback form, those talk only to a small program running on <b>your own machine</b> (<code>127.0.0.1</code> — a technical way of saying "this computer, not the
         internet"), never a third party. Closing the tab clears everything from memory; nothing persists unless you choose to keep the tab open, and even then, nothing is ever
-        written anywhere but your own browser's temporary memory for that session.
+        written anywhere but your own browser's temporary memory for that session. This includes the email/password fields in the Instructions panel's quick-fill box (used to copy
+        those details into CAMS's own statement-request form) — they're held only in that same in-tab memory, never in <code>localStorage</code> or any other on-disk store,
+        and vanish the moment you reload or close the tab.
       </p>
 
       <h4>In short</h4>

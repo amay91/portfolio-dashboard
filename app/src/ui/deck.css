@@ -167,6 +167,17 @@
    actually fired at any width). */
 @media (max-width: 640px) {
   .deck-alloc-card .donut-wrap { width: min(220px, 68vw); height: min(220px, 68vw); }
+  /* The center text (value/label) was sized for the 276px desktop donut,
+     where its hole is wide enough to hold it — shrinking the donut here
+     without also shrinking this text left it spilling out past the hole
+     onto the colored ring itself (mobile optimization follow-up). Scaled
+     down in step with the ~0.8x donut shrink (276px -> 220px), with
+     .dc-s's max-width tightened further (not just scaled) since it holds
+     the longest strings ("Tap a slice to break it down") and needs to wrap
+     to more, narrower lines rather than stay wide. */
+  .deck-alloc-card .donut-center .dc-k { font-size: 8.5px; }
+  .deck-alloc-card .donut-center .dc-v { font-size: 14px; }
+  .deck-alloc-card .donut-center .dc-s { font-size: 9px; max-width: 100px; line-height: 1.35; }
 }
 
 /* ---- Worth a Look (review item A2) ----

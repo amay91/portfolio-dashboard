@@ -7,6 +7,8 @@ import { InstructionsContent } from './InstructionsContent'
 import { ReadingDashboardContent } from './ReadingDashboardContent'
 import { PrivacyDataContent } from './PrivacyDataContent'
 import { FaqContent } from './FaqContent'
+import { EMPTY_MY_DETAILS } from './myDetails'
+import type { MyDetails } from './myDetails'
 
 type PanelId = 'instructions' | 'reading' | 'privacy' | 'faq'
 
@@ -40,6 +42,13 @@ export function HelpMenu() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [active, setActive] = useState<PanelId | null>(null)
   const [feedbackOpen, setFeedbackOpen] = useState(false)
+  // Lifted up from InstructionsContent's MyDetailsPanel (not local state
+  // there) so the email/PAN quick-fill fields survive closing and
+  // reopening the Instructions panel within the same tab, rather than
+  // resetting on every mount — HelpMenu itself is mounted for the whole
+  // app session (see the comment below), so this is still purely
+  // in-memory/session-scoped, never persisted to disk.
+  const [myDetails, setMyDetails] = useState<MyDetails>(EMPTY_MY_DETAILS)
   const top = useStickyToTarget('.deck-frame')
   const menuRef = useRef<HTMLDivElement>(null)
 
@@ -99,7 +108,7 @@ export function HelpMenu() {
           headClassName="help-modal-head"
         >
           <div className="help-modal-body">
-            {active === 'instructions' && <InstructionsContent />}
+            {active === 'instructions' && <InstructionsContent myDetails={myDetails} onMyDetailsChange={setMyDetails} />}
             {active === 'reading' && <ReadingDashboardContent />}
             {active === 'privacy' && <PrivacyDataContent />}
             {active === 'faq' && <FaqContent />}
