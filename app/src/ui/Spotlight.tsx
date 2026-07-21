@@ -8,7 +8,6 @@ export interface SpotlightRequest {
 }
 
 const MARGIN = 12
-const POP_WIDTH = 300
 
 // "Reading the Dashboard" navigation: clicking one of that panel's 5 items
 // (ReadingDashboardContent.tsx) closes the help modal, scrolls to and
@@ -103,25 +102,31 @@ export function Spotlight({ request, onDismiss }: { request: SpotlightRequest | 
   // viewport — same two-pass measure-then-position technique as
   // InfoTip.tsx's off-screen clamp, and for the same reason (can't know a
   // box's rendered size before it's rendered).
+  //
+  // `left` is pinned flush to the dashboard's own left edge — `.deck-frame`
+  // (shared by CommandDeck's "Summary Portfolio" card and
+  // PortfolioAnalysis's "Your Portfolio Analysis" card, both the same
+  // 1080px-max-width column, so either one gives the same value) — rather
+  // than a fixed viewport margin, so the popover reads as attached to the
+  // dashboard's own left rail instead of a generic screen-corner position.
+  // Re-queried on every reposition (not just once on open) since that edge
+  // itself moves on resize. Falls back to MARGIN if `.deck-frame` isn't in
+  // the DOM (shouldn't happen in practice — every spotlight target lives
+  // inside the same `pf &&`-gated tree as at least one `.deck-frame`).
+  // `top` still varies per item, tracking the target's vertical midpoint
+  // (clamped to the viewport) so the box stays near whichever region is
+  // highlighted even though its horizontal position never moves.
   useLayoutEffect(() => {
     if (!rect || !popRef.current) {
       setPos(null)
       return
     }
-    const vw = document.documentElement.clientWidth
     const vh = window.innerHeight
     const popH = popRef.current.offsetHeight
-    const spaceRight = vw - rect.right
-    let left: number
-    let top: number
-    if (spaceRight >= POP_WIDTH + MARGIN * 2) {
-      left = rect.right + MARGIN
-      top = Math.min(Math.max(rect.top, MARGIN), Math.max(MARGIN, vh - popH - MARGIN))
-    } else {
-      left = Math.min(Math.max(rect.left, MARGIN), Math.max(MARGIN, vw - POP_WIDTH - MARGIN))
-      top = rect.bottom + MARGIN
-      if (top + popH > vh - MARGIN) top = Math.max(rect.top - popH - MARGIN, MARGIN)
-    }
+    const frame = document.querySelector('.deck-frame')
+    const left = frame ? frame.getBoundingClientRect().left : MARGIN
+    const idealTop = rect.top + rect.height / 2 - popH / 2
+    const top = Math.min(Math.max(idealTop, MARGIN), Math.max(MARGIN, vh - popH - MARGIN))
     setPos({ left, top })
   }, [rect])
 

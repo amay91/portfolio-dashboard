@@ -163,6 +163,12 @@
   0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--green) 45%, transparent); }
   50% { box-shadow: 0 0 0 12px color-mix(in srgb, var(--green) 0%, transparent); }
 }
+/* `left` is always the same fixed value (Spotlight.tsx pins it to the
+   viewport's own left edge, MARGIN in) regardless of which item was
+   clicked or where its target sits — a consistent width and horizontal
+   position for every item, only `top` varies (tracking the target
+   vertically). `width` fixed, `height` intentionally unset so it grows
+   with whichever item's explanation is longest. */
 .spotlight-pop {
   position: fixed; z-index: 90; width: 300px; max-width: calc(100vw - 24px); box-sizing: border-box;
   background: var(--card); border: 1px solid var(--green); border-radius: 10px; padding: 14px 16px;
@@ -590,7 +596,17 @@ section { padding: 46px 0; border-bottom: 1px solid var(--line); }
 
 /* ---- Portfolio Commentary (collapsible) ---- */
 #commentary-sec { margin: 26px auto 0; }
-.commentary-card { border: 1px solid var(--line); border-radius: 14px; background: var(--card); overflow: hidden; }
+/* Bleeds out to fill .wrap's own outer box (max-width: 1080px, centered)
+   instead of sitting inset inside .wrap's padded content area — negative
+   margin equal to .wrap's own padding at each breakpoint. Without this the
+   card's left edge sat 28px right of (and its right edge 28px left of)
+   .deck-frame's edges (CommandDeck/PortfolioAnalysis), even though all
+   three share the same 1080px-max-width column — a card-level inset
+   .wrap's other, non-bordered users never surfaced. */
+.commentary-card { border: 1px solid var(--line); border-radius: 14px; background: var(--card); overflow: hidden; margin: 0 -28px; }
+@media (max-width: 860px) {
+  .commentary-card { margin: 0 -20px; }
+}
 .commentary-head { width: 100%; display: flex; align-items: center; gap: 14px; padding: 18px 22px; background: none; border: none; cursor: pointer; text-align: left; font: inherit; }
 .ch-title { font-family: var(--font-serif); font-size: 20px; color: var(--ink); font-weight: 700; flex: 0 0 auto; }
 .ch-sub { font-size: 12.5px; color: var(--muted); flex: 1 1 auto; }
