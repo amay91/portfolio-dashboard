@@ -5,6 +5,21 @@
    port; components below use the same className values. */
 .wrap { max-width: 1080px; margin: 0 auto; padding: 0 28px; }
 
+/* `transform: translateX(...)` is written directly by Spotlight.tsx (not a
+   React-driven style) to nudge the dashboard rightward, opening real room
+   for a Reading-the-Dashboard popover to sit genuinely outside the
+   dashboard's own left edge instead of overlapping it — a transform, not
+   `margin-left`, specifically because a margin shift on an auto-width
+   block shrinks its own computed width to match, which only moved
+   .deck-frame by about half of the intended amount (it re-centers within
+   the now-narrower box); a transform is a pure paint-time offset, so it
+   moves everything inside #app by the exact pixel amount requested. This
+   transition is what turns that instant DOM write into a visible "nudge"
+   rather than a jump; the app's existing `prefers-reduced-motion` rule
+   (`* { transition: none !important }`) already disables it for anyone
+   who's asked for that. */
+#app { transition: transform .25s ease; }
+
 /* Always accessible in the same spot regardless of scroll position or
    upload-bar state — deliberately outside the .uploadbar flex row so it
    never competes for space with Refresh/Clear Data or wraps with them on
@@ -163,14 +178,14 @@
   0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--green) 45%, transparent); }
   50% { box-shadow: 0 0 0 12px color-mix(in srgb, var(--green) 0%, transparent); }
 }
-/* `left` is always the same fixed value (Spotlight.tsx pins it to the
-   viewport's own left edge, MARGIN in) regardless of which item was
-   clicked or where its target sits — a consistent width and horizontal
-   position for every item, only `top` varies (tracking the target
-   vertically). `width` fixed, `height` intentionally unset so it grows
-   with whichever item's explanation is longest. */
+/* `width`/`left`/`top` are all set inline by Spotlight.tsx, computed per
+   request (whether there's room to sit genuinely outside the dashboard's
+   own left edge, or the box needs to sit below the target instead — see
+   that file's comment). `max-width` here is just a safety net for the
+   instant before that JS runs; `height` is intentionally never set, so
+   the box grows with whichever item's explanation is longest. */
 .spotlight-pop {
-  position: fixed; z-index: 90; width: 300px; max-width: calc(100vw - 24px); box-sizing: border-box;
+  position: fixed; z-index: 90; max-width: calc(100vw - 24px); box-sizing: border-box;
   background: var(--card); border: 1px solid var(--green); border-radius: 10px; padding: 14px 16px;
   box-shadow: 0 12px 34px rgba(0, 0, 0, .4);
 }
