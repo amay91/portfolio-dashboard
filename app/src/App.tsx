@@ -18,6 +18,8 @@ import { Footer } from './Footer'
 import { HelpMenu } from './features/help/HelpMenu'
 import { Section } from './Section'
 import { ThemeToggle } from './features/theme/ThemeToggle'
+import { Spotlight } from './ui/Spotlight'
+import type { SpotlightRequest } from './ui/Spotlight'
 import { handleConvertMarkitdown, handleFile, handleRefresh, handleSubmitPassword, loadSamplePortfolio } from './appPipeline'
 import { initialPipelineState, pipelineReducer } from './appState'
 import type { CurrentSource } from './appState'
@@ -36,6 +38,7 @@ function App() {
   const { pf, diag, status, uploadPhase, extraction, pendingPassword, investorName, isSample, niftyAllTime, nifty1Y } = state
   const [commentaryOpen, setCommentaryOpen] = useState(false)
   const [openSections, setOpenSections] = useState<Partial<Record<SectionId, boolean>>>({})
+  const [spotlight, setSpotlight] = useState<SpotlightRequest | null>(null)
   const currentSourceRef = useRef<CurrentSource>({ kind: 'text', text: '', sourceIsPdf: false })
 
   // Double-rAF guarantees the section's own DOM commit has painted, but
@@ -114,11 +117,12 @@ function App() {
           clipped it. Anchoring from the left instead gives the dropdown
           room to open into, not off, the screen. */}
       <div className="mobile-header-row">
-        <HelpMenu />
+        <HelpMenu onSpotlight={setSpotlight} />
         <div className="theme-toggle-corner">
           <ThemeToggle />
         </div>
       </div>
+      <Spotlight request={spotlight} onDismiss={() => setSpotlight(null)} />
       <main id="app">
         {!pf && <EmptyState status={status} />}
         {pf && (

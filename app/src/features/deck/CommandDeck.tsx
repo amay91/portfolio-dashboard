@@ -95,7 +95,8 @@ export function CommandDeck({
             <TopHoldings pf={pf} />
           </div>
           <div className="deck-col deck-col-alloc">
-            <HoverDiv className="deck-card deck-alloc-card">
+            {/* id targeted by Reading the Dashboard's spotlight (ui/Spotlight.tsx). */}
+            <HoverDiv className="deck-card deck-alloc-card" id="deck-allocation-card">
               <p className="deck-sec deck-alloc-head">Allocation</p>
               <AllocationSection pf={pf} />
             </HoverDiv>

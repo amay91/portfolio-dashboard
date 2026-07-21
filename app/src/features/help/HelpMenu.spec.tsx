@@ -1,6 +1,6 @@
 import { act } from 'react'
 import { createRoot } from 'react-dom/client'
-import { afterEach, beforeEach, describe, expect, it } from 'vitest'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { HelpMenu } from './HelpMenu'
 
 // Real client render — menu open/close, panel switching, Escape/click-outside
@@ -19,10 +19,10 @@ describe('HelpMenu', () => {
     document.body.removeChild(container)
   })
 
-  function renderHelpMenu() {
+  function renderHelpMenu(onSpotlight: (request: unknown) => void = () => {}) {
     const root = createRoot(container)
     act(() => {
-      root.render(<HelpMenu />)
+      root.render(<HelpMenu onSpotlight={onSpotlight as never} />)
     })
     return root
   }
@@ -81,6 +81,43 @@ describe('HelpMenu', () => {
     expect(container.textContent).toContain('What is XIRR')
   })
 
+  it('clicking a Reading the Dashboard item closes the modal and fires onSpotlight with that item\'s target(s) and text', () => {
+    const onSpotlight = vi.fn()
+    renderHelpMenu(onSpotlight)
+    const readingBtn = Array.from(container.querySelectorAll('.help-menu-list button')).find((b) => b.textContent === 'Reading the Dashboard') as HTMLButtonElement
+    act(() => {
+      readingBtn.click()
+    })
+    expect(container.querySelector('.help-overlay')).not.toBeNull()
+
+    const item = Array.from(container.querySelectorAll('.rd-item-btn')).find((b) => b.textContent?.includes('Value vs Invested chart.')) as HTMLButtonElement
+    act(() => {
+      item.click()
+    })
+
+    // Modal closes so the highlighted dashboard underneath is visible.
+    expect(container.querySelector('.help-overlay')).toBeNull()
+    expect(onSpotlight).toHaveBeenCalledTimes(1)
+    const request = onSpotlight.mock.calls[0][0] as { targetIds: string[]; label: string }
+    expect(request.targetIds).toEqual(['deck-vvsi-card'])
+    expect(request.label).toBe('Value vs Invested chart.')
+  })
+
+  it('the Top holdings and Allocation item spotlights both of its target ids', () => {
+    const onSpotlight = vi.fn()
+    renderHelpMenu(onSpotlight)
+    const readingBtn = Array.from(container.querySelectorAll('.help-menu-list button')).find((b) => b.textContent === 'Reading the Dashboard') as HTMLButtonElement
+    act(() => {
+      readingBtn.click()
+    })
+    const item = Array.from(container.querySelectorAll('.rd-item-btn')).find((b) => b.textContent?.includes('Top holdings and Allocation.')) as HTMLButtonElement
+    act(() => {
+      item.click()
+    })
+    const request = onSpotlight.mock.calls[0][0] as { targetIds: string[] }
+    expect(request.targetIds).toEqual(['deck-top-holdings', 'deck-allocation-card'])
+  })
+
   it('closes the modal on the close button and on Escape', () => {
     renderHelpMenu()
     const openBtn = Array.from(container.querySelectorAll('.help-menu-list button')).find((b) => b.textContent === 'FAQ') as HTMLButtonElement
@@ -121,37 +158,6 @@ describe('HelpMenu', () => {
       lightbox.click()
     })
     expect(container.querySelector('.help-lightbox')).toBeNull()
-  })
-
-  it('keeps My Details (email/PAN) filled after closing and reopening Instructions', () => {
-    renderHelpMenu()
-    const clickItem = (label: string) => {
-      const btn = Array.from(container.querySelectorAll('.help-menu-list button')).find((b) => b.textContent === label) as HTMLButtonElement
-      act(() => {
-        btn.click()
-      })
-    }
-
-    clickItem('Instructions')
-    const emailInput = container.querySelector('#mydetails-email') as HTMLInputElement
-    const nativeSetter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value')!.set!
-    act(() => {
-      nativeSetter.call(emailInput, 'me@example.com')
-      emailInput.dispatchEvent(new Event('input', { bubbles: true }))
-    })
-    expect((container.querySelector('#mydetails-email') as HTMLInputElement).value).toBe('me@example.com')
-
-    const closeBtn = container.querySelector('.feedback-close') as HTMLButtonElement
-    act(() => {
-      closeBtn.click()
-    })
-    expect(container.querySelector('.help-overlay')).toBeNull()
-
-    clickItem('Instructions')
-    // State is lifted to HelpMenu (not local to InstructionsContent/
-    // MyDetailsPanel) precisely so it survives this remount — a fresh
-    // mount with locally-owned state would have reset to empty here.
-    expect((container.querySelector('#mydetails-email') as HTMLInputElement).value).toBe('me@example.com')
   })
 
   it('toggles the mobile menu list open and closes it on click-outside', () => {

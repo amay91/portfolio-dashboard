@@ -135,47 +135,52 @@
 .help-steps li::before { content: counter(help-step); position: absolute; left: 0; top: 0; width: 24px; height: 24px; border-radius: 50%; background: var(--teal); color: var(--paper); font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
 .help-steps b { color: var(--ink); }
 
-/* Instructions: "My Details" quick-fill panel (MyDetailsPanel.tsx) — email
-   + PAN entered once, then copied field-by-field into CAMS's own form
-   instead of retyped from memory. Its two inputs sit inside a
-   `.mydetails-input-wrap` (rather than directly beside their Copy button)
-   specifically so the PAN field's eye toggle can overlay inside the input
-   itself — that keeps every field row down to exactly two flex children
-   (input-wrap, Copy button) regardless of whether that row also has an eye
-   toggle, which is what keeps this layout from needing a third narrower
-   column on small screens. */
-.mydetails { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; margin: 0 0 18px; }
-.mydetails-note { font-size: 12px; margin: 0 0 12px; }
-.mydetails-row { margin-bottom: 12px; }
-.mydetails-row:last-child { margin-bottom: 0; }
-.mydetails-row label { display: block; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin-bottom: 6px; }
-.mydetails-field { display: flex; align-items: center; gap: 8px; }
-.mydetails-input-wrap { position: relative; flex: 1; min-width: 0; }
-.mydetails-input-wrap input {
-  width: 100%; box-sizing: border-box; font: 16px/1.4 var(--font-mono); color: var(--ink); background: var(--card);
-  border: 1px solid var(--line); border-radius: 8px; padding: 9px 11px;
+/* Reading the Dashboard: each item is a real button (ReadingDashboardContent
+   .rd-item-btn), boxed distinctly from the plain numbered .help-steps text
+   it's built on, so it visibly invites a click rather than reading as
+   inert prose. Sits inside the <li>'s own padding-left: 34px gutter (the
+   numbered circle lives there), so it doesn't need its own left offset —
+   only the box chrome (border/background/radius) and right-side arrow are
+   new. */
+.rd-list li { padding-bottom: 10px; }
+.rd-item-btn {
+  display: block; width: 100%; box-sizing: border-box; text-align: left; font: inherit; color: inherit;
+  background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 10px 34px 10px 14px;
+  cursor: pointer; position: relative;
 }
-/* Room for the eye toggle so PAN's own digits/letters never render under
-   it — email has no toggle, so its unused right padding is harmless. */
-#mydetails-pan { padding-right: 38px; }
-.mydetails-input-wrap input:focus { outline: none; border-color: var(--green); }
-.mydetails-eye {
-  position: absolute; right: 2px; top: 50%; transform: translateY(-50%);
-  background: none; border: none; padding: 8px; color: var(--muted); display: inline-flex; align-items: center; cursor: pointer;
+.rd-item-btn:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
+.rd-item-btn b { color: var(--ink); }
+.rd-item-arrow { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: var(--muted); opacity: .6; }
+
+/* ---- Spotlight: Reading the Dashboard's click-to-navigate highlight
+   (ui/Spotlight.tsx) ---- */
+.spotlight-target {
+  position: relative; z-index: 55; border-radius: 14px;
+  outline: 3px solid var(--green); outline-offset: 5px;
+  animation: spotlight-pulse 1.8s ease-in-out infinite;
 }
-.mydetails-eye .deck-ic { width: 16px; height: 16px; }
-.mydetails-copy {
-  flex: 0 0 auto; font: inherit; font-size: 12px; font-weight: 700; border: 1px solid var(--line);
-  background: var(--card); color: var(--ink); padding: 0 14px; height: 40px; border-radius: 8px; cursor: pointer; white-space: nowrap;
+@keyframes spotlight-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--green) 45%, transparent); }
+  50% { box-shadow: 0 0 0 12px color-mix(in srgb, var(--green) 0%, transparent); }
 }
-.mydetails-copy:disabled { opacity: .5; cursor: default; }
-/* Same tap-target-growth trick as .infotip-btn (mobile optimization M4):
-   negative margin cancels the padding's layout footprint, so the eye
-   toggle's real hit area grows to ~44px without visually enlarging the
-   icon or pushing the PAN field's text further from the edge. */
+.spotlight-pop {
+  position: fixed; z-index: 90; width: 300px; max-width: calc(100vw - 24px); box-sizing: border-box;
+  background: var(--card); border: 1px solid var(--green); border-radius: 10px; padding: 14px 16px;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, .4);
+}
+.spotlight-close { position: absolute; top: 6px; right: 8px; background: none; border: none; color: var(--muted); font-size: 20px; line-height: 1; cursor: pointer; padding: 6px; }
+.spotlight-label { margin: 0 24px 6px 0; font-weight: 700; color: var(--ink); font-size: 13px; }
+.spotlight-body { margin: 0; font-size: 12.5px; color: var(--muted); line-height: 1.6; }
+/* Explicit box + centering, not padding alone (mobile optimization M4,
+   same recipe as .feedback-close) — the "×" glyph's own width is narrower
+   than the ~44px minimum, so padding by itself would grow the box
+   asymmetrically off-center. */
 @media (max-width: 640px) {
-  .mydetails-eye { padding: 14px; margin: -6px; }
-  .mydetails-copy { height: 44px; }
+  .spotlight-close { top: 2px; right: 2px; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; }
+  /* The close button's real (44px) hit area is wider than its glyph, so
+     the label needs more clearance here than the desktop 24px reserve to
+     avoid the two overlapping. */
+  .spotlight-label { margin-right: 48px; }
 }
 
 /* Instructions: screenshot thumbnail + lightbox */
@@ -666,8 +671,9 @@ footer { padding: 30px 0 60px; font-size: 11.5px; color: var(--muted); }
   .gbtn:hover { background: var(--green); color: var(--paper); border-color: var(--green); }
   .commentary-head:hover { background: color-mix(in srgb, var(--green) 6%, transparent); }
   .hover-lift:hover { transform: scale(1.05); box-shadow: 0 20px 40px -12px rgba(0, 0, 0, .45), 0 0 0 1px rgba(255, 255, 255, .06); }
-  .mydetails-eye:hover { color: var(--ink); }
-  .mydetails-copy:hover:not(:disabled) { background: var(--card-hover); }
+  .rd-item-btn:hover { background: var(--card-hover); border-color: var(--green); }
+  .rd-item-btn:hover .rd-item-arrow { opacity: 1; color: var(--green); }
+  .spotlight-close:hover { color: var(--ink); }
 }
 
 @media (max-width: 860px) {

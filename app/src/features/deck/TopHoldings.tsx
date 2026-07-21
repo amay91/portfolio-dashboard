@@ -17,7 +17,8 @@ export function TopHoldings({ pf }: { pf: Portfolio }) {
   if (!top.length) return null
 
   return (
-    <HoverDiv className="deck-card deck-holdings">
+    // id targeted by Reading the Dashboard's spotlight (ui/Spotlight.tsx).
+    <HoverDiv className="deck-card deck-holdings" id="deck-top-holdings">
       <table className="deck-tbl">
         <thead>
           <tr>

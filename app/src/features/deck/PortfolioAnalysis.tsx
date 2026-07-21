@@ -27,7 +27,10 @@ export function PortfolioAnalysis({
 
   return (
     <div className="deck">
-      <div className="deck-frame deck-frame-compact">
+      {/* id targeted by Reading the Dashboard's spotlight (ui/Spotlight.tsx) —
+          the always-visible button row itself, since the 6 sections it opens
+          aren't in the DOM until expanded. */}
+      <div className="deck-frame deck-frame-compact" id="portfolio-analysis">
         <div className="pa-header">
           <p className="deck-mast-title">{title}</p>
           <span className="deck-mast-space" />

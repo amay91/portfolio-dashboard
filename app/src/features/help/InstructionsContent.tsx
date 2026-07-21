@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import { MyDetailsPanel } from './MyDetailsPanel'
-import type { MyDetails } from './myDetails'
 
 // BASE_URL (not a hardcoded leading '/') so this resolves under a sub-path
 // deploy too (e.g. GitHub Pages' /<repo>/) — a bare '/cams-instructions.png'
@@ -52,7 +50,7 @@ function CamsStepsDiagram() {
   )
 }
 
-export function InstructionsContent({ myDetails, onMyDetailsChange }: { myDetails: MyDetails; onMyDetailsChange: (next: MyDetails) => void }) {
+export function InstructionsContent() {
   const [lightboxOpen, setLightboxOpen] = useState(false)
 
   return (
@@ -62,7 +60,6 @@ export function InstructionsContent({ myDetails, onMyDetailsChange }: { myDetail
         The dashboard reads a <b>Consolidated Account Statement (CAS)</b> — a single document covering every mutual fund you hold, across fund houses. CAMS and KFintech (the two
         registrars who between them service almost every Indian mutual fund) issue this jointly. Here's how to request one:
       </p>
-      <MyDetailsPanel value={myDetails} onChange={onMyDetailsChange} />
       <ol className="help-steps">
         <li>
           Go to CAMS's CAS request page:{' '}
@@ -84,9 +81,8 @@ export function InstructionsContent({ myDetails, onMyDetailsChange }: { myDetail
           history toward your all-time returns (it won't show up as a current holding, but the past gains still matter).
         </li>
         <li>
-          Paste your <b>email</b> from the box above (required), then paste your chosen <b>password</b> from the box above into both the <b>Password</b> and{' '}
-          <b>Confirm Password</b> fields — this is a password you're making up on the spot (6+ characters, at least 2 numbers), not your PAN; CAMS's own <b>PAN</b> field is
-          optional and can be left blank. Click <b>Submit</b>.
+          Enter your <b>email</b> (required), then choose a <b>password</b> to protect the PDF and enter it in both the <b>Password</b> and <b>Confirm Password</b> fields — a
+          password of your own making (6+ characters, at least 2 numbers), not your PAN; CAMS's own <b>PAN</b> field is optional and can be left blank. Click <b>Submit</b>.
         </li>
         <li>
           Check your email — CAMS sends the actual statement as a password-protected PDF attachment. <b>That PDF is what you upload</b> to this dashboard (the dashboard will ask

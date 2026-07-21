@@ -11,7 +11,8 @@ export function ValueVsInvestedCard({ pf }: { pf: Portfolio }) {
   const hasChart = pf.series != null && investedGeometry(pf.series) != null
 
   return (
-    <HoverDiv className="deck-card">
+    // id targeted by Reading the Dashboard's spotlight (ui/Spotlight.tsx).
+    <HoverDiv className="deck-card" id="deck-vvsi-card">
       <div className="deck-charthead">
         <p className="deck-sec">Value vs Invested</p>
       </div>

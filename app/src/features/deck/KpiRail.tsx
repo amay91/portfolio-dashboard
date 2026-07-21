@@ -112,7 +112,10 @@ export function KpiRail({
   onOpenCommentary: () => void
 }) {
   return (
-    <div className="deck-kpi-rail">
+    // id targeted by Reading the Dashboard's spotlight ("Summary row" item,
+    // ui/Spotlight.tsx) — a stable identity for that navigation, not a
+    // styling hook (the class already covers styling).
+    <div className="deck-kpi-rail" id="deck-summary-row">
       <TotalValueTile pf={pf} />
       <TotalGainTile pf={pf} />
       <XirrTile pf={pf} niftyAllTime={niftyAllTime} nifty1Y={nifty1Y} />

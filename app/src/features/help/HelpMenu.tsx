@@ -7,8 +7,7 @@ import { InstructionsContent } from './InstructionsContent'
 import { ReadingDashboardContent } from './ReadingDashboardContent'
 import { PrivacyDataContent } from './PrivacyDataContent'
 import { FaqContent } from './FaqContent'
-import { EMPTY_MY_DETAILS } from './myDetails'
-import type { MyDetails } from './myDetails'
+import type { SpotlightRequest } from '../../ui/Spotlight'
 
 type PanelId = 'instructions' | 'reading' | 'privacy' | 'faq'
 
@@ -38,17 +37,10 @@ const TITLES: Record<PanelId, string> = {
 // Feedback.tsx) rather than a read-only content panel like the other four,
 // so it gets its own open state (`feedbackOpen`) instead of going through
 // `active`/`TITLES`/.help-modal.
-export function HelpMenu() {
+export function HelpMenu({ onSpotlight }: { onSpotlight: (request: SpotlightRequest) => void }) {
   const [menuOpen, setMenuOpen] = useState(false)
   const [active, setActive] = useState<PanelId | null>(null)
   const [feedbackOpen, setFeedbackOpen] = useState(false)
-  // Lifted up from InstructionsContent's MyDetailsPanel (not local state
-  // there) so the email/PAN quick-fill fields survive closing and
-  // reopening the Instructions panel within the same tab, rather than
-  // resetting on every mount — HelpMenu itself is mounted for the whole
-  // app session (see the comment below), so this is still purely
-  // in-memory/session-scoped, never persisted to disk.
-  const [myDetails, setMyDetails] = useState<MyDetails>(EMPTY_MY_DETAILS)
   const top = useStickyToTarget('.deck-frame')
   const menuRef = useRef<HTMLDivElement>(null)
 
@@ -69,6 +61,14 @@ export function HelpMenu() {
   function openFeedback() {
     setFeedbackOpen(true)
     setMenuOpen(false)
+  }
+
+  // Closes this modal first — the spotlight highlights/positions itself
+  // against the real dashboard underneath, which the modal's own backdrop
+  // would otherwise cover.
+  function spotlightAndClose(request: SpotlightRequest) {
+    setActive(null)
+    onSpotlight(request)
   }
 
   return (
@@ -108,8 +108,8 @@ export function HelpMenu() {
           headClassName="help-modal-head"
         >
           <div className="help-modal-body">
-            {active === 'instructions' && <InstructionsContent myDetails={myDetails} onMyDetailsChange={setMyDetails} />}
-            {active === 'reading' && <ReadingDashboardContent />}
+            {active === 'instructions' && <InstructionsContent />}
+            {active === 'reading' && <ReadingDashboardContent onSpotlight={spotlightAndClose} />}
             {active === 'privacy' && <PrivacyDataContent />}
             {active === 'faq' && <FaqContent />}
           </div>
