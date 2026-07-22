@@ -3,6 +3,26 @@ import { createRoot } from 'react-dom/client'
 import type { Root } from 'react-dom/client'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { Feedback } from './Feedback'
+import { resolveFeedbackEndpoint } from './feedbackEndpoint'
+
+// Endpoint-selection is a plain function (not a rendering concern), so it
+// gets a plain unit spec rather than a stubbed-env + module-reset + render
+// dance — see Feedback.tsx's comment on why the decision was pulled out of
+// the module-level constant in the first place.
+describe('resolveFeedbackEndpoint', () => {
+  it('prefers an explicit edge URL over everything else, in dev or production', () => {
+    expect(resolveFeedbackEndpoint('/api/feedback', true)).toBe('/api/feedback')
+    expect(resolveFeedbackEndpoint('/api/feedback', false)).toBe('/api/feedback')
+  })
+
+  it('uses the local companion server when no edge URL is set and running in dev', () => {
+    expect(resolveFeedbackEndpoint(undefined, true)).toBe('http://127.0.0.1:8766/api/feedback')
+  })
+
+  it('falls back to Formspree in a production build with no edge URL configured (GitHub Pages)', () => {
+    expect(resolveFeedbackEndpoint(undefined, false)).toContain('https://formspree.io/f/')
+  })
+})
 
 // Real client render (not renderToStaticMarkup) — the form's fetch
 // submission and keyboard handling are all side effects that a static

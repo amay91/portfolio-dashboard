@@ -1,16 +1,11 @@
 import { useRef, useState } from 'react'
 import { ModalShell } from '../../ui/primitives/ModalShell'
+import { resolveFeedbackEndpoint } from './feedbackEndpoint'
 
 export type FeedbackCategory = 'Bug Report' | 'Feature Request' | 'General Feedback'
 const CATEGORIES: FeedbackCategory[] = ['Bug Report', 'Feature Request', 'General Feedback']
-// Local dev default: server/feedback-server.js, a companion process you run
-// yourself (same "127.0.0.1 only" pattern as markitdown_server.py) — there's
-// no such process on a real visitor's machine once this is deployed, so
-// production sets VITE_FEEDBACK_URL to the same-origin Pages Function
-// instead (`/api/feedback`, task D3 — see functions/api/feedback.ts and
-// docs/DEPLOY.md). Left unset, behaviour is unchanged from before D3.
 const EDGE_FEEDBACK_URL = import.meta.env.VITE_FEEDBACK_URL as string | undefined
-const FEEDBACK_ENDPOINT = EDGE_FEEDBACK_URL || 'http://127.0.0.1:8766/api/feedback'
+const FEEDBACK_ENDPOINT = resolveFeedbackEndpoint(EDGE_FEEDBACK_URL, import.meta.env.DEV)
 const MAX_LENGTH = 5000
 
 type SubmitState = 'idle' | 'sending' | 'sent' | 'error'
@@ -45,11 +40,19 @@ export function Feedback({ open, onClose }: { open: boolean; onClose: () => void
     try {
       const res = await fetch(FEEDBACK_ENDPOINT, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        // Accept: application/json is what makes Formspree respond with JSON
+        // instead of redirecting (its default, form-post-without-JS
+        // behaviour) — inert for the other two endpoints, which just read
+        // request.json() regardless of Accept.
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({ category, message }),
       })
-      const data = await res.json().catch(() => ({}) as { error?: string })
-      if (!res.ok) throw new Error(data.error || 'Something went wrong.')
+      // Formspree's validation-error shape is `{ errors: [{ message, ... }] }`,
+      // not the local/edge endpoints' `{ error: string }` — checking both
+      // means a Formspree rejection still surfaces a real message instead of
+      // silently falling through to the generic one below.
+      const data = await res.json().catch(() => ({}) as { error?: string; errors?: { message?: string }[] })
+      if (!res.ok) throw new Error(data.error || data.errors?.[0]?.message || 'Something went wrong.')
       setState('sent')
       setMessage('')
     } catch (err) {
@@ -57,7 +60,7 @@ export function Feedback({ open, onClose }: { open: boolean; onClose: () => void
       const msg = (err as Error).message
       setErrorMsg(
         msg === 'Failed to fetch'
-          ? EDGE_FEEDBACK_URL
+          ? EDGE_FEEDBACK_URL || !import.meta.env.DEV
             ? 'Couldn’t send feedback right now — please try again in a moment.'
             : 'Couldn’t reach the feedback server at 127.0.0.1:8766. Start it with  cd server && npm install && npm start  then try again.'
           : msg,

@@ -136,6 +136,47 @@ and rebuild your app with `VITE_FEEDBACK_URL=/api/feedback` set (e.g. in a match
 listener on your own machine to confirm the Function reaches it correctly — that's how this was
 verified during development, without sending anything to a real external service.
 
+## Feedback on GitHub Pages (Formspree)
+
+Everything above is the **Cloudflare Pages** path. This project is actually deployed on
+**GitHub Pages** (see `docs/Deploying-to-GitHub-Pages.pdf` and `.github/workflows/deploy-pages.yml`)
+— a plain static host with no server-side execution at all, so it can't run
+`app/functions/api/feedback.ts` (or `/api/amfi-nav`) no matter what. Live-NAV prices are unaffected
+(the app already falls back to its other, CORS-native sources — mfapi.in, captnemo — when the AMFI
+edge function isn't reachable), but feedback has no such fallback on its own: without a third path,
+every submission on the live GitHub Pages site would just fail with a "couldn't send" error.
+
+**The fix:** `app/src/features/feedback/feedbackEndpoint.ts`'s `resolveFeedbackEndpoint()` adds a
+third tier. In priority order:
+
+1. `VITE_FEEDBACK_URL` set (Cloudflare Pages) → that URL, unchanged from above.
+2. No override, running in dev (`import.meta.env.DEV`) → the local companion server
+   (`http://127.0.0.1:8766/api/feedback`), unchanged from above.
+3. No override, a real production build (i.e. the GitHub Pages build) → **Formspree**
+   (`https://formspree.io/f/<form-id>`) — a third-party form-relay service built for exactly this:
+   static sites with no backend of their own. It's called directly from the visitor's browser, no
+   code of ours involved, and every submission lands in a compiled, exportable table in the
+   Formspree dashboard (Export → CSV) — no channel scrollback to dig through, no webhook to stand
+   up.
+
+**One-time setup (2 minutes, free, no credit card):**
+
+1. Go to [formspree.io](https://formspree.io) and sign up.
+2. Create a new form (any name — e.g. "Portfolio Dashboard Feedback").
+3. Formspree shows you an endpoint URL shaped like `https://formspree.io/f/xanbqwrp` — that last
+   segment (`xanbqwrp` here) is your form ID.
+4. Open `app/src/features/feedback/feedbackEndpoint.ts` and replace the placeholder in
+   `FORMSPREE_ENDPOINT` (`'https://formspree.io/f/FORMSPREE_FORM_ID'`) with your real URL.
+5. Commit and push — the existing GitHub Actions workflow rebuilds and republishes automatically.
+6. Submit the live site's Feedback form once to confirm — the submission (and every one after it)
+   shows up under your form's **Inbox** tab at formspree.io, and can be exported as CSV any time
+   from there.
+
+No GitHub Actions secret, no Cloudflare account, no server of any kind — the form ID isn't
+sensitive (it only accepts POSTs shaped like this app's feedback form; Formspree's own dashboard is
+what gates who can *read* submissions), so baking it into the built JS is the same trade-off this
+project already makes for `VITE_FEEDBACK_URL` and `VITE_BASE_PATH`.
+
 ## Git status
 
 This repo was git-initialized locally as part of D1, with an initial commit of the working tree
