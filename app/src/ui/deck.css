@@ -44,8 +44,13 @@
 .deck-ic { width: 15px; height: 15px; flex: none; color: var(--ink); }
 @keyframes deck-spin { to { transform: rotate(360deg); } }
 
-/* ---- KPI row (4 tiles, full width, under the masthead) ---- */
-.deck-kpi-rail { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 14px; }
+/* ---- summary: hero tile (Total Value) + 3-tile secondary row ----
+   Review item #3 — Total Value used to be one of four equal-weight tiles,
+   giving the eye no clear entry point. It now gets its own full-width row
+   above the three secondary tiles (Total Gain / ST-LT Split, XIRR, Insight),
+   sized up in .deck-tile-hero below. */
+.deck-hero-row { margin-bottom: 14px; }
+.deck-kpi-rail { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 14px; }
 
 /* ---- 2-column grid: chart+holdings | allocation+insight ----
    Left column is a fixed 512px (matches the "Value vs Invested" chart box's
@@ -67,24 +72,67 @@
 .deck-clay { color: var(--clay); }
 .deck-accent { color: var(--green); }
 
-/* secondary footer inside a tile (Total Value -> Total Invested + fund
-   count) — label+amount on one line, fund count on its own line below, so
-   neither wraps mid-phrase at narrower tile widths. */
-.deck-tile-foot { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); font-size: 12px; }
-.deck-tile-foot-row { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
-.deck-tile-foot-v { font-family: var(--font-mono); color: var(--ink); font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
-.deck-tile-foot-sub { color: var(--muted); text-align: right; margin-top: 2px; }
+/* Value-update pop (review item #7 — subtle motion on value updates).
+   KpiRail.tsx keys its 5 headline numbers (Total Value, Total Invested,
+   Total Gain, XIRR All-Time, XIRR 1Y) on their own *formatted text*, so
+   React remounts — not just re-renders — the node whenever the displayed
+   value actually changes (e.g. Refresh pulls fresh live NAVs). A plain CSS
+   mount animation then plays automatically, no JS timing/state needed:
+   same enter-only philosophy as .sec-anim-in below. Keying on the rendered
+   string (not pf's object identity) means an unrelated re-render that
+   leaves a number's text unchanged does NOT retrigger this — only a real
+   value change does. It also plays once on first paint, which reads as the
+   numbers "arriving" rather than a bug. */
+@keyframes val-update { from { opacity: .35; } to { opacity: 1; } }
+.val-update { animation: val-update .4s ease; }
 
-/* small 2-col split, secondary emphasis (Total Gain -> Short/Long Term) */
+/* Hero tile (Total Value, review item #3) — same tile skin, sized way up and
+   given more breathing room so it visibly dominates the three secondary
+   tiles beneath it. Descendant selectors here only affect the one tile
+   carrying this modifier class; the shared .deck-val/.deck-sub/etc used
+   throughout the rest of the tiles/tables are untouched. */
+.deck-tile-hero { padding: 24px 28px; }
+.deck-tile-hero .deck-lbl { font-size: 13px; }
+.deck-tile-hero .deck-val { font-size: 42px; }
+.deck-tile-hero .deck-sub { font-size: 14px; margin-top: 8px; }
+@media (max-width: 640px) {
+  .deck-tile-hero { padding: 18px 18px; }
+  .deck-tile-hero .deck-val { font-size: 30px; }
+}
+
+/* Total Invested on the hero's own header row, right-aligned, at half
+   Total Value's type size (user request, 2026-07-22, mocked as "Variant A").
+   .hero-invested-v is a literal 50% of the *desktop* .deck-tile-hero .deck-val
+   (42px -> 21px); the mobile override below keeps that same 50% ratio against
+   the hero value's own mobile size (30px -> 15px), not a fixed px, so the
+   pairing stays proportional at every width. No footer divider — nothing is
+   left below the gain line to separate once Total Invested moves up here. */
+.hero-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; }
+.hero-head-main { min-width: 0; }
+.hero-head-side { flex: none; text-align: right; }
+.hero-invested-v { font-family: var(--font-mono); font-size: 21px; font-weight: 500; line-height: 1.1; color: var(--ink); font-variant-numeric: tabular-nums; }
+.hero-invested-sub { font-size: 12px; color: var(--muted); margin-top: 6px; }
+@media (max-width: 640px) {
+  /* Side by side, "₹1,27,08,479" and "₹1,10,67,473" don't both fit a
+     ~330px mobile tile — stack Total Invested under Total Value instead. */
+  .hero-head { flex-direction: column; gap: 12px; }
+  .hero-head-side { text-align: left; }
+  .hero-invested-v { font-size: 15px; }
+}
+
+/* small 2-col split, secondary emphasis (Total Gain -> Short/Long Term).
+   -k labels below drop their uppercase transform (review item #5 — the text
+   is already "Short Term"/"Long Term"/"All-Time"/"1Y", properly cased) and
+   are bumped a notch (review item #6 — these read as dense at 10-10.5px). */
 .deck-stlt { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); }
-.deck-stlt-k { font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin: 0 0 2px; }
+.deck-stlt-k { font-size: 11px; letter-spacing: .01em; color: var(--muted); margin: 0 0 2px; }
 .deck-stlt-v { font-family: var(--font-mono); font-size: 13px; font-variant-numeric: tabular-nums; margin: 0; }
 
 /* bigger 2-col split, primary emphasis (CAGR/XIRR shown side by side) */
 .deck-dual { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.deck-dual-k { font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin: 0 0 3px; }
+.deck-dual-k { font-size: 11px; letter-spacing: .01em; color: var(--muted); margin: 0 0 3px; }
 .deck-dual-v { font-family: var(--font-mono); font-size: 19px; font-weight: 500; margin: 0; line-height: 1.1; color: var(--ink); font-variant-numeric: tabular-nums; }
-.deck-dual-bench { font-family: var(--font-mono); font-size: 10.5px; color: var(--ink); margin: 5px 0 0; font-variant-numeric: tabular-nums; }
+.deck-dual-bench { font-family: var(--font-mono); font-size: 11px; color: var(--ink); margin: 5px 0 0; font-variant-numeric: tabular-nums; }
 
 /* ---- generic card ---- */
 .deck-card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; box-shadow: var(--shadow-card), var(--card-hi); }
@@ -231,8 +279,12 @@
   background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 14px 6px;
   text-align: center; font-size: 11.5px; font-weight: 700; color: var(--ink); font-family: inherit;
   display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer;
+  /* Review item #7 — this button IS the section's expand/collapse control,
+     so its open/closed color flip (below) deserves the same quiet easing as
+     everything else, not a hard cut. */
+  transition: background-color .15s ease, color .15s ease;
 }
-.deck-advt-ic { width: 20px; height: 20px; color: var(--ink); }
+.deck-advt-ic { width: 20px; height: 20px; color: var(--ink); transition: color .15s ease; }
 /* Was `.deck-advt-open, .deck-advt-open:hover { ... }` — the :hover half was
    dead weight: identical declaration to the unconditional base selector, so
    it never changed anything with or without a mouse. Removed rather than
@@ -256,12 +308,15 @@
    to static/stacked positioning at the same point, closing what used to be
    a broken 781-1023px seam between two uncoordinated breakpoints). */
 @media (max-width: 1023px) {
-  .deck-kpi-rail { grid-template-columns: 1fr 1fr; }
+  /* 3 secondary tiles, not 4 — a 2-column split would leave the third
+     stranded alone in its own row, so this goes straight to single-column,
+     matching .deck-grid-2col's own collapse at the same breakpoint (both
+     tiers stack vertically together instead of one lingering at 2-wide). */
+  .deck-kpi-rail { grid-template-columns: 1fr; }
   .deck-grid-2col { grid-template-columns: 1fr; }
   .deck-adv-tiles { grid-template-columns: repeat(3, 1fr); }
 }
 @media (max-width: 640px) {
-  .deck-kpi-rail { grid-template-columns: 1fr; }
   .deck-adv-tiles { grid-template-columns: repeat(2, 1fr); }
   .deck-mast-meta { display: none; }
 }

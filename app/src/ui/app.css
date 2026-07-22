@@ -56,13 +56,23 @@
 .help-menu-corner .help-menu-toggle { display: flex; }
 .help-menu-caret { width: 13px; transition: transform .15s ease; }
 .help-menu-toggle[aria-expanded='true'] .help-menu-caret { transform: rotate(180deg); }
+/* Fade + drop transition (review item #7 — subtle motion) instead of a hard
+   display:none/flex cut, mirroring InfoTip's own visibility+opacity pattern.
+   Always `display: flex` (position:absolute already removes it from layout
+   flow regardless, so this costs nothing); `visibility` still fully removes
+   it from hit-testing/tab order when closed. The `visibility` transition is
+   delayed on close (0.15s) so it flips to hidden only after the fade-out
+   finishes, not to complete invisible instant, but is undelayed on open
+   (`.open`'s `transition-delay: 0s`) so it appears immediately. */
 .help-menu-corner .help-menu-list {
-  display: none; position: absolute; top: calc(100% + 6px); right: 0; z-index: 60;
+  display: flex; position: absolute; top: calc(100% + 6px); right: 0; z-index: 60;
   flex-direction: column; gap: 6px; min-width: 200px;
   background: var(--card); border: 1px solid var(--line); border-radius: 11px;
   padding: 6px; box-shadow: var(--shadow-frame);
+  visibility: hidden; opacity: 0; transform: translateY(-4px);
+  transition: opacity .15s ease, transform .15s ease, visibility 0s linear .15s;
 }
-.help-menu-corner .help-menu-list.open { display: flex; }
+.help-menu-corner .help-menu-list.open { visibility: visible; opacity: 1; transform: translateY(0); transition-delay: 0s; }
 .help-menu-corner .help-menu-list .deck-btn { justify-content: flex-start; width: 100%; }
 @media (max-width: 640px) {
   /* Brand hidden to keep the header compact next to the theme toggle's
@@ -330,7 +340,24 @@ h1 { font-family: var(--font-serif); font-weight: 600; font-size: 38px; line-hei
 
 /* ---- section scaffold ---- */
 section { padding: 46px 0; border-bottom: 1px solid var(--line); }
-.eyebrow { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--brass); margin: 0 0 6px; }
+/* Expand-in motion (review item #7 — subtle motion on expand/collapse).
+   Section.tsx (the shared wrapper every Portfolio Analysis section renders
+   through) and Commentary's collapsible body are both conditionally
+   mounted — `{open && <Section .../>}` — so a *fresh* DOM subtree is
+   created each time a section opens. A plain CSS `animation` on that root
+   plays automatically the instant it's inserted; no JS timing/exit-state
+   needed for an enter-only effect, consistent with this app's post-
+   framer-motion (R12) preference for CSS-only motion. Closing still cuts
+   instantly (unmount can't be animated without keeping stale DOM around),
+   which is the deliberate, low-complexity trade-off. Reduced-motion users
+   already get `animation: none !important` from the global rule below. */
+@keyframes sec-fade-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+.sec-anim-in { animation: sec-fade-in .25s ease; }
+/* Sentence-case (review item #5) — was uppercase with .2em tracking, one of
+   the "shouting" micro-labels that compounded the terminal feel; the text
+   itself (Section.tsx) is already Title Case ("Visual Analysis", "Holdings
+   Detail", …), so dropping the transform is the whole fix. */
+.eyebrow { font-size: 11px; letter-spacing: .02em; color: var(--brass); margin: 0 0 6px; }
 .sec-title { font-family: var(--font-serif); font-weight: 600; font-size: 24px; margin: 0 0 4px; letter-spacing: -.02em; }
 .sec-sub { font-size: 13.5px; color: var(--muted); margin: 0 0 26px; max-width: 62ch; }
 /* The charts intro line sits directly above the chart-picker buttons and the
@@ -355,7 +382,7 @@ section { padding: 46px 0; border-bottom: 1px solid var(--line); }
 .donut path:focus { outline: none; }
 .donut path:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 .donut-center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; pointer-events: none; }
-.donut-center .dc-k { font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+.donut-center .dc-k { font-size: 11.5px; letter-spacing: .02em; color: var(--muted); }
 .donut-center .dc-v { font-family: var(--font-mono); font-size: 26px; font-weight: 500; margin-top: 3px; line-height: 1; }
 .donut-center .dc-s { font-size: 12px; color: var(--muted); margin-top: 5px; max-width: 150px; }
 .legend { display: flex; flex-direction: column; gap: 2px; }
@@ -400,7 +427,7 @@ section { padding: 46px 0; border-bottom: 1px solid var(--line); }
 .fcard .stats { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; border-bottom: 1px solid var(--line); }
 .fcard .stats div { padding: 12px 10px 12px 20px; border-right: 1px solid var(--line); }
 .fcard .stats div:nth-child(4n) { border-right: none; }
-.fcard .stats .sk { font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+.fcard .stats .sk { font-size: 10.5px; letter-spacing: .01em; color: var(--muted); margin-bottom: 4px; }
 .fcard .stats .sv { font-family: var(--font-mono); font-size: 14px; }
 /* 4 columns at ~84px each (minus 30px of horizontal padding per cell)
    isn't wide enough for a real units figure like "63,056.496" — .fcard's
@@ -422,7 +449,7 @@ section { padding: 46px 0; border-bottom: 1px solid var(--line); }
   .fcard .stats div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
 }
 .gainsplit { padding: 13px 20px; border-bottom: 1px solid var(--line); display: flex; gap: 22px; font-size: 12px; }
-.gainsplit .gk { color: var(--muted); letter-spacing: .06em; text-transform: uppercase; font-size: 10px; }
+.gainsplit .gk { color: var(--muted); letter-spacing: .01em; font-size: 10.5px; }
 .gainsplit .gv { font-family: var(--font-mono); font-size: 13px; margin-top: 2px; }
 .kim { padding: 14px 20px 16px; font-size: 12.5px; flex: 1; }
 .kim .krow { display: flex; gap: 10px; padding: 4px 0; border-bottom: 1px dotted var(--line); }
@@ -461,7 +488,7 @@ section { padding: 46px 0; border-bottom: 1px solid var(--line); }
 }
 
 .htable { width: 100%; border-collapse: collapse; font-size: 14px; }
-.htable th { text-align: right; font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 500; padding: 0 0 12px; border-bottom: 1px solid var(--ink); }
+.htable th { text-align: right; font-size: 11.5px; letter-spacing: .01em; color: var(--muted); font-weight: 600; padding: 0 0 12px; border-bottom: 1px solid var(--ink); }
 .htable th:first-child { text-align: left; }
 /* .th-sortbtn carries the sort interaction (B4, review item) so the <th>
    keeps its native columnheader role instead of being overridden by
@@ -484,7 +511,7 @@ section { padding: 46px 0; border-bottom: 1px solid var(--line); }
 /* ---- scheme summary table ---- */
 .stable td.nm, .srctable td.nm { text-align: left; font-family: var(--font-sans); max-width: 320px; }
 .stable td.nm { font-weight: 500; }
-.stable .exited, .srctable .exited { font-size: 10px; color: var(--muted); font-weight: 400; letter-spacing: .04em; text-transform: uppercase; }
+.stable .exited, .srctable .exited { font-size: 10.5px; color: var(--muted); font-weight: 500; letter-spacing: .01em; }
 .stable .renamed { display: block; font-size: 11px; color: var(--teal); font-weight: 400; margin-top: 2px; }
 .stable td.navd { font-family: var(--font-sans); font-size: 12px; color: var(--muted); white-space: nowrap; }
 .navtag { display: inline-block; font-family: var(--font-mono); font-size: 10px; letter-spacing: .02em; padding: 1px 6px; border-radius: 3px; margin-left: 4px; vertical-align: 1px; }
@@ -510,8 +537,11 @@ section { padding: 46px 0; border-bottom: 1px solid var(--line); }
 .gbtn:active { transform: translateY(1px); }
 .gbtn:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
 .chart-grid { stroke: var(--line); stroke-width: 1; stroke-dasharray: 2 4; opacity: .7; }
-.chart-tick { fill: var(--muted); font-family: var(--font-mono); font-size: 10px; }
-.chart-lbl { fill: var(--muted); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; }
+/* Tightened per review item #6 — axis type read as very small/dense; both
+   bumped a notch. .chart-lbl also drops its uppercase transform (review
+   item #5) — its text ("Year", a "₹" unit) is already properly cased. */
+.chart-tick { fill: var(--muted); font-family: var(--font-mono); font-size: 11px; }
+.chart-lbl { fill: var(--muted); font-size: 11.5px; letter-spacing: .02em; }
 
 /* InvestedChart hover/keyboard tooltip (task U2a). Deliberately NOT
    `overflow: visible` — the tooltip/guide-line coordinates are already

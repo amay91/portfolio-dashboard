@@ -53,7 +53,7 @@ export function Commentary({
             <span className="ch-chevron">›</span>
           </button>
           {open && (
-            <div className="commentary-body" id="commentary-body">
+            <div className="commentary-body sec-anim-in" id="commentary-body">
               <div className="commentary-inputs">
                 <label>
                   Age
