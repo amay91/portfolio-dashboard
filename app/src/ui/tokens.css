@@ -12,13 +12,22 @@
      bias as the accent color, which read as an overall yellow cast rather
      than a deliberate accent — see docs/DECISIONS.md "Terminal Deck
      contrast pass". Structural colors are now a true neutral gray ramp with
-     clearly distinct lightness steps; amber survives only as an accent
-     (--green/--brass/--cat-equity), used sparingly, not as body text. */
+     clearly distinct lightness steps. Accent revision (2026-07-22): the
+     primary accent moved from amber to a cool teal (--green is now #5eead4,
+     a single cool accent in place of the "Bloomberg terminal" amber) — see
+     docs/DECISIONS.md "Dark accent: teal". Amber survives ONLY as --brass, a
+     sparing attention/provenance highlight (Worth a Look, Data Check
+     warnings, statement-NAV tags, the sample-data note). Equity is now indigo
+     (--cat-equity); --series-2 is the secondary cool used where two cool
+     series must read as distinct (the invested-vs-value chart lines, the US
+     geography slice). The token name --green is legacy — it is the primary
+     accent, not literally green; renaming it app-wide is deferred. */
   --paper: #0a0b0d;
   --ink: #edeff2;
-  --green: #e8a33d;
+  --green: #5eead4;
   --brass: #c98a2e;
   --teal: #5eead4;
+  --series-2: #818cf8;
   --clay: #d97757;
   --muted: #8a8f99;
   --line: #333842;
@@ -29,14 +38,30 @@
   --frame: #101216;
   --frame-line: #23262c;
 
-  --cat-equity: #e8a33d;
+  --cat-equity: #818cf8;
   --cat-debt: #5eead4;
   --cat-cash: #6e7a8a;
   --cat-other: #b491c8;
   --geo-other: #5c5548;
   --geo-fallback: #5c7a72;
 
-  --font-sans: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  /* Elevation (design pass 2026-07-21): soft, layered shadows so surfaces
+     read as raised depth instead of flat 1px outlines. --shadow-frame lifts
+     the big framed containers off the page; --shadow-card + --card-hi (a
+     1px top highlight) make the tiles/cards inside them read as floating
+     chips. */
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, .45), 0 6px 20px -10px rgba(0, 0, 0, .55);
+  --shadow-frame: 0 1px 2px rgba(0, 0, 0, .5), 0 24px 60px -28px rgba(0, 0, 0, .75);
+  --card-hi: inset 0 1px 0 rgba(255, 255, 255, .045);
+
+  /* Type (design pass 2026-07-21): the interface is now set in a clean
+     system sans (SF Pro on Apple, Segoe UI on Windows, Roboto on Android) —
+     the modern-clean shell — while monospace is kept strictly for numbers
+     (KPI values, tables, NAVs), where aligned digits and a precision feel
+     earn it. --font-serif is retained only as a legacy alias (many heading
+     selectors still name it) and now points at the same sans; the app no
+     longer uses a serif face — the light theme's numerals are pure mono. */
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
   --font-serif: var(--font-sans);
 }
@@ -53,6 +78,10 @@
   --green: #2f5233;
   --brass: #846639;
   --teal: #3b5563;
+  /* Light theme is unchanged by the 2026-07-22 dark accent pass; --series-2
+     equals the old --teal here so the chart/geo spots repointed to it render
+     exactly as before in this theme. */
+  --series-2: #3b5563;
   --clay: #8b2e2e;
   --muted: #74654e;
   --line: #d9c7a3;
@@ -70,9 +99,16 @@
   --geo-other: #a68a5b;
   --geo-fallback: #7a8f86;
 
-  --font-sans: 'Courier Prime', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --shadow-card: 0 1px 2px rgba(74, 54, 38, .05), 0 8px 22px -12px rgba(74, 54, 38, .16);
+  --shadow-frame: 0 2px 4px rgba(74, 54, 38, .06), 0 28px 60px -30px rgba(74, 54, 38, .22);
+  --card-hi: inset 0 1px 0 rgba(255, 255, 255, .5);
+
+  /* Ledger keeps Courier Prime as its number face (the theme's identity);
+     only the interface text moves to the shared system sans. No Fraunces —
+     "pure mono for light". */
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --font-mono: 'Courier Prime', ui-monospace, 'SFMono-Regular', Menlo, monospace;
-  --font-serif: 'Fraunces', Georgia, serif;
+  --font-serif: var(--font-sans);
 }
 
 * { box-sizing: border-box; }

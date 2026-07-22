@@ -59,7 +59,7 @@ export function InvestedChart({ series, latest }: { series: Series; latest: Late
                 </g>
               ))}
               <path d={areaD} fill="var(--green)" opacity={0.09} />
-              <path d={investedD} fill="none" stroke="var(--teal)" strokeWidth={2} strokeDasharray="5 4" />
+              <path d={investedD} fill="none" stroke="var(--series-2)" strokeWidth={2} strokeDasharray="5 4" />
               <path d={valueD} fill="none" stroke="var(--green)" strokeWidth={2.5} />
               <text className="chart-lbl" x={ML} y={MT - 7}>
                 {unit.suf}
@@ -74,7 +74,7 @@ export function InvestedChart({ series, latest }: { series: Series; latest: Late
 
               {active && (
                 <>
-                  <circle className="chart-tip-dot" cx={active.x} cy={active.iy} r={4} fill="var(--teal)" pointerEvents="none" />
+                  <circle className="chart-tip-dot" cx={active.x} cy={active.iy} r={4} fill="var(--series-2)" pointerEvents="none" />
                   <circle className="chart-tip-dot" cx={active.x} cy={active.y} r={4.5} fill="var(--green)" pointerEvents="none" />
                 </>
               )}
@@ -102,7 +102,7 @@ export function InvestedChart({ series, latest }: { series: Series; latest: Late
           Portfolio value
         </span>
         <span>
-          <i style={{ background: 'var(--teal)' }} />
+          <i style={{ background: 'var(--series-2)' }} />
           Amount invested (net)
         </span>
       </div>

@@ -261,7 +261,7 @@
 /* ---- masthead ---- */
 .masthead { border-bottom: 1.5px solid var(--ink); padding: 40px 0 22px; }
 .masthead .wrap { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; }
-h1 { font-family: var(--font-serif); font-weight: 500; font-size: 38px; line-height: 1.02; margin: 0; letter-spacing: -.01em; }
+h1 { font-family: var(--font-serif); font-weight: 600; font-size: 38px; line-height: 1.02; margin: 0; letter-spacing: -.02em; }
 .masthead .meta { text-align: right; font-size: 12.5px; color: var(--muted); line-height: 1.7; }
 .masthead .meta b { color: var(--ink); font-weight: 500; }
 
@@ -343,7 +343,7 @@ h1 { font-family: var(--font-serif); font-weight: 500; font-size: 38px; line-hei
 /* ---- section scaffold ---- */
 section { padding: 46px 0; border-bottom: 1px solid var(--line); }
 .eyebrow { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--brass); margin: 0 0 6px; }
-.sec-title { font-family: var(--font-serif); font-weight: 500; font-size: 24px; margin: 0 0 4px; letter-spacing: -.01em; }
+.sec-title { font-family: var(--font-serif); font-weight: 600; font-size: 24px; margin: 0 0 4px; letter-spacing: -.02em; }
 .sec-sub { font-size: 13.5px; color: var(--muted); margin: 0 0 26px; max-width: 62ch; }
 /* The charts intro line sits directly above the chart-picker buttons and the
    gallery box, both of which are full-width — capping it at 62ch (fine for
@@ -368,7 +368,7 @@ section { padding: 46px 0; border-bottom: 1px solid var(--line); }
 .donut path:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 .donut-center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; pointer-events: none; }
 .donut-center .dc-k { font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
-.donut-center .dc-v { font-family: var(--font-serif); font-size: 26px; font-weight: 500; margin-top: 3px; line-height: 1; }
+.donut-center .dc-v { font-family: var(--font-mono); font-size: 26px; font-weight: 500; margin-top: 3px; line-height: 1; }
 .donut-center .dc-s { font-size: 12px; color: var(--muted); margin-top: 5px; max-width: 150px; }
 .legend { display: flex; flex-direction: column; gap: 2px; }
 .legrow {
@@ -396,14 +396,14 @@ section { padding: 46px 0; border-bottom: 1px solid var(--line); }
 
 /* ---- fund cards ---- */
 .funds { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.fcard { border: 1px solid var(--line); border-radius: 5px; background: var(--card); padding: 0; overflow: hidden; display: flex; flex-direction: column; }
+.fcard { border: 1px solid var(--line); border-radius: 12px; background: var(--card); padding: 0; overflow: hidden; display: flex; flex-direction: column; box-shadow: var(--shadow-card), var(--card-hi); }
 .fcard .top { padding: 18px 20px 16px; border-bottom: 1px solid var(--line); }
 .fcard .house { font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--brass); margin-bottom: 7px; display: flex; justify-content: space-between; align-items: center; }
 .fcard .cat { font-family: var(--font-mono); font-size: 10px; letter-spacing: .04em; color: var(--muted); background: var(--paper); padding: 2px 7px; border-radius: 3px; text-transform: none; }
 .fcard h3 { font-family: var(--font-serif); font-weight: 500; font-size: 18px; margin: 0; line-height: 1.18; letter-spacing: -.005em; }
 .fcard.redeemed h3 { color: var(--muted); }
 .fcard .valrow { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 14px; gap: 12px; }
-.fcard .mv { font-family: var(--font-serif); font-size: 24px; font-weight: 500; line-height: 1; }
+.fcard .mv { font-family: var(--font-mono); font-size: 24px; font-weight: 500; line-height: 1; }
 .fcard .mv small { font-family: var(--font-sans); font-size: 11px; color: var(--muted); font-weight: 400; display: block; margin-bottom: 3px; letter-spacing: .04em; }
 .tag { font-family: var(--font-mono); font-size: 12px; padding: 3px 8px; border-radius: 3px; white-space: nowrap; }
 .tag.up { background: color-mix(in srgb, var(--pos) 14%, transparent); color: var(--pos); }
@@ -537,7 +537,7 @@ section { padding: 46px 0; border-bottom: 1px solid var(--line); }
 .chart-tip rect { fill: var(--card); stroke: var(--line); }
 .chart-tip-yr { fill: var(--ink); font-family: var(--font-mono); font-size: 12px; font-weight: 600; }
 .chart-tip-v { font-family: var(--font-mono); font-size: 11px; }
-.chart-tip-v.invested { fill: var(--teal); }
+.chart-tip-v.invested { fill: var(--series-2); }
 .chart-tip-v.value { fill: var(--green); }
 /* The hovered point on a line chart (InvestedChart/RollingChart) — a paper-
    colored halo makes the highlighted dot pop against both the line stroke
@@ -590,7 +590,7 @@ section { padding: 46px 0; border-bottom: 1px solid var(--line); }
 
 /* ---- Data check panel ---- */
 #datacheck:empty, #datacheck .wrap:empty { display: none; }
-.datacheck { display: flex; gap: 14px; align-items: flex-start; border-radius: 12px; padding: 16px 18px; border: 1px solid var(--line); }
+.datacheck { display: flex; gap: 14px; align-items: flex-start; border-radius: 14px; padding: 16px 18px; border: 1px solid var(--line); box-shadow: var(--shadow-card); }
 .datacheck.dc-ok { background: color-mix(in srgb, var(--pos) 8%, transparent); border-color: color-mix(in srgb, var(--pos) 32%, transparent); }
 .datacheck.dc-warn { background: color-mix(in srgb, var(--brass) 10%, transparent); border-color: color-mix(in srgb, var(--brass) 40%, transparent); }
 .dc-icon { flex: 0 0 auto; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; color: var(--paper); }
@@ -618,7 +618,7 @@ section { padding: 46px 0; border-bottom: 1px solid var(--line); }
    .deck-frame's edges (CommandDeck/PortfolioAnalysis), even though all
    three share the same 1080px-max-width column — a card-level inset
    .wrap's other, non-bordered users never surfaced. */
-.commentary-card { border: 1px solid var(--line); border-radius: 14px; background: var(--card); overflow: hidden; margin: 0 -28px; }
+.commentary-card { border: 1px solid var(--line); border-radius: 14px; background: var(--card); overflow: hidden; margin: 0 -28px; box-shadow: var(--shadow-card); }
 @media (max-width: 860px) {
   .commentary-card { margin: 0 -20px; }
 }
@@ -646,7 +646,7 @@ section { padding: 46px 0; border-bottom: 1px solid var(--line); }
 .commentary-out .co-projection { display: flex; gap: 20px; flex-wrap: wrap; }
 .commentary-out .co-projection > div { flex: 1; min-width: 160px; }
 .commentary-out .co-proj-k { display: block; font-size: 11px; color: var(--muted); margin-bottom: 3px; }
-.commentary-out .co-proj-v { display: block; font-size: 17px; font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; }
+.commentary-out .co-proj-v { display: block; font-family: var(--font-mono); font-size: 17px; font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; }
 .commentary-out a { color: var(--teal); }
 .commentary-empty { color: var(--muted); }
 .commentary-refs { font-size: 12.5px; color: var(--muted); margin-top: 16px; padding-top: 14px; border-top: 1px dashed var(--line); line-height: 1.7; }

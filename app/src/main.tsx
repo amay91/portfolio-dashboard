@@ -9,8 +9,6 @@ import { createRoot } from 'react-dom/client'
 import '@fontsource/jetbrains-mono/400.css'
 import '@fontsource/jetbrains-mono/500.css'
 import '@fontsource/jetbrains-mono/700.css'
-import '@fontsource/fraunces/400.css'
-import '@fontsource/fraunces/600.css'
 import '@fontsource/courier-prime/400.css'
 import '@fontsource/courier-prime/700.css'
 import './ui/tokens.css'
@@ -40,7 +38,6 @@ document.documentElement.dataset.theme = (() => {
 if ('fonts' in document) {
   Promise.all([
     document.fonts.load('400 16px "JetBrains Mono"'),
-    document.fonts.load('400 16px "Fraunces"'),
     document.fonts.load('400 16px "Courier Prime"'),
   ]).catch(() => {})
 }

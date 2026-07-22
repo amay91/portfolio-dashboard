@@ -13,7 +13,8 @@
   padding: 20px;
   background: var(--frame);
   border: 1px solid var(--frame-line);
-  border-radius: 14px;
+  border-radius: 16px;
+  box-shadow: var(--shadow-frame);
 }
 
 /* ---- masthead ---- */
@@ -21,7 +22,7 @@
   display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
   padding-bottom: 14px; margin-bottom: 16px; border-bottom: 1px solid var(--frame-line);
 }
-.deck-mast-title { font-family: var(--font-serif); font-size: 18px; font-weight: 500; letter-spacing: -.2px; margin: 0; color: var(--ink); }
+.deck-mast-title { font-family: var(--font-serif); font-size: 18px; font-weight: 600; letter-spacing: -.2px; margin: 0; color: var(--ink); }
 .deck-mast-meta { font-size: 12.5px; color: var(--muted); }
 .deck-mast-space { flex: 1; }
 /* Sample-data callout (review item A5) — sits between the masthead and the
@@ -56,10 +57,10 @@
 .deck-col { display: flex; flex-direction: column; gap: 14px; }
 
 /* ---- tiles (KPI row) ---- */
-.deck-tile { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; display: flex; flex-direction: column; }
+.deck-tile { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; display: flex; flex-direction: column; box-shadow: var(--shadow-card), var(--card-hi); }
 .deck-lbl { font-size: 12px; color: var(--muted); margin: 0 0 6px; }
-.deck-val { font-family: var(--font-serif); font-size: 22px; font-weight: 500; line-height: 1.1; color: var(--ink); font-variant-numeric: tabular-nums; }
-.deck-sub { font-size: 12px; margin-top: 6px; font-variant-numeric: tabular-nums; }
+.deck-val { font-family: var(--font-mono); font-size: 22px; font-weight: 500; line-height: 1.1; color: var(--ink); font-variant-numeric: tabular-nums; }
+.deck-sub { font-family: var(--font-mono); font-size: 12px; margin-top: 6px; font-variant-numeric: tabular-nums; }
 .deck-pos { color: var(--pos); }
 .deck-neg { color: var(--neg); }
 .deck-mut { color: var(--muted); }
@@ -71,22 +72,22 @@
    neither wraps mid-phrase at narrower tile widths. */
 .deck-tile-foot { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); font-size: 12px; }
 .deck-tile-foot-row { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
-.deck-tile-foot-v { color: var(--ink); font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+.deck-tile-foot-v { font-family: var(--font-mono); color: var(--ink); font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
 .deck-tile-foot-sub { color: var(--muted); text-align: right; margin-top: 2px; }
 
 /* small 2-col split, secondary emphasis (Total Gain -> Short/Long Term) */
 .deck-stlt { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); }
 .deck-stlt-k { font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin: 0 0 2px; }
-.deck-stlt-v { font-size: 13px; font-variant-numeric: tabular-nums; margin: 0; }
+.deck-stlt-v { font-family: var(--font-mono); font-size: 13px; font-variant-numeric: tabular-nums; margin: 0; }
 
 /* bigger 2-col split, primary emphasis (CAGR/XIRR shown side by side) */
 .deck-dual { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .deck-dual-k { font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin: 0 0 3px; }
-.deck-dual-v { font-size: 19px; font-weight: 500; margin: 0; line-height: 1.1; color: var(--ink); font-variant-numeric: tabular-nums; }
-.deck-dual-bench { font-size: 10.5px; color: var(--ink); margin: 5px 0 0; font-variant-numeric: tabular-nums; }
+.deck-dual-v { font-family: var(--font-mono); font-size: 19px; font-weight: 500; margin: 0; line-height: 1.1; color: var(--ink); font-variant-numeric: tabular-nums; }
+.deck-dual-bench { font-family: var(--font-mono); font-size: 10.5px; color: var(--ink); margin: 5px 0 0; font-variant-numeric: tabular-nums; }
 
 /* ---- generic card ---- */
-.deck-card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+.deck-card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; box-shadow: var(--shadow-card), var(--card-hi); }
 .deck-sec { font-family: var(--font-serif); font-size: 12.5px; font-weight: 500; color: var(--muted); margin: 0; }
 
 /* ---- value-vs-invested chart card ---- */
@@ -139,6 +140,9 @@
 .deck-tbl th { color: var(--muted); font-weight: 400; text-align: left; }
 .deck-tbl tr:last-child td { border-bottom: none; }
 .deck-rt { text-align: right; white-space: nowrap; }
+/* Numeric data cells (Value / Total Gain / CAGR) in mono; the header labels
+   and the Holding-name column (.deck-nm) stay in the sans UI font. */
+.deck-tbl td.deck-rt { font-family: var(--font-mono); }
 .deck-rt-value { width: 112px; }
 .deck-rt-gain { width: 112px; }
 .deck-rt-cagr { width: 60px; }

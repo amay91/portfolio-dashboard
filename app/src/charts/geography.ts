@@ -3,7 +3,7 @@ import type { GeoEntry } from '../engine/types'
 
 const COLORS: Record<string, string> = {
   India: 'var(--green)',
-  'United States': 'var(--teal)',
+  'United States': 'var(--series-2)',
   'Gold & Commodities': 'var(--brass)',
   China: 'var(--clay)',
   'Other International': 'var(--geo-other)',
