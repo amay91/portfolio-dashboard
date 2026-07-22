@@ -10,7 +10,11 @@ import { useEffect, useId, useRef, useState } from 'react'
 // stopPropagation on both click and keydown matters: these sit inside
 // sortable <th>s (where a bubbled click/Enter would trigger a column sort)
 // and inside hover-lifted cards.
-export function InfoTip({ text, label, align = 'center' }: { text: string; label: string; align?: 'left' | 'center' | 'right' }) {
+// glyph: 'info' is the default ⓘ that explains a specific metric; 'help' is a
+// circled "?" for the general "where do I find guidance" affordance (the
+// masthead pointer to the Help menu) — a different question, so a different
+// icon keeps it from reading as just another metric explainer.
+export function InfoTip({ text, label, align = 'center', glyph = 'info' }: { text: string; label: string; align?: 'left' | 'center' | 'right'; glyph?: 'info' | 'help' }) {
   const [open, setOpen] = useState(false)
   const id = useId()
   const ref = useRef<HTMLSpanElement>(null)
@@ -79,11 +83,19 @@ export function InfoTip({ text, label, align = 'center' }: { text: string; label
         }}
         onKeyDown={(e) => e.stopPropagation()}
       >
-        <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" strokeWidth={1.4} aria-hidden="true">
-          <circle cx="8" cy="8" r="6.6" />
-          <path d="M8 7.2v4" strokeLinecap="round" />
-          <circle cx="8" cy="4.8" r="0.4" fill="currentColor" stroke="none" />
-        </svg>
+        {glyph === 'help' ? (
+          <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" strokeWidth={1.4} aria-hidden="true">
+            <circle cx="8" cy="8" r="6.6" />
+            <path d="M6.3 6.2a1.75 1.75 0 0 1 3.4.55c0 1.2-1.7 1.5-1.7 2.6" strokeLinecap="round" strokeLinejoin="round" />
+            <circle cx="8" cy="11.4" r="0.45" fill="currentColor" stroke="none" />
+          </svg>
+        ) : (
+          <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" strokeWidth={1.4} aria-hidden="true">
+            <circle cx="8" cy="8" r="6.6" />
+            <path d="M8 7.2v4" strokeLinecap="round" />
+            <circle cx="8" cy="4.8" r="0.4" fill="currentColor" stroke="none" />
+          </svg>
+        )}
       </button>
       <span role="tooltip" id={id} className="infotip-pop">
         {text}

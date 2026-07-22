@@ -20,70 +20,58 @@
    who's asked for that. */
 #app { transition: transform .25s ease; }
 
-/* Always accessible in the same spot regardless of scroll position or
-   upload-bar state — deliberately outside the .uploadbar flex row so it
-   never competes for space with Refresh/Clear Data or wraps with them on
-   narrow screens. On mobile this switches to position:static (see the
-   media query below) — a fixed top-right corner used to visually collide
-   with the upload box on narrow screens (tasks.md U11). */
-.theme-toggle-corner { position: fixed; top: 16px; right: 16px; z-index: 50; }
-.theme-toggle-corner .deck-btn { min-width: 125px; justify-content: center; }
-
-/* Wraps .theme-toggle-corner + HelpMenu's .help-menu-corner (tasks.md U11).
-   On desktop both children stay position:fixed, so this row itself has no
-   visual footprint (fixed-position children don't contribute to a
-   parent's layout height) — it exists purely so both can be relocated
-   together on mobile, right above Data Check / EmptyState instead of
-   floating fixed over the upload box. */
-/* Breakpoint contract (review item D2): three tiers, shared with deck.css —
-   640 (mobile), 860 (narrow — .wrap/h1/type), 1023 (tablet — deck grid
-   collapse). This row used to switch at 780, a 4th uncoordinated value that
-   left a broken seam between 781-1023px: the deck grid had already
-   collapsed to its single-column tablet layout there, but these corner
-   buttons were still in fixed-position "desktop" mode and could float over
-   the now-stacked content. Matching deck.css's 1023 tablet breakpoint here
-   closes that gap — both switch to the safe static/stacked layout together. */
-.mobile-header-row { }
-@media (max-width: 1023px) {
-  .mobile-header-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 14px 28px 0; }
-  .theme-toggle-corner { position: static; }
+/* ---- App header (review item #4) ----
+   A slim top bar that gives the app a real masthead and retires the old
+   floating pill stack in the left gutter (which read as leftover debug
+   buttons). Brand wordmark on the left; the Help menu + theme toggle grouped
+   on the right. Flex row at every width; rendered above <UploadBar> in
+   App.tsx, so the help items and the theme toggle now live in one integrated
+   place instead of two fixed screen corners. position:relative + z-index so
+   the Help dropdown (position:absolute) paints above the UploadBar that
+   follows it in the DOM. On mobile the brand is hidden so the two controls
+   keep the compact header they've always had (no risk of overflow next to
+   the theme toggle's ~125px label). */
+.app-header {
+  position: relative; z-index: 50;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 13px 28px;
 }
+.app-brand { display: flex; align-items: center; gap: 9px; font-weight: 600; font-size: 14.5px; letter-spacing: -.01em; color: var(--ink); }
+.app-brand-mark { width: 22px; height: 22px; border-radius: 6px; background: linear-gradient(135deg, var(--green), var(--series-2)); box-shadow: var(--card-hi); }
+.app-header-actions { display: flex; align-items: center; gap: 8px; }
+.theme-toggle-corner .deck-btn { min-width: 125px; justify-content: center; }
 
 /* ---- Help menu (Instructions / Reading the Dashboard / Privacy and Data /
    FAQ / Feedback) ----
-   Top-left, the one corner the theme toggle (right-edge) doesn't occupy.
-   Permanently visible on desktop (the items render inline, no toggle
-   needed — there's nothing to click to reveal them); collapses behind a
-   "Menu" button on narrow screens — .help-menu-toggle/.help-menu-list
-   visibility is flipped by the media query below, JS only needs to control
-   the mobile open/close state. Feedback used to be its own floating
-   right-edge corner button; it's now the last item in this list (tasks.md
-   U10), so on mobile it drops down with the rest instead of floating
-   separately. `top` is a JS-computed inline style (HelpMenu.tsx, via
-   ui/useStickyToTarget.ts) that tracks the "Sample Portfolio Summary" box
-   on desktop, falling back to this 16px default before that effect runs.
-   On mobile the hook returns null (no inline style at all — see
-   useStickyToTarget.ts), so this switches to position:relative in the
-   media query below and renders in normal flow inside .mobile-header-row,
-   just above Data Check / EmptyState, instead of floating fixed over the
-   upload box (tasks.md U11) — position:relative (not static) so the
-   mobile dropdown's position:absolute .help-menu-list still anchors to
-   this element rather than some further-out ancestor.
-   Selectors below are scoped under .help-menu-corner (not bare
-   .help-menu-toggle/.help-menu-list) so their specificity reliably beats
-   .deck-btn's `display: inline-flex` (deck.css) regardless of which
-   stylesheet happens to load later — two bare single-class selectors of
-   equal specificity would otherwise let simple CSS file import order
-   silently decide which `display` wins. */
-.help-menu-corner { position: fixed; top: 16px; left: 16px; z-index: 50; }
-.help-menu-corner .help-menu-toggle { display: none; }
-.help-menu-corner .help-menu-list { display: flex; flex-direction: column; gap: 6px; }
-.help-menu-corner .help-menu-list .deck-btn { justify-content: flex-start; min-width: 168px; }
-@media (max-width: 1023px) {
-  .help-menu-corner { position: relative; top: 0; left: 0; }
-  .help-menu-corner .help-menu-toggle { display: flex; }
-  .help-menu-corner .help-menu-list { display: none; position: absolute; top: calc(100% + 6px); left: 0; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 6px; box-shadow: 0 8px 24px rgba(0, 0, 0, .35); }
-  .help-menu-corner .help-menu-list.open { display: flex; }
+   A single "Help" button that opens a dropdown of the five items — the same
+   consolidated pattern at every width (desktop used to show all five inline
+   as a vertical pill stack; that was refinement #4's complaint). The list is
+   right-aligned (right: 0) so it always opens leftward into the screen from
+   its home on the right of the header, never past the viewport edge. Feedback
+   is the last item (tasks.md U10). Selectors are scoped under
+   .help-menu-corner (not bare .help-menu-toggle/.help-menu-list) so their
+   specificity reliably beats .deck-btn's `display: inline-flex` (deck.css)
+   regardless of which stylesheet loads later. */
+.help-menu-corner { position: relative; }
+.help-menu-corner .help-menu-toggle { display: flex; }
+.help-menu-caret { width: 13px; transition: transform .15s ease; }
+.help-menu-toggle[aria-expanded='true'] .help-menu-caret { transform: rotate(180deg); }
+.help-menu-corner .help-menu-list {
+  display: none; position: absolute; top: calc(100% + 6px); right: 0; z-index: 60;
+  flex-direction: column; gap: 6px; min-width: 200px;
+  background: var(--card); border: 1px solid var(--line); border-radius: 11px;
+  padding: 6px; box-shadow: var(--shadow-frame);
+}
+.help-menu-corner .help-menu-list.open { display: flex; }
+.help-menu-corner .help-menu-list .deck-btn { justify-content: flex-start; width: 100%; }
+@media (max-width: 640px) {
+  /* Brand hidden to keep the header compact next to the theme toggle's
+     ~125px label; flex-end so the lone actions group stays on the right,
+     where the right-aligned .help-menu-list opens leftward into the screen
+     (space-between would strand a single child on the left, sending the
+     dropdown off the left edge). */
+  .app-header { padding: 13px 20px; justify-content: flex-end; }
+  .app-brand { display: none; }
 }
 
 /* ---- InfoTip: point-of-use ⓘ explainers (review item A1) ----

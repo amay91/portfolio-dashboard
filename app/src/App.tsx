@@ -86,6 +86,24 @@ function App() {
 
   return (
     <>
+      {/* App header (review item #4): a slim top bar — brand wordmark left,
+          Help menu + theme toggle right — giving the app a real masthead and
+          retiring the old floating pill stack in the gutter (which read as
+          leftover debug buttons). Renders above <UploadBar> so all the app
+          chrome lives in one integrated place instead of two fixed screen
+          corners. */}
+      <header className="app-header">
+        <div className="app-brand">
+          <span className="app-brand-mark" aria-hidden="true" />
+          Portfolio Dashboard
+        </div>
+        <div className="app-header-actions">
+          <HelpMenu onSpotlight={setSpotlight} />
+          <div className="theme-toggle-corner">
+            <ThemeToggle />
+          </div>
+        </div>
+      </header>
       <UploadBar
         status={status}
         uploadPhase={uploadPhase}
@@ -100,28 +118,6 @@ function App() {
         onConvertMarkitdown={(file: File, password?: string) => void handleConvertMarkitdown(dispatch, currentSourceRef, file, password)}
         onSubmitPassword={(password) => handleSubmitPassword(dispatch, currentSourceRef, pendingPassword, password)}
       />
-      {/* On desktop these two stay position:fixed corners (top-left/top-right),
-          unaffected by their position here in the DOM. On mobile (<=1023px)
-          they switch to position:static/relative and render in normal flow
-          at exactly this point — just above Data Check (or EmptyState,
-          before a statement loads) — instead of floating fixed over the
-          upload box, which they used to visually collide with (tasks.md
-          U11). See app.css's .mobile-header-row / .theme-toggle-corner /
-          .help-menu-corner mobile media query.
-          HelpMenu comes first in the DOM (not ThemeToggle) so this row's
-          justify-content: space-between puts it on the LEFT on mobile,
-          matching its desktop top-left corner — putting it on the right
-          (the previous order) anchored its dropdown's `left: 0` to a
-          right-edge button, pushing the menu list past the viewport's right
-          edge where body's overflow-x: hidden safety net (M1) silently
-          clipped it. Anchoring from the left instead gives the dropdown
-          room to open into, not off, the screen. */}
-      <div className="mobile-header-row">
-        <HelpMenu onSpotlight={setSpotlight} />
-        <div className="theme-toggle-corner">
-          <ThemeToggle />
-        </div>
-      </div>
       <Spotlight request={spotlight} onDismiss={() => setSpotlight(null)} />
       <main id="app">
         {!pf && <EmptyState status={status} />}

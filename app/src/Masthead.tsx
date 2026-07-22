@@ -1,5 +1,6 @@
 import { firstName, fmtDate } from './format'
 import { HoverButton } from './ui/HoverLift'
+import { InfoTip } from './ui/InfoTip'
 import type { Portfolio } from './engine/types'
 
 // The Command Deck's masthead: personalised title (first name only, from the
@@ -35,6 +36,17 @@ export function Masthead({
         <span className="deck-mast-meta">
           As of {fmtDate(pf.liveAsOf || pf.valDate)} &middot; {asOfLabel}
         </span>
+        {/* Discoverability pointer to the Help menu (top-right) — a first-time
+            visitor may not realise Instructions / Reading the Dashboard / etc.
+            live in there. 'help' glyph (a "?") to distinguish it from the ⓘ
+            metric explainers; align="left" so its hover popover opens rightward
+            into the frame from this left-of-centre spot. */}
+        <InfoTip
+          glyph="help"
+          align="left"
+          label="Where to find help and guides"
+          text="New here? The Help menu (top-right) has step-by-step Instructions, a guide to Reading the Dashboard, Privacy & Data details, and FAQs."
+        />
         <div className="deck-mast-space" />
         {/* deck-mast-pngbtn is excluded from the PNG capture itself (CommandDeck.tsx's `filter`) — otherwise the button would appear inside its own screenshot. */}
         <HoverButton className={`deck-btn deck-mast-pngbtn${savingPng ? ' spin' : ''}`} onClick={onSaveAsPng} disabled={savingPng} aria-label="Save portfolio summary as PNG">
